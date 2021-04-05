@@ -1,0 +1,60 @@
+
+/*Estilos globais*/
+#toggle{display: none;}
+
+body{background-color: Black;}
+
+.jumbotron{background-color: #4f4f4f;
+	 color: Cyan;
+	 text-align: center;
+}
+
+#proximaPagina{background-color: #4f4f4f;}
+
+a:link {
+  color: cyan;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:visited {color: cyan;
+  	 background-color: transparent;
+  	 text-decoration: none;
+}
+
+a:hover {color: red;
+  	 background-color: transparent;
+  	 text-decoration: underline;
+}
+
+a:active {color: yellow;
+  	 background-color: transparent;
+  	 text-decoration: underline;
+}
+
+#footer{font-size: 15px;
+        background-color: #363636;
+        color: white;
+        height: 15vh;
+}
+
+
+img{height: 400px;}
+
+.card-header{background-color: Cyan;}
+
+.card-body{background-color: #4f4f4f;}
+
+.card-footer{background-color: #4f4f4f;
+		text-align: center;
+}
+
+p{color: white;}
+
+
+/* Página index.html */
+aside{
+  width: 30%;
+  margin-left: 15px;
+  float: right;
+  background-color: lightgray;
+}
