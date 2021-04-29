@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-br">
 <head>
 	<!-- Meta -->
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<title>AniJogos</title>
+	<title>AniJogos - Animes</title>
 
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -33,336 +33,338 @@
 
 </head>
 <body>
-<!-- Menu de navegação -->
-<nav class="navbar navbar-expand-sm sticky-top justify-content-center bg-danger navbar-dark text-dark" id="menu_full">
-	<ul class="navbar-nav">
-		<li class="nav-item">
-			<a class="nav-link" href="index.html" tabindex="1">Inicio</a>
-		</li>
-		<li class="nav-item active">
-			<a class="nav-link active" href="#" tabindex="2">Animes</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" href="jogos.html" tabindex="3">Jogos</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" href="musicas.html" tabindex="4">Musicas</a>
-		</li>
-	</ul>
-</nav>
-<!-- Menu de navegação para celular --> 
-<nav class="navbar navbar-expand-sm sticky-top justify-content-end navbar-dark" id="toggle">
+	<!-- Menu de navegação -->
+	<nav class="navbar navbar-expand-sm sticky-top justify-content-center bg-danger navbar-dark text-dark" id="menu_full">
+		<ul class="navbar-nav">
+			<li class="nav-item">
+				<a class="nav-link" href="index.html" tabindex="1">Inicio</a>
+			</li>
+			<li class="nav-item active">
+				<a class="nav-link active" href="#" tabindex="2">Animes</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="jogos.html" tabindex="3">Jogos</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="musicas.html" tabindex="4">Musicas</a>
+			</li>
+		</ul>
+	</nav>
+	<!-- Menu de navegação para celular --> 
+	<nav class="navbar navbar-expand-sm sticky-top justify-content-end navbar-dark" id="toggle">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsiblenavbar"><span class="navbar-toggler-icon"></span></button>
+			</div>
+			<div class="collapse navbar-collapse" id="collapsiblenavbar">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" href="index.html" tabindex="1">Inicio</a></li>
+					<li class="nav-item active">
+						<a class="nav-link active" href="#" tabindex="2">Animes</a></li>
+					<li class="nav-item">
+						<a class="nav-link" href="jogos.html" tabindex="3">Jogos</a></li>
+					<li class="nav-item">
+						<a class="nav-link" href="musicas.html" tabindex="4">Musicas</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<br>	
 	<div class="container-fluid">
-       	<div class="navbar-header">
-           	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsiblenavbar"><span class="navbar-toggler-icon"></span></button>
- 	    </div>
-        <div class="collapse navbar-collapse" id="collapsiblenavbar">
-       	    <ul class="navbar-nav">
-           	    <li class="nav-item">
-               		<a class="nav-link" href="index.html" tabindex="1">Inicio</a></li>
-               	<li class="nav-item active">
-               		<a class="nav-link active" href="#" tabindex="2">Animes</a></li>
-         		<li class="nav-item">
-               		<a class="nav-link" href="jogos.html" tabindex="3">Jogos</a></li>
-               	<li class="nav-item">
-               		<a class="nav-link" href="musicas.html" tabindex="4">Musicas</a></li>
-           	</ul>
-       	</div>
-   	</div>
-</nav>
-<br>	
-<div class="container-fluid">
-	<div class="jumbotron jumbotron-fluid">
-		<h1>Lista de Animes:</h1>
+		<div class="jumbotron jumbotron-fluid">
+			<h1>Lista de Animes:</h1>
+		</div>
+		<!-- Paginação -->
+		<ul class="pagination pagination-lg justify-content-center">
+			<li class="page-item active">
+				<a class="page-link" href="#" tabindex="5">1</a>
+			</li>
+			<li class="page-item">
+				<a class="page-link" href="animes2.html" tabindex="6" id="proximaPagina">2</a>
+			</li>
+		</ul>
+		<main>
+			<!-- 1º Linha de cards -->
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="card">
+						<img src="img/animes/11eyes.jpg" class="card-img-top">
+						<div class="card-footer">
+							<a href="https://www.meuanime.com/11-eyes" target="_blank" tabindex="7">11 Eyes</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="card">
+						<img src="img/animes/3dkanojo.jpg" class="card-img-top">
+						<div class="card-footer">
+							<a href="https://www.meuanime.com/3d-kanojo-real-girl" target="_blank" tabindex="8">3D kanojo: Real Girl</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="card">
+						<img src="img/animes/91days.jpg" class="card-img-top">
+						<div class="card-footer">
+							<a href="https://www.meuanime.com/91-days" target="_blank" tabindex="9">91 Days</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<br>
+			<!-- 2º Linha de cards -->
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="card">
+						<img src="img/animes/AbsoluteDuo.jpg" class="card-img-top">
+						<div class="card-footer">
+							<a href="https://www.meuanime.com/absolute-duo" target="_blank" tabindex="10">Absolute Duo</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="card">
+						<img src="img/animes/AccelWorld.jpg" class="card-img-top">
+						<div class="card-footer">
+							<a href="https://www.meuanime.com/accel-world" target="_blank" tabindex="11">Accel World</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="card">
+						<img src="img/animes/AfroSamurai.jpg" class="card-img-top">
+						<div class="card-footer">
+							<a href="https://www.meuanime.com/afro-samurai" target="_blank" tabindex="12">Afro Samurai</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<br>
+			<!-- 3º Linha de cards -->
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="card">
+						<img src="img/animes/Ajin.jpg" class="card-img-top">
+						<div class="card-footer">
+							<a href="https://www.meuanime.com/ajin" target="_blank" tabindex="13">Ajin</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="card">
+						<img src="img/animes/AkameGaKill.jpg" class="card-img-top">
+						<div class="card-footer">
+							<a href="https://www.meuanime.com/akame-ga-kill" target="_blank" tabindex="14">Akame ga kill</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="card">
+						<img src="img/animes/Akikan.jpg" class="card-img-top">
+						<div class="card-footer">
+							<a href="https://www.meuanime.com/akikan" target="_blank" tabindex="15">Akikan</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<br>
+			<!-- 4º Linha de cards -->
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="card">
+						<img src="img/animes/AnoHana.jpg" class="card-img-top">
+						<div class="card-footer">
+							<a href="https://www.meuanime.com/ano-hana" target="_blank" tabindex="16">Ano Hana</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="card">
+						<img src="img/animes/Baki.jpg" class="card-img-top">
+						<div class="card-footer">
+							<a href="https://www.meuanime.com/baki" target="_blank" tabindex="17">Baki</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">	
+					<div class="card">
+						<img src="img/animes/BattleGirl.jpg" class="card-img-top">
+						<div class="card-footer">
+							<a href="https://www.meuanime.com/battle-girl-high-school" target="_blank" tabindex="18">Battle Girl High School</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<br>
+			<!-- 5º Linha de cards -->
+			<div class="row">		
+				<div class="col-sm-4">
+					<div class="card">
+						<img src="img/animes/Beastar.jpg" class="card-img-top">
+						<div class="card-footer">
+							<a href="https://www.meuanime.com/beastars" target="_blank" tabindex="19">Beastar</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="card">
+						<img src="img/animes/Beelzebub.jpg" class="card-img-top">
+						<div class="card-footer">
+							<a href="https://www.meuanime.com/beelzebub" target="_blank" tabindex="20">Beelzebub</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="card">
+						<img src="img/animes/BlackClover.jpg" class="card-img-top">
+						<div class="card-footer">
+							<a href="https://www.meuanime.com/black-clover" target="_blank" tabindex="21">Black Clover</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<br>
+			<!-- 6º Linha de cards -->
+			<div class="row">				
+				<div class="col-sm-4">
+					<div class="card">
+						<img src="img/animes/Bleach.jpg" class="card-img-top">
+						<div class="card-footer">
+							<a href="https://www.meuanime.com/bleach" target="_blank" tabindex="22">Bleach</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">	
+					<div class="card">
+						<img src="img/animes/BokuNoHero.jpg" class="card-img-top">
+						<div class="card-footer">
+							<a href="https://www.meuanime.com/boku-no-hero-academia" target="_blank" tabindex="23">Boku no Hero</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="card">
+						<img src="img/animes/Boruto.jpg" class="card-img-top">
+						<div class="card-footer">
+							<a href="https://www.meuanime.com/boruto-naruto-next-generations" target="_blank" tabindex="24">Boruto: Naruto Next Generations</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<br>
+			<!-- 7º Linha de cards -->
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="card">
+						<img src="img/animes/Campione.jpg" class="card-img-top">
+						<div class="card-footer">
+							<a href="https://www.meuanime.com/campione" target="_blank" tabindex="25">Campione</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="card">
+						<img src="img/animes/Canaan.jpg" class="card-img-top">
+						<div class="card-footer">
+							<a href="https://www.meuanime.com/canaan" target="_blank" tabindex="26">Canaan</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="card">
+						<img src="img/animes/Castlevania.jpg" class="card-img-top">
+						<div class="card-footer">
+							<a href="https://www.meuanime.com/castlevania" target="_blank" tabindex="27">Castlevania</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<br>
+			<!-- 8º Linha de cards -->
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="card">
+						<img src="img/animes/ChaosDragon.jpg" class="card-img-top">
+						<div class="card-footer">
+							<a href="https://www.meuanime.com/chaos-dragon" target="_blank" tabindex="28">Chaos Dragon</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="card">
+						<img src="img/animes/Charlotte.jpg" class="card-img-top">
+						<div class="card-footer">
+							<a href="https://www.meuanime.com/charlotte" target="_blank" tabindex="29">Charlotte</a>
+						</div>
+					</div>
+				</div>	
+				<div class="col-sm-4">
+					<div class="card">
+						<img src="img/animes/ChouYuuSekai.jpg" class="card-img-top">
+						<div class="card-footer">
+							<a href="https://www.meuanime.com/chou-yuu-sekai-being-the-reality" target="_blank" tabindex="30">Chou Yuu Sekai</a>
+						</div>
+					</div>
+				</div>
+			</div>	
+			<br>
+			<!-- 9º Linha de cards -->
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="card">
+						<img src="img/animes/DGrayMan.jpg" class="card-img-top">
+						<div class="card-footer">
+							<a href="https://www.meuanime.com/d-gray-man" target="_blank" tabindex="31">D-Gray Man</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="card">
+						<img src="img/animes/DarlingFranxx.jpg" class="card-img-top">
+						<div class="card-footer">
+							<a href="https://www.meuanime.com/darling-in-the-franxx" target="_blank" tabindex="32">Darling in the FranXX</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="card">
+						<img src="img/animes/DateaLive.jpg" class="card-img-top">
+						<div class="card-footer">
+							<a href="https://www.meuanime.com/date-a-live" target="_blank" tabindex="33">Date a Live</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<br>
+		<!-- Paginação -->
+		<ul class="pagination pagination-lg justify-content-center">
+			<li class="page-item active">
+				<a class="page-link" href="#" tabindex="34">1</a>
+			</li>
+			<li class="page-item">
+				<a class="page-link" href="animes2.html" tabindex="35" id="proximaPagina">2</a>
+			</li>
+		</ul>
+		<!-- Observação -->
+		<div class="card" style="height: 235px;">
+			<div class="card-header">
+				<h1 class="card-title">Observação!</h1>
+			</div>
+			<div class="card-body">
+				<p class="card-text">Todos os animes estão linkados com o site meuanime.com o motivo para isso é apenas a prefêrencia pessoal da administração da página, no entanto os outros sites recomendados na página inicial também são ótimas escolhas para assistir o anime que desejar.<br><br>
+				Se você tem alguma sugestão de anime/jogo/música, ou algum dos link estiver quebrado, ou possuir sugestões para melhorar a página, mande mensagem para nós, o link do facebook do administrador responsavel por essas operações esta logo a baixo! </p>
+			</div>
+		</div>
+		<br>
 	</div>
-	<!-- Paginação -->
-	<ul class="pagination pagination-lg justify-content-center">
-		<li class="page-item active">
-			<a class="page-link" href="#" tabindex="5">1</a>
-		</li>
-		<li class="page-item">
-			<a class="page-link" href="animes2.html" tabindex="6" id="proximaPagina">2</a>
-		</li>
-	</ul>
-	<!-- 1º Linha de cards -->
-	<div class="row">
-		<div class="col-sm-4">
-			<div class="card">
-				<img src="img/animes/11eyes.jpg" class="card-img-top">
-				<div class="card-footer">
-					<a href="https://www.meuanime.com/11-eyes" target="_blank" tabindex="7">11 Eyes</a>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-4">
-			<div class="card">
-				<img src="img/animes/3dkanojo.jpg" class="card-img-top">
-				<div class="card-footer">
-					<a href="https://www.meuanime.com/3d-kanojo-real-girl" target="_blank" tabindex="8">3D kanojo: Real Girl</a>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-4">
-			<div class="card">
-				<img src="img/animes/91days.jpg" class="card-img-top">
-				<div class="card-footer">
-					<a href="https://www.meuanime.com/91-days" target="_blank" tabindex="9">91 Days</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<br>
-	<!-- 2º Linha de cards -->
-	<div class="row">
-		<div class="col-sm-4">
-			<div class="card">
-				<img src="img/animes/AbsoluteDuo.jpg" class="card-img-top">
-				<div class="card-footer">
-					<a href="https://www.meuanime.com/absolute-duo" target="_blank" tabindex="10">Absolute Duo</a>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-4">
-			<div class="card">
-				<img src="img/animes/AccelWorld.jpg" class="card-img-top">
-				<div class="card-footer">
-					<a href="https://www.meuanime.com/accel-world" target="_blank" tabindex="11">Accel World</a>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-4">
-			<div class="card">
-				<img src="img/animes/AfroSamurai.jpg" class="card-img-top">
-				<div class="card-footer">
-					<a href="https://www.meuanime.com/afro-samurai" target="_blank" tabindex="12">Afro Samurai</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<br>
-	<!-- 3º Linha de cards -->
-	<div class="row">
-		<div class="col-sm-4">
-			<div class="card">
-				<img src="img/animes/Ajin.jpg" class="card-img-top">
-				<div class="card-footer">
-					<a href="https://www.meuanime.com/ajin" target="_blank" tabindex="13">Ajin</a>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-4">
-			<div class="card">
-				<img src="img/animes/AkameGaKill.jpg" class="card-img-top">
-				<div class="card-footer">
-					<a href="https://www.meuanime.com/akame-ga-kill" target="_blank" tabindex="14">Akame ga kill</a>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-4">
-			<div class="card">
-				<img src="img/animes/Akikan.jpg" class="card-img-top">
-				<div class="card-footer">
-					<a href="https://www.meuanime.com/akikan" target="_blank" tabindex="15">Akikan</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<br>
-	<!-- 4º Linha de cards -->
-	<div class="row">
-		<div class="col-sm-4">
-			<div class="card">
-				<img src="img/animes/AnoHana.jpg" class="card-img-top">
-				<div class="card-footer">
-					<a href="https://www.meuanime.com/ano-hana" target="_blank" tabindex="16">Ano Hana</a>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-4">
-			<div class="card">
-				<img src="img/animes/Baki.jpg" class="card-img-top">
-				<div class="card-footer">
-					<a href="https://www.meuanime.com/baki" target="_blank" tabindex="17">Baki</a>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-4">	
-			<div class="card">
-				<img src="img/animes/BattleGirl.jpg" class="card-img-top">
-				<div class="card-footer">
-					<a href="https://www.meuanime.com/battle-girl-high-school" target="_blank" tabindex="18">Battle Girl High School</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<br>
-	<!-- 5º Linha de cards -->
-	<div class="row">		
-		<div class="col-sm-4">
-			<div class="card">
-				<img src="img/animes/Beastar.jpg" class="card-img-top">
-				<div class="card-footer">
-					<a href="https://www.meuanime.com/beastars" target="_blank" tabindex="19">Beastar</a>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-4">
-			<div class="card">
-				<img src="img/animes/Beelzebub.jpg" class="card-img-top">
-				<div class="card-footer">
-					<a href="https://www.meuanime.com/beelzebub" target="_blank" tabindex="20">Beelzebub</a>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-4">
-			<div class="card">
-				<img src="img/animes/BlackClover.jpg" class="card-img-top">
-				<div class="card-footer">
-					<a href="https://www.meuanime.com/black-clover" target="_blank" tabindex="21">Black Clover</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<br>
-	<!-- 6º Linha de cards -->
-	<div class="row">				
-		<div class="col-sm-4">
-			<div class="card">
-				<img src="img/animes/Bleach.jpg" class="card-img-top">
-				<div class="card-footer">
-					<a href="https://www.meuanime.com/bleach" target="_blank" tabindex="22">Bleach</a>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-4">	
-			<div class="card">
-				<img src="img/animes/BokuNoHero.jpg" class="card-img-top">
-				<div class="card-footer">
-					<a href="https://www.meuanime.com/boku-no-hero-academia" target="_blank" tabindex="23">Boku no Hero</a>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-4">
-			<div class="card">
-				<img src="img/animes/Boruto.jpg" class="card-img-top">
-				<div class="card-footer">
-					<a href="https://www.meuanime.com/boruto-naruto-next-generations" target="_blank" tabindex="24">Boruto: Naruto Next Generations</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<br>
-	<!-- 7º Linha de cards -->
-	<div class="row">
-		<div class="col-sm-4">
-			<div class="card">
-				<img src="img/animes/Campione.jpg" class="card-img-top">
-				<div class="card-footer">
-					<a href="https://www.meuanime.com/campione" target="_blank" tabindex="25">Campione</a>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-4">
-			<div class="card">
-				<img src="img/animes/Canaan.jpg" class="card-img-top">
-				<div class="card-footer">
-					<a href="https://www.meuanime.com/canaan" target="_blank" tabindex="26">Canaan</a>
-				</div>
-			</div>
-		</div>
-        <div class="col-sm-4">
-			<div class="card">
-				<img src="img/animes/Castlevania.jpg" class="card-img-top">
-				<div class="card-footer">
-					<a href="https://www.meuanime.com/castlevania" target="_blank" tabindex="27">Castlevania</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<br>
-	<!-- 8º Linha de cards -->
-	<div class="row">
-		<div class="col-sm-4">
-			<div class="card">
-				<img src="img/animes/ChaosDragon.jpg" class="card-img-top">
-				<div class="card-footer">
-					<a href="https://www.meuanime.com/chaos-dragon" target="_blank" tabindex="28">Chaos Dragon</a>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-4">
-			<div class="card">
-				<img src="img/animes/Charlotte.jpg" class="card-img-top">
-				<div class="card-footer">
-					<a href="https://www.meuanime.com/charlotte" target="_blank" tabindex="29">Charlotte</a>
-				</div>
-			</div>
-		</div>	
-		<div class="col-sm-4">
-			<div class="card">
-				<img src="img/animes/ChouYuuSekai.jpg" class="card-img-top">
-				<div class="card-footer">
-					<a href="https://www.meuanime.com/chou-yuu-sekai-being-the-reality" target="_blank" tabindex="30">Chou Yuu Sekai</a>
-				</div>
-			</div>
-		</div>
-	</div>	
-	<br>
-	<!-- 9º Linha de cards -->
-	<div class="row">
-		<div class="col-sm-4">
-			<div class="card">
-				<img src="img/animes/DGrayMan.jpg" class="card-img-top">
-				<div class="card-footer">
-					<a href="https://www.meuanime.com/d-gray-man" target="_blank" tabindex="31">D-Gray Man</a>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-4">
-			<div class="card">
-				<img src="img/animes/DarlingFranxx.jpg" class="card-img-top">
-				<div class="card-footer">
-					<a href="https://www.meuanime.com/darling-in-the-franxx" target="_blank" tabindex="32">Darling in the FranXX</a>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-4">
-			<div class="card">
-				<img src="img/animes/DateaLive.jpg" class="card-img-top">
-				<div class="card-footer">
-					<a href="https://www.meuanime.com/date-a-live" target="_blank" tabindex="33">Date a Live</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<br>
-	<!-- Paginação -->
-	<ul class="pagination pagination-lg justify-content-center">
-		<li class="page-item active">
-			<a class="page-link" href="#" tabindex="34">1</a>
-		</li>
-		<li class="page-item">
-			<a class="page-link" href="animes2.html" tabindex="35" id="proximaPagina">2</a>
-		</li>
-	</ul>
-	<!-- Observação -->
-	<div class="card" style="height: 235px;">
-		<div class="card-header">
-			<h1 class="card-title">Observação!</h1>
-		</div>
-		<div class="card-body">
-			<p class="card-text">Todos os animes estão linkados com o site meuanime.com o motivo para isso é apenas a prefêrencia pessoal da administração da página, no entanto os outros sites recomendados na página inicial também são ótimas escolhas para assistir o anime que desejar.<br><br>
-			Se você tem alguma sugestão de anime/jogo/música, ou algum dos link estiver quebrado, ou possuir sugestões para melhorar a página, mande mensagem para nós, o link do facebook do administrador responsavel por essas operações esta logo a baixo! </p>
-		</div>
-	</div>
-	<br>
-</div>
 </body>
 <!--Rodapé-->
 <footer id="footer">
-    <p> Nomes para contato: José jonathan, Carlos, Lucas Souza.</p>
+    <p> Nome para contato: José jonathan</p>
     <address>
-        <p><a href="https://www.facebook.com/dhione.jonathan/" target="_blank" tabindex="36">Fale Conosco pelo Facebook</a></p>
+        <p><a href="https://www.facebook.com/dhione.jonathan/" target="_blank" tabindex="36">Fale Conosco pelo Facebook <i class="fa fa-facebook-official" style="font-size:20px"></i></a></p>
     </address>
     <br>
 </footer>
