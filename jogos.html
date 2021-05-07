@@ -26,11 +26,6 @@
     <!-- Css da página -->
     <link rel="stylesheet" href="style.css">
 
-     <!-- Estilização que teve que ser feita diretamente na página para não influênciar as outras-->
-    <style>
-	 	.card{height: 450px;}
-	</style>
-
 </head>
 <body>
 	<!-- Menu de navegação -->
@@ -72,9 +67,10 @@
 	</nav>
 	<br>	
 	<div class="container-fluid">
-		<div class="jumbotron jumbotron-fluid">
+		<header>
 			<h1>Lista de jogos clássicos:</h1>
-		</div>
+		</header>
+		<br>
 		<!-- Paginação -->
 		<ul class="pagination  pagination-lg justify-content-center" >
 			<li class="page-item active">
@@ -364,7 +360,7 @@
 			</li>
 		</ul>
 		<!-- Observação -->
-		<div class="card" style="height: 260px;">
+		<div class="card card-observacao">
 			<div class="card-header">
 				<h1 class="card-title">Observação!</h1>
 			</div>
@@ -377,11 +373,18 @@
 	</div>
 </body>
 <!--Rodapé-->
-<footer id="footer">
-    <p> Nome para contato: José jonathan</p>
-    <address>
-        <p><a href="https://www.facebook.com/dhione.jonathan/" tabindex="36">Fale Conosco pelo Facebook <i class="fa fa-facebook-official" style="font-size:20px"></i></a></p>
-    </address>
+<footer>
+	<div class="card">
+		<div class="card-header" style="background-color:#c9302c;">
+			<h5>Informações para contato:</h5>
+		</div>
+		<div class="card-body">
+			<p> Nome para contato: José jonathan</p>
+			<address>
+				<p><a href="https://www.facebook.com/dhione.jonathan/" target="_blank" tabindex="90">Fale Conosco pelo Facebook <i class="fa fa-facebook-official" style="font-size:20px"></i></a></p>
+			</address>
+		</div>
+	</div>
     <br>
 </footer>
 </html>
