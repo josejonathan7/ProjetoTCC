@@ -1,7 +1,5 @@
 
-/*Estilos globais*/
-
-* {
+*{
   box-sizing: border-box;
 }
 
@@ -9,42 +7,36 @@
 
 body{background-color: Black;}
 
+aside{background-color: lightgray;}
+
+header{color: royalblue; 
+  text-align: center;
+}
+
+p{color: white;}
+
+h3{color:black;}
+
 #proximaPagina{background-color: #4f4f4f;}
 
-a:link {
+a:link{
   color: cyan;
   background-color: transparent;
   text-decoration: none;
 }
 a:visited {color: cyan;
-  	 background-color: transparent;
-  	 text-decoration: none;
+  background-color: transparent;
+  text-decoration: none;
 }
 
 a:hover {color: red;
-  	 background-color: transparent;
-  	 text-decoration: underline;
+  background-color: transparent;
+  text-decoration: underline;
 }
 
 a:active {color: yellow;
-  	 background-color: transparent;
-  	 text-decoration: underline;
-}
-
-footer{font-size: 15px;
-      background-color: #363636;
-      color: white;
-      height: 15vh;
-      margin-left: 2vw;
-      margin-right: 2vw;
-}
-
-header{color: royalblue; text-align: center;}
-
-img{height: 61vh;}
-
-.card{
-  height: 69,5vh;
+  background-color: transparent;
+  text-decoration: underline;
 }
 
 .card-header{background-color: Cyan;}
@@ -52,39 +44,219 @@ img{height: 61vh;}
 .card-body{background-color: #4f4f4f;}
 
 .card-footer{background-color: #4f4f4f;
-		text-align: center;
+  text-align: center;
 }
 
-p{color: white;}
+footer{background-color: #363636;
+  color: white;
+}
 
-.card-carousel{
+.icon{
+  font-size: 20px;
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-device-width: 1200px) {
+
+  /*Estilos globais*/
+  #toggle{display: none;}
+
+  img{height: 61vh;
+    background-size: contain;
+  }
+
+  .card{
+    height: 69,5vh;
+  }
+
+  .card-carousel{
     width: 62vw;
     margin-left: 1vw;
-}
+  }
 
-.card-observacao{
-  width: 94vw;
-  margin-left: 1vw;
-}
+  .card-observacao{
+    width: 94vw;
+    margin-left: 1vw;
+  }
 
-.card-musica{
+  .card-musica{
     margin-left: 2vw;
     margin-right: 2vw;
-    height: 325vh;;
+    height: 415vh;;
+  }
+
+  footer{font-size: 15px;
+    height: 15vh;
+    margin-left: 2vw;
+    margin-right: 2vw;
+  }
+
+  /* Página index.html */
+  aside{
+    width: 29vw;
+    margin-left: 2vw;
+    margin-right: 1vw;
+    float: right;
+  }
+
+  .card-musica-observacao{
+    width: 87vw; 
+    margin-left: 5vw;
+  }
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) 
+@media only screen and (min-device-width: 992px) {
+
+    Estilos globais
+  #toggle{display: none;}
+
+  footer{font-size: 15px;
+        background-color: #363636;
+        color: white;
+        height: 15vh;
+        margin-left: 2vw;
+        margin-right: 2vw;
+  }
+
+  img{height: 61vh;
+  background-size: contain;
+  }
+
+  .card{
+    height: 69,5vh;
+  }
+
+  .card-carousel{
+      width: 62vw;
+      margin-left: 1vw;
+  }
+
+  .card-observacao{
+    width: 94vw;
+    margin-left: 1vw;
+  }
+
+  .card-musica{
+      margin-left: 2vw;
+      margin-right: 2vw;
+      height: 325vh;;
+  }
+
+   Página index.html 
+  aside{
+    width: 29vw;
+    margin-left: 2vw;
+    margin-right: 1vw;
+    float: right;
+    background-color: lightgray;
+  }
+
+  .card-musica-observacao{
+    width: 87vw; 
+    margin-left: 5vw;
+  }
+
+}*/
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 768px) and (max-height: 1024px) {
+
+  #toggle{display: none;}
+
+  #menu_full{
+    font-size: 27px;
+  }
+
+  img{height: 30vh;
+    background-size: contain;
+  }
+
+  .card{
+    height: 69,5vh;
+    border: 1px solid white;
+  }
+
+  #ajuste-linha{
+    line-height: normal;
+  }
+
+  .card-footer{
+    height: 8vh;
+    font-size: 23px;
+    text-align: center;
+    line-height: 55px;
+  }
+
+  .card-carousel{
+    height: 50vh;
+    width: 62vw;
+    margin-left: 1vw;
+  }
+
+  .card-observacao{
+    width: 94vw;
+    margin-left: 1vw;
+    font-size: 25px;
+  }
+
+  .card-musica{
+    margin-left: 2vw;
+    margin-right: 2vw;
+    height: 460vh;
+    font-size: 25px;
+  }
+
+  footer{font-size: 24px;
+    height: 15vh;
+    margin-left: 2vw;
+    margin-right: 2vw;
+  }
+
+  .footer-header{
+    font-size: 27px;
+  }
+
+  .icon{
+    font-size: 25px;
+  }
+
+  /* Página index.html */
+  aside{
+    height: 49vh;
+    width: 29vw;
+    margin-left: 2vw;
+    margin-right: 1vw;
+    float: right;   
+    font-size: 22px;
+  }
+
+  #aside-jogos{
+    height: 39vh;
+  }
+
+  .card-musica-observacao{
+    width: 87vw; 
+    margin-left: 5vw;
+    font-size: 25px;
+  }
+
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-device-width: 600px) {
+
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-device-width: 600px) {
+
 }
 
 
-/* Página index.html */
-aside{
-  width: 29vw;
-  margin-left: 2vw;
-  margin-right: 1vw;
-  float: right;
-  background-color: lightgray;
-}
 
-.card-musica-observacao{
-  width: 87vw; 
-  margin-left: 5vw;
 
-}
+
+
+
