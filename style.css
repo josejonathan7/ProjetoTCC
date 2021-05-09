@@ -17,6 +17,10 @@ p{color: white;}
 
 h3{color:black;}
 
+li{
+  color: black;
+}
+
 #proximaPagina{background-color: #4f4f4f;}
 
 a:link{
@@ -39,6 +43,10 @@ a:active {color: yellow;
   text-decoration: underline;
 }
 
+.card{
+  border: 1px solid white;
+}
+
 .card-header{background-color: Cyan;}
 
 .card-body{background-color: #4f4f4f;}
@@ -55,7 +63,7 @@ footer{background-color: #363636;
   font-size: 20px;
 }
 
-/* Extra large devices (large laptops and desktops, 1200px and up) */
+/* Extra large devices (computador / desktop) */
 @media only screen and (min-device-width: 1200px) {
 
   /*Estilos globais*/
@@ -65,8 +73,8 @@ footer{background-color: #363636;
     background-size: contain;
   }
 
-  .card{
-    height: 69,5vh;
+  .card-conteudo{
+    height: 100%;
   }
 
   .card-carousel{
@@ -75,20 +83,20 @@ footer{background-color: #363636;
   }
 
   .card-observacao{
-    width: 94vw;
-    margin-left: 1vw;
+    width: 93vw;
+    margin-left: 2vw;
   }
 
   .card-musica{
     margin-left: 2vw;
-    margin-right: 2vw;
+    width: 93vw;
     height: 415vh;;
   }
 
   footer{font-size: 15px;
     height: 15vh;
-    margin-left: 2vw;
-    margin-right: 2vw;
+    width: 93vw;
+    margin-left: 3vw;
   }
 
   /* Página index.html */
@@ -100,8 +108,8 @@ footer{background-color: #363636;
   }
 
   .card-musica-observacao{
-    width: 87vw; 
-    margin-left: 5vw;
+    width: 93vw; 
+    margin-left: 2vw;
   }
 
 }
@@ -160,7 +168,7 @@ footer{background-color: #363636;
 
 }*/
 
-/* Medium devices (landscape tablets, 768px and up) */
+/* Medium devices (tablets) */
 @media only screen and (max-width: 768px) and (max-height: 1024px) {
 
   #toggle{display: none;}
@@ -173,9 +181,8 @@ footer{background-color: #363636;
     background-size: contain;
   }
 
-  .card{
-    height: 69,5vh;
-    border: 1px solid white;
+  .card-conteudo{
+    height: 38vh;
   }
 
   #ajuste-linha{
@@ -195,23 +202,28 @@ footer{background-color: #363636;
     margin-left: 1vw;
   }
 
+  .altura-carousel-jogo{
+    height: 45vh;
+  }
+
   .card-observacao{
-    width: 94vw;
-    margin-left: 1vw;
+    width: 92vw;
+    margin-left: 2vw;
     font-size: 25px;
   }
 
   .card-musica{
     margin-left: 2vw;
     margin-right: 2vw;
-    height: 460vh;
+    height: 482vh;
+    width: 92vw;
     font-size: 25px;
   }
 
   footer{font-size: 24px;
     height: 15vh;
-    margin-left: 2vw;
-    margin-right: 2vw;
+    width: 92vw;
+    margin-left: 4vw;
   }
 
   .footer-header{
@@ -237,16 +249,105 @@ footer{background-color: #363636;
   }
 
   .card-musica-observacao{
-    width: 87vw; 
-    margin-left: 5vw;
-    font-size: 25px;
+    width: 92vw; 
+    margin-left: 2vw;
+    font-size: 30px;
   }
 
 }
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-device-width: 600px) {
+/* Small devices (celulares pequeno) */
+@media only screen and (max-device-width: 360px) and (max-device-height: 640px) {
 
+  #toggle{
+    display:block;
+  }
+
+  #menu_full{
+    display: none;
+  }
+
+  img{height: 40vh;
+    background-size: contain;
+  }
+
+  .img-preenchimento{
+    width: 80vw;
+  }
+
+  .card-conteudo{
+    height: 52vh;
+    margin-bottom: 3vh;
+  }
+
+  #ajuste-linha{
+    line-height: 50px;
+  }
+
+  .card-footer{
+    height: 75px;
+    font-size: 23px;
+    text-align: center;
+    line-height: 50px;
+  }
+
+  .card-carousel{
+    height: 75vh;
+    width: 88vw;
+    margin-left: 2vw;
+  }
+
+  .altura-carousel-jogo{
+    height: 60vh;
+  }
+
+  .card-observacao{
+    width: 88vw;
+    margin-left: 2vw;
+    font-size: 25px;
+  }
+
+  .card-musica{
+    margin-left: 2vw;
+    margin-right: 2vw;
+    height: 1090vh;
+    font-size: 20px;
+  }
+
+  footer{font-size: 24px;
+    width: 88vw;
+    height: 15vh;
+    margin-left: 6vw;
+  }
+
+  .footer-header{
+    font-size: 27px;
+  }
+
+  .icon{
+    font-size: 25px;
+  }
+
+  /* Página index.html */
+  aside{
+    height: 68vh;
+    width: 88vw;
+    margin-left: 2vw;
+    margin-right: 1vw;
+    margin-bottom: 3vh;   
+    font-size: 22px;
+    float: none;
+  }
+
+  #aside-jogos{
+    height: 58vh;
+  }
+
+  .card-musica-observacao{
+    width: 88vw; 
+    margin-left: 2vw;
+    font-size: 25px;
+  }
 }
 
 /* Extra small devices (phones, 600px and down) */
