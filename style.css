@@ -31,7 +31,7 @@ a:hover{
 }
 
 
-@media only screen and (max-device-width: 768px){
+@media only screen and (max-device-width: 768px) and (min-device-width: 415px){
   body{
     font-size: 25px;
   }
@@ -50,7 +50,7 @@ a:hover{
   /*menu lateral de animes*/
   main aside#anime-menu{
     padding-bottom: 25px;
-    width: 92%;
+    width: 80%;
   }
 
   aside#anime-menu div.card{
@@ -79,6 +79,7 @@ a:hover{
   /*menu lateral de jogos*/
   main aside#games-menu{
     padding-bottom: 25px;
+    width: 80%;
   }
 
   aside#games-menu div.card{
@@ -106,7 +107,7 @@ a:hover{
 
   /*Carousel de animes e jogos*/
   main div.card.card-carousel{
-    width: 92%;
+    width: 80%;
   }
 
   div.card.card-carousel div.card-header{
@@ -123,20 +124,24 @@ a:hover{
   }
 
   div.card.card-carousel div.card-body img{
-    height: 250px;
-    width: 250px;
+    height: 400px;
+    width: 400px;
   }
 
   /*card de música*/
+  main div.card-music{
+    width: 80%;
+  }
+
   main div.card-music div.card-header{
     background-color: var(--cyan);
-    padding: 15px;
+    padding: 25px;
     border-radius: 4px 4px 0 0;
   }
 
   main div.card-music div.card-body{
     background-color: var(--grey);
-    padding: 35px;
+    padding: 55px;
     border-radius: 0 0 4px 4px;
     border-left: 2px solid var(--white);
     border-right: 2px solid var(--white);
@@ -148,20 +153,22 @@ a:hover{
   }
 
   /*card de música da página inicial*/
+
   div.container-fluid div#card-music-home{
-    display: flex;
-    flex-direction: column;
+    width: 80%;
+    position: relative;
+    left: 75px;
   }
 
   div.container-fluid div#card-music-home div.card-header{
     background-color: var(--cyan);
-    padding: 10px;
+    padding: 20px;
     border-radius: 4px 4px 0 0;
   }
 
   div.container-fluid div#card-music-home div.card-body{
     background-color: var(--grey);
-    padding: 30px;
+    padding: 35px;
     border-radius: 0 0 4px 4px;
     border-left: 2px solid var(--white);
     border-right: 2px solid var(--white);
@@ -169,6 +176,12 @@ a:hover{
   }
 
   /*card de obesevação*/
+  div.container-fluid div.card-note{
+    width: 80%;
+    position: relative;
+    left: 75px;
+  }
+
   div.container-fluid div.card-note div.card-header{
     background-color: var(--red);
     padding: 15px;
@@ -177,7 +190,7 @@ a:hover{
 
   div.container-fluid div.card-note div.card-body{
     background-color: var(--grey);
-    padding: 15px;
+    padding: 35px;
     color: var(--white);
     border-radius: 0 0 4px 4px;
     border-left: 2px solid var(--white);
@@ -186,6 +199,12 @@ a:hover{
   }
 
   /*card de observação página inicial*/
+  div.container-fluid div#card-note{
+    width: 80%;
+    position: relative;
+    left: 75px;
+  }
+
   div.container-fluid div#card-note div.card-header{
     padding: 15px;
     background-color: var(--red);
@@ -193,7 +212,7 @@ a:hover{
   }
 
   div.container-fluid div#card-note div.card-body{
-    padding: 15px;
+    padding: 35px;
     background-color: var(--grey);
     border-radius: 0 0 4px 4px;
     color: var(--white);
@@ -204,7 +223,9 @@ a:hover{
   
   /*rodapé*/
   body footer{
-    padding: 15px;
+    width: 78%;
+    position: relative;
+    left: 85px;
   }
 
   footer div.card div.card-header{
@@ -233,20 +254,18 @@ a:hover{
 
   main div.row div.col-sm-4{
     position: relative;
-    margin-bottom: 20px;
+    
   }
 
   main div.row div.col-sm-4 div.card-content{
     display: flex;
     flex-direction: column;
-    
     align-items: center;
-   
   }
 
   main div.row div.col-sm-4 div.card-content img{
-    width: 292px;
-    height: 291px;
+    width: 245px;
+    height: 245px;
     border-left: 3px solid var(--white);
     border-right: 3px solid var(--white);
     border-top: 3px solid var(--white);
@@ -254,17 +273,23 @@ a:hover{
 
   main div.row div.col-sm-4 div.card-content div.card-footer{
     background-color: var(--grey);
-    width: 76%;
+    width: 109%;
+    line-height: 66px;
     border-left: 3px solid var(--white);
     border-right: 3px solid var(--white);
     border-bottom: 3px solid var(--white);
     text-align: center;
   }
 
+  main div.row div.col-sm-4 div.card-content div.card-footer#ajuste-linha{
+    line-height: normal;
+    text-align: center;
+  }
+
 
 }
 
-@media only screen and (max-device-width: 414px){
+@media only screen and (max-device-width: 414px) and (min-device-width: 361px){
   html{
     font-size: 16px;
   }
@@ -516,7 +541,7 @@ a:hover{
   /*menu lateral de animes*/
   main aside#anime-menu{
     padding: 15px;
-    width: 100%;
+    width: 110%;
   }
 
   aside#anime-menu div.card{
