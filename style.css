@@ -1,398 +1,727 @@
+:root{
+  --black: black;
+  --cyan: cyan;
+  --grey: grey;
+  --white: white;
+  --red: #c9302c;
+  --blue: royalblue;
+}
 
 *{
-  box-sizing: border-box;
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-#toggle{display: none;}
-
-body{background-color: Black;}
-
-aside{background-color: lightgray;}
-
-header{color: royalblue; 
-  text-align: center;
+html{
+  font-size: 100%
 }
 
-p{color: white;}
-
-h3{color:black;}
-
-li{
-  color: black;
+body{
+  background-color: var(--black);
 }
 
-#proximaPagina{background-color: #4f4f4f;}
-
-a:link{
-  color: cyan;
-  background-color: transparent;
-  text-decoration: none;
-}
-a:visited {color: cyan;
-  background-color: transparent;
-  text-decoration: none;
+/*links*/
+a{
+  color: var(--cyan);
 }
 
-a:hover {color: red;
-  background-color: transparent;
-  text-decoration: underline;
+a:hover{
+  color: var(--red);
 }
 
-a:active {color: yellow;
-  background-color: transparent;
-  text-decoration: underline;
-}
 
-.card{
-  border: 1px solid white;
-}
-
-.card-header{background-color: Cyan;}
-
-.card-body{background-color: #4f4f4f;}
-
-.card-footer{background-color: #4f4f4f;
-  text-align: center;
-}
-
-footer{background-color: #363636;
-  color: white;
-}
-
-.icon{
-  font-size: 20px;
-}
-
-/* Extra large devices (computador / desktop) */
-@media only screen and (min-device-width: 1200px) {
-
-  /*Estilos globais*/
-  #toggle{display: none;}
-
-  img{height: 25.05em;
-    background-size: contain;
+@media only screen and (max-device-width: 768px){
+  body{
+    font-size: 25px;
   }
 
-  .card-conteudo{
-    height: 28.25rem;
-    margin: 0.11rem 0.11rem;
-  }
-
-  .card-carousel{
-    width: 53rem;
-    margin: 0rem 1rem;
-  }
-
-  .card-observacao{
-    width: 80rem;
-    margin: 0rem 1rem;
-  }
-
-  .card-musica{
-    margin: 0rem 1rem;
-    width: 80rem;
-    height: 171rem;
-  }
-
-  footer{font-size: 15px;
-    height: 11rem;
-    width: 80rem;
-    margin: 0rem 2rem;
-  }
-
-  /* Página index.html */
-  aside{
-    width: 25rem;
-    margin-left: 2rem;
-    margin-right: 0.5rem;
-    float: right;
-  }
-
-  .link-margin-aside-animes{
-    display: block;
-    margin-bottom: 1.32em;
-  }
-
-  .link-margin-aside-jogos{
-    display: block;
-    margin-bottom: 2.2em;
-  }
-
-  .card-musica-observacao{
-    width: 80rem; 
-    margin: 0rem 1rem;
-  }
-
-}
-
-/* Large devices (laptops/desktops, 992px and up) 
-@media only screen and (min-device-width: 992px) {
-
-    Estilos globais
-  #toggle{display: none;}
-
-  footer{font-size: 15px;
-        background-color: #363636;
-        color: white;
-        height: 15vh;
-        margin-left: 2vw;
-        margin-right: 2vw;
-  }
-
-  img{height: 61vh;
-  background-size: contain;
-  }
-
-  .card{
-    height: 69,5vh;
-  }
-
-  .card-carousel{
-      width: 62vw;
-      margin-left: 1vw;
-  }
-
-  .card-observacao{
-    width: 94vw;
-    margin-left: 1vw;
-  }
-
-  .card-musica{
-      margin-left: 2vw;
-      margin-right: 2vw;
-      height: 325vh;;
-  }
-
-   Página index.html 
-  aside{
-    width: 29vw;
-    margin-left: 2vw;
-    margin-right: 1vw;
-    float: right;
-    background-color: lightgray;
-  }
-
-  .card-musica-observacao{
-    width: 87vw; 
-    margin-left: 5vw;
-  }
-
-}*/
-
-/* Medium devices (tablets) */
-@media only screen and (max-width: 768px) and (max-height: 1024px) {
-
-  #toggle{display: none;}
-
-  #menu_full{
-    font-size: 1.67em;
-  }
-
-  img{height: 19.2em;
-    background-size: contain;
-  }
-
-  .card-conteudo{
-    height: 24.5rem;
-    margin: 0.5rem 0.01rem;
-  }
-
-  #ajuste-linha{
-    line-height: normal;
-  }
-
-  .card-footer{
-    height: 3.6em;
-    font-size: 1.43em;
-    text-align: center;
-    line-height: 2.5em;
-  }
-
-  .card-carousel{
-    height: 32rem;
-    width: 29.8rem;
-    margin: 0rem 0.5rem;
-  }
-
-  .altura-carousel-jogo{
-    height: 29rem;
-  }
-
-  .card-observacao{
-    width: 44rem;
-    margin: 0rem 1rem;
-    font-size: 1.9em;
-  }
-
-  .card-musica{
-    margin: 0rem 1rem;
-    height: 340rem;
-    width: 44rem;
-    font-size: 1.7em;
-  }
-
-  footer{font-size: 2em;
-    height: 13.4rem;
-    width: 44rem;
-    margin: 0rem 2rem;
-  }
-
-  .footer-header{
-    font-size: 1.6em;
-  }
-
-  .icon{
-    font-size: 1.4em;
-  }
-
-  /* Página index.html */
-  aside{
-    height: 32rem;
-    width: 14rem;
-    margin-left: 1rem;
-    margin-right: 0.5rem;
-    float: right;   
-    font-size: 1.39em;
-  }
-
-  .link-margin-aside-animes{
-    display: block;
-    margin-bottom: 0.04em;
-  }
-
-  #aside-jogos{
-    height: 28.8rem;
-  }
-
-  .link-margin-aside-jogos{
-    display: block;
-    margin-bottom: 0.37em;
-  }
-
-  .card-musica-observacao{
-    width: 44rem; 
-    margin: 0rem 1rem;
-    font-size: 1.9em;
-  }
-
-}
-
-/* Small devices (celulares pequeno) */
-@media only screen and (max-device-width: 360px) and (max-device-height: 640px) {
-
-  #toggle{
-    display:block;
-  }
-
-  #menu_full{
+  /*menu*/
+  nav#toggle{
     display: none;
   }
 
-  img{height: 16rem;
-    background-size: contain;
-  }
-
-  .img-preenchimento{
-    width: 17em;
-  }
-
-  .card-conteudo{
-    height: 20.84rem;
-    margin: 1.1rem 0.01rem;
-  }
-
-  #ajuste-linha{
-    line-height: 2em;
-  }
-
-  .card-footer{
-    height: 3.3em;
-    font-size: 1.5em;
+  /*titulo*/
+  header h1{
+    color: var(--blue);
     text-align: center;
-    line-height: 2.1em;
   }
 
-  .card-carousel{
-    height: 31rem;
-    width: 19.5rem;
-    margin: 1rem 0.5rem;
+  /*menu lateral de animes*/
+  main aside#anime-menu{
+    padding-bottom: 25px;
+    width: 92%;
   }
 
-  .altura-carousel-jogo{
-    height: 28rem;
+  aside#anime-menu div.card{
+    display: flex;
+    flex-direction: column;
   }
 
-  .card-observacao{
-    width: 19.5rem;
-    margin: 0.5rem 0.5rem;
-    font-size: 1.56em;
+  aside div.card div.card-header{
+    background-color: var(--cyan);
+    padding: 10px;
+    border-radius: 4px 4px 0 0;
   }
 
-  .card-musica{
-    margin: 0.5rem 0.5rem;
-    width: 19.5rem;
-    height: 446rem;
-    font-size: 1.25em;
+  aside div.card div.card-body{
+    background-color: var(--grey);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 0 10px 20px;
+    border-radius: 0 0 4px 4px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
   }
 
-  footer{font-size: 1.4em;
-    width: 19.5rem;
-    height: 20.8rem;
-    margin: 0.5rem 1.5rem;
+  /*menu lateral de jogos*/
+  main aside#games-menu{
+    padding-bottom: 25px;
   }
 
-  .footer-header{
-    font-size: 1.68em;
+  aside#games-menu div.card{
+    display: flex;
+    flex-direction: column;
   }
 
-  .icon{
-    font-size: 1.5em;
+  aside#games-menu div.card div.card-header{
+    background-color: var(--cyan);
+    padding: 10px;
+    border-radius: 4px 4px 0 0;
   }
 
-  /* Página index.html */
-  aside{
-    height: 38.95rem;
-    width: 19.5rem;
-    margin: 0.5rem 0.5rem; 
-    font-size: 1.37em;
-    float: none;
+  aside#games-menu div.card div.card-body{
+    background-color: var(--grey);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 0 10px 20px;
+    border-radius: 0 0 4px 4px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
   }
 
-  .link-margin-aside-animes{
-    display: block;
-    margin-bottom: 1em;
+  /*Carousel de animes e jogos*/
+  main div.card.card-carousel{
+    width: 92%;
   }
 
-  #aside-jogos{
-    height: 32.4rem;
+  div.card.card-carousel div.card-header{
+    background-color: var(--cyan);
+    padding: 10px;
+    border-radius: 4px 4px 0 0;
   }
 
-  .link-margin-aside-jogos{
-    display: block;
-    margin-bottom: 1em;
+  div.card.card-carousel div.card-body{
+    background-color: var(--grey);
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
   }
 
-  .card-musica-observacao{
-    width: 19.5rem; 
-    margin: 0.5rem 0.5rem;
-    font-size: 1.56em;
+  div.card.card-carousel div.card-body img{
+    height: 250px;
+    width: 250px;
   }
 
-  .link-margin-card-musica{
-    display: block;
-    margin-bottom: 0.2em;
+  /*card de música*/
+  main div.card-music div.card-header{
+    background-color: var(--cyan);
+    padding: 15px;
+    border-radius: 4px 4px 0 0;
   }
+
+  main div.card-music div.card-body{
+    background-color: var(--grey);
+    padding: 35px;
+    border-radius: 0 0 4px 4px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  main div.card-music div.card-body ol li{
+    margin: 20px 0;
+  }
+
+  /*card de música da página inicial*/
+  div.container-fluid div#card-music-home{
+    display: flex;
+    flex-direction: column;
+  }
+
+  div.container-fluid div#card-music-home div.card-header{
+    background-color: var(--cyan);
+    padding: 10px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  div.container-fluid div#card-music-home div.card-body{
+    background-color: var(--grey);
+    padding: 30px;
+    border-radius: 0 0 4px 4px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  /*card de obesevação*/
+  div.container-fluid div.card-note div.card-header{
+    background-color: var(--red);
+    padding: 15px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  div.container-fluid div.card-note div.card-body{
+    background-color: var(--grey);
+    padding: 15px;
+    color: var(--white);
+    border-radius: 0 0 4px 4px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  /*card de observação página inicial*/
+  div.container-fluid div#card-note div.card-header{
+    padding: 15px;
+    background-color: var(--red);
+    border-radius: 4px 4px 0 0;
+  }
+
+  div.container-fluid div#card-note div.card-body{
+    padding: 15px;
+    background-color: var(--grey);
+    border-radius: 0 0 4px 4px;
+    color: var(--white);
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+  
+  /*rodapé*/
+  body footer{
+    padding: 15px;
+  }
+
+  footer div.card div.card-header{
+    padding: 15px;
+    background-color: var(--red);
+    border-radius: 4px 4px 0 0;
+  }
+ 
+  footer div.card div.card-body{
+    padding: 15px;
+    background-color: var(--grey);
+    color: var(--white);
+    border-radius: 0 0 4px 4px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  /*cards-animes-jogos*/
+  div.container-fluid main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  main div.row div.col-sm-4{
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  main div.row div.col-sm-4 div.card-content{
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+   
+  }
+
+  main div.row div.col-sm-4 div.card-content img{
+    width: 292px;
+    height: 291px;
+    border-left: 3px solid var(--white);
+    border-right: 3px solid var(--white);
+    border-top: 3px solid var(--white);
+  }
+
+  main div.row div.col-sm-4 div.card-content div.card-footer{
+    background-color: var(--grey);
+    width: 76%;
+    border-left: 3px solid var(--white);
+    border-right: 3px solid var(--white);
+    border-bottom: 3px solid var(--white);
+    text-align: center;
+  }
+
+
 }
 
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-device-width: 600px) {
+@media only screen and (max-device-width: 414px){
+  html{
+    font-size: 16px;
+  }
+
+  /*menu*/
+  nav#menu_full{
+    display: none;
+  }
+
+  /*titulo*/
+  header h1{
+    color: var(--blue);
+    text-align: center;
+  }
+
+  /*menu lateral de animes*/
+  main aside#anime-menu{
+    padding: 15px;
+    width: 100%;
+  }
+
+  aside#anime-menu div.card{
+    display: flex;
+    flex-direction: column;
+  }
+
+  aside div.card div.card-header{
+    background-color: var(--cyan);
+    padding: 10px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  aside div.card div.card-body{
+    background-color: var(--grey);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 0 10px 20px;
+    border-radius: 0 0 4px 4px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  /*menu lateral de jogos*/
+  main aside#games-menu{
+    padding: 15px;
+  }
+
+  aside#games-menu div.card{
+    display: flex;
+    flex-direction: column;
+  }
+
+  aside#games-menu div.card div.card-header{
+    background-color: var(--cyan);
+    padding: 10px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  aside#games-menu div.card div.card-body{
+    background-color: var(--grey);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 0 10px 20px;
+    border-radius: 0 0 4px 4px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  /*Carousel de animes e jogos*/
+  main div.card.card-carousel{
+    width: 92%;
+  }
+
+  div.card.card-carousel div.card-header{
+    background-color: var(--cyan);
+    padding: 10px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  div.card.card-carousel div.card-body{
+    background-color: var(--grey);
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  div.card.card-carousel div.card-body img{
+    height: 250px;
+    width: 250px;
+  }
+
+  /*card de música*/
+  main div.card-music div.card-header{
+    background-color: var(--cyan);
+    padding: 15px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  main div.card-music div.card-body{
+    background-color: var(--grey);
+    padding: 35px;
+    border-radius: 0 0 4px 4px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  main div.card-music div.card-body ol li{
+    margin: 20px 0;
+  }
+
+  /*card de música da página inicial*/
+  div.container-fluid div#card-music-home{
+    display: flex;
+    flex-direction: column;
+  }
+
+  div.container-fluid div#card-music-home div.card-header{
+    background-color: var(--cyan);
+    padding: 10px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  div.container-fluid div#card-music-home div.card-body{
+    background-color: var(--grey);
+    padding: 30px;
+    border-radius: 0 0 4px 4px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  /*card de obesevação*/
+  div.container-fluid div.card-note div.card-header{
+    background-color: var(--red);
+    padding: 15px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  div.container-fluid div.card-note div.card-body{
+    background-color: var(--grey);
+    padding: 15px;
+    color: var(--white);
+    border-radius: 0 0 4px 4px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  /*card de observação página inicial*/
+  div.container-fluid div#card-note div.card-header{
+    padding: 15px;
+    background-color: var(--red);
+    border-radius: 4px 4px 0 0;
+  }
+
+  div.container-fluid div#card-note div.card-body{
+    padding: 15px;
+    background-color: var(--grey);
+    border-radius: 0 0 4px 4px;
+    color: var(--white);
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+  
+  /*rodapé*/
+  body footer{
+    padding: 15px;
+  }
+
+  footer div.card div.card-header{
+    padding: 15px;
+    background-color: var(--red);
+    border-radius: 4px 4px 0 0;
+  }
+ 
+  footer div.card div.card-body{
+    padding: 15px;
+    background-color: var(--grey);
+    color: var(--white);
+    border-radius: 0 0 4px 4px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  /*cards-animes-jogos*/
+  div.container-fluid main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  main div.row div.col-sm-4{
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  main div.row div.col-sm-4 div.card-content{
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+   
+  }
+
+  main div.row div.col-sm-4 div.card-content img{
+    width: 292px;
+    height: 291px;
+    border-left: 3px solid var(--white);
+    border-right: 3px solid var(--white);
+    border-top: 3px solid var(--white);
+  }
+
+  main div.row div.col-sm-4 div.card-content div.card-footer{
+    background-color: var(--grey);
+    width: 76%;
+    border-left: 3px solid var(--white);
+    border-right: 3px solid var(--white);
+    border-bottom: 3px solid var(--white);
+    text-align: center;
+  }
+
 
 }
 
+@media only screen and (max-device-width: 360px){
+  html{
+    font-size: 16px;
+  }
 
+  /*menu*/
+  nav#menu_full{
+    display: none;
+  }
 
+  /*titulo*/
+  header h1{
+    color: var(--blue);
+    text-align: center;
+  }
 
+  /*menu lateral de animes*/
+  main aside#anime-menu{
+    padding: 15px;
+    width: 100%;
+  }
 
+  aside#anime-menu div.card{
+    display: flex;
+    flex-direction: column;
+  }
 
+  aside div.card div.card-header{
+    background-color: var(--cyan);
+    padding: 10px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  aside div.card div.card-body{
+    background-color: var(--grey);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 0 10px 20px;
+    border-radius: 0 0 4px 4px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  /*menu lateral de jogos*/
+  main aside#games-menu{
+    padding: 15px;
+  }
+
+  aside#games-menu div.card{
+    display: flex;
+    flex-direction: column;
+  }
+
+  aside#games-menu div.card div.card-header{
+    background-color: var(--cyan);
+    padding: 10px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  aside#games-menu div.card div.card-body{
+    background-color: var(--grey);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 0 10px 20px;
+    border-radius: 0 0 4px 4px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  /*Carousel de animes*/
+  div.card.card-carousel div.card-header{
+    background-color: var(--cyan);
+    padding: 10px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  div.card.card-carousel div.card-body{
+    background-color: var(--grey);
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  div.card.card-carousel div.card-body img{
+    height: 250px;
+    width: 250px;
+  }
+
+  /*card de música*/
+  main div.card-music div.card-header{
+    background-color: var(--cyan);
+    padding: 15px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  main div.card-music div.card-body{
+    background-color: var(--grey);
+    padding: 35px;
+    border-radius: 0 0 4px 4px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  main div.card-music div.card-body ol li{
+    margin: 20px 0;
+  }
+
+  /*card de música da página inicial*/
+  div.container-fluid div#card-music-home{
+    display: flex;
+    flex-direction: column;
+  }
+
+  div.container-fluid div#card-music-home div.card-header{
+    background-color: var(--cyan);
+    padding: 10px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  div.container-fluid div#card-music-home div.card-body{
+    background-color: var(--grey);
+    padding: 30px;
+    border-radius: 0 0 4px 4px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  /*card de obesevação*/
+  div.container-fluid div.card-note div.card-header{
+    background-color: var(--red);
+    padding: 15px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  div.container-fluid div.card-note div.card-body{
+    background-color: var(--grey);
+    padding: 15px;
+    color: var(--white);
+    border-radius: 0 0 4px 4px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  /*card de observação página inicial*/
+  div.container-fluid div#card-note div.card-header{
+    padding: 15px;
+    background-color: var(--red);
+    border-radius: 4px 4px 0 0;
+  }
+
+  div.container-fluid div#card-note div.card-body{
+    padding: 15px;
+    background-color: var(--grey);
+    border-radius: 0 0 4px 4px;
+    color: var(--white);
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+  
+  /*rodapé*/
+  body footer{
+    padding: 15px;
+  }
+
+  footer div.card div.card-header{
+    padding: 15px;
+    background-color: var(--red);
+    border-radius: 4px 4px 0 0;
+  }
+ 
+  footer div.card div.card-body{
+    padding: 15px;
+    background-color: var(--grey);
+    color: var(--white);
+    border-radius: 0 0 4px 4px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  /*cards-animes-jogos*/
+  div.container-fluid main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  main div.row div.col-sm-4{
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  main div.row div.col-sm-4 div.card-content{
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+   
+  }
+
+  main div.row div.col-sm-4 div.card-content img{
+    width: 250px;
+    height: 250px;
+    border-left: 3px solid var(--white);
+    border-right: 3px solid var(--white);
+    border-top: 3px solid var(--white);
+  }
+
+  main div.row div.col-sm-4 div.card-content div.card-footer{
+    background-color: var(--grey);
+    width: 76%;
+    border-left: 3px solid var(--white);
+    border-right: 3px solid var(--white);
+    border-bottom: 3px solid var(--white);
+    text-align: center;
+  }
+
+}
 

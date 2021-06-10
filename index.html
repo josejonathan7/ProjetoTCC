@@ -20,18 +20,9 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	<!--Font awesome 4-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!--Font Awesome 5-->
-    <script src="https://kit.fontawesome.com/yourcode.js"></script>
 
     <!-- Css da página -->
     <link rel="stylesheet" href="style.css">
-
-    <!-- Estilização que teve que ser feita diretamente na página para não influênciar as outras-->
-    <style>
-		img{width: 37vw;
-        margin-left: 15%;
-    	}	
-	</style>
 
 </head>
 <body>
@@ -76,7 +67,7 @@
 	<div class="container-fluid">
 		<main>
 			<!-- Menu Lateral, sites de animes -->
-			<aside>
+			<aside id="anime-menu">
 				<div class="card">
 					<div class="card-header">
 						<h3>Sites bons para assistir animes</h3>
@@ -118,7 +109,7 @@
 								<a href="https://www.meuanime.com/kimetsu-no-yaiba" target="_blank"><img src="img/animes/DemonSlayer.jpg" class="mx-auto d-block img-preenchimento"></a>
 							</div>
 							<div class="carousel-item">
-								<a href="https://www.meuanime.com/black-clover" target="_blank"><img src="img/animes/BlackClover.jpg" class="mx-auto d-block img-preenchimento">
+								<a href="https://www.meuanime.com/black-clover" target="_blank"><img src="img/animes/BlackClover.jpg" class="mx-auto d-block img-preenchimento"></a>
 							</div>
 							<div class="carousel-item">
 								<a href="https://www.meuanime.com/one-piece" target="_blank"><img src="img/animes/OnePiece.jpg" class="mx-auto d-block img-preenchimento"></a>
@@ -127,7 +118,7 @@
 								<a href="https://www.meuanime.com/boruto-naruto-next-generations" target="_blank"><img src="img/animes/Boruto.jpg" class="mx-auto d-block img-preenchimento"></a>
 							</div>
 						</div>
-						<<!-- Carousel controles -->
+						<!-- Carousel controles -->
 						<a href="#carousel_anime" class="carousel-control-prev" data-slide="prev"><span class="carousel-control-prev-icon"></span></a>
 						<a href="#carousel_anime" class="carousel-control-next" data-slide="next"><span class="carousel-control-next-icon"></span></a>
 					</div>
@@ -135,7 +126,7 @@
 			</div>
 			<br>
 			<!-- Guia Lateral, sites de jogos -->
-			<aside id="aside-jogos">
+			<aside id="games-menu">
 				<div class="card">
 					<div class="card-header">
 						<h3>Sites bons para baixar jogos</h3>
@@ -152,7 +143,7 @@
 				</div>
 			</aside>
 			<!-- Carousel de Jogos -->
-			<div class="card card-carousel altura-carousel-jogo">
+			<div class="card card-carousel">
 				<div class="card-header">
 					<h1>Jogos clássicos</h1>
 				</div>
@@ -185,9 +176,9 @@
 		</main>
 		<br>
 		<!-- Musicas mais tocadas -->
-		<div class="card card-musica-observacao">
+		<div id="card-music-home">
 			<div class="card-header">
-				<h1>Músicas mais tocadas</h1>
+				<h1 class="cabecalho-musica-observacao">Músicas mais tocadas</h1>
 			</div>
 				<div class="card-body">
 					<ul>
@@ -203,9 +194,9 @@
 		</div>
 		<br>
 		<!-- Quem Somos? E qual o intuito dessa página? -->
-		<div class="card card-musica-observacao">
+		<div id="card-note">
 			<div class="card-header">
-				<h1>Quem somos? E qual o intuito dessa página?</h1>
+				<h1 class="cabecalho-musica-observacao">Quem somos? E qual o intuito dessa página?</h1>
 			</div>
 			<div class="card-body">
 				<p>Essa página tem o foco em entretenimento dos usuários, nós da administração como todos que gostam desse tipo de conteúdo sabemos que apesar de existir muitos sites que disponibilizam esse tipo de conteúdo, infelizmente alguns que foram muito bons um dia hoje se encontram em um mar de propagandas no qual o usuário não consegue dar um click sem abrir um anúncio, esse site tem o intuito de indicar alguns bons sites para a alegria dos internautas, como também disponibilizar links de alguns conteúdos que estão em alta no momento, assim os redirecionando direto para o conteúdo desejado, sem precisar passar pela dificuldade que é clicar em um click e abrir 3 páginas de uma vez só!<br><br>
@@ -214,20 +205,21 @@
 		</div>
 		<br>
 	</div>
+
+	<!--Rodapé-->
+	<footer>
+		<div class="card">
+			<div class="card-header">
+				<h5 class="footer-header">Informações para contato:</h5>
+			</div>
+			<div class="card-body">
+				<p> Nome para contato: José jonathan</p>
+				<address>
+					<p><a href="https://www.facebook.com/dhione.jonathan/" target="_blank" tabindex="90">Fale Conosco pelo Facebook <i class="fa fa-facebook-official icon"></i></a></p>
+				</address>
+			</div>
+		</div>
+		<br>
+	</footer>
 </body>
-<!--Rodapé-->
-<footer id="footer">
-	<div class="card">
-		<div class="card-header" style="background-color:#c9302c;">
-			<h5 class="footer-header">Informações para contato:</h5>
-		</div>
-		<div class="card-body">
-			<p> Nome para contato: José jonathan</p>
-			<address>
-				<p><a href="https://www.facebook.com/dhione.jonathan/" target="_blank" tabindex="90">Fale Conosco pelo Facebook <i class="fa fa-facebook-official icon"></i></a></p>
-			</address>
-		</div>
-	</div>
-    <br>
-</footer>
 </html>
