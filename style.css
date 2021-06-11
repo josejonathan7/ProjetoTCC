@@ -30,9 +30,257 @@ a:hover{
   color: var(--red);
 }
 
+@media only screen and (max-device-width: 1010px){}
 
-@media only screen and (max-device-width: 768px) and (min-device-width: 415px){
+@media only screen and (max-device-width: 1366px) and (min-device-width: 769px){
   body{
+    font-size: 1.875rem;
+  }
+
+  /*menu*/
+  nav#toggle{
+    display: none;
+  }
+
+  /*titulo*/
+  header h1{
+    color: var(--blue);
+    text-align: center;
+  }
+
+  /*menu lateral de animes*/
+  main aside#anime-menu{
+    padding-bottom: 1.5625rem;
+    width: 28%;
+    float:right;
+  }
+
+  aside#anime-menu div.card{
+    display: flex;
+    flex-direction: column;
+  }
+
+  aside div.card div.card-header{
+    background-color: var(--cyan);
+    padding: 0.625rem;
+    border-radius: 0.25rem 0.25rem 0 0;
+  }
+
+  aside div.card div.card-body{
+    background-color: var(--grey);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.625rem 0.625rem 0.625rem 1.25rem;
+    border-radius: 0 0 0.25rem 0.25rem;
+    border-left: 0.125rem solid var(--white);
+    border-right: 0.125rem solid var(--white);
+    border-bottom: 0.125rem solid var(--white);
+  }
+
+  /*menu lateral de jogos*/
+  main aside#games-menu{
+    padding-bottom: 1.5625rem;
+    width: 28%;
+    float:right;
+  }
+
+  aside#games-menu div.card{
+    display: flex;
+    flex-direction: column;
+  }
+
+  aside#games-menu div.card div.card-header{
+    background-color: var(--cyan);
+    padding: 0.625rem;
+    border-radius: 0.25rem 0.25rem 0 0;
+  }
+
+  aside#games-menu div.card div.card-body{
+    background-color: var(--grey);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.625rem 0 0.625rem 1.25rem;
+    border-radius: 0 0 0.25rem 0.25rem;
+    border-left: 0.125rem solid var(--white);
+    border-right: 0.125rem solid var(--white);
+    border-bottom: 0.125rem solid var(--white);
+  }
+
+  /*Carousel de animes e jogos*/
+  main div.card.card-carousel{
+    width: 70%;
+    display: flex;
+  }
+
+  div.card.card-carousel div.card-header{
+    background-color: var(--cyan);
+    padding: 0.625rem;
+    border-radius: 4px 4px 0 0;
+  }
+
+  div.card.card-carousel div.card-body{
+    background-color: var(--grey);
+    border-left: 0.125rem solid var(--white);
+    border-right: 0.125rem solid var(--white);
+    border-bottom: 0.125rem solid var(--white);
+  }
+
+  div.card.card-carousel div.card-body img{
+    height: 31.25rem;
+    width: 80%;
+  }
+
+  /*card de música*/
+  main div.card-music{
+    width: 70%;
+    position: relative;
+    left: 12.5rem;
+  }
+
+  main div.card-music div.card-header{
+    background-color: var(--cyan);
+    padding: 1.5625rem;
+    border-radius: 0.25rem 0.25rem 0 0;
+  }
+
+  main div.card-music div.card-body{
+    background-color: var(--grey);
+    padding: 4.0625rem;
+    border-radius: 0 0 0.25rem 0.25rem;
+    border-left: 0.125rem solid var(--white);
+    border-right: 0.125rem solid var(--white);
+    border-bottom: 0.125rem solid var(--white);
+  }
+
+  main div.card-music div.card-body ol li{
+    margin: 1.25rem 0;
+  }
+
+  /*card de música da página inicial*/
+
+  div.container-fluid div#card-music-home{
+    width: 70%;
+    position: relative;
+    left: 12.5rem;
+  }
+
+  div.container-fluid div#card-music-home div.card-header{
+    background-color: var(--cyan);
+    padding: 1.25rem;
+    border-radius: 0.25rem 0.25rem 0 0;
+  }
+
+  div.container-fluid div#card-music-home div.card-body{
+    background-color: var(--grey);
+    padding: 3.4375rem;
+    border-radius: 0 0 0.25rem 0.25rem;
+    border-left: 0.125rem solid var(--white);
+    border-right: 0.125rem solid var(--white);
+    border-bottom: 0.125rem solid var(--white);
+  }
+
+  /*card de obesevação*/
+  div.container-fluid div.card-note{
+    width: 70%;
+    position: relative;
+    left: 12.5rem;
+  }
+
+  div.container-fluid div.card-note div.card-header{
+    background-color: var(--red);
+    padding: 0.9375rem;
+    border-radius: 0.25rem 0.25rem 0 0;
+  }
+
+  div.container-fluid div.card-note div.card-body{
+    background-color: var(--grey);
+    padding: 2.1875rem;
+    color: var(--white);
+    border-radius: 0 0 0.25rem 0.25rem;
+    border-left: 0.125rem solid var(--white);
+    border-right: 0.125rem solid var(--white);
+    border-bottom: 0.125rem solid var(--white);
+  }
+
+  /*card de observação página inicial*/
+  div.container-fluid div#card-note{
+    width: 70%;
+    position: relative;
+    left: 12.5rem;
+  }
+
+  div.container-fluid div#card-note div.card-header{
+    padding: 0.9375rem;
+    background-color: var(--red);
+    border-radius: 0.25rem 0.25rem 0 0;
+  }
+
+  div.container-fluid div#card-note div.card-body{
+    padding: 2.1875rem;
+    background-color: var(--grey);
+    border-radius: 0 0 0.25rem 0.25rem;
+    color: var(--white);
+    border-left: 0.125rem solid var(--white);
+    border-right: 0.125rem solid var(--white);
+    border-bottom: 0.125rem solid var(--white);
+  }
+  
+  /*rodapé*/
+  body footer{
+    width: 68.5%;
+    position: relative;
+    left: 13.4375rem;
+  }
+
+  footer div.card div.card-header{
+    padding: 0.9375rem;
+    background-color: var(--red);
+    border-radius: 0.25rem 0.25rem 0 0;
+  }
+ 
+  footer div.card div.card-body{
+    padding: 0.9375rem;
+    background-color: var(--grey);
+    color: var(--white);
+    border-radius: 0 0 0.25rem 0.25rem;
+    border-left: 0.125rem solid var(--white);
+    border-right: 0.125rem solid var(--white);
+    border-bottom: 0.125rem solid var(--white);
+  }
+
+  /*cards-animes-jogos*/
+  main div.row div.col-sm-4 div.card-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  main div.row div.col-sm-4 div.card-content img{
+    width: 100%;
+    height: 28.125rem;
+    border-left: 0.1875rem solid var(--white);
+    border-right: 0.1875rem solid var(--white);
+    border-top: 0.1875rem solid var(--white);
+  }
+
+  main div.row div.col-sm-4 div.card-content div.card-footer{
+    background-color: var(--grey);
+    width: 100%;
+    
+    border-left: 0.1875rem solid var(--white);
+    border-right: 0.1875rem solid var(--white);
+    border-bottom: 0.1875rem solid var(--white);
+    text-align: center;
+  }
+
+}
+
+
+
+@media only screen and (max-device-width: 768px) and (min-device-width: 541px){
+  html{
     font-size: 25px;
   }
 
@@ -286,7 +534,260 @@ a:hover{
     text-align: center;
   }
 
+}
 
+@media only screen and (max-device-width: 540px) and (min-device-width: 415px){
+  html{
+    font-size: 20px;
+  }
+
+  /*menu*/
+  nav#menu_full{
+    display: none;
+  }
+
+  /*titulo*/
+  header h1{
+    color: var(--blue);
+    text-align: center;
+  }
+
+  /*menu lateral de animes*/
+  main aside#anime-menu{
+    padding: 15px;
+    width: 98%;
+  }
+
+  aside#anime-menu div.card{
+    display: flex;
+    flex-direction: column;
+  }
+
+  aside div.card div.card-header{
+    background-color: var(--cyan);
+    padding: 10px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  aside div.card div.card-body{
+    background-color: var(--grey);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 0 10px 20px;
+    border-radius: 0 0 4px 4px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  /*menu lateral de jogos*/
+  main aside#games-menu{
+    padding: 15px;
+    width: 98%;
+  }
+
+  aside#games-menu div.card{
+    display: flex;
+    flex-direction: column;
+  }
+
+  aside#games-menu div.card div.card-header{
+    background-color: var(--cyan);
+    padding: 10px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  aside#games-menu div.card div.card-body{
+    background-color: var(--grey);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 0 10px 20px;
+    border-radius: 0 0 4px 4px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  /*Carousel de animes e jogos*/
+  main div.card.card-carousel{
+    width: 92%;
+  }
+
+  div.card.card-carousel div.card-header{
+    background-color: var(--cyan);
+    padding: 10px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  div.card.card-carousel div.card-body{
+    background-color: var(--grey);
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  div.card.card-carousel div.card-body img{
+    height: 250px;
+    width: 80%;
+  }
+
+  /*card de música*/
+  main div.card-music{
+    width: 92%;
+  }
+
+  main div.card-music div.card-header{
+    background-color: var(--cyan);
+    padding: 15px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  main div.card-music div.card-body{
+    background-color: var(--grey);
+    padding: 35px;
+    border-radius: 0 0 4px 4px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  main div.card-music div.card-body ol li{
+    margin: 20px 0;
+  }
+
+  /*card de música da página inicial*/
+  div.container-fluid div#card-music-home{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left: 20px;
+    width: 92%;
+  }
+
+  div.container-fluid div#card-music-home div.card-header{
+    background-color: var(--cyan);
+    padding: 10px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  div.container-fluid div#card-music-home div.card-body{
+    background-color: var(--grey);
+    padding: 30px;
+    border-radius: 0 0 4px 4px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  /*card de obesevação*/
+  div.container-fluid div.card-note{
+    position: relative;
+    left: 20px;
+    width: 92%;
+  }
+
+  div.container-fluid div.card-note div.card-header{
+    background-color: var(--red);
+    padding: 15px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  div.container-fluid div.card-note div.card-body{
+    background-color: var(--grey);
+    padding: 15px;
+    color: var(--white);
+    border-radius: 0 0 4px 4px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  /*card de observação página inicial*/
+  div.container-fluid div#card-note{
+    position: relative;
+    left: 20px;
+    width: 92%;
+  }  
+
+  div.container-fluid div#card-note div.card-header{
+    padding: 15px;
+    background-color: var(--red);
+    border-radius: 4px 4px 0 0;
+  }
+
+  div.container-fluid div#card-note div.card-body{
+    padding: 25px;
+    background-color: var(--grey);
+    border-radius: 0 0 4px 4px;
+    color: var(--white);
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+  
+  /*rodapé*/
+  body footer{
+    padding: 15px;
+    position: relative;
+    left: 20px;
+    width: 92%;
+  }
+
+  footer div.card div.card-header{
+    padding: 15px;
+    background-color: var(--red);
+    border-radius: 4px 4px 0 0;
+  }
+ 
+  footer div.card div.card-body{
+    padding: 15px;
+    background-color: var(--grey);
+    color: var(--white);
+    border-radius: 0 0 4px 4px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  /*cards-animes-jogos*/
+  div.container-fluid main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  main div.row div.col-sm-4{
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  main div.row div.col-sm-4 div.card-content{
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+   
+  }
+
+  main div.row div.col-sm-4 div.card-content img{
+    width: 76%;
+    height: 291px;
+    border-left: 3px solid var(--white);
+    border-right: 3px solid var(--white);
+    border-top: 3px solid var(--white);
+  }
+
+  main div.row div.col-sm-4 div.card-content div.card-footer{
+    background-color: var(--grey);
+    width: 76%;
+    border-left: 3px solid var(--white);
+    border-right: 3px solid var(--white);
+    border-bottom: 3px solid var(--white);
+    text-align: center;
+  }
 }
 
 @media only screen and (max-device-width: 414px) and (min-device-width: 361px){
@@ -337,6 +838,7 @@ a:hover{
   /*menu lateral de jogos*/
   main aside#games-menu{
     padding: 15px;
+    width: 100%;
   }
 
   aside#games-menu div.card{
@@ -382,7 +884,7 @@ a:hover{
 
   div.card.card-carousel div.card-body img{
     height: 250px;
-    width: 250px;
+    width: 80%;
   }
 
   /*card de música*/
@@ -503,7 +1005,7 @@ a:hover{
   }
 
   main div.row div.col-sm-4 div.card-content img{
-    width: 292px;
+    width: 76%;
     height: 291px;
     border-left: 3px solid var(--white);
     border-right: 3px solid var(--white);
@@ -570,6 +1072,7 @@ a:hover{
   /*menu lateral de jogos*/
   main aside#games-menu{
     padding: 15px;
+    width: 110%;
   }
 
   aside#games-menu div.card{
@@ -596,6 +1099,10 @@ a:hover{
   }
 
   /*Carousel de animes*/
+  div.card.card-carousel{
+    width: 100%;
+  }
+
   div.card.card-carousel div.card-header{
     background-color: var(--cyan);
     padding: 10px;
@@ -732,7 +1239,7 @@ a:hover{
   }
 
   main div.row div.col-sm-4 div.card-content img{
-    width: 250px;
+    width: 76%;
     height: 250px;
     border-left: 3px solid var(--white);
     border-right: 3px solid var(--white);
