@@ -30,11 +30,11 @@ a:hover{
   color: var(--red);
 }
 
-@media only screen and (max-device-width: 1010px){}
 
-@media only screen and (max-device-width: 1366px) and (min-device-width: 769px){
-  body{
-    font-size: 1.875rem;
+
+@media only screen and (min-device-width: 963px){
+  html{
+    font-size:20px;
   }
 
   /*menu*/
@@ -53,6 +53,7 @@ a:hover{
     padding-bottom: 1.5625rem;
     width: 28%;
     float:right;
+    margin-right: 3%;
   }
 
   aside#anime-menu div.card{
@@ -62,8 +63,8 @@ a:hover{
 
   aside div.card div.card-header{
     background-color: var(--cyan);
-    padding: 0.625rem;
-    border-radius: 0.25rem 0.25rem 0 0;
+    padding: 10px;
+    border-radius: 16px 16px 0 0;
   }
 
   aside div.card div.card-body{
@@ -72,7 +73,7 @@ a:hover{
     flex-direction: column;
     justify-content: space-between;
     padding: 0.625rem 0.625rem 0.625rem 1.25rem;
-    border-radius: 0 0 0.25rem 0.25rem;
+    border-radius: 0 0 16px 16px;
     border-left: 0.125rem solid var(--white);
     border-right: 0.125rem solid var(--white);
     border-bottom: 0.125rem solid var(--white);
@@ -83,6 +84,7 @@ a:hover{
     padding-bottom: 1.5625rem;
     width: 28%;
     float:right;
+    margin-right: 3%;
   }
 
   aside#games-menu div.card{
@@ -93,7 +95,7 @@ a:hover{
   aside#games-menu div.card div.card-header{
     background-color: var(--cyan);
     padding: 0.625rem;
-    border-radius: 0.25rem 0.25rem 0 0;
+    border-radius: 16px 16px 0 0;
   }
 
   aside#games-menu div.card div.card-body{
@@ -102,7 +104,7 @@ a:hover{
     flex-direction: column;
     justify-content: space-between;
     padding: 0.625rem 0 0.625rem 1.25rem;
-    border-radius: 0 0 0.25rem 0.25rem;
+    border-radius: 0 0 16px 16px;
     border-left: 0.125rem solid var(--white);
     border-right: 0.125rem solid var(--white);
     border-bottom: 0.125rem solid var(--white);
@@ -110,14 +112,15 @@ a:hover{
 
   /*Carousel de animes e jogos*/
   main div.card.card-carousel{
-    width: 70%;
+    width: 60%;
     display: flex;
+    margin-left: 6%;
   }
 
   div.card.card-carousel div.card-header{
     background-color: var(--cyan);
     padding: 0.625rem;
-    border-radius: 4px 4px 0 0;
+    border-radius: 16px 16px 0 0;
   }
 
   div.card.card-carousel div.card-body{
@@ -125,30 +128,31 @@ a:hover{
     border-left: 0.125rem solid var(--white);
     border-right: 0.125rem solid var(--white);
     border-bottom: 0.125rem solid var(--white);
+    border-radius: 0 0 16px 16px;
   }
 
   div.card.card-carousel div.card-body img{
-    height: 31.25rem;
-    width: 80%;
+    height: 400px;
+    width: 65%;
   }
 
   /*card de música*/
   main div.card-music{
     width: 70%;
     position: relative;
-    left: 12.5rem;
+    left: 15%;
   }
 
   main div.card-music div.card-header{
     background-color: var(--cyan);
     padding: 1.5625rem;
-    border-radius: 0.25rem 0.25rem 0 0;
+    border-radius: 16px 16px 0 0;
   }
 
   main div.card-music div.card-body{
     background-color: var(--grey);
-    padding: 4.0625rem;
-    border-radius: 0 0 0.25rem 0.25rem;
+    padding: 50px;
+    border-radius: 0 0 16px 16px;
     border-left: 0.125rem solid var(--white);
     border-right: 0.125rem solid var(--white);
     border-bottom: 0.125rem solid var(--white);
@@ -163,19 +167,19 @@ a:hover{
   div.container-fluid div#card-music-home{
     width: 70%;
     position: relative;
-    left: 12.5rem;
+    left: 15%;
   }
 
   div.container-fluid div#card-music-home div.card-header{
     background-color: var(--cyan);
-    padding: 1.25rem;
-    border-radius: 0.25rem 0.25rem 0 0;
+    padding: 10px;
+    border-radius: 16px 16px 0 0;
   }
 
   div.container-fluid div#card-music-home div.card-body{
     background-color: var(--grey);
-    padding: 3.4375rem;
-    border-radius: 0 0 0.25rem 0.25rem;
+    padding-left: 80px;
+    border-radius: 0 0 16px 16px;
     border-left: 0.125rem solid var(--white);
     border-right: 0.125rem solid var(--white);
     border-bottom: 0.125rem solid var(--white);
@@ -185,20 +189,20 @@ a:hover{
   div.container-fluid div.card-note{
     width: 70%;
     position: relative;
-    left: 12.5rem;
+    left: 15%;
   }
 
   div.container-fluid div.card-note div.card-header{
     background-color: var(--red);
     padding: 0.9375rem;
-    border-radius: 0.25rem 0.25rem 0 0;
+    border-radius: 16px 16px 0 0;
   }
 
   div.container-fluid div.card-note div.card-body{
     background-color: var(--grey);
-    padding: 2.1875rem;
+    padding: 25px;
     color: var(--white);
-    border-radius: 0 0 0.25rem 0.25rem;
+    border-radius: 0 0 16px 16px;
     border-left: 0.125rem solid var(--white);
     border-right: 0.125rem solid var(--white);
     border-bottom: 0.125rem solid var(--white);
@@ -208,19 +212,19 @@ a:hover{
   div.container-fluid div#card-note{
     width: 70%;
     position: relative;
-    left: 12.5rem;
+    left: 15%;
   }
 
   div.container-fluid div#card-note div.card-header{
     padding: 0.9375rem;
     background-color: var(--red);
-    border-radius: 0.25rem 0.25rem 0 0;
+    border-radius: 16px 16px 0 0;
   }
 
   div.container-fluid div#card-note div.card-body{
-    padding: 2.1875rem;
+    padding: 25px;
     background-color: var(--grey);
-    border-radius: 0 0 0.25rem 0.25rem;
+    border-radius: 0 0 16px 16px;
     color: var(--white);
     border-left: 0.125rem solid var(--white);
     border-right: 0.125rem solid var(--white);
@@ -231,20 +235,20 @@ a:hover{
   body footer{
     width: 68.5%;
     position: relative;
-    left: 13.4375rem;
+    left: 15.75%;
   }
 
   footer div.card div.card-header{
     padding: 0.9375rem;
     background-color: var(--red);
-    border-radius: 0.25rem 0.25rem 0 0;
+    border-radius: 16px 16px 0 0;
   }
  
   footer div.card div.card-body{
     padding: 0.9375rem;
     background-color: var(--grey);
     color: var(--white);
-    border-radius: 0 0 0.25rem 0.25rem;
+    border-radius: 0 0 16px 16px;
     border-left: 0.125rem solid var(--white);
     border-right: 0.125rem solid var(--white);
     border-bottom: 0.125rem solid var(--white);
@@ -258,8 +262,8 @@ a:hover{
   }
 
   main div.row div.col-sm-4 div.card-content img{
-    width: 100%;
-    height: 28.125rem;
+    width: 95%;
+    height: 300px;
     border-left: 0.1875rem solid var(--white);
     border-right: 0.1875rem solid var(--white);
     border-top: 0.1875rem solid var(--white);
@@ -267,7 +271,7 @@ a:hover{
 
   main div.row div.col-sm-4 div.card-content div.card-footer{
     background-color: var(--grey);
-    width: 100%;
+    width: 95%;
     
     border-left: 0.1875rem solid var(--white);
     border-right: 0.1875rem solid var(--white);
@@ -277,6 +281,268 @@ a:hover{
 
 }
 
+@media only screen and (max-device-width: 962px) and (min-device-width: 769px){
+  html{
+    font-size: 30px;
+  }
+
+  /*menu*/
+  nav#toggle{
+    display: none;
+  }
+
+  /*titulo*/
+  header h1{
+    color: var(--blue);
+    text-align: center;
+  }
+
+  /*menu lateral de animes*/
+  main aside#anime-menu{
+    padding-bottom: 30px;
+    width: 80%;
+  }
+
+  aside#anime-menu div.card{
+    display: flex;
+    flex-direction: column;
+  }
+
+  aside div.card div.card-header{
+    background-color: var(--cyan);
+    padding: 20px;
+    border-radius: 16px 16px 0 0;
+    
+  }
+
+  aside div.card div.card-body{
+    background-color: var(--grey);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 0 20px 20px;
+    border-radius: 0 0 16px 16px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  /*menu lateral de jogos*/
+  main aside#games-menu{
+    padding-bottom: 30px;
+    width: 80%;
+  }
+
+  aside#games-menu div.card{
+    display: flex;
+    flex-direction: column;
+  }
+
+  aside#games-menu div.card div.card-header{
+    background-color: var(--cyan);
+    padding: 15px;
+    border-radius: 16px 16px 0 0;
+  }
+
+  aside#games-menu div.card div.card-body{
+    background-color: var(--grey);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 0 20px 20px;
+    border-radius: 0 0 16px 16px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  /*Carousel de animes e jogos*/
+  main div.card.card-carousel{
+    width: 80%;
+  }
+
+  div.card.card-carousel div.card-header{
+    background-color: var(--cyan);
+    padding: 10px 0 10px 30px;
+    border-radius: 16px 16px 0 0;
+  }
+
+  div.card.card-carousel div.card-body{
+    background-color: var(--grey);
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+    border-radius: 0 0 16px 16px;
+  }
+
+  div.card.card-carousel div.card-body img{
+    height: 600px;
+    width: 700px;
+  }
+
+  /*card de música*/
+  main div.card-music{
+    width: 80%;
+  }
+
+  main div.card-music div.card-header{
+    background-color: var(--cyan);
+    padding: 25px;
+    border-radius: 16px 16px 0 0;
+  }
+
+  main div.card-music div.card-body{
+    background-color: var(--grey);
+    padding: 55px;
+    border-radius: 0 0 16px 16px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  main div.card-music div.card-body ol li{
+    margin: 20px 0;
+  }
+
+  /*card de música da página inicial*/
+
+  div.container-fluid div#card-music-home{
+    width: 80%;
+    position: relative;
+    left: 95px;
+  }
+
+  div.container-fluid div#card-music-home div.card-header{
+    background-color: var(--cyan);
+
+    border-radius: 16px 16px 0 0;
+  }
+
+  div.container-fluid div#card-music-home div.card-body{
+    background-color: var(--grey);
+    padding: 35px 100px;
+    border-radius: 0 0 16px 16px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  /*card de obesevação*/
+  div.container-fluid div.card-note{
+    width: 80%;
+    position: relative;
+    left: 95px;
+  }
+
+  div.container-fluid div.card-note div.card-header{
+    background-color: var(--red);
+    padding: 15px;
+    border-radius: 16px 16px 0 0;
+  }
+
+  div.container-fluid div.card-note div.card-body{
+    background-color: var(--grey);
+    padding: 35px;
+    color: var(--white);
+    border-radius: 0 0 16px 16px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  /*card de observação página inicial*/
+  div.container-fluid div#card-note{
+    width: 80%;
+    position: relative;
+    left: 95px;
+  }
+
+  div.container-fluid div#card-note div.card-header{
+    padding: 15px;
+    background-color: var(--red);
+    border-radius: 16px 16px 0 0;
+  }
+
+  div.container-fluid div#card-note div.card-body{
+    padding: 35px;
+    background-color: var(--grey);
+    border-radius: 0 0 16px 16px;
+    color: var(--white);
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+  
+  /*rodapé*/
+  body footer{
+    width: 78%;
+    position: relative;
+    left: 108px;
+  }
+
+  footer div.card div.card-header{
+    padding: 15px;
+    background-color: var(--red);
+    border-radius: 16px 16px 0 0;
+  }
+ 
+  footer div.card div.card-body{
+    padding: 15px;
+    background-color: var(--grey);
+    color: var(--white);
+    border-radius: 0 0 16px 16px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  /*cards-animes-jogos*/
+  div.container-fluid main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  main div.row div.col-sm-4{
+    position: relative;
+    
+  }
+
+  main div.row div.col-sm-4 div.card-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  main div.row div.col-sm-4 div.card-content img{
+    width: 300px;
+    height: 300px;
+    border-left: 3px solid var(--white);
+    border-right: 3px solid var(--white);
+    border-top: 3px solid var(--white);
+  }
+
+  main div.row div.col-sm-4 div.card-content div.card-footer{
+    background-color: var(--grey);
+    width: 104%;
+    line-height: 80px;
+    border-left: 3px solid var(--white);
+    border-right: 3px solid var(--white);
+    border-bottom: 3px solid var(--white);
+    text-align: center;
+  }
+
+  main div.row div.col-sm-4 div.card-content div.card-footer#ajuste-linha{
+    line-height: normal;
+    text-align: center;
+  }
+
+  div.card-content div.card-footer#medium-fit{
+    line-height: normal;
+  }
+
+}
 
 
 @media only screen and (max-device-width: 768px) and (min-device-width: 541px){
