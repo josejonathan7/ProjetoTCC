@@ -1,0 +1,175 @@
+:root{
+    --black: black;
+    --cyan: cyan;
+    --grey: grey;
+    --white: white;
+    --red: #c9302c;
+    --blue: royalblue;
+  }
+  
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+@media only screen and (min-device-width: 963px){
+
+  /*rodapé*/
+  body footer{
+    width: 68.5%;
+    position: relative;
+    left: 15.75%;
+  }
+
+  footer div.card div.card-header{
+    padding: 0.9375rem;
+    background-color: var(--red);
+    border-radius: 16px 16px 0 0;
+  }
+ 
+  footer div.card div.card-body{
+    padding: 0.9375rem;
+    background-color: var(--grey);
+    color: var(--white);
+    border-radius: 0 0 16px 16px;
+    border-left: 0.125rem solid var(--white);
+    border-right: 0.125rem solid var(--white);
+    border-bottom: 0.125rem solid var(--white);
+  }
+
+}
+
+@media only screen and (max-device-width: 962px) and (min-device-width: 769px){
+
+  /*rodapé*/
+  body footer{
+    width: 78%;
+    position: relative;
+    left: 108px;
+  }
+
+  footer div.card div.card-header{
+    padding: 15px;
+    background-color: var(--red);
+    border-radius: 16px 16px 0 0;
+  }
+ 
+  footer div.card div.card-body{
+    padding: 15px;
+    background-color: var(--grey);
+    color: var(--white);
+    border-radius: 0 0 16px 16px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+}
+
+
+@media only screen and (max-device-width: 768px) and (min-device-width: 541px){
+
+  /*rodapé*/
+  body footer{
+    width: 78%;
+    position: relative;
+    left: 85px;
+  }
+
+  footer div.card div.card-header{
+    padding: 15px;
+    background-color: var(--red);
+    border-radius: 4px 4px 0 0;
+  }
+ 
+  footer div.card div.card-body{
+    padding: 15px;
+    background-color: var(--grey);
+    color: var(--white);
+    border-radius: 0 0 4px 4px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+}
+
+
+@media only screen and (max-device-width: 540px) and (min-device-width: 415px){
+
+  /*rodapé*/
+  body footer{
+    padding: 15px;
+    position: relative;
+    left: 20px;
+    width: 92%;
+  }
+
+  footer div.card div.card-header{
+    padding: 15px;
+    background-color: var(--red);
+    border-radius: 4px 4px 0 0;
+  }
+ 
+  footer div.card div.card-body{
+    padding: 15px;
+    background-color: var(--grey);
+    color: var(--white);
+    border-radius: 0 0 4px 4px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+}
+
+@media only screen and (max-device-width: 414px) and (min-device-width: 361px){
+
+   /*rodapé*/
+   body footer{
+    padding: 15px;
+  }
+
+  footer div.card div.card-header{
+    padding: 15px;
+    background-color: var(--red);
+    border-radius: 4px 4px 0 0;
+  }
+ 
+  footer div.card div.card-body{
+    padding: 15px;
+    background-color: var(--grey);
+    color: var(--white);
+    border-radius: 0 0 4px 4px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+}
+
+@media only screen and (max-device-width: 360px){
+
+  /*rodapé*/
+  body footer{
+    padding: 15px;
+  }
+
+  footer div.card div.card-header{
+    padding: 15px;
+    background-color: var(--red);
+    border-radius: 4px 4px 0 0;
+  }
+ 
+  footer div.card div.card-body{
+    padding: 15px;
+    background-color: var(--grey);
+    color: var(--white);
+    border-radius: 0 0 4px 4px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+}

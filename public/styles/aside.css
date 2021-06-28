@@ -1,0 +1,393 @@
+:root{
+    --black: black;
+    --cyan: cyan;
+    --grey: grey;
+    --white: white;
+    --red: #c9302c;
+    --blue: royalblue;
+  }
+  
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+@media only screen and (min-device-width: 963px){
+
+    
+  /*menu lateral de animes*/
+  main aside#anime-menu{
+    padding-bottom: 1.5625rem;
+    width: 28%;
+    float:right;
+    margin-right: 3%;
+  }
+
+  aside#anime-menu div.card{
+    display: flex;
+    flex-direction: column;
+  }
+
+  aside div.card div.card-header{
+    background-color: var(--cyan);
+    padding: 10px;
+    border-radius: 16px 16px 0 0;
+  }
+
+  aside div.card div.card-body{
+    background-color: var(--grey);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.625rem 0.625rem 0.625rem 1.25rem;
+    border-radius: 0 0 16px 16px;
+    border-left: 0.125rem solid var(--white);
+    border-right: 0.125rem solid var(--white);
+    border-bottom: 0.125rem solid var(--white);
+  }
+
+  /*menu lateral de jogos*/
+  main aside#games-menu{
+    padding-bottom: 1.5625rem;
+    width: 28%;
+    float:right;
+    margin-right: 3%;
+  }
+
+  aside#games-menu div.card{
+    display: flex;
+    flex-direction: column;
+  }
+
+  aside#games-menu div.card div.card-header{
+    background-color: var(--cyan);
+    padding: 0.625rem;
+    border-radius: 16px 16px 0 0;
+  }
+
+  aside#games-menu div.card div.card-body{
+    background-color: var(--grey);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.625rem 0 0.625rem 1.25rem;
+    border-radius: 0 0 16px 16px;
+    border-left: 0.125rem solid var(--white);
+    border-right: 0.125rem solid var(--white);
+    border-bottom: 0.125rem solid var(--white);
+  }
+
+}
+
+@media only screen and (max-device-width: 962px) and (min-device-width: 769px){
+     /*menu lateral de animes*/
+  main aside#anime-menu{
+    padding-bottom: 30px;
+    width: 80%;
+  }
+
+  aside#anime-menu div.card{
+    display: flex;
+    flex-direction: column;
+  }
+
+  aside div.card div.card-header{
+    background-color: var(--cyan);
+    padding: 20px;
+    border-radius: 16px 16px 0 0;
+    
+  }
+
+  aside div.card div.card-body{
+    background-color: var(--grey);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 0 20px 20px;
+    border-radius: 0 0 16px 16px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  /*menu lateral de jogos*/
+  main aside#games-menu{
+    padding-bottom: 30px;
+    width: 80%;
+  }
+
+  aside#games-menu div.card{
+    display: flex;
+    flex-direction: column;
+  }
+
+  aside#games-menu div.card div.card-header{
+    background-color: var(--cyan);
+    padding: 15px;
+    border-radius: 16px 16px 0 0;
+  }
+
+  aside#games-menu div.card div.card-body{
+    background-color: var(--grey);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 0 20px 20px;
+    border-radius: 0 0 16px 16px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+}
+
+
+@media only screen and (max-device-width: 768px) and (min-device-width: 541px){
+      /*menu lateral de animes*/
+  main aside#anime-menu{
+    padding-bottom: 25px;
+    width: 80%;
+  }
+
+  aside#anime-menu div.card{
+    display: flex;
+    flex-direction: column;
+  }
+
+  aside div.card div.card-header{
+    background-color: var(--cyan);
+    padding: 10px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  aside div.card div.card-body{
+    background-color: var(--grey);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 0 10px 20px;
+    border-radius: 0 0 4px 4px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  /*menu lateral de jogos*/
+  main aside#games-menu{
+    padding-bottom: 25px;
+    width: 80%;
+  }
+
+  aside#games-menu div.card{
+    display: flex;
+    flex-direction: column;
+  }
+
+  aside#games-menu div.card div.card-header{
+    background-color: var(--cyan);
+    padding: 10px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  aside#games-menu div.card div.card-body{
+    background-color: var(--grey);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 0 10px 20px;
+    border-radius: 0 0 4px 4px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+
+}
+
+
+@media only screen and (max-device-width: 540px) and (min-device-width: 415px){
+    
+  /*menu lateral de animes*/
+  main aside#anime-menu{
+    padding: 15px;
+    width: 98%;
+  }
+
+  aside#anime-menu div.card{
+    display: flex;
+    flex-direction: column;
+  }
+
+  aside div.card div.card-header{
+    background-color: var(--cyan);
+    padding: 10px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  aside div.card div.card-body{
+    background-color: var(--grey);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 0 10px 20px;
+    border-radius: 0 0 4px 4px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  /*menu lateral de jogos*/
+  main aside#games-menu{
+    padding: 15px;
+    width: 98%;
+  }
+
+  aside#games-menu div.card{
+    display: flex;
+    flex-direction: column;
+  }
+
+  aside#games-menu div.card div.card-header{
+    background-color: var(--cyan);
+    padding: 10px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  aside#games-menu div.card div.card-body{
+    background-color: var(--grey);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 0 10px 20px;
+    border-radius: 0 0 4px 4px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+
+}
+
+@media only screen and (max-device-width: 414px) and (min-device-width: 361px){
+
+    /*menu lateral de animes*/
+  main aside#anime-menu{
+    padding: 15px;
+    width: 100%;
+  }
+
+  aside#anime-menu div.card{
+    display: flex;
+    flex-direction: column;
+  }
+
+  aside div.card div.card-header{
+    background-color: var(--cyan);
+    padding: 10px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  aside div.card div.card-body{
+    background-color: var(--grey);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 0 10px 20px;
+    border-radius: 0 0 4px 4px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  /*menu lateral de jogos*/
+  main aside#games-menu{
+    padding: 15px;
+    width: 100%;
+  }
+
+  aside#games-menu div.card{
+    display: flex;
+    flex-direction: column;
+  }
+
+  aside#games-menu div.card div.card-header{
+    background-color: var(--cyan);
+    padding: 10px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  aside#games-menu div.card div.card-body{
+    background-color: var(--grey);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 0 10px 20px;
+    border-radius: 0 0 4px 4px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+}
+
+@media only screen and (max-device-width: 360px){
+    /*menu lateral de animes*/
+  main aside#anime-menu{
+    padding: 15px;
+    width: 110%;
+  }
+
+  aside#anime-menu div.card{
+    display: flex;
+    flex-direction: column;
+  }
+
+  aside div.card div.card-header{
+    background-color: var(--cyan);
+    padding: 10px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  aside div.card div.card-body{
+    background-color: var(--grey);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 0 10px 20px;
+    border-radius: 0 0 4px 4px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  /*menu lateral de jogos*/
+  main aside#games-menu{
+    padding: 15px;
+    width: 110%;
+  }
+
+  aside#games-menu div.card{
+    display: flex;
+    flex-direction: column;
+  }
+
+  aside#games-menu div.card div.card-header{
+    background-color: var(--cyan);
+    padding: 10px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  aside#games-menu div.card div.card-body{
+    background-color: var(--grey);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 0 10px 20px;
+    border-radius: 0 0 4px 4px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+}

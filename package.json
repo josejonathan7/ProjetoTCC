@@ -1,0 +1,28 @@
+{
+  "name": "projetotcc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "nodemon ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josejonathan7/ProjetoTCC.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/josejonathan7/ProjetoTCC/issues"
+  },
+  "homepage": "https://github.com/josejonathan7/ProjetoTCC#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "router": "^1.3.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}

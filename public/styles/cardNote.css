@@ -1,0 +1,292 @@
+:root{
+    --black: black;
+    --cyan: cyan;
+    --grey: grey;
+    --white: white;
+    --red: #c9302c;
+    --blue: royalblue;
+  }
+  
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+@media only screen and (min-device-width: 963px){
+
+   /*card de obesevação*/
+   div.container-fluid div.card-note{
+    width: 70%;
+    position: relative;
+    left: 15%;
+  }
+
+  div.container-fluid div.card-note div.card-header{
+    background-color: var(--red);
+    padding: 0.9375rem;
+    border-radius: 16px 16px 0 0;
+  }
+
+  div.container-fluid div.card-note div.card-body{
+    background-color: var(--grey);
+    padding: 25px;
+    color: var(--white);
+    border-radius: 0 0 16px 16px;
+    border-left: 0.125rem solid var(--white);
+    border-right: 0.125rem solid var(--white);
+    border-bottom: 0.125rem solid var(--white);
+  }
+
+  /*card de observação página inicial*/
+  div.container-fluid div#card-note{
+    width: 70%;
+    position: relative;
+    left: 15%;
+  }
+
+  div.container-fluid div#card-note div.card-header{
+    padding: 0.9375rem;
+    background-color: var(--red);
+    border-radius: 16px 16px 0 0;
+  }
+
+  div.container-fluid div#card-note div.card-body{
+    padding: 25px;
+    background-color: var(--grey);
+    border-radius: 0 0 16px 16px;
+    color: var(--white);
+    border-left: 0.125rem solid var(--white);
+    border-right: 0.125rem solid var(--white);
+    border-bottom: 0.125rem solid var(--white);
+  }
+ 
+}
+
+@media only screen and (max-device-width: 962px) and (min-device-width: 769px){
+
+   /*card de obesevação*/
+   div.container-fluid div.card-note{
+    width: 80%;
+    position: relative;
+    left: 95px;
+  }
+
+  div.container-fluid div.card-note div.card-header{
+    background-color: var(--red);
+    padding: 15px;
+    border-radius: 16px 16px 0 0;
+  }
+
+  div.container-fluid div.card-note div.card-body{
+    background-color: var(--grey);
+    padding: 35px;
+    color: var(--white);
+    border-radius: 0 0 16px 16px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  /*card de observação página inicial*/
+  div.container-fluid div#card-note{
+    width: 80%;
+    position: relative;
+    left: 95px;
+  }
+
+  div.container-fluid div#card-note div.card-header{
+    padding: 15px;
+    background-color: var(--red);
+    border-radius: 16px 16px 0 0;
+  }
+
+  div.container-fluid div#card-note div.card-body{
+    padding: 35px;
+    background-color: var(--grey);
+    border-radius: 0 0 16px 16px;
+    color: var(--white);
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+ 
+}
+
+
+@media only screen and (max-device-width: 768px) and (min-device-width: 541px){
+
+  /*card de obesevação*/
+  div.container-fluid div.card-note{
+    width: 80%;
+    position: relative;
+    left: 75px;
+  }
+
+  div.container-fluid div.card-note div.card-header{
+    background-color: var(--red);
+    padding: 15px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  div.container-fluid div.card-note div.card-body{
+    background-color: var(--grey);
+    padding: 35px;
+    color: var(--white);
+    border-radius: 0 0 4px 4px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  /*card de observação página inicial*/
+  div.container-fluid div#card-note{
+    width: 80%;
+    position: relative;
+    left: 75px;
+  }
+
+  div.container-fluid div#card-note div.card-header{
+    padding: 15px;
+    background-color: var(--red);
+    border-radius: 4px 4px 0 0;
+  }
+
+  div.container-fluid div#card-note div.card-body{
+    padding: 35px;
+    background-color: var(--grey);
+    border-radius: 0 0 4px 4px;
+    color: var(--white);
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+  
+}
+
+
+@media only screen and (max-device-width: 540px) and (min-device-width: 415px){
+
+  /*card de obesevação*/
+  div.container-fluid div.card-note{
+    position: relative;
+    left: 20px;
+    width: 92%;
+  }
+
+  div.container-fluid div.card-note div.card-header{
+    background-color: var(--red);
+    padding: 15px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  div.container-fluid div.card-note div.card-body{
+    background-color: var(--grey);
+    padding: 15px;
+    color: var(--white);
+    border-radius: 0 0 4px 4px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  /*card de observação página inicial*/
+  div.container-fluid div#card-note{
+    position: relative;
+    left: 20px;
+    width: 92%;
+  }  
+
+  div.container-fluid div#card-note div.card-header{
+    padding: 15px;
+    background-color: var(--red);
+    border-radius: 4px 4px 0 0;
+  }
+
+  div.container-fluid div#card-note div.card-body{
+    padding: 25px;
+    background-color: var(--grey);
+    border-radius: 0 0 4px 4px;
+    color: var(--white);
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+  
+}
+
+@media only screen and (max-device-width: 414px) and (min-device-width: 361px){
+
+  /*card de obesevação*/
+  div.container-fluid div.card-note div.card-header{
+    background-color: var(--red);
+    padding: 15px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  div.container-fluid div.card-note div.card-body{
+    background-color: var(--grey);
+    padding: 15px;
+    color: var(--white);
+    border-radius: 0 0 4px 4px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  /*card de observação página inicial*/
+  div.container-fluid div#card-note div.card-header{
+    padding: 15px;
+    background-color: var(--red);
+    border-radius: 4px 4px 0 0;
+  }
+
+  div.container-fluid div#card-note div.card-body{
+    padding: 15px;
+    background-color: var(--grey);
+    border-radius: 0 0 4px 4px;
+    color: var(--white);
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+  
+}
+
+@media only screen and (max-device-width: 360px){
+
+  /*card de obesevação*/
+  div.container-fluid div.card-note div.card-header{
+    background-color: var(--red);
+    padding: 15px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  div.container-fluid div.card-note div.card-body{
+    background-color: var(--grey);
+    padding: 15px;
+    color: var(--white);
+    border-radius: 0 0 4px 4px;
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  /*card de observação página inicial*/
+  div.container-fluid div#card-note div.card-header{
+    padding: 15px;
+    background-color: var(--red);
+    border-radius: 4px 4px 0 0;
+  }
+
+  div.container-fluid div#card-note div.card-body{
+    padding: 15px;
+    background-color: var(--grey);
+    border-radius: 0 0 4px 4px;
+    color: var(--white);
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+  
+}

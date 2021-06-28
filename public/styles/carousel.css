@@ -1,0 +1,180 @@
+:root{
+    --black: black;
+    --cyan: cyan;
+    --grey: grey;
+    --white: white;
+    --red: #c9302c;
+    --blue: royalblue;
+  }
+  
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+@media only screen and (min-device-width: 963px){
+   /*Carousel de animes e jogos*/
+   main div.card.card-carousel{
+    width: 60%;
+    display: flex;
+    margin-left: 6%;
+  }
+
+  div.card.card-carousel div.card-header{
+    background-color: var(--cyan);
+    padding: 0.625rem;
+    border-radius: 16px 16px 0 0;
+  }
+
+  div.card.card-carousel div.card-body{
+    background-color: var(--grey);
+    border-left: 0.125rem solid var(--white);
+    border-right: 0.125rem solid var(--white);
+    border-bottom: 0.125rem solid var(--white);
+    border-radius: 0 0 16px 16px;
+  }
+
+  div.card.card-carousel div.card-body img{
+    height: 400px;
+    width: 65%;
+  }
+
+}
+
+@media only screen and (max-device-width: 962px) and (min-device-width: 769px){
+  /*Carousel de animes e jogos*/
+  main div.card.card-carousel{
+    width: 80%;
+  }
+
+  div.card.card-carousel div.card-header{
+    background-color: var(--cyan);
+    padding: 10px 0 10px 30px;
+    border-radius: 16px 16px 0 0;
+  }
+
+  div.card.card-carousel div.card-body{
+    background-color: var(--grey);
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+    border-radius: 0 0 16px 16px;
+  }
+
+  div.card.card-carousel div.card-body img{
+    height: 600px;
+    width: 700px;
+  }
+
+}
+
+
+@media only screen and (max-device-width: 768px) and (min-device-width: 541px){
+   /*Carousel de animes e jogos*/
+   main div.card.card-carousel{
+    width: 80%;
+  }
+
+  div.card.card-carousel div.card-header{
+    background-color: var(--cyan);
+    padding: 10px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  div.card.card-carousel div.card-body{
+    background-color: var(--grey);
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  div.card.card-carousel div.card-body img{
+    height: 400px;
+    width: 400px;
+  }
+
+ 
+}
+
+
+@media only screen and (max-device-width: 540px) and (min-device-width: 415px){
+
+  /*Carousel de animes e jogos*/
+  main div.card.card-carousel{
+    width: 92%;
+  }
+
+  div.card.card-carousel div.card-header{
+    background-color: var(--cyan);
+    padding: 10px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  div.card.card-carousel div.card-body{
+    background-color: var(--grey);
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  div.card.card-carousel div.card-body img{
+    height: 250px;
+    width: 80%;
+  }
+
+}
+
+@media only screen and (max-device-width: 414px) and (min-device-width: 361px){
+
+  /*Carousel de animes e jogos*/
+  main div.card.card-carousel{
+    width: 92%;
+  }
+
+  div.card.card-carousel div.card-header{
+    background-color: var(--cyan);
+    padding: 10px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  div.card.card-carousel div.card-body{
+    background-color: var(--grey);
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  div.card.card-carousel div.card-body img{
+    height: 250px;
+    width: 80%;
+  }
+
+}
+
+@media only screen and (max-device-width: 360px){
+
+  /*Carousel de animes*/
+  div.card.card-carousel{
+    width: 100%;
+  }
+
+  div.card.card-carousel div.card-header{
+    background-color: var(--cyan);
+    padding: 10px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  div.card.card-carousel div.card-body{
+    background-color: var(--grey);
+    border-left: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+  }
+
+  div.card.card-carousel div.card-body img{
+    height: 250px;
+    width: 250px;
+  }
+
+}

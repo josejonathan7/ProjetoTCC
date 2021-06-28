@@ -1,0 +1,264 @@
+:root{
+    --black: black;
+    --cyan: cyan;
+    --grey: grey;
+    --white: white;
+    --red: #c9302c;
+    --blue: royalblue;
+  }
+  
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+@media only screen and (min-device-width: 60.1875rem){
+
+     /*cards-animes-jogos*/
+  main div.row div.col-sm-4 div.card-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  main div.row div.col-sm-4 div.card-content img{
+    width: 95%;
+    height: 18.75rem;
+    border-left: 3px solid var(--white);
+    border-right: 3px solid var(--white);
+    border-top: 3px solid var(--white);
+  }
+
+  main div.row div.col-sm-4 div.card-content div.card-footer{
+    background-color: var(--grey);
+    width: 95%;
+    
+    border-left: 3px solid var(--white);
+    border-right: 3px solid var(--white);
+    border-bottom: 3px solid var(--white);
+    text-align: center;
+  }
+
+}
+
+@media only screen and (max-device-width: 60.125rem) and (min-device-width: 48.0625rem){
+
+   /*cards-animes-jogos*/
+  div.container-fluid main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  main div.row div.col-sm-4{
+    position: relative;
+    
+  }
+
+  main div.row div.col-sm-4 div.card-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  main div.row div.col-sm-4 div.card-content img{
+    width: 18.75rem;
+    height: 18.75rem;
+    border-left: 0.1875rem solid var(--white);
+    border-right: 0.1875rem solid var(--white);
+    border-top: 0.1875rem solid var(--white);
+  }
+
+  main div.row div.col-sm-4 div.card-content div.card-footer{
+    background-color: var(--grey);
+    width: 104%;
+    line-height: 5rem;
+    border-left: 0.1875rem solid var(--white);
+    border-right: 0.1875rem solid var(--white);
+    border-bottom: 0.1875rem solid var(--white);
+    text-align: center;
+  }
+
+  main div.row div.col-sm-4 div.card-content div.card-footer#ajuste-linha{
+    line-height: normal;
+    text-align: center;
+  }
+
+  div.card-content div.card-footer#medium-fit{
+    line-height: normal;
+  }
+
+}
+
+@media only screen and (max-device-width: 48rem) and (min-device-width: 33.8125rem){
+
+     /*cards-animes-jogos*/
+  div.container-fluid main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  main div.row div.col-sm-4{
+    position: relative;
+    
+  }
+
+  main div.row div.col-sm-4 div.card-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  main div.row div.col-sm-4 div.card-content img{
+    width: 15.3125rem;
+    height: 15.3125rem;
+    border-left: 0.1875rem solid var(--white);
+    border-right: 0.1875rem solid var(--white);
+    border-top: 0.1875rem solid var(--white);
+  }
+
+  main div.row div.col-sm-4 div.card-content div.card-footer{
+    background-color: var(--grey);
+    width: 109%;
+    line-height: 4.125rem;
+    border-left: 0.1875rem solid var(--white);
+    border-right: 0.1875rem solid var(--white);
+    border-bottom: 0.1875rem solid var(--white);
+    text-align: center;
+  }
+
+  main div.row div.col-sm-4 div.card-content div.card-footer#ajuste-linha{
+    line-height: normal;
+    text-align: center;
+  }
+
+}
+
+@media only screen and (max-device-width: 33.75rem) and (min-device-width: 25.9375rem){
+
+     /*cards-animes-jogos*/
+  div.container-fluid main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  main div.row div.col-sm-4{
+    position: relative;
+    margin-bottom: 1.25rem;
+  }
+
+  main div.row div.col-sm-4 div.card-content{
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+   
+  }
+
+  main div.row div.col-sm-4 div.card-content img{
+    width: 76%;
+    height: 18.1875rem;
+    border-left: 0.1875rem solid var(--white);
+    border-right: 0.1875rem solid var(--white);
+    border-top: 0.1875rem solid var(--white);
+  }
+
+  main div.row div.col-sm-4 div.card-content div.card-footer{
+    background-color: var(--grey);
+    width: 76%;
+    border-left: 0.1875rem solid var(--white);
+    border-right: 0.1875rem solid var(--white);
+    border-bottom: 0.1875rem solid var(--white);
+    text-align: center;
+  }
+}
+
+@media only screen and (max-device-width: 25.875rem) and (min-device-width: 22.5625rem){
+
+    /*cards-animes-jogos*/
+  div.container-fluid main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  main div.row div.col-sm-4{
+    position: relative;
+    margin-bottom: 1.25rem;
+  }
+
+  main div.row div.col-sm-4 div.card-content{
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+   
+  }
+
+  main div.row div.col-sm-4 div.card-content img{
+    width: 76%;
+    height: 18.1875rem;
+    border-left: 0.1875rem solid var(--white);
+    border-right: 0.1875rem solid var(--white);
+    border-top: 0.1875rem solid var(--white);
+  }
+
+  main div.row div.col-sm-4 div.card-content div.card-footer{
+    background-color: var(--grey);
+    width: 76%;
+    border-left: 0.1875rem solid var(--white);
+    border-right: 0.1875rem solid var(--white);
+    border-bottom: 0.1875rem solid var(--white);
+    text-align: center;
+  }
+
+}
+
+@media only screen and (max-device-width: 22.5rem){
+
+    /*cards-animes-jogos*/
+  div.container-fluid main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  main div.row div.col-sm-4{
+    position: relative;
+    margin-bottom: 1.25rem;
+  }
+
+  main div.row div.col-sm-4 div.card-content{
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+   
+  }
+
+  main div.row div.col-sm-4 div.card-content img{
+    width: 76%;
+    height: 15.625rem;
+    border-left: 0.1875rem solid var(--white);
+    border-right: 0.1875rem solid var(--white);
+    border-top: 0.1875rem solid var(--white);
+  }
+
+  main div.row div.col-sm-4 div.card-content div.card-footer{
+    background-color: var(--grey);
+    width: 76%;
+    border-left: 0.1875rem solid var(--white);
+    border-right: 0.1875rem solid var(--white);
+    border-bottom: 0.1875rem solid var(--white);
+    text-align: center;
+  }
+
+}
