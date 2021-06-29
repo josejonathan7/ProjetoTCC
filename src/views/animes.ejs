@@ -21,15 +21,13 @@
 			<div class="row">
 				<div class="col-sm-4">
 					<div class="card-content">
-						<% data.forEach(data => { %>
-							
-
-						<img src="<%= data.image %>" class="card-img-top">
-						<div class="card-footer">
-							<a href="<%= data.link %>" target="_blank" tabindex="7"><%= data.name %></a>
-						</div>
-
-						<% });  %>
+					<% dataAnimes.forEach(dataAnimes => { %>
+						
+    					<img src="<%= dataAnimes.image %>" class="card-img-top">
+    					<div class="card-footer">
+        					<a href="<%= dataAnimes.link %>" target="_blank" tabindex="7"><%= dataAnimes.name %></a>
+    					</div>
+					<% }) %> 
 
 					</div>
 				</div>

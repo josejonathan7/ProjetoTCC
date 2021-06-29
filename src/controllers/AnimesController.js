@@ -8,6 +8,6 @@ module.exports = {
         const dataContact = DataBaseContact.get()
         const dataObservation = DataBaseObservation.get()
 
-        return res.render("animes", { dataAnimes, dataContact, dataObservation })
+        return res.render("animes", { dataAnimes: dataAnimes, dataContact, dataObservation })
     }
 }

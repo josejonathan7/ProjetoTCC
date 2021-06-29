@@ -22,7 +22,12 @@ router.get("/songs", (req, res) => SongsController.getData(req,res));
 router.get("/new", (req, res) => NewRegisterController.accesForm(req, res));
 
 
-router.post("/new", (req, res) => NewRegisterController.newRegister(req, res));
+router.post("/new", (req, res) => NewRegisterController.newRegisterAnime(req, res));
+router.post("/new", (req, res) => NewRegisterController.newRegisterGames(req, res));
+router.post("/new", (req, res) => NewRegisterController.newRegisterSongs(req, res));
+
+
+
 router.post("/new/:id", (req, res) => NewRegisterController.deleteRegister(req, res));
 
 

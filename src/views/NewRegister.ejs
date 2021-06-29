@@ -12,7 +12,7 @@
     <main id="main-form">
         <div>
             <!--Cadastrar novos animes-->
-            <form action="" class="form-group">
+            <form action="/new" method="post" class="form-group">
                 <fieldset>
                     <legend>Cadastrar novo Anime</legend>
 
@@ -39,7 +39,7 @@
             </form>
         
             <!--Cadstrar novos jogos-->
-            <form action="" class="form-group">
+            <form action="/new" method="post" class="form-group">
                 <fieldset>
                     <legend>Cadastrar novo Jogo</legend>
 
@@ -68,7 +68,7 @@
         
         <div>
             <!--Cadastrar novas musicas-->
-            <form action="" class="form-group">
+            <form action="/new" method="post" class="form-group">
                 <fieldset>
                     <legend>Cadastrar nova Musica</legend>
 
@@ -95,15 +95,21 @@
                     <legend>Cadastrar novo Contato</legend>
 
                     <div class="input-group-songs">
-                        <label for="song-name">Nome:</label>
-                        <input type="text" name="song-name" id="song-name" class="form-control">
+                        <label for="contact-name">Nome:</label>
+                        <input type="text" name="contact-name" id="contact-name" class="form-control">
                     </div>
 
                     <div class="input-group-songs">
-                        <label for="song-link">Link:</label>
-                        <input type="text" name="song-link" id="song-link" class="form-control">
+                        <label for="contact-link">Link:</label>
+                        <input type="text" name="contact-link" id="contact-link" class="form-control">
                     </div>
                     
+                    
+                    <div class="input-group-songs">
+                        <label for="contact-description">Descrição:</label>
+                        <input type="text" name="contact-description" id="contact-description" class="form-control">
+                    </div>
+
                     <div id="button-group">
                         <button type="submit">Confirmar</button>
                         <button type="reset">Cancelar</button>
@@ -119,13 +125,13 @@
                     <legend>Cadastrar novo Site</legend>
 
                     <div class="input-group-songs">
-                        <label for="song-name">Nome:</label>
-                        <input type="text" name="song-name" id="song-name" class="form-control">
+                        <label for="site-name">Nome:</label>
+                        <input type="text" name="site-name" id="site-name" class="form-control">
                     </div>
 
                     <div class="input-group-songs">
-                        <label for="song-link">Link:</label>
-                        <input type="text" name="song-link" id="song-link" class="form-control">
+                        <label for="site-link">Link:</label>
+                        <input type="text" name="site-link" id="site-link" class="form-control">
                     </div>
                     
                     <div id="button-group">
