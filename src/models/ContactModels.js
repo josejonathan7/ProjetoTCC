@@ -1,0 +1,15 @@
+
+let data = [
+    {
+        id: "string",
+        name: "nome",
+        link: "link",
+        description: "descrição"
+    }
+]
+
+module.exports = {
+    get(){
+        return data
+    }
+}
