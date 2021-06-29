@@ -1,7 +1,7 @@
 {
   "name": "ProjetoTCC",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/server.js",
   "repository": "https://github.com/josejonathan7/ProjetoTCC",
   "author": "josé jonathan <josejonathan689@gmail.com>",
   "license": "MIT",
@@ -13,5 +13,9 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
+  },
+  "scripts": {
+    "dev": "nodemon .",
+    "init-db": "node src/database/init.js"
   }
 }

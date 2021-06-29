@@ -1,0 +1,135 @@
+:root{
+    --black: black;
+    --cyan: cyan;
+    --grey: grey;
+    --white: white;
+    --red: #c9302c;
+    --blue: royalblue;
+  }
+  
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+body{
+    background-color: slategray;
+}
+
+main#main-form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+main#main-form div{
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+main#main-form form{
+    width: 45%;
+    background-color: orangered;
+    padding: 30px;
+    border-radius: 12px;
+}
+
+/*formulario de animes*/
+main#main-form form div.input-group-animes{
+    margin: 0 0 20px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+form div.input-group-animes label{
+    text-align: start;
+    width: 100%;
+}
+
+form div.input-group-animes input{
+    border-radius: 10px;
+}
+
+
+/* formulario de jogos*/
+main#main-form form div.input-group-games{
+    margin: 0 0 20px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+form div.input-group-games label{
+    text-align: start;
+    width: 100%;
+}
+
+form div.input-group-games input{
+    border-radius: 10px;
+}
+
+
+/* formulario de musicas*/
+main#main-form form div.input-group-songs{
+    margin: 0 0 20px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+form div.input-group-songs label{
+    text-align: start;
+    width: 100%;
+}
+
+form div.input-group-songs input{
+    border-radius: 10px;
+}
+
+
+/* Utilidades */
+main#main-form form div#button-group{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+form div#button-group button{
+    width: 40%;
+    padding: 10px;
+    border-radius: 16px;
+    border: none;
+}
+
+
+button.confirm{
+    background-color: greenyellow;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.8);
+}
+
+button.confirm:hover{
+    transition: 1s;
+    background-color: limegreen;
+    box-shadow: 2px 5px 5px 5px rgba(0, 0, 0, 0.8);
+    filter: brightness(0.5);
+}
+
+
+button.cancel{
+    background-color: var(--red);
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.8);
+}
+
+button.cancel:hover{
+    transition: 1s;
+    background-color: red;
+    box-shadow: 2px 5px 5px 5px rgba(0, 0, 0, 0.8);
+    filter: brightness(0.7);
+}

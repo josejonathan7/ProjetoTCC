@@ -3,7 +3,6 @@
 let data = [
     {
         id: "string",
-        header: "titulo",
         information: "informações"
         
     }

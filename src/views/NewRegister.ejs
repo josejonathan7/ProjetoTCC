@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <%- include("./components/Page-Head.ejs", { title: "Cadastrar novos registros no banco de dados!" }) %> 
+
+</head>
+<body>
+
+    <%- include("./components/Page-Nav.ejs") %> 
+
+    <main id="main-form">
+        <div>
+            <!--Cadastrar novos animes-->
+            <form action="" class="form-group">
+                <fieldset>
+                    <legend>Cadastrar novo Anime</legend>
+
+                    <div class="input-group-animes">
+                        <label for="anime-name">Nome:</label>
+                        <input type="text" name="anime-name" id="anime-name" class="form-control">
+                    </div>
+
+                    <div class="input-group-animes">
+                        <label for="anime-link">Link:</label>
+                        <input type="text" name="anime-link" id="anime-link" class="form-control">
+                    </div>
+
+                    <div class="input-group-animes">
+                        <label for="anime-image">Endereço da foto no projeto:</label>
+                        <input type="text" name="anime-image" id="anime-image" class="form-control">
+                    </div>
+
+                    <div id="button-group">
+                        <button type="submit" class="confirm">Confirmar</button>
+                        <button type="reset" class="cancel">Cancelar</button>
+                    </div>
+                </fieldset>
+            </form>
+        
+            <!--Cadstrar novos jogos-->
+            <form action="" class="form-group">
+                <fieldset>
+                    <legend>Cadastrar novo Jogo</legend>
+
+                    <div class="input-group-games">
+                        <label for="games-name">Nome:</label>
+                        <input type="text" name="games-name" id="games-name" class="form-control">
+                    </div>
+
+                    <div class="input-group-games">
+                        <label for="games-link">Link:</label>
+                        <input type="text" name="games-link" id="games-link" class="form-control">
+                    </div>
+
+                    <div class="input-group-games">
+                        <label for="games-image">Endereço da foto no projeto:</label>
+                        <input type="text" name="games-image" id="games-image" class="form-control">
+                    </div>
+        
+                    <div id="button-group">
+                        <button type="submit" class="confirm">Confirmar</button>
+                        <button type="reset" class="cancel">Cancelar</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        
+        <div>
+            <!--Cadastrar novas musicas-->
+            <form action="" class="form-group">
+                <fieldset>
+                    <legend>Cadastrar nova Musica</legend>
+
+                    <div class="input-group-songs">
+                        <label for="song-name">Nome:</label>
+                        <input type="text" name="song-name" id="song-name" class="form-control">
+                    </div>
+
+                    <div class="input-group-songs">
+                        <label for="song-link">Link:</label>
+                        <input type="text" name="song-link" id="song-link" class="form-control">
+                    </div>
+                    
+                    <div id="button-group">
+                        <button type="submit" class="confirm">Confirmar</button>
+                        <button type="reset" class="cancel">Cancelar</button>
+                    </div>
+                </fieldset>
+            </form>
+
+            <!--Cadastrar novo contato-->
+            <form action="" class="form-group">
+                <fieldset>
+                    <legend>Cadastrar novo Contato</legend>
+
+                    <div class="input-group-songs">
+                        <label for="song-name">Nome:</label>
+                        <input type="text" name="song-name" id="song-name" class="form-control">
+                    </div>
+
+                    <div class="input-group-songs">
+                        <label for="song-link">Link:</label>
+                        <input type="text" name="song-link" id="song-link" class="form-control">
+                    </div>
+                    
+                    <div id="button-group">
+                        <button type="submit">Confirmar</button>
+                        <button type="reset">Cancelar</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+
+        <div>
+            <!--Cadstrar novo site-->
+            <form action="" class="form-group">
+                <fieldset>
+                    <legend>Cadastrar novo Site</legend>
+
+                    <div class="input-group-songs">
+                        <label for="song-name">Nome:</label>
+                        <input type="text" name="song-name" id="song-name" class="form-control">
+                    </div>
+
+                    <div class="input-group-songs">
+                        <label for="song-link">Link:</label>
+                        <input type="text" name="song-link" id="song-link" class="form-control">
+                    </div>
+                    
+                    <div id="button-group">
+                        <button type="submit">Confirmar</button>
+                        <button type="reset">Cancelar</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
