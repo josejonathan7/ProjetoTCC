@@ -42,10 +42,10 @@ module.exports = {
         return res.redirect("/Register/" + id)
     },
     async deleteGame(req, res){
-        const id = req.params.id;
+        const name = req.body["games-name"]
 
-        await DataBaseGames.delete(id)
+        await DataBaseGames.delete(name)
 
-        return res.render("Register")
+        return res.render("DeleteRegisters")
     }
 }

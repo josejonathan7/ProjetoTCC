@@ -30,6 +30,7 @@ const initDb = {
 
         await db.exec(`CREATE TABLE tb_observation(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT,
             information TEXT
             ); 
         `)
@@ -52,7 +53,8 @@ const initDb = {
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT,
             password TEXT,
-            avatar TEXT
+            avatar TEXT,
+            email_contact_link TEXT
             );
         `)
     }

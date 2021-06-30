@@ -12,6 +12,7 @@ module.exports = {
         return observation.map(observation => ({
             id: observation.id,
             information: observation.information,
+            name: observation.name
         }))
 
     },
@@ -20,18 +21,20 @@ module.exports = {
         const db = await DataBase()
 
         await db.run(`INSERT INTO tb_observation (
-            information) 
+            information,
+            name) 
             VALUES (
-            "${newRegister.information}"         
+            "${newRegister.information}",
+            "${newRegister.name}"         
         )`) 
 
         await db.close()
     },
-    async delete(id){
+    async delete(name){
 
         const db = await DataBase()
 
-        await db.run(`DELETE FROM tb_observation WHERE id = ${id}`)
+        await db.run(`DELETE FROM tb_observation WHERE name = "${name}"`)
 
         await db.close()
     },
@@ -39,7 +42,8 @@ module.exports = {
 
         const db = await DataBase()
 
-        await db.run(`UPDATE tb_observation SET information = "${updatedObservation.information}" 
+        await db.run(`UPDATE tb_observation SET information = "${updatedObservation.information}",
+        name = "${updatedObservation.name}" 
         WHERE id = ${Id}
         `)
 

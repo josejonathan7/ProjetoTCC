@@ -46,10 +46,11 @@ module.exports = {
         return res.redirect("/Register/" + id)
     },
     async deleteAnime(req, res){
-        const id = req.params.id;
+        
+        const name = req.body["anime-name"]
 
-        await DataBaseAnimes.delete(id)
+        await DataBaseAnimes.delete(name)
 
-        return res.render("Register")
+        return res.render("DeleteRegisters")
     }
 }

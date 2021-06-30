@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+ 
+    <%- include("./components/Page-Head.ejs", {title: "AniJogos - Deletar Registros"}) %> 
+
+</head>
+<body>
+
+    <%- include("./components/Page-Nav.ejs") %>
+    
+    <div id="content">
+        <%- include("./components/Page-Aside-Registers.ejs") %> 
+    
+        
+        <main id="main-form">
+            <div>
+                <!--Deletar animes-->
+                <form action="/registers/delete/animes" method="post" class="form-group">
+                    <fieldset>
+                        <legend>Deletar Anime</legend>
+
+                        <div class="input-group">
+                            <label for="anime-name">Nome:</label>
+                            <input type="text" name="anime-name" id="anime-name" >
+                        </div>
+
+                        <div id="button-group">
+                            <button type="submit" class="confirm">Confirmar</button>
+                            <button type="reset" class="cancel">Cancelar</button>
+                        </div>
+                    </fieldset>
+                </form>
+            
+                <!--Deletar jogos-->
+                <form action="/registers/delete/games" method="post" class="form-group">
+                    <fieldset>
+                        <legend>Deletar Jogo</legend>
+
+                        <div class="input-group">
+                            <label for="games-name">Nome:</label>
+                            <input type="text" name="games-name" id="games-name" >
+                        </div>
+            
+                        <div id="button-group">
+                            <button type="submit" class="confirm">Confirmar</button>
+                            <button type="reset" class="cancel">Cancelar</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            
+            <div>      
+                <!--Deletar contato-->
+                <form action="/registers/delete/contact" method="post" class="form-group">
+                    <fieldset>
+                        <legend>Deletar Contato</legend>
+
+                        <div class="input-group">
+                            <label for="contact-name">Nome:</label>
+                            <input type="text" name="contact-name" id="contact-name" >
+                        </div>
+
+                        <div id="button-group">
+                            <button type="submit" class="confirm">Confirmar</button>
+                            <button type="reset" class="cancel">Cancelar</button>
+                        </div>
+                    </fieldset>
+                </form>
+                    
+                <!--Deletar usuario-->
+                <form action="/registers/delete/users" method="post" class="form-group">
+                    <fieldset>
+                        <legend>Deletar usuario</legend>
+
+                        <div class="input-group">
+                            <label for="user-name">Nome:</label>
+                            <input type="text" name="user-name" id="user-name" >
+                        </div>
+
+                        <div id="button-group">
+                            <button type="submit" class="confirm">Confirmar</button>
+                            <button type="reset" class="cancel">Cancelar</button>
+                        </div>
+                    </fieldset>
+                </form>     
+            </div>
+
+            <div>
+                <!--Deletar site-->
+                <form action="/registers/delete/sites" method="post" class="form-group">
+                    <fieldset>
+                        <legend>Deletar Site</legend>
+
+                        <div class="input-group">
+                            <label for="site-name">Nome:</label>
+                            <input type="text" name="site-name" id="site-name" >
+                        </div>
+
+                        <div id="button-group">
+                            <button type="submit" class="confirm">Confirmar</button>
+                            <button type="reset" class="cancel">Cancelar</button>
+                        </div>
+                    </fieldset>
+                </form>
+
+                <!--Deletar musicas-->
+                <form action="/registers/delete/songs" method="post" class="form-group">
+                    <fieldset>
+                        <legend>Deletar Musica</legend>
+
+                        <div class="input-group">
+                            <label for="song-name">Nome:</label>
+                            <input type="text" name="song-name" id="song-name" >
+                        </div>
+
+                        <div id="button-group">
+                            <button type="submit" class="confirm">Confirmar</button>
+                            <button type="reset" class="cancel">Cancelar</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+
+            <!--Deletar observações-->
+            <div id="observation-form">
+                <form action="/registers/delete/observations" method="post" class="form-group">
+                    <fieldset>
+                        <legend>Deletar informação/observação</legend>
+                            <div class="input-group">
+                                <label for="observation-name">Nome identificador:</label>
+                                <input type="text" name="observation-name" id="observation-name">
+                            </div>
+                            <div id="button-group">
+                                <button type="submit" class="confirm">Confirmar</button>
+                                <button type="reset" class="cancel">Cancelar</button>
+                            </div>
+                    
+                    </fieldset>
+                </form>
+            </div>
+        </main>
+    
+    </div>
+
+</body>
+</html>

@@ -34,10 +34,10 @@ module.exports = {
         return res.redirect("/Register/" + id)
     },
     async deleteSong(req, res){
-        const id = req.params.id;
+        const name = req.body["song-name"];
 
-        await DataBaseSongs.delete(id)
+        await DataBaseSongs.delete(name)
 
-        return res.render("Register")
+        return res.render("DeleteRegisters")
     }
 }
