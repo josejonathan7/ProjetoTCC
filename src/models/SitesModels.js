@@ -20,7 +20,7 @@ module.exports = {
 
         const db = await DataBase()
 
-        await db.run(`INSER INTO tb_sites (
+        await db.run(`INSERT INTO tb_sites (
             name, 
             link) 
             VALUES (
