@@ -1,18 +1,55 @@
-
-let data = [
-    {
-        id: 0,
-        name: "11 eyes",
-        link:  "https://www.meuanime.com/11-eyes",
-        image: "/images/animes/11eyes.jpg"
-    },
-]
+const DataBase = require('../database/config')
 
 module.exports = {
-    get(){
-        return data;
+    async get(){
+        
+        const db = await DataBase()
+
+        const animes = await db.all(`SELECT * FROM tb_animes ORDER BY name`)
+
+        await db.close()
+
+        return animes.map(animes => ({
+            id: animes.id,
+            name: animes.name,
+            link:  animes.link,
+            image:  animes.image
+        }))
+
     },
-    create(newRegister){  
-         data.push(newRegister)
+    async create(newRegister){  
+
+        const db = await DataBase()
+
+        await db.run(`INSER INTO tb_animes (
+            name, 
+            link, 
+            image) 
+            VALUES (
+            "${newRegister.name}",
+            "${newRegister.link}",
+            "${newRegister.image}"
+        )`) 
+
+        await db.close()
+    },
+    async delete(id){
+
+        const db = await DataBase()
+
+        await db.run(`DELETE FROM tb_animes WHERE id = ${id}`)
+
+        await db.close()
+    },
+    async update(updatedAnime, Id){
+
+        const db = await DataBase()
+
+        await db.run(`UPDATE tb_animes SET name = "${updatedAnime.name}", 
+        link = "${updatedAnime.link}",
+        image = "${updatedAnime.image}" WHERE id = ${Id}
+        `)
+
+        await db.close()
     }
 }
