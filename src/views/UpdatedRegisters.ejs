@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
  
-    <%- include("./components/Page-Head.ejs", {title: "AniJogos - Atualizar Registros"}) %> 
+    <%- include("./components/Page-Head.ejs", {title: "AniJogos - Atualizar/Deletar Registros"}) %> 
 
 </head>
 <body>
@@ -15,13 +15,13 @@
            
         <main id="main-form">
             <div>
-                <!--atualizar animes-->
+                <!--Atualizar/Deletar animes-->
                 <form action="/registers/consult/animes" method="post" class="form-group">
                     <fieldset>
-                        <legend>Atualizar Anime</legend>
+                        <legend>Atualizar/Deletar Anime</legend>
 
                         <div class="input-group">
-                            <label for="anime-name">Nome:</label>
+                            <label for="anime-name">Nome do anime:</label>
                             <input type="text" name="anime-name" id="anime-name" >
                         </div>
 
@@ -32,13 +32,13 @@
                     </fieldset>
                 </form>
             
-                <!--atualizar jogos-->
+                <!--Atualizar/Deletar jogos-->
                 <form action="/registers/consult/games" method="post" class="form-group">
                     <fieldset>
-                        <legend>Atualizar Jogo</legend>
+                        <legend>Atualizar/Deletar Jogo</legend>
 
                         <div class="input-group">
-                            <label for="games-name">Nome:</label>
+                            <label for="games-name">Nome do jogo:</label>
                             <input type="text" name="games-name" id="games-name">
                         </div>
             
@@ -51,13 +51,13 @@
             </div>
             
             <div>      
-                <!--atualizar contato-->
+                <!--Atualizar/Deletar contato-->
                 <form action="/registers/consult/contacts" method="post" class="form-group">
                     <fieldset>
-                        <legend>Atualizar Contato</legend>
+                        <legend>Atualizar/Deletar Contato</legend>
 
                         <div class="input-group">
-                            <label for="contact-name">Nome:</label>
+                            <label for="contact-name">Nome do contato:</label>
                             <input type="text" name="contact-name" id="contact-name" >
                         </div>
 
@@ -68,13 +68,13 @@
                     </fieldset>
                 </form>
                     
-                <!--Atualizar usuario-->
+                <!--Atualizar/Deletar usuario-->
                 <form action="/registers/consult/users" method="post" class="form-group">
                     <fieldset>
-                        <legend>Atualizar usuario</legend>
+                        <legend>Atualizar/Deletar usuario</legend>
 
                         <div class="input-group">
-                            <label for="user-name">Nome:</label>
+                            <label for="user-name">Nome do usuário:</label>
                             <input type="text" name="user-name" id="user-name" >
                         </div>
 
@@ -87,13 +87,13 @@
             </div>
 
             <div>
-                <!--Atualizar site-->
+                <!--Atualizar/Deletar site-->
                 <form action="/registers/consult/sites" method="post" class="form-group">
                     <fieldset>
-                        <legend>Atualizar Site</legend>
+                        <legend>Atualizar/Deletar Site</legend>
 
                         <div class="input-group">
-                            <label for="site-name">Nome:</label>
+                            <label for="site-name">Nome do site:</label>
                             <input type="text" name="site-name" id="site-name" >
                         </div>
 
@@ -104,13 +104,13 @@
                     </fieldset>
                 </form>
 
-                <!--Atualizar musicas-->
+                <!--Atualizar/Deletar musicas-->
                 <form action="/registers/consult/songs" method="post" class="form-group">
                     <fieldset>
-                        <legend>Atualizar Musica</legend>
+                        <legend>Atualizar/Deletar Musica</legend>
 
                         <div class="input-group">
-                            <label for="song-name">Nome:</label>
+                            <label for="song-name">Nome da musica:</label>
                             <input type="text" name="song-name" id="song-name" >
                         </div>
 
@@ -122,11 +122,11 @@
                 </form>
             </div>
 
-            <!--Atualizar observações-->
+            <!--Atualizar/Deletar observações-->
             <div id="observation-form">
                 <form action="/registers/consult/observations" method="post" class="form-group">
                     <fieldset>
-                        <legend>Atualizar informação/observação</legend>
+                        <legend>Atualizar/Deletar informação/observação</legend>
                             <div class="input-group">
                                 <label for="observation-name">Nome identificador:</label>
                                 <input type="text" name="observation-name" id="observation-name">

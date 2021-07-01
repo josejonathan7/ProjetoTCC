@@ -13,12 +13,16 @@
             <a href="/registers/update"> &lt; </a>
             <h1>Atualizar Dados</h1>
         </header>
-        <main>
-            <% dataResult.forEach(dataResult=> { %>
+
+        <% dataResult.forEach(dataResult=> { %>
+
+            <main>
 
                 <form action="/registers/update/songs/<%= dataResult.id %> " method="post">
                     <fieldset>
-                        <legend>Insira os novos Dados</legend>
+                        <legend>
+                            <h2>Insira os novos Dados</h2>
+                        </legend>
                         <div class="input-group">
                             <label for="song-id">Id</label>
                             <input type="text" name="song-id" id="song-id" disabled value="<%= dataResult.id %>">
@@ -42,8 +46,38 @@
                     </fieldset>
                 </form>
 
-                <% }) %>
-        </main>
+
+                <aside>
+                    <div>
+                        <header>
+                            <h2>Deletar Anime!</h2>
+                        </header>
+                        <div id="delete-image-button">
+                            <button type="submit" onclick="Modal.open()" id="open-modal-delete-button">Deletar</button>
+                        </div>
+                    </div>
+                </aside>
+
+            </main>
+
+
+            <div class="modal-delete">
+                <div id="modal">
+                    <header>
+                        <h3>Tem certeza que deseja deletar?</h3>
+                    </header>
+                    <div id="button-delete-group">
+                        <button type="submit" form="delete-form" id="confirm-delete">Confirmar</button>
+                        <button type="reset" onclick="Modal.close()" id="cancel-delete">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+
+            <form action="/registers/delete/songs/<%= dataResult.id %>" method="post" id="delete-form">
+            </form>
+
+            <% }) %>
+
     </div>
 </body>
 

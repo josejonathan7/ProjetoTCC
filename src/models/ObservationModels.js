@@ -30,11 +30,11 @@ module.exports = {
 
         await db.close()
     },
-    async delete(name){
+    async delete(id){
 
         const db = await DataBase()
 
-        await db.run(`DELETE FROM tb_observation WHERE name = "${name}"`)
+        await db.run(`DELETE FROM tb_observation WHERE id = ${id}`)
 
         await db.close()
     },

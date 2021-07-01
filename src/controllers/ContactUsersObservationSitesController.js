@@ -121,7 +121,7 @@ module.exports = {
 
         const dataResult = await ContactData.getForName(data)
 
-        return res.render("update/UpdateShowContact", {dataResult: dataResult})
+        return res.render("updateDelete/UpdateDeleteShowContact", {dataResult: dataResult})
     },
     async consultUser(req, res){
         const data = {
@@ -130,7 +130,7 @@ module.exports = {
 
         const dataResult = await UsersData.getForName(data)
 
-        return res.render("update/UpdateShowUser", {dataResult: dataResult})
+        return res.render("updateDelete/UpdateDeleteShowUser", {dataResult: dataResult})
     },
     async consultObservation(req, res){
         const data = {
@@ -140,7 +140,7 @@ module.exports = {
     
         const dataResult = await ObservationData.getForName(data)
 
-        return res.render("update/UpdateShowObservation", {dataResult: dataResult})
+        return res.render("updateDelete/UpdateDeleteShowObservation", {dataResult: dataResult})
     },
     async consultSite(req, res){
         const data = {
@@ -150,7 +150,7 @@ module.exports = {
     
         const dataResult = await SiteData.getForName(data)
 
-        return res.render("update/UpdateShowSite", {dataResult: dataResult})
+        return res.render("updateDelete/UpdateDeleteShowSite", {dataResult: dataResult})
     },
 
 
@@ -158,31 +158,31 @@ module.exports = {
 
     //deleção de contato/observação/usuario/sites
     async deleteContact(req, res){
-        const name = req.body["contact-name"];
+        const id = req.params.id;
 
-        await ContactData.delete(name)
+        await ContactData.delete(id)
 
-        return res.render("DeleteRegisters")
+        return res.render("UpdatedRegisters")
     },  
     async deleteUser(req, res){
-        const name = req.body["user-name"];
+        const id = req.params.id;
 
-        await UsersData.delete(name)
+        await UsersData.delete(id)
 
-        return res.render("DeleteRegisters")
+        return res.render("UpdatedRegisters")
     },
     async deleteObservation(req, res){
-        const name = req.body["observation-name"];
+        const id = req.params.id;
 
-        await ObservationData.delete(name)
+        await ObservationData.delete(id)
 
-        return res.render("DeleteRegisters")
+        return res.render("UpdatedRegisters")
     },
     async deleteSite(req, res){
-        const name = req.body["site-name"]
+        const id = req.params.id;
 
-        await SiteData.delete(name)
+        await SiteData.delete(id)
 
-        return res.render("DeleteRegisters")
+        return res.render("UpdatedRegisters")
     }
 }

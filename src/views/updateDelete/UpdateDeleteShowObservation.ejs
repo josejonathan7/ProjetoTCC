@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <%- include("../components/Page-Head.ejs", {title: "AniJogos - Atualizar dados" }) %>
+
+</head>
+
+<body style="background-color: cornsilk">
+    <div id="update-anime">
+        <header>
+            <a href="/registers/update"> &lt; </a>
+            <h1>Atualizar Dados</h1>
+        </header>
+
+        <% dataResult.forEach(dataResult=> { %>
+
+            <main>
+
+                <form action="/registers/update/observations/<%= dataResult.id %> " method="post">
+                    <fieldset>
+                        <legend>
+                            <h2>Insira os novos Dados</h2>
+                        </legend>
+                        <div class="input-group">
+                            <label for="observation-id">Id</label>
+                            <input type="text" name="observation-id" id="observation-id" disabled
+                                value="<%= dataResult.id %>">
+                        </div>
+
+                        <div class="input-group">
+                            <label for="observation-name">Nome:</label>
+                            <input type="text" name="observation-name" id="observation-name"
+                                value="<%=dataResult.name %>" style="color: black;">
+                        </div>
+
+                        <div class="input-group">
+                            <label for="information">Link:</label>
+                            <input type="text" name="information" id="information"
+                                value="<%= dataResult.information %>">
+                        </div>
+
+                        <div id="button-group">
+                            <button type="submit" class="confirm">Confirmar</button>
+                            <button type="reset" class="cancel">Cancelar</button>
+                        </div>
+                    </fieldset>
+                </form>
+
+                <aside>
+                    <div>
+                        <header>
+                            <h2>Deletar Observação!</h2>
+                        </header>
+                        <div id="delete-image-button">
+                            <button type="submit" onclick="Modal.open()" id="open-modal-delete-button">Deletar</button>
+                        </div>
+                    </div>
+                </aside>
+
+            </main>
+
+            <div class="modal-delete">
+                <div id="modal">
+                    <header>
+                        <h3>Tem certeza que deseja deletar?</h3>
+                    </header>
+                    <div id="button-delete-group">
+                        <button type="submit" form="delete-form" id="confirm-delete">Confirmar</button>
+                        <button type="reset" onclick="Modal.close()" id="cancel-delete">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+
+            <form action="/registers/delete/observations/<%= dataResult.id %>" method="post" id="delete-form">
+            </form>
+
+            <% }) %>
+
+    </div>
+</body>
+
+</html>

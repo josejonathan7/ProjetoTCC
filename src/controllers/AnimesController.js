@@ -47,11 +47,11 @@ module.exports = {
     },
     async deleteAnime(req, res){
         
-        const name = req.body["anime-name"]
+        const id = req.params.id
 
-        await DataBaseAnimes.delete(name)
+        await DataBaseAnimes.delete(id)
 
-        return res.render("DeleteRegisters")
+        return res.render("UpdatedRegisters")
     },
     async consultAnime(req, res){
         const data = {
@@ -61,6 +61,6 @@ module.exports = {
     
         const dataResult = await DataBaseAnimes.getForName(data)
 
-        return res.render("update/UpdateShowAnime", {dataResult: dataResult})
+        return res.render("updateDelete/UpdateDeleteShowAnime", {dataResult: dataResult})
     }
 }

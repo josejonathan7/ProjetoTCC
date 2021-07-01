@@ -35,11 +35,11 @@ module.exports = {
         return res.render("UpdatedRegisters")
     },
     async deleteSong(req, res){
-        const name = req.body["song-name"];
+        const id = req.params.id;
 
-        await DataBaseSongs.delete(name)
+        await DataBaseSongs.delete(id)
 
-        return res.render("DeleteRegisters")
+        return res.render("UpdatedRegisters")
     },
     async consultSong(req, res){
         const data = {
@@ -49,6 +49,6 @@ module.exports = {
     
         const dataResult = await DataBaseSongs.getForName(data)
 
-        return res.render("update/UpdateShowSong", {dataResult: dataResult})
+        return res.render("updateDelete/UpdateDeleteShowSong", {dataResult: dataResult})
     }
 }

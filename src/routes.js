@@ -55,19 +55,19 @@ router.post("/registers/update/games/:id", (req, res) => GamesController.updated
 router.post("/registers/update/songs/:id", (req, res) => SongsController.updatedSong(req,res))
 
 //deletar registros
-router.post("/registers/delete/contact", (req, res) => ContactUsersObservationSitesController.deleteContact(req,res))
+router.post("/registers/delete/contact/:id", (req, res) => ContactUsersObservationSitesController.deleteContact(req,res))
 
-router.post("/registers/delete/observations", (req, res) => ContactUsersObservationSitesController.deleteObservation(req,res))
+router.post("/registers/delete/observations/:id", (req, res) => ContactUsersObservationSitesController.deleteObservation(req,res))
 
-router.post("/registers/delete/sites", (req, res) => ContactUsersObservationSitesController.deleteSite(req,res))
+router.post("/registers/delete/sites/:id", (req, res) => ContactUsersObservationSitesController.deleteSite(req,res))
 
-router.post("/registers/delete/users", (req, res) => ContactUsersObservationSitesController.deleteUser(req,res))
+router.post("/registers/delete/users/:id", (req, res) => ContactUsersObservationSitesController.deleteUser(req,res))
 
-router.post("/registers/delete/animes", (req, res) => AnimesController.deleteAnime(req,res))
+router.post("/registers/delete/animes/:id", (req, res) => AnimesController.deleteAnime(req,res))
 
-router.post("/registers/delete/games", (req, res) => GamesController.deleteGame(req,res))
+router.post("/registers/delete/games/:id", (req, res) => GamesController.deleteGame(req,res))
 
-router.post("/registers/delete/songs", (req, res) => SongsController.deleteSong(req,res))
+router.post("/registers/delete/songs/:id", (req, res) => SongsController.deleteSong(req,res))
 
 /*Consultar registro unico*/
 router.post("/registers/consult/animes", (req, res) => AnimesController.consultAnime(req, res))

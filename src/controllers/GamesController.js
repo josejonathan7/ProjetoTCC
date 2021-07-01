@@ -42,11 +42,11 @@ module.exports = {
         return res.render("UpdatedRegisters")
     },
     async deleteGame(req, res){
-        const name = req.body["games-name"]
+        const id = req.params.id
 
-        await DataBaseGames.delete(name)
+        await DataBaseGames.delete(id)
 
-        return res.render("DeleteRegisters")
+        return res.render("UpdatedRegisters")
     },
     async consultGame(req, res){
         const data = {
@@ -55,6 +55,6 @@ module.exports = {
 
         const dataResult = await DataBaseGames.getForName(data)
 
-        return res.render("update/UpdateShowGame", {dataResult: dataResult})
+        return res.render("updateDelete/UpdateDeleteShowGame", {dataResult: dataResult})
     }
 }
