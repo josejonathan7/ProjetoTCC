@@ -51,5 +51,20 @@ module.exports = {
         `)
 
         await db.close()
+    },
+    async getForName(info){
+
+        const db = await DataBase()
+
+        const anime = await db.all(`SELECT * FROM tb_animes WHERE name = "${info.name}"`)
+
+        await db.close()
+
+        return anime.map(anime => ({
+            id: anime.id,
+            name: anime.name,
+            link: anime.link,
+            image: anime.image
+        }))
     }
 }

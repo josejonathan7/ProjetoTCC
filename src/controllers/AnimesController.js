@@ -43,7 +43,7 @@ module.exports = {
 
         await DataBaseAnimes.update(bodyData, id)
 
-        return res.redirect("/Register/" + id)
+        return res.render("UpdatedRegisters")
     },
     async deleteAnime(req, res){
         
@@ -52,5 +52,15 @@ module.exports = {
         await DataBaseAnimes.delete(name)
 
         return res.render("DeleteRegisters")
+    },
+    async consultAnime(req, res){
+        const data = {
+           name: req.body["anime-name"]
+        }
+
+    
+        const dataResult = await DataBaseAnimes.getForName(data)
+
+        return res.render("update/UpdateShowAnime", {dataResult: dataResult})
     }
 }

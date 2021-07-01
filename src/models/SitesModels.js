@@ -47,5 +47,19 @@ module.exports = {
         `)
 
         await db.close()
+    },
+    async getForName(info){
+
+        const db = await DataBase()
+
+        const site = await db.all(`SELECT * FROM tb_sites WHERE name = "${info.name}"`)
+
+        await db.close()
+
+        return site.map(site => ({
+            id: site.id,
+            name: site.name,
+            link:  site.link
+        }))
     }
 }

@@ -51,5 +51,20 @@ module.exports = {
         `)
 
         await db.close()
+    },
+    async getForName(info){
+
+        const db = await DataBase()
+
+        const contact = await db.all(`SELECT * FROM tb_contact WHERE name = "${info.name}"`)
+
+        await db.close()
+
+        return contact.map(contact => ({
+            id: contact.id,
+            name: contact.name,
+            link:  contact.link,
+            description:  contact.description
+        }))
     }
 }

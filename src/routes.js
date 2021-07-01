@@ -52,7 +52,7 @@ router.post("/registers/update/animes/:id", (req, res) => AnimesController.updat
 
 router.post("/registers/update/games/:id", (req, res) => GamesController.updatedGame(req,res))
 
-router.post("/registers/update/songs:id", (req, res) => SongsController.updatedSong(req,res))
+router.post("/registers/update/songs/:id", (req, res) => SongsController.updatedSong(req,res))
 
 //deletar registros
 router.post("/registers/delete/contact", (req, res) => ContactUsersObservationSitesController.deleteContact(req,res))
@@ -68,5 +68,16 @@ router.post("/registers/delete/animes", (req, res) => AnimesController.deleteAni
 router.post("/registers/delete/games", (req, res) => GamesController.deleteGame(req,res))
 
 router.post("/registers/delete/songs", (req, res) => SongsController.deleteSong(req,res))
+
+/*Consultar registro unico*/
+router.post("/registers/consult/animes", (req, res) => AnimesController.consultAnime(req, res))
+router.post("/registers/consult/games", (req, res) => GamesController.consultGame(req, res))
+router.post("/registers/consult/songs", (req, res) => SongsController.consultSong(req, res))
+router.post("/registers/consult/sites", (req, res) => ContactUsersObservationSitesController.consultSite(req, res))
+router.post("/registers/consult/users", (req, res) => ContactUsersObservationSitesController.consultUser(req, res))
+router.post("/registers/consult/observations", (req, res) => ContactUsersObservationSitesController.consultObservation(req, res))
+router.post("/registers/consult/contacts", (req, res) => ContactUsersObservationSitesController.consultContact(req, res))
+
+
 
 module.exports = router;

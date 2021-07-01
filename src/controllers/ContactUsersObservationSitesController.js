@@ -69,7 +69,7 @@ module.exports = {
 
         await ContactData.update(bodyData, id)
 
-        return res.redirect("/Register/" + id)
+        return res.render("UpdatedRegisters")
     },  
     async updatedUser(req, res){
 
@@ -84,7 +84,7 @@ module.exports = {
 
         await UsersData.update(bodyData, id)
 
-        return res.redirect("/Register/" + id)
+        return res.render("UpdatedRegisters")
     },  
     async updatedObservation(req, res){
 
@@ -97,7 +97,7 @@ module.exports = {
 
         await ObservationData.update(bodyData, id)
 
-        return res.redirect("/Register/" + id)
+        return res.render("UpdatedRegisters")
     },   
     async updatedSite(req, res){
 
@@ -110,8 +110,51 @@ module.exports = {
 
         await SiteData.update(bodyData, id)
 
-        return res.redirect("/Register/" + id)
+        return res.render("UpdatedRegisters")
     },
+
+    //consultar registro unico
+    async consultContact(req, res){
+        const data = {
+           name: req.body["contact-name"]
+        }
+
+        const dataResult = await ContactData.getForName(data)
+
+        return res.render("update/UpdateShowContact", {dataResult: dataResult})
+    },
+    async consultUser(req, res){
+        const data = {
+           name: req.body["user-name"]
+        }
+
+        const dataResult = await UsersData.getForName(data)
+
+        return res.render("update/UpdateShowUser", {dataResult: dataResult})
+    },
+    async consultObservation(req, res){
+        const data = {
+           name: req.body["observation-name"]
+        }
+
+    
+        const dataResult = await ObservationData.getForName(data)
+
+        return res.render("update/UpdateShowObservation", {dataResult: dataResult})
+    },
+    async consultSite(req, res){
+        const data = {
+           name: req.body["site-name"]
+        }
+
+    
+        const dataResult = await SiteData.getForName(data)
+
+        return res.render("update/UpdateShowSite", {dataResult: dataResult})
+    },
+
+
+
 
     //deleção de contato/observação/usuario/sites
     async deleteContact(req, res){

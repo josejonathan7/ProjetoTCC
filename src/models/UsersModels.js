@@ -42,12 +42,27 @@ module.exports = {
     async update(updatedUsers, id){
         const db = await DataBase()
 
-        await db.run(`UPDATED tb_users SET name = "${updatedUsers.name}",
+        await db.run(`UPDATE tb_users SET name = "${updatedUsers.name}",
         password = "${updatedUsers.password}",
         avatar = "${updatedUsers.avatar}",
-        email_contact_link = "${newRegister.email_contact_link}" WHERE id = ${id}
+        email_contact_link = "${updatedUsers.email_contact_link}" WHERE id = ${id}
         `)
 
         await db.close()
+    },
+    async getForName(info){
+
+        const db = await DataBase()
+
+        const user = await db.all(`SELECT * FROM tb_users WHERE name = "${info.name}"`)
+
+        await db.close()
+
+        return user.map(user => ({
+            id: user.id,
+            name: user.name,
+            avatar: user.avatar,
+            email_contact_link: user.email_contact_link
+        }))
     }
 }

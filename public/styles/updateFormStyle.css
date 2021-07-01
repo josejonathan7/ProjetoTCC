@@ -1,0 +1,51 @@
+body div#update-anime{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+
+div#update-anime header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid black;
+    margin-bottom: 30px;
+    background-color: darkgreen;
+}
+
+div#update-anime header h1{
+    width: 100%;
+    text-align: center;
+    color: black;
+}
+
+div#update-anime header a{
+    font-size: 50px;
+    font-weight: 500;
+    margin-left: 1%;
+    color: black;
+}
+
+div#update-anime main form{
+    width: 50%;
+    background-color: cornsilk;
+    border: 1px solid black;
+    border-radius: 8px;
+    position: relative;
+    left: 25%;
+    padding: 20px;
+}
+
+div#update-anime main form div#button-group{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+div#update-anime main form div#button-group button{
+
+    width: 45%;
+}

@@ -39,7 +39,7 @@ module.exports = {
 
         await DataBaseGames.update(bodyData, id)
 
-        return res.redirect("/Register/" + id)
+        return res.render("UpdatedRegisters")
     },
     async deleteGame(req, res){
         const name = req.body["games-name"]
@@ -47,5 +47,14 @@ module.exports = {
         await DataBaseGames.delete(name)
 
         return res.render("DeleteRegisters")
+    },
+    async consultGame(req, res){
+        const data = {
+           name: req.body["games-name"]
+        }
+
+        const dataResult = await DataBaseGames.getForName(data)
+
+        return res.render("update/UpdateShowGame", {dataResult: dataResult})
     }
 }

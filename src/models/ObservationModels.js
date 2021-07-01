@@ -48,5 +48,19 @@ module.exports = {
         `)
 
         await db.close()
+    },
+    async getForName(info){
+
+        const db = await DataBase()
+
+        const observation = await db.all(`SELECT * FROM tb_observation WHERE name = "${info.name}"`)
+
+        await db.close()
+
+        return observation.map(observation => ({
+            id: observation.id,
+            information: observation.information,
+            name: observation.name
+        }))
     }
 }

@@ -1,6 +1,7 @@
 const DataBaseSongs = require('../models/SongsModels');
 const DataBaseContact = require('../models/ContactModels');
 const DataBaseObservation = require('../models/ObservationModels');
+const { Database } = require('sqlite3');
 
 module.exports = {
     async getData(req, res){
@@ -31,7 +32,7 @@ module.exports = {
 
         await DataBaseSongs.update(bodyData, id)
 
-        return res.redirect("/Register/" + id)
+        return res.render("UpdatedRegisters")
     },
     async deleteSong(req, res){
         const name = req.body["song-name"];
@@ -39,5 +40,15 @@ module.exports = {
         await DataBaseSongs.delete(name)
 
         return res.render("DeleteRegisters")
+    },
+    async consultSong(req, res){
+        const data = {
+           name: req.body["song-name"]
+        }
+
+    
+        const dataResult = await DataBaseSongs.getForName(data)
+
+        return res.render("update/UpdateShowSong", {dataResult: dataResult})
     }
 }

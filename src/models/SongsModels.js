@@ -55,5 +55,19 @@ module.exports = {
         `)
 
         await db.close()
+    },
+    async getForName(info){
+
+        const db = await DataBase()
+
+        const song = await db.all(`SELECT * FROM tb_songs WHERE name = "${info.name}"`)
+
+        await db.close()
+
+        return song.map(song => ({
+            id: song.id,
+            name: song.name,
+            link:  song.link
+        }))
     }
 }

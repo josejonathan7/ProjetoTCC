@@ -11,7 +11,135 @@
     
     <div id="content">
         <%- include("./components/Page-Aside-Registers.ejs") %> 
-    </div>
 
-</body>
+           
+        <main id="main-form">
+            <div>
+                <!--atualizar animes-->
+                <form action="/registers/consult/animes" method="post" class="form-group">
+                    <fieldset>
+                        <legend>Atualizar Anime</legend>
+
+                        <div class="input-group">
+                            <label for="anime-name">Nome:</label>
+                            <input type="text" name="anime-name" id="anime-name" >
+                        </div>
+
+                        <div id="button-group">
+                            <button type="submit" class="confirm">Confirmar</button>
+                            <button type="reset" class="cancel">Cancelar</button>
+                        </div>
+                    </fieldset>
+                </form>
+            
+                <!--atualizar jogos-->
+                <form action="/registers/consult/games" method="post" class="form-group">
+                    <fieldset>
+                        <legend>Atualizar Jogo</legend>
+
+                        <div class="input-group">
+                            <label for="games-name">Nome:</label>
+                            <input type="text" name="games-name" id="games-name">
+                        </div>
+            
+                        <div id="button-group">
+                            <button type="submit" class="confirm">Confirmar</button>
+                            <button type="reset" class="cancel">Cancelar</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            
+            <div>      
+                <!--atualizar contato-->
+                <form action="/registers/consult/contacts" method="post" class="form-group">
+                    <fieldset>
+                        <legend>Atualizar Contato</legend>
+
+                        <div class="input-group">
+                            <label for="contact-name">Nome:</label>
+                            <input type="text" name="contact-name" id="contact-name" >
+                        </div>
+
+                        <div id="button-group">
+                            <button type="submit" class="confirm">Confirmar</button>
+                            <button type="reset" class="cancel">Cancelar</button>
+                        </div>
+                    </fieldset>
+                </form>
+                    
+                <!--Atualizar usuario-->
+                <form action="/registers/consult/users" method="post" class="form-group">
+                    <fieldset>
+                        <legend>Atualizar usuario</legend>
+
+                        <div class="input-group">
+                            <label for="user-name">Nome:</label>
+                            <input type="text" name="user-name" id="user-name" >
+                        </div>
+
+                        <div id="button-group">
+                            <button type="submit" class="confirm">Confirmar</button>
+                            <button type="reset" class="cancel">Cancelar</button>
+                        </div>
+                    </fieldset>
+                </form>     
+            </div>
+
+            <div>
+                <!--Atualizar site-->
+                <form action="/registers/consult/sites" method="post" class="form-group">
+                    <fieldset>
+                        <legend>Atualizar Site</legend>
+
+                        <div class="input-group">
+                            <label for="site-name">Nome:</label>
+                            <input type="text" name="site-name" id="site-name" >
+                        </div>
+
+                        <div id="button-group">
+                            <button type="submit" class="confirm">Confirmar</button>
+                            <button type="reset" class="cancel">Cancelar</button>
+                        </div>
+                    </fieldset>
+                </form>
+
+                <!--Atualizar musicas-->
+                <form action="/registers/consult/songs" method="post" class="form-group">
+                    <fieldset>
+                        <legend>Atualizar Musica</legend>
+
+                        <div class="input-group">
+                            <label for="song-name">Nome:</label>
+                            <input type="text" name="song-name" id="song-name" >
+                        </div>
+
+                        <div id="button-group">
+                            <button type="submit" class="confirm">Confirmar</button>
+                            <button type="reset" class="cancel">Cancelar</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+
+            <!--Atualizar observações-->
+            <div id="observation-form">
+                <form action="/registers/consult/observations" method="post" class="form-group">
+                    <fieldset>
+                        <legend>Atualizar informação/observação</legend>
+                            <div class="input-group">
+                                <label for="observation-name">Nome identificador:</label>
+                                <input type="text" name="observation-name" id="observation-name">
+                            </div>
+                            <div id="button-group">
+                                <button type="submit" class="confirm">Confirmar</button>
+                                <button type="reset" class="cancel">Cancelar</button>
+                            </div>
+                    
+                    </fieldset>
+                </form>
+            </div>
+        </main>
+    
+    </div>
 </html>
