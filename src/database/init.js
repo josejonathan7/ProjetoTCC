@@ -5,7 +5,7 @@ const initDb = {
         const db = await Database()
 
         await db.exec(`CREATE TABLE tb_animes(
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            id TEXT PRIMARY KEY,
             name TEXT,
             link TEXT,
             image TEXT
@@ -13,7 +13,7 @@ const initDb = {
         `)
 
         await db.exec(`CREATE TABLE tb_games(
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            id TEXT PRIMARY KEY,
             name TEXT,
             link TEXT,
             image TEXT
@@ -21,7 +21,7 @@ const initDb = {
         `)
 
         await db.exec(`CREATE TABLE tb_contact(
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            id TEXT PRIMARY KEY,
             name TEXT,
             link TEXT,
             description TEXT
@@ -29,28 +29,28 @@ const initDb = {
         `)
 
         await db.exec(`CREATE TABLE tb_observation(
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            id TEXT PRIMARY KEY,
             name TEXT,
             information TEXT
             ); 
         `)
 
         await db.exec(`CREATE TABLE tb_sites(
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            id TEXT PRIMARY KEY,
             name TEXT,
             link TEXT
             ); 
         `)
 
         await db.exec(`CREATE TABLE tb_songs(
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            id TEXT PRIMARY KEY,
             name TEXT,
             link TEXT
             ); 
         `)
 
         await db.exec(`CREATE TABLE tb_users(
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            id TEXT PRIMARY KEY,
             name TEXT,
             password TEXT,
             avatar TEXT,

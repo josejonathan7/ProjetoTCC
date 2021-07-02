@@ -2,6 +2,8 @@ const DataBaseSongs = require('../models/SongsModels');
 const DataBaseContact = require('../models/ContactModels');
 const DataBaseObservation = require('../models/ObservationModels');
 const { Database } = require('sqlite3');
+const { v4 } = require('uuid')
+const uuid = v4
 
 module.exports = {
     async getData(req, res){
@@ -14,6 +16,7 @@ module.exports = {
     async registerSong(req, res){
         
         await DataBaseSongs.create({
+            id: uuid(),
             name: req.body["song-name"],
             link: req.body["song-link"]
         })

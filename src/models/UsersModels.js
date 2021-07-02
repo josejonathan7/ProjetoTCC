@@ -18,11 +18,13 @@ module.exports = {
         const db = await DataBase()
 
         await db.run(`INSERT INTO tb_users (
+            id,
             name, 
             password,
             avatar,
             email_contact_link) 
             VALUES (
+            "${newRegister.id}",
             "${newRegister.name}", 
             "${newRegister.password}",
             "${newRegister.avatar}",

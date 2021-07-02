@@ -22,10 +22,12 @@ module.exports = {
         const db = await DataBase()
 
         await db.run(`INSERT INTO tb_contact (
+            id,
             name, 
             link, 
             description) 
             VALUES (
+            "${newRegister.id}",
             "${newRegister.name}",
             "${newRegister.link}",
             "${newRegister.description}"

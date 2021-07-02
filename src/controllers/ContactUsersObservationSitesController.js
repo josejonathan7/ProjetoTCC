@@ -2,6 +2,9 @@ const UsersData = require('../models/UsersModels')
 const ContactData = require('../models/ContactModels')
 const ObservationData = require('../models/ObservationModels')
 const SiteData = require('../models/SitesModels')
+const { hash } = require('bcrypt')
+const { v4 } = require('uuid')
+const uuid = v4;
 
 module.exports = {
     //acessando as páginas de criação, atualização, e deletar registros
@@ -19,6 +22,7 @@ module.exports = {
     async registerContact(req, res){
         
         await ContactData.create({
+            id: uuid(),
             name: req.body["contact-name"],
             link: req.body["contact-link"],
             description: req.body["contact-description"]
@@ -27,10 +31,13 @@ module.exports = {
         return res.render("Register")
     },
     async registerUsers(req, res){
+        const passwordBody = req.body["user-password"]
+        const encryptPasswordHash = await hash(passwordBody, 8)
 
         await UsersData.create({
+            id: uuid(),
             name: req.body["user-name"],
-            password: req.body["user-password"],
+            password: encryptPasswordHash,
             avatar: req.body.avatar,
             email_contact_link: req.body["email-contact-link"]
         })
@@ -40,6 +47,7 @@ module.exports = {
     async registerObservation(req, res){
 
         await ObservationData.create({
+            id: uuid(),
             information: req.body.information,
             name: req.body["observation-name"]
         })
@@ -49,6 +57,7 @@ module.exports = {
     async registerSite(req, res){
 
         await SiteData.create({
+            id: uuid(),
             name: req.body["site-name"],
             link: req.body["site-link"]
         })

@@ -15,7 +15,7 @@
 				<a class="nav-link" href="/songs" tabindex="4">Musicas</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="/registers" tabindex="4" onclick="Modal.authenticate()">Registros</a>
+				<button class="nav-link button-navbar" tabindex="4" onclick="Modal.openAuthenticate()">Registros</button>
 			</li>
 		</ul>
 	</nav>
@@ -40,10 +40,40 @@
 						<a class="nav-link" href="/songs" tabindex="4">Musicas</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="/registers" tabindex="4" onclick="Modal.authenticate()">Registros</a>
+						<button class="nav-link button-navbar" tabindex="4" onclick="Modal.openAuthenticate()">Registros</button>
 					</li>
 				</ul>
 			</div>
 		</div>
 	</nav>
+
+	<div class="modal-config-site">
+		<div id="modal">
+			<form action="/registers" method="post">
+				<header>
+					<h2>Logar como administrador?</h2>
+				</header>
+				<hr>
+				<div id="content-login">
+					<div class="input-group">
+						<label for="user-name">Nome:</label>
+						<input type="text" name="user-name" id="user-name">
+					</div>
+
+					<div class="input-group">
+						<label for="user-password">Senha:</label>
+						<input type="password" name="user-password" id="user-password">
+					</div>
+
+					<div id="button-login-group">
+						<button type="submit" id="login">Logar</button>
+						<button type="reset" onclick="Modal.closeAuthenticate()" id="cancel-login">Cancelar</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	
+	<form action="/registers/delete/" method="post">
+	</form>
 	<br>

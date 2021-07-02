@@ -1,6 +1,8 @@
 const DataBaseAnimes = require('../models/AnimesModels');
 const DataBaseContact = require('../models/ContactModels');
 const DataBaseObservation = require('../models/ObservationModels');
+const { v4 } = require('uuid')
+const uuid = v4
 
 module.exports = {
     async getPage1(req,res){
@@ -20,12 +22,11 @@ module.exports = {
     async registerAnime(req, res){
         
         const dataBody = {      
+            id: uuid(),
             name: req.body["anime-name"],
             link: req.body["anime-link"],
             image: req.body["anime-image"]
         }
-
-        console.log(dataBody)
 
         await DataBaseAnimes.create(dataBody)
 

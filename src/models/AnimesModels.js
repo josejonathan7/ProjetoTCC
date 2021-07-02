@@ -22,10 +22,12 @@ module.exports = {
         const db = await DataBase()
 
         await db.run(`INSERT INTO tb_animes (
+            id,
             name, 
             link, 
             image) 
             VALUES (
+            "${newRegister.id}",
             "${newRegister.name}",
             "${newRegister.link}",
             "${newRegister.image}"

@@ -5,5 +5,10 @@ const Modal = {
     close(){
         document.querySelector('div.modal-delete').classList.remove('active')
     },
-    authenticate(){}
+    openAuthenticate(){
+        document.querySelector('div.modal-config-site').classList.add('active')
+    },
+    closeAuthenticate(){
+        document.querySelector('div.modal-config-site').classList.remove('active')
+    }
 }

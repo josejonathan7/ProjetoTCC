@@ -1,6 +1,8 @@
 const DataBaseGames = require('../models/GamesModels');
 const DataBaseContact = require('../models/ContactModels');
 const DataBaseObservation = require('../models/ObservationModels');
+const { v4 } = require('uuid')
+const uuid = v4
 
 module.exports = {
     async getPage1(req, res){
@@ -20,6 +22,7 @@ module.exports = {
     async registerGame(req, res){
         
         await DataBaseGames.create({
+            id: uuid(),
             name: req.body["games-name"],
             link: req.body["games-link"],
             image: req.body["games-image"]
