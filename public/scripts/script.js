@@ -4,5 +4,6 @@ const Modal = {
     },
     close(){
         document.querySelector('div.modal-delete').classList.remove('active')
-    }
+    },
+    authenticate(){}
 }

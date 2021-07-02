@@ -1,4 +1,4 @@
-body div#update-anime{
+body div#update-delete-data{
     width: 100%;
     display: flex;
     justify-content: center;
@@ -6,7 +6,7 @@ body div#update-anime{
     
 }
 
-div#update-anime header{
+div#update-delete-data header{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -15,13 +15,13 @@ div#update-anime header{
     background-color: darkgray;
 }
 
-div#update-anime header h1{
+div#update-delete-data header h1{
     width: 100%;
     text-align: center;
     color: black;
 }
 
-div#update-anime header a{
+div#update-delete-data header a{
     font-size: 50px;
     font-weight: 500;
     margin-left: 1%;
@@ -29,17 +29,18 @@ div#update-anime header a{
 }
 
 
-div#update-anime main{
+div#update-delete-data main{
     display: flex;
     flex-direction: row;
     width: 100%;
     justify-content: space-between;
     overflow: hidden;
     align-items: center;
+    margin-bottom: 30px;
 }
 /*formulario*/
 
-div#update-anime main form{
+div#update-delete-data main form{
     width: 50%;
     background-color: whitesmoke;
     border: 1px solid black;
@@ -49,35 +50,34 @@ div#update-anime main form{
     
 }
 
-div#update-anime main form legend{
+div#update-delete-data main form legend{
     background-color: darkgray;
     text-align: center;
     padding: 15px;
     border-radius: 8px 8px 0 0;
 }
 
-div#update-anime main form div#form-content-update{
+div#update-delete-data main form div#form-content-update{
     padding: 0 20px 20px;
 }
 
-div#update-anime main form div#button-group{
+div#update-delete-data main form div#button-group{
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-div#update-anime main form div#button-group button#update-cancel-button{
-   width: 45%;
-   color: red;
-   border: 1px solid red;
-   border-radius: 8px;
-   transition: 0.5s;
-   box-shadow: 3px rgba(0, 0, 0, 0.7);
+button.clear{
+    background-color: white;
+    color: dimgray;
+    border: 1px solid dimgray;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+    transition: 0.5s;
 }
 
-button#update-cancel-button:hover{
-    box-shadow: 3px 5px 5px 5px rgba(0, 0, 0, 0.5);
+button.clear:hover{
+    box-shadow: 2px 5px 5px 5px rgba(0, 0, 0, 0.8);
     filter: brightness(0.8);
 }
 
@@ -96,7 +96,7 @@ button#update-confirm-button:hover{
 }
 
 /*aside*/
-div#update-anime main aside{
+div#update-delete-data main aside{
     width: 30%;
     position: relative;
     right: 5%;
@@ -105,14 +105,14 @@ div#update-anime main aside{
     border-radius: 12px;
 }
 
-div#update-anime main aside div header{
+div#update-delete-data main aside div header{
     padding: 10px;
     background-color: darkgray;
     border: 1px solid black;
     border-radius: 8px 8px 0 0;
 }
 
-div#update-anime main aside div div#delete-image-button{
+div#update-delete-data main aside div div#delete-image-button{
     display: flex;
     flex-direction: row;
     padding: 10px;
@@ -120,7 +120,7 @@ div#update-anime main aside div div#delete-image-button{
     justify-content: space-evenly;
 }
 
-div#update-anime main aside div img{
+div#update-delete-data main aside div img{
     width: 35%;
     height: 35%;
 }
@@ -144,7 +144,7 @@ button#open-modal-delete-button:hover{
 }
 
 /* Modal */
-div#update-anime div.modal-delete{
+div#update-delete-data div.modal-delete{
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
@@ -160,7 +160,7 @@ div#update-anime div.modal-delete{
 
 }
 
-div#update-anime div.modal-delete.active{
+div#update-delete-data div.modal-delete.active{
     visibility: visible;
     opacity: 1;
 }
@@ -176,7 +176,8 @@ div.modal-delete div#modal{
     border: 1px soli white;
 }
 
-div#modal header{
+div#modal header,
+div#modal header h2{
     background-color: #F0F2f5;
 }
 

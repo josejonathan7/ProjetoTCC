@@ -28,13 +28,16 @@ div#content aside{
     display: flex;
     flex-direction: column;
     width: 95%;
-    background-color: burlywood;
+    background-color: whitesmoke;
     border-radius: 16px;
-    height: 600px;
+    height: 500px;
+    border: 1px solid black;
 }
 
-aside div header h2{
+aside div header h2#user-data{
     text-align: center;
+    background-color: royalblue;
+    border-radius: 16px 16px 0 0;
 }
 
 aside div header div {
@@ -46,7 +49,7 @@ aside div header div {
 }
 
 aside div header img{
-    width: 40%;
+    width: 35%;
     border-radius: 50%;
 }
 
@@ -85,19 +88,28 @@ main#main-form div{
     align-items: center;
 }
 
+/*formulario*/
+
 main#main-form form{
     width: 45%;
-    background-color: tomato;
-    padding: 30px;
+    background-color: floralwhite;
     border-radius: 12px;
+    border: 1px solid black;
 }
 
-main#main-form div#observation-form{
-    position: relative;
-    left: 28%;
+main#main-form form fieldset legend{
+    background-color: darkgrey;
+    border-radius: 12px 12px 0 0;
+    padding: 10px;
+    text-align: center;
 }
 
-/*formulario de animes*/
+main#main-form form fieldset div.content{
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
 form fieldset div.input-group{
     margin: 0 0 20px;
     display: flex;
@@ -114,6 +126,8 @@ form div.input-group input{
     width: 100%;
     border-radius: 12px;
     height: 40px;
+    padding: 10px;
+    font-size: 20px;
 }
 
 /* Utilidades */
@@ -124,34 +138,50 @@ main#main-form form div#button-group{
 }
 
 form div#button-group button{
-    width: 40%;
+    width: 45%;
     padding: 10px;
     border-radius: 16px;
-    border: none;
 }
 
 
-button.confirm{
-    background-color: greenyellow;
-    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.8);
+button.search{
+    background-color: white;
+    color: blueviolet;
+    border: 1px solid blueviolet;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+    transition: 0.5s;
 }
 
-button.confirm:hover{
-    transition: 1s;
-    background-color: limegreen;
+button.search:hover{
     box-shadow: 2px 5px 5px 5px rgba(0, 0, 0, 0.8);
-    filter: brightness(0.5);
+    filter: brightness(0.8);
 }
 
 
-button.cancel{
-    background-color: var(--red);
-    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.8);
+button.clear{
+    background-color: white;
+    color: dimgray;
+    border: 1px solid dimgray;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+    transition: 0.5s;
 }
 
-button.cancel:hover{
-    transition: 1s;
-    background-color: red;
+button.clear:hover{
     box-shadow: 2px 5px 5px 5px rgba(0, 0, 0, 0.8);
-    filter: brightness(0.7);
+    filter: brightness(0.8);
 }
+
+
+button.new-register{
+    background-color: white;
+    color: limegreen;
+    border: 1px solid limegreen;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+    transition: 0.5s;
+}
+
+button.new-register:hover{
+    box-shadow: 2px 5px 5px 5px rgba(0, 0, 0, 0.8);
+    filter: brightness(0.8);
+}
+

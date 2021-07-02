@@ -8,7 +8,7 @@
 </head>
 
 <body style="background-color: cornsilk">
-    <div id="update-anime">
+    <div id="update-delete-data">
         <header>
             <a href="/registers/update"> &lt; </a>
             <h1>Atualizar Dados</h1>
@@ -23,25 +23,26 @@
                         <legend>
                             <h2>Insira os novos Dados</h2>
                         </legend>
-                        <div class="input-group">
-                            <label for="song-id">Id</label>
-                            <input type="text" name="song-id" id="song-id" disabled value="<%= dataResult.id %>">
-                        </div>
+                        <div id="form-content-update">
+                            <div class="input-group">
+                                <label for="song-id">Id</label>
+                                <input type="text" name="song-id" id="song-id" disabled value="<%= dataResult.id %>">
+                            </div>
 
-                        <div class="input-group">
-                            <label for="song-name">Nome:</label>
-                            <input type="text" name="song-name" id="song-name" value="<%=dataResult.name %>"
-                                style="color: black;">
-                        </div>
+                            <div class="input-group">
+                                <label for="song-name">Nome:</label>
+                                <input type="text" name="song-name" id="song-name" value="<%=dataResult.name %>">
+                            </div>
 
-                        <div class="input-group">
-                            <label for="song-link">Link:</label>
-                            <input type="text" name="song-link" id="song-link" value="<%= dataResult.link %>">
-                        </div>
+                            <div class="input-group">
+                                <label for="song-link">Link:</label>
+                                <input type="text" name="song-link" id="song-link" value="<%= dataResult.link %>">
+                            </div>
 
-                        <div id="button-group">
-                            <button type="submit" class="confirm">Confirmar</button>
-                            <button type="reset" class="cancel">Cancelar</button>
+                            <div id="button-group">
+                                <button type="submit" id="update-confirm-button">Confirmar</button>
+                                <button type="reset" class="clear">Limpar Alterações feitas</button>
+                            </div>
                         </div>
                     </fieldset>
                 </form>
@@ -50,7 +51,7 @@
                 <aside>
                     <div>
                         <header>
-                            <h2>Deletar Anime!</h2>
+                            <h2>Deletar Musica!</h2>
                         </header>
                         <div id="delete-image-button">
                             <button type="submit" onclick="Modal.open()" id="open-modal-delete-button">Deletar</button>
@@ -60,21 +61,7 @@
 
             </main>
 
-
-            <div class="modal-delete">
-                <div id="modal">
-                    <header>
-                        <h3>Tem certeza que deseja deletar?</h3>
-                    </header>
-                    <div id="button-delete-group">
-                        <button type="submit" form="delete-form" id="confirm-delete">Confirmar</button>
-                        <button type="reset" onclick="Modal.close()" id="cancel-delete">Cancelar</button>
-                    </div>
-                </div>
-            </div>
-
-            <form action="/registers/delete/songs/<%= dataResult.id %>" method="post" id="delete-form">
-            </form>
+            <%- include("../components/Page-modal-Delete.ejs", {router: "songs", id: dataResult.id}) %> 
 
             <% }) %>
 

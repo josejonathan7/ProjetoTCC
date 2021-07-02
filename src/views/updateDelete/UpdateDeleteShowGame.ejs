@@ -8,7 +8,7 @@
 </head>
 
 <body style="background-color: cornsilk">
-    <div id="update-anime">
+    <div id="update-delete-data">
         <header>
             <a href="/registers/update"> &lt; </a>
             <h1>Atualizar Dados de Jogos</h1>
@@ -20,36 +20,35 @@
                     <form action="/registers/update/games/<%= dataResult.id %> " method="post">
                     <fieldset>
                         <legend><h2>Insira os novos Dados</h2></legend>
-                        <div class="input-group">
-                            <label for="games-id">Id</label>
-                            <input type="text" name="games-id" id="games-id" disabled value="<%= dataResult.id %>">
-                        </div>
+                        <div id="form-content-update">
+                            <div class="input-group">
+                                <label for="games-id">Id</label>
+                                <input type="text" name="games-id" id="games-id" disabled value="<%= dataResult.id %>">
+                            </div>
 
-                        <div class="input-group">
-                            <label for="games-name">Nome:</label>
-                            <input type="text" name="games-name" id="games-name" value="<%=dataResult.name %>"
-                                style="color: black;">
-                        </div>
+                            <div class="input-group">
+                                <label for="games-name">Nome:</label>
+                                <input type="text" name="games-name" id="games-name" value="<%=dataResult.name %>">
+                            </div>
 
-                        <div class="input-group">
-                            <label for="games-link">Link:</label>
-                            <input type="text" name="games-link" id="games-link" value="<%= dataResult.link %>">
-                        </div>
+                            <div class="input-group">
+                                <label for="games-link">Link:</label>
+                                <input type="text" name="games-link" id="games-link" value="<%= dataResult.link %>">
+                            </div>
 
-                        <div class="input-group">
-                            <label for="games-image">Imagem:</label>
-                            <input type="text" name="games-image" id="games-image" value="<%= dataResult.image %>">
-                        </div>
+                            <div class="input-group">
+                                <label for="games-image">Imagem:</label>
+                                <input type="text" name="games-image" id="games-image" value="<%= dataResult.image %>">
+                            </div>
 
-                        <div id="button-group">
-                            <button type="submit" class="confirm">Confirmar</button>
-                            <button type="reset" class="cancel">Cancelar</button>
+                            <div id="button-group">
+                                <button type="submit" id="update-confirm-button">Confirmar</button>
+                                <button type="reset" class="clear">Limpar Alterações feitas</button>
+                            </div>
                         </div>
                     </fieldset>
                     </form>
-
-
-                    
+        
                 <aside>
                     <div>
                         <header>
@@ -63,21 +62,8 @@
                 </aside>
                 </main>
 
-                
-            <div class="modal-delete">
-                <div id="modal">
-                    <header>
-                        <h3>Tem certeza que deseja deletar?</h3>
-                    </header>
-                    <div id="button-delete-group">
-                        <button type="submit" form="delete-form" id="confirm-delete">Confirmar</button>
-                        <button type="reset" onclick="Modal.close()" id="cancel-delete">Cancelar</button>
-                    </div>
-                </div>
-            </div>
+                <%- include("../components/Page-modal-Delete.ejs", {router: "games", id: dataResult.id }) %> 
 
-            <form action="/registers/delete/games/<%= dataResult.id %>" method="post" id="delete-form">
-            </form>
                 <% }) %>
         
     </div>
