@@ -18,7 +18,9 @@ router.get("/gamesPage2", (req, res) => GamesController.getPage2(req,res));
 
 router.get("/songs", (req, res) => SongsController.getData(req,res));
 
-router.get("/registers", (req, res) => ContactUsersObservationSitesController.accesFormNew(req ,res));
+
+
+router.post("/registers", (req, res) =>{ContactUsersObservationSitesController.accesFormNew(req ,res)});
 
 router.get("/registers/update", (req, res) => ContactUsersObservationSitesController.accesFormUpdate(req ,res))
 

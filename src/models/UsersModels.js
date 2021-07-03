@@ -56,15 +56,19 @@ module.exports = {
 
         const db = await DataBase()
 
-        const user = await db.all(`SELECT * FROM tb_users WHERE name = "${info.name}"`)
+        const user = await db.all(`SELECT * FROM tb_users WHERE name = "${info}"`)
 
         await db.close()
 
-        return user.map(user => ({
-            id: user.id,
-            name: user.name,
-            avatar: user.avatar,
-            email_contact_link: user.email_contact_link
-        }))
-    }
+        
+            return user.map(user => ({
+                id: user.id,
+                password: user.password,
+                name: user.name,
+                avatar: user.avatar,
+                email_contact_link: user.email_contact_link
+            }))
+        
+    },
+    
 }

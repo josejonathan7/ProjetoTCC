@@ -2,21 +2,54 @@ const UsersData = require('../models/UsersModels')
 const ContactData = require('../models/ContactModels')
 const ObservationData = require('../models/ObservationModels')
 const SiteData = require('../models/SitesModels')
-const { hash } = require('bcrypt')
+const { hash, compare } = require('bcrypt')
 const { v4 } = require('uuid')
 const uuid = v4;
 
 module.exports = {
     //acessando as páginas de criação, atualização, e deletar registros
-    accesFormNew(req, res){
-        return res.render("Register")
-    },
-    accesFormDelete(req, res){
-        return res.render("DeleteRegisters")
+    async accesFormNew(req, res){
+        
+        const user = req.body["user-name"]
+        const password = req.body["user-password"]
+
+        const data = await UsersData.getForName(user)        
+
+        const consults = data[0]        
+
+        try {
+
+            async function authenticate(consults){
+
+                if(!consults.name || consults.name == undefined){
+                    throw new Error("Login/Senha inválido!")
+                }
+
+                const passwordAuthenticate = await compare(password, consults.password)
+        
+                if(!passwordAuthenticate){
+                    throw new Error("Login/Senha inválido!")
+                }
+
+            }
+
+            authenticate(consults)
+
+        } catch (error) {
+            
+            return res.status(401).send(error.message)
+        }
+
+
+    
+
+        return res.render("Register", {userData: data})
     },
     accesFormUpdate(req, res){
         return res.render("UpdatedRegisters")
     },
+
+
 
     //criação de novo contato/observação/usuario/sites 
     async registerContact(req, res){
