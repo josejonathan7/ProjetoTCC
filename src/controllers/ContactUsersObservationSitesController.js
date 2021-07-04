@@ -13,37 +13,32 @@ module.exports = {
         const user = req.body["user-name"]
         const password = req.body["user-password"]
 
-        const data = await UsersData.getForName(user)        
+        const data = await UsersData.get()    
 
-        const consults = data[0]        
+        const consult = data.find(data => data.name === user)
+
+        if(consult == null){
+            return res.status(401).send("Login/Password invalid!")
+        }
+
+        console.log(consult.password)
 
         try {
 
-            async function authenticate(consults){
+            if(await compare(password, consult.password)){
+                
+                return res.render("Register", {userData: data})
 
-                if(!consults.name || consults.name == undefined){
-                    throw new Error("Login/Senha inválido!")
-                }
-
-                const passwordAuthenticate = await compare(password, consults.password)
-        
-                if(!passwordAuthenticate){
-                    throw new Error("Login/Senha inválido!")
-                }
+            }else{
+            
+                    return res.status(401).send("Password invalid!")
 
             }
 
-            authenticate(consults)
-
-        } catch (error) {
+        } catch {
             
-            return res.status(401).send(error.message)
+            return res.status(500).send()
         }
-
-
-    
-
-        return res.render("Register", {userData: data})
     },
     accesFormUpdate(req, res){
         return res.render("UpdatedRegisters")

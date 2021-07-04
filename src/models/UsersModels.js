@@ -4,12 +4,13 @@ module.exports = {
     async get(){
         const db = await DataBase()
 
-        const users = await db.all(`SELECT name, avatar, email_contact_link FROM tb_users`)
+        const users = await db.all(`SELECT * FROM tb_users`)
 
         await db.close()
 
         return users.map(users => ({
             name: users.name,
+            password: users.password,
             avatar: users.avatar,
             email_contact_link: users.email_contact_link
         }))

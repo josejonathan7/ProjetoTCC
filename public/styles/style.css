@@ -143,6 +143,23 @@ button.button-navbar{
   background-color: transparent;
 }
 
+nav#menu_full{
+  padding: 0;
+}
+
+nav#menu_full ul.navbar-nav{
+  width: 50%;
+}
+
+nav#menu_full li.nav-item a img,
+nav#menu_full li.nav-item button img{
+  width: 50%;
+}
+
+nav#menu_full li.nav-item a img{
+  margin-left: 25%;
+}
+
 @media only screen and (min-device-width: 60.1875rem){
   html{
     font-size:1.25rem;
