@@ -17,6 +17,34 @@ module.exports = {
         }))
 
     },
+    async getLimit(init){
+
+        
+        const db = await DataBase()
+
+        const animes = await db.all(`SELECT * FROM tb_animes ORDER BY name LIMIT ${init}, 27`)
+
+        await db.close()
+
+        return animes.map(animes => ({
+            id: animes.id,
+            name: animes.name,
+            link:  animes.link,
+            image:  animes.image
+        }))
+
+    },
+    async countRow(){
+        
+        const db = await DataBase()
+
+        const total = await db.all(`SELECT COUNT (*) FROM tb_animes`)
+
+        await db.close()
+
+
+        return total[0]["COUNT (*)"];
+    },
     async create(newRegister){  
 
         const db = await DataBase()

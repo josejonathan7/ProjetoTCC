@@ -16,262 +16,38 @@
 		
 		<%- include("./components/Page-Pagination.ejs", {Page1: "/animes", Page2: "/animesPage2"}) %>
 		
-		<main>
-			<!-- 1º Linha de cards -->
-			<div class="row">
-				<div class="col-sm-4">
-					<div class="card-content">
-					<% dataAnimes.forEach(dataAnimes => { %>
-						
-    					<img src="<%= dataAnimes.image %>" class="card-img-top">
-    					<div class="card-footer">
-        					<a href="<%= dataAnimes.link %>" target="_blank" tabindex="7"><%= dataAnimes.name %></a>
-    					</div>
-					<% }) %> 
 
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="card-content">
-						<img src="/images/animes/3dkanojo.jpg" class="card-img-top">
-						<div class="card-footer" id="ajuste-linha">
-							<a href="https://www.meuanime.com/3d-kanojo-real-girl" target="_blank" tabindex="8">3D kanojo: Real Girl</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="card-content">
-						<img src="/images/animes/91days.jpg" class="card-img-top">
-						<div class="card-footer">
-							<a href="https://www.meuanime.com/91-days" target="_blank" tabindex="9">91 Days</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<br>
-			<!-- 2º Linha de cards -->
+		<button id="value-button" onclick="Url.animeUrl()" style="padding: 50px;"></button>
+
+		<a href="?page=1" id="page-one">Paina 1</a>
+		<a href="?page=2" id="page-two">Paina 2</a>
+
+		<input type="hidden" name="numberRows" id="numberRows" value="<%= totalRows %>">
+
+		<main>
+
 			<div class="row">
-				<div class="col-sm-4">
-					<div class="card-content">
-						<img src="/images/animes/AbsoluteDuo.jpg" class="card-img-top">
-						<div class="card-footer">
-							<a href="https://www.meuanime.com/absolute-duo" target="_blank" tabindex="10">Absolute Duo</a>
+
+				<% dataAnimes.forEach(dataAnimes=> { %>
+
+					<div class="col-sm-4">
+						<div class="card-content">
+
+							<img src="<%= dataAnimes.image %>" class="card-img-top">
+							<div class="card-footer">
+								<a href="<%= dataAnimes.link %>" target="_blank" tabindex="7">
+									<%= dataAnimes.name %>
+								</a>
+							</div>
+
 						</div>
 					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="card-content">
-						<img src="/images/animes/AccelWorld.jpg" class="card-img-top">
-						<div class="card-footer">
-							<a href="https://www.meuanime.com/accel-world" target="_blank" tabindex="11">Accel World</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="card-content">
-						<img src="/images/animes/AfroSamurai.jpg" class="card-img-top">
-						<div class="card-footer">
-							<a href="https://www.meuanime.com/afro-samurai" target="_blank" tabindex="12">Afro Samurai</a>
-						</div>
-					</div>
-				</div>
+
+				<% }) %>
+
 			</div>
-			<br>
-			<!-- 3º Linha de cards -->
-			<div class="row">
-				<div class="col-sm-4">
-					<div class="card-content">
-						<img src="/images/animes/Ajin.jpg" class="card-img-top">
-						<div class="card-footer">
-							<a href="https://www.meuanime.com/ajin" target="_blank" tabindex="13">Ajin</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="card-content">
-						<img src="/images/animes/AkameGaKill.jpg" class="card-img-top">
-						<div class="card-footer">
-							<a href="https://www.meuanime.com/akame-ga-kill" target="_blank" tabindex="14">Akame ga kill</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="card-content">
-						<img src="/images/animes/Akikan.jpg" class="card-img-top">
-						<div class="card-footer">
-							<a href="https://www.meuanime.com/akikan" target="_blank" tabindex="15">Akikan</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<br>
-			<!-- 4º Linha de cards -->
-			<div class="row">
-				<div class="col-sm-4">
-					<div class="card-content">
-						<img src="/images/animes/AnoHana.jpg" class="card-img-top">
-						<div class="card-footer">
-							<a href="https://www.meuanime.com/ano-hana" target="_blank" tabindex="16">Ano Hana</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="card-content">
-						<img src="/images/animes/Baki.jpg" class="card-img-top">
-						<div class="card-footer">
-							<a href="https://www.meuanime.com/baki" target="_blank" tabindex="17">Baki</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-4">	
-					<div class="card-content">
-						<img src="/images/animes/BattleGirl.jpg" class="card-img-top">
-						<div class="card-footer" id="ajuste-linha">
-							<a href="https://www.meuanime.com/battle-girl-high-school" target="_blank" tabindex="18">Battle Girl High School</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<br>
-			<!-- 5º Linha de cards -->
-			<div class="row">		
-				<div class="col-sm-4">
-					<div class="card-content">
-						<img src="/images/animes/Beastar.jpg" class="card-img-top">
-						<div class="card-footer">
-							<a href="https://www.meuanime.com/beastars" target="_blank" tabindex="19">Beastar</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="card-content">
-						<img src="/images/animes/Beelzebub.jpg" class="card-img-top">
-						<div class="card-footer">
-							<a href="https://www.meuanime.com/beelzebub" target="_blank" tabindex="20">Beelzebub</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="card-content">
-						<img src="/images/animes/BlackClover.jpg" class="card-img-top">
-						<div class="card-footer">
-							<a href="https://www.meuanime.com/black-clover" target="_blank" tabindex="21">Black Clover</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<br>
-			<!-- 6º Linha de cards -->
-			<div class="row">				
-				<div class="col-sm-4">
-					<div class="card-content">
-						<img src="/images/animes/Bleach.jpg" class="card-img-top">
-						<div class="card-footer">
-							<a href="https://www.meuanime.com/bleach" target="_blank" tabindex="22">Bleach</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-4">	
-					<div class="card-content">
-						<img src="/images/animes/BokuNoHero.jpg" class="card-img-top">
-						<div class="card-footer">
-							<a href="https://www.meuanime.com/boku-no-hero-academia" target="_blank" tabindex="23">Boku no Hero</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="card-content">
-						<img src="/images/animes/Boruto.jpg" class="card-img-top">
-						<div class="card-footer" id="ajuste-linha">
-							<a href="https://www.meuanime.com/boruto-naruto-next-generations" target="_blank" tabindex="24">Boruto: Next Generations</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<br>
-			<!-- 7º Linha de cards -->
-			<div class="row">
-				<div class="col-sm-4">
-					<div class="card-content">
-						<img src="/images/animes/Campione.jpg" class="card-img-top">
-						<div class="card-footer">
-							<a href="https://www.meuanime.com/campione" target="_blank" tabindex="25">Campione</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="card-content">
-						<img src="/images/animes/Canaan.jpg" class="card-img-top">
-						<div class="card-footer">
-							<a href="https://www.meuanime.com/canaan" target="_blank" tabindex="26">Canaan</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="card-content">
-						<img src="/images/animes/Castlevania.jpg" class="card-img-top">
-						<div class="card-footer">
-							<a href="https://www.meuanime.com/castlevania" target="_blank" tabindex="27">Castlevania</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<br>
-			<!-- 8º Linha de cards -->
-			<div class="row">
-				<div class="col-sm-4">
-					<div class="card-content">
-						<img src="/images/animes/ChaosDragon.jpg" class="card-img-top">
-						<div class="card-footer">
-							<a href="https://www.meuanime.com/chaos-dragon" target="_blank" tabindex="28">Chaos Dragon</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="card-content">
-						<img src="/images/animes/Charlotte.jpg" class="card-img-top">
-						<div class="card-footer">
-							<a href="https://www.meuanime.com/charlotte" target="_blank" tabindex="29">Charlotte</a>
-						</div>
-					</div>
-				</div>	
-				<div class="col-sm-4">
-					<div class="card-content">
-						<img src="/images/animes/ChouYuuSekai.jpg" class="card-img-top">
-						<div class="card-footer">
-							<a href="https://www.meuanime.com/chou-yuu-sekai-being-the-reality" target="_blank" tabindex="30">Chou Yuu Sekai</a>
-						</div>
-					</div>
-				</div>
-			</div>	
-			<br>
-			<!-- 9º Linha de cards -->
-			<div class="row">
-				<div class="col-sm-4">
-					<div class="card-content">
-						<img src="/images/animes/DGrayMan.jpg" class="card-img-top">
-						<div class="card-footer">
-							<a href="https://www.meuanime.com/d-gray-man" target="_blank" tabindex="31">D-Gray Man</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="card-content">
-						<img src="/images/animes/DarlingFranxx.jpg" class="card-img-top">
-						<div class="card-footer" id="ajuste-linha">
-							<a href="https://www.meuanime.com/darling-in-the-franxx" target="_blank" tabindex="32">Darling in the FranXX</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="card-content">
-						<img src="/images/animes/DateaLive.jpg" class="card-img-top">
-						<div class="card-footer">
-							<a href="https://www.meuanime.com/date-a-live" target="_blank" tabindex="33">Date a Live</a>
-						</div>
-					</div>
-				</div>
-			</div>
+
+
 		</main>
 		<br>
 		<!-- Paginação -->

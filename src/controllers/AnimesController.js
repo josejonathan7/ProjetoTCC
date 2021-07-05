@@ -10,7 +10,11 @@ module.exports = {
         const dataContact = await DataBaseContact.get()
         const dataObservation = await DataBaseObservation.get()
 
-        return res.render("animes", { dataAnimes, dataContact, dataObservation })
+        const totalRows = await DataBaseAnimes.countRow()
+        const dataAnimesLimit = await DataBaseAnimes.getLimit(27);
+
+
+        return res.render("animes", { dataAnimes, dataContact, dataObservation, dataAnimesLimit, totalRows })
     },
     async getPage2(req,res){
         const dataAnimes = await DataBaseAnimes.get()
