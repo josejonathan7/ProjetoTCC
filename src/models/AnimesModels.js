@@ -17,12 +17,12 @@ module.exports = {
         }))
 
     },
-    async getLimit(init){
+    async getLimit(start, recordsPerPage){
 
         
         const db = await DataBase()
 
-        const animes = await db.all(`SELECT * FROM tb_animes ORDER BY name LIMIT ${init}, 27`)
+        const animes = await db.all(`SELECT * FROM tb_animes ORDER BY name LIMIT ${start}, ${recordsPerPage}`)
 
         await db.close()
 

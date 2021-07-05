@@ -1,11 +1,13 @@
 <ul class="pagination pagination-lg justify-content-center">
-    <li class="page-item">
-        <a class="page-link" href="<%= Page1 %>" tabindex="34">1</a>
-    </li>
-    <li class="page-item">
-        <a class="page-link" href="<%= Page2 %>" tabindex="35" id="proximaPagina">2</a>
-    </li>
+    <% for( let i = 1; i <= numberOfPages; i++ ) { %>
+		
+        <li class="page-item">
+            <a href="?page=<%= i %>" class="page-link <% if (current == i) { %>
+                active
+            <% } %>"><%= i %></a>
+            </li>
 
+    <% } %>
 </ul>
 
 

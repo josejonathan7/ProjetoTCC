@@ -5,23 +5,33 @@ const { v4 } = require('uuid')
 const uuid = v4
 
 module.exports = {
-    async getPage1(req,res){
-        const dataAnimes = await DataBaseAnimes.get()
+    async getPage(req,res){
         const dataContact = await DataBaseContact.get()
         const dataObservation = await DataBaseObservation.get()
 
+        //quantidade de registros
         const totalRows = await DataBaseAnimes.countRow()
-        const dataAnimesLimit = await DataBaseAnimes.getLimit(27);
+        
+        //quantidade de registro por página
+        let recordsPerPage = 27
+
+        //quantidade de paginas 
+        let numberOfPages = Math.ceil(totalRows / recordsPerPage)
+
+        //página atual
+        const urlParams = req.query.page
+        const current = urlParams ? urlParams : 1  
+
+        //calculo de registro inicio da página
+        let start = (recordsPerPage * current) - recordsPerPage;
 
 
-        return res.render("animes", { dataAnimes, dataContact, dataObservation, dataAnimesLimit, totalRows })
-    },
-    async getPage2(req,res){
-        const dataAnimes = await DataBaseAnimes.get()
-        const dataContact = await DataBaseContact.get()
-        const dataObservation = await DataBaseObservation.get()
 
-        return res.render("animes2", { dataAnimes, dataContact, dataObservation })
+        
+        const dataAnimesLimit = await DataBaseAnimes.getLimit(start, recordsPerPage);
+
+
+        return res.render("animes", { dataContact, dataObservation, dataAnimesLimit, numberOfPages, current })
     },
     async registerAnime(req, res){
         

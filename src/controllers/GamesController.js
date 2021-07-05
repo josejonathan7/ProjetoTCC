@@ -5,19 +5,29 @@ const { v4 } = require('uuid')
 const uuid = v4
 
 module.exports = {
-    async getPage1(req, res){
+    async getPage(req, res) {
         const dataContact = await DataBaseContact.get()
         const dataObservation = await DataBaseObservation.get()
-        const dataGames = await DataBaseGames.get()
 
-        return res.render("jogos", { dataContact, dataGames, dataObservation })
-    },
-    async getPage2(req, res){
-        const dataContact = await DataBaseContact.get()
-        const dataObservation = await DataBaseObservation.get()
-        const dataGames = await DataBaseGames.get()
+        //quantidade de registros
+        const totalRows = await DataBaseGames.countRow()
 
-        return res.render("jogos2", { dataContact, dataGames, dataObservation })
+        //quantidade de registro por página
+        let recordsPerPage = 18
+
+        //quantidade de paginas 
+        let numberOfPages = Math.ceil(totalRows / recordsPerPage)
+
+        //página atual
+        const urlParams = req.query.page
+        const current = urlParams ? urlParams : 1
+
+        //calculo de registro inicio da página
+        let start = (recordsPerPage * current) - recordsPerPage;
+
+        const dataGamesLimit = await DataBaseGames.getLimit(start, recordsPerPage);
+
+        return res.render("jogos", { dataContact, dataObservation, dataGamesLimit, numberOfPages, current })
     },
     async registerGame(req, res){
         

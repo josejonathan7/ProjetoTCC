@@ -8,13 +8,9 @@ const router = express.Router();
 
 router.get("/", (req, res) => IndexController.getData(req, res));
 
-router.get("/animes", (req, res) => AnimesController.getPage1(req, res));
+router.get("/animes", (req, res) => AnimesController.getPage(req, res));
 
-router.get("/animesPage2", (req, res) => AnimesController.getPage2(req, res));
-
-router.get("/games", (req, res) => GamesController.getPage1(req, res));
-
-router.get("/gamesPage2", (req, res) => GamesController.getPage2(req,res));
+router.get("/games", (req, res) => GamesController.getPage(req, res));
 
 router.get("/songs", (req, res) => SongsController.getData(req,res));
 

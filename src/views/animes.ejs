@@ -14,29 +14,24 @@
 		<br>
 		<!-- Paginação -->
 		
-		<%- include("./components/Page-Pagination.ejs", {Page1: "/animes", Page2: "/animesPage2"}) %>
+		<%- include("./components/Page-Pagination.ejs", {numberOfPages: numberOfPages, current: current}) %>
 		
 
-		<button id="value-button" onclick="Url.animeUrl()" style="padding: 50px;"></button>
 
-		<a href="?page=1" id="page-one">Paina 1</a>
-		<a href="?page=2" id="page-two">Paina 2</a>
-
-		<input type="hidden" name="numberRows" id="numberRows" value="<%= totalRows %>">
 
 		<main>
 
 			<div class="row">
 
-				<% dataAnimes.forEach(dataAnimes=> { %>
+				<% dataAnimesLimit.forEach(dataAnimesLimit=> { %>
 
 					<div class="col-sm-4">
 						<div class="card-content">
 
-							<img src="<%= dataAnimes.image %>" class="card-img-top">
+							<img src="<%= dataAnimesLimit.image %>" class="card-img-top">
 							<div class="card-footer">
-								<a href="<%= dataAnimes.link %>" target="_blank" tabindex="7">
-									<%= dataAnimes.name %>
+								<a href="<%= dataAnimesLimit.link %>" target="_blank" tabindex="7">
+									<%= dataAnimesLimit.name %>
 								</a>
 							</div>
 
@@ -52,8 +47,8 @@
 		<br>
 		<!-- Paginação -->
 		
-		<%- include("./components/Page-Pagination.ejs", {Page1: "/animes", Page2: "/animesPage2"}) %>
-
+	<%- include("./components/Page-Pagination.ejs", {numberOfPages: numberOfPages, current: current}) %>
+		
 		<!-- Observação -->
 		<%- include("./components/Page-Note.ejs")  %> 
 	</div>

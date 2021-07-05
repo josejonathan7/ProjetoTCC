@@ -17,6 +17,35 @@ module.exports = {
         }))
 
     },
+    
+    async getLimit(start, recordsPerPage){
+
+        
+        const db = await DataBase()
+
+        const games = await db.all(`SELECT * FROM tb_games ORDER BY name LIMIT ${start}, ${recordsPerPage}`)
+
+        await db.close()
+
+        return games.map(games => ({
+            id: games.id,
+            name: games.name,
+            link:  games.link,
+            image:  games.image
+        }))
+
+    },
+    async countRow(){
+        
+        const db = await DataBase()
+
+        const total = await db.all(`SELECT COUNT (*) FROM tb_games`)
+
+        await db.close()
+
+
+        return total[0]["COUNT (*)"];
+    },
     async create(newRegister){  
 
         const db = await DataBase()
