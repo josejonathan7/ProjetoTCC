@@ -50,10 +50,10 @@
 	<%- include("./components/Page-Pagination.ejs", {numberOfPages: numberOfPages, current: current}) %>
 		
 		<!-- Observação -->
-		<%- include("./components/Page-Note.ejs")  %> 
+		<%- include("./components/Page-Note.ejs", { title: "Observação!", suggestion: dataSuggestion, observation: dataObservation })  %> 
 	</div>
 
 	<!--Rodapé-->
-	<%- include("./components/Page-Footer.ejs") %> 
+	<%- include("./components/Page-Footer.ejs", { contacts: contacts}) %> 
 </body>
 </html>

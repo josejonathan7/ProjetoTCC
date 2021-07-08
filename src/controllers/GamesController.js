@@ -9,6 +9,8 @@ module.exports = {
         const dataContact = await DataBaseContact.get()
         const dataObservation = await DataBaseObservation.get()
 
+        //sistema de paginação do conteúdo
+
         //quantidade de registros
         const totalRows = await DataBaseGames.countRow()
 
@@ -27,7 +29,49 @@ module.exports = {
 
         const dataGamesLimit = await DataBaseGames.getLimit(start, recordsPerPage);
 
-        return res.render("jogos", { dataContact, dataObservation, dataGamesLimit, numberOfPages, current })
+
+        //dados de observação da página
+        let noteSuggestion;
+        let pageObservation;
+
+        for (let i = 0; i < dataObservation.length; i++) {
+            
+            if(dataObservation[i].name.trim() === "sugestão"){
+                noteSuggestion = dataObservation[i]
+            }
+
+            if(dataObservation[i].name.trim() === "preferencia-jogo"){
+                pageObservation = dataObservation[i]
+            }
+
+            if(!pageObservation){
+                pageObservation = {
+                    name: "",
+                    information: ""
+                }
+            }
+
+            if(!noteSuggestion){
+                noteSuggestion = {
+                    name: "",
+                    information: ""
+                }
+            }
+        }
+
+        
+        //dados de contato no rodapé
+        let contacts = [];
+
+        for (let i = 0; i < 3; i++) {
+            
+            if(dataContact[i] != null){
+                contacts[i] = dataContact[i]
+            }
+            
+        }
+
+        return res.render("jogos", { contacts: contacts, dataSuggestion: noteSuggestion, dataObservation: pageObservation , dataGamesLimit, numberOfPages, current })
     },
     async registerGame(req, res){
         

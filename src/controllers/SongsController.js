@@ -11,7 +11,49 @@ module.exports = {
         const dataContact = await DataBaseContact.get()
         const dataObservation = await DataBaseObservation.get()
 
-        return res.render("musicas", { dataSongs, dataContact, dataObservation })
+        
+        //dados de observação da página
+        let noteSuggestion;
+        let pageObservation;
+
+        for (let i = 0; i < dataObservation.length; i++) {
+            
+            if(dataObservation[i].name.trim() === "sugestão"){
+                noteSuggestion = dataObservation[i]
+            }
+
+            if(dataObservation[i].name.trim() === "preferencia-musica"){
+                pageObservation = dataObservation[i]
+            }
+
+            if(!pageObservation){
+                pageObservation = {
+                    name: "",
+                    information: ""
+                }
+            }
+
+            if(!noteSuggestion){
+                noteSuggestion = {
+                    name: "",
+                    information: ""
+                }
+            }
+        }
+
+        
+        //dados de contato no rodapé
+        let contacts = [];
+
+        for (let i = 0; i < 3; i++) {
+            
+            if(dataContact[i] != null){
+                contacts[i] = dataContact[i]
+            }
+            
+        }
+
+        return res.render("musicas", { dataSongs, contacts: contacts, dataSuggestion: noteSuggestion, dataObservation: pageObservation })
     },   
     async registerSong(req, res){
         

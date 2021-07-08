@@ -136,21 +136,15 @@
 		</div>
 		<br>
 		<!-- Quem Somos? E qual o intuito dessa página? -->
-		<div id="card-note">
-			<div class="card-header">
-				<h1 class="cabecalho-musica-observacao">Quem somos? E qual o intuito dessa página?</h1>
-			</div>
-			<div class="card-body">
-				<p>Essa página tem o foco em entretenimento dos usuários, nós da administração como todos que gostam desse tipo de conteúdo sabemos que apesar de existir muitos sites que disponibilizam esse tipo de conteúdo, infelizmente alguns que foram muito bons um dia hoje se encontram em um mar de propagandas no qual o usuário não consegue dar um click sem abrir um anúncio, esse site tem o intuito de indicar alguns bons sites para a alegria dos internautas, como também disponibilizar links de alguns conteúdos que estão em alta no momento, assim os redirecionando direto para o conteúdo desejado, sem precisar passar pela dificuldade que é clicar em um click e abrir 3 páginas de uma vez só!<br><br>
-				Se você tem alguma sugestão de anime/jogo/música, ou algum dos link estiver quebrado, ou possuir sugestões para melhorar a página, mande mensagem para nós, o link do facebook do administrador responsavel por essas operações esta logo a baixo!</p>
-			</div>
-		</div>
+		
+		<%- include("./components/Page-Note.ejs", {title: "Quem Somos? E qual o intuito dessa página?", observation: dataPageObjective, suggestion: dataSuggestion }) %> 
+
 		<br>
 	</div>
 
 	<!--Rodapé-->
 	
-	<%- include("./components/Page-Footer.ejs") %> 
+	<%- include("./components/Page-Footer.ejs",  { contacts: contacts}) %> 
 
 </body>
 </html>

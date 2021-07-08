@@ -9,6 +9,8 @@ module.exports = {
         const dataContact = await DataBaseContact.get()
         const dataObservation = await DataBaseObservation.get()
 
+        //código para trabalhar com a páginação da página
+
         //quantidade de registros
         const totalRows = await DataBaseAnimes.countRow()
         
@@ -25,13 +27,52 @@ module.exports = {
         //calculo de registro inicio da página
         let start = (recordsPerPage * current) - recordsPerPage;
 
-
-
-        
         const dataAnimesLimit = await DataBaseAnimes.getLimit(start, recordsPerPage);
 
 
-        return res.render("animes", { dataContact, dataObservation, dataAnimesLimit, numberOfPages, current })
+        //dados de observação da página
+
+        let noteSuggestion;
+        let pageObservation;
+
+        for (let i = 0; i < dataObservation.length; i++) {
+            
+            if(dataObservation[i].name.trim() === "sugestão"){
+                noteSuggestion = dataObservation[i]
+            }
+            
+            if(dataObservation[i].name.trim() === "preferencia-anime"){
+                pageObservation = dataObservation[i]
+            }
+            
+            if(!pageObservation){
+                pageObservation = {
+                    name: "",
+                    information: ""
+                }
+            }
+
+            if(!noteSuggestion){
+                noteSuggestion = {
+                    name: "",
+                    information: ""
+                }
+            }
+        }
+
+        //dados de contato no rodapé
+        let contacts = [];
+
+        for (let i = 0; i < 3; i++) {
+            
+            if(dataContact[i] != null){
+                contacts[i] = dataContact[i]
+            }
+            
+        }
+
+    
+        return res.render("animes", { contacts: contacts, dataAnimesLimit, numberOfPages, current, dataSuggestion: noteSuggestion, dataObservation: pageObservation })
     },
     async registerAnime(req, res){
         

@@ -51,7 +51,46 @@ module.exports = {
         const dataSites = await DataBaseSites.get()
         
 
+        //dados de observação da página
+        let noteSuggestion;
+        let pageObjective;
 
-        return res.render("index", { animesArray: animesCarousel, gamesArray: gamesCarousel, dataContact, dataObservation, dataSites, dataSongs: songsList })
+        for (let i = 0; i < dataObservation.length; i++) {
+            
+            if(dataObservation[i].name.trim() === "sugestão"){
+                noteSuggestion = dataObservation[i]
+            }
+
+            if(dataObservation[i].name.trim() === "objetivo-pagina"){
+                pageObjective = dataObservation[i]
+            }
+
+            if(!pageObjective){
+                pageObjective = {
+                    name: "",
+                    information: ""
+                }
+            }
+
+            if(!noteSuggestion){
+                noteSuggestion = {
+                    name: "",
+                    information: ""
+                }
+            }
+        }
+
+        //dados de contato no rodapé
+        let contacts = [];
+
+        for (let i = 0; i < 3; i++) {
+            
+            if(dataContact[i] != null){
+                contacts[i] = dataContact[i]
+            }
+            
+        }
+
+        return res.render("index", { animesArray: animesCarousel, gamesArray: gamesCarousel, contacts: contacts, dataSites, dataSongs: songsList, dataPageObjective: pageObjective, dataSuggestion: noteSuggestion })
     }
 }
