@@ -82,11 +82,11 @@ module.exports = {
 
         await db.close()
     },
-    async getForName(info){
+    async getForName(name){
 
         const db = await DataBase()
 
-        const anime = await db.all(`SELECT * FROM tb_animes WHERE name = "${info.name}"`)
+        const anime = await db.all(`SELECT * FROM tb_animes WHERE name = "${name}"`)
 
         await db.close()
 

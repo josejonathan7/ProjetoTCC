@@ -33,11 +33,48 @@
     border-right: 0.125rem solid var(--white);
     border-bottom: 0.125rem solid var(--white);
     border-radius: 0 0 16px 16px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: scroll;
+    background-size: 500px 390px;
+    height: 400px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
   }
 
-  div.card.card-carousel div.card-body img{
-    height: 400px;
-    width: 65%;
+  div.card.card-carousel div.card-body button.button-slid{
+    background-color: rgba(0, 0, 0, 0.4);
+    height: 30%;
+    width: 5%;
+    color: white;
+    cursor: pointer;
+    outline: none;
+    margin: 10px;
+    border: none;
+  }
+
+  div.card.card-carousel div.card-body div.border-box-load{
+    width: 100%;
+    height: 15px;
+    margin-top: 25%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+  }
+
+  
+  div.card.card-carousel div.card-body div#box-load-animes{
+    width: 0%;
+    height: 100%;
+    background-color: #fff;
+  }
+
+  div.card.card-carousel div.card-body div#box-load-games{
+    width: 0%;
+    height: 100%;
+    background-color: #fff;
   }
 
 }

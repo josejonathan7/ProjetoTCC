@@ -62,9 +62,8 @@ module.exports = {
         return res.render("UpdatedRegisters")
     },
     async consultGame(req, res){
-        const data = {
-           name: req.body["games-name"]
-        }
+        const data = req.body["games-name"]
+        
 
         const dataResult = await DataBaseGames.getForName(data)
 

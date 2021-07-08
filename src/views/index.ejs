@@ -6,6 +6,27 @@
 
 </head>
 <body>
+
+	
+	<input type="hidden" name="carousel-anime" id="carousel-anime-0" value="<%= animesArray[0].image%>" title="<%= animesArray[0].link %> " >							
+	<input type="hidden" name="carousel-anime" id="carousel-anime-1" value="<%= animesArray[1].image%>" title="<%= animesArray[1].link %> " >
+	
+	<input type="hidden" name="carousel-anime" id="carousel-anime-2" value="<%= animesArray[2].image%>" title="<%= animesArray[2].link %> " >
+
+	<input type="hidden" name="carousel-anime" id="carousel-anime-3" value="<%= animesArray[3].image%>" title="<%= animesArray[3].link %> " >
+	<input type="hidden" name="carousel-anime" id="carousel-anime-4" value="<%= animesArray[4].image%>" title="<%= animesArray[4].link %> " >
+
+	<input type="hidden" name="carousel-anime" id="carousel-game-0" value="<%= gamesArray[0].image%>" title="<%= gamesArray[0].link %> " >							
+	<input type="hidden" name="carousel-anime" id="carousel-game-1" value="<%= gamesArray[1].image%>" title="<%= gamesArray[1].link %> " >
+	
+	<input type="hidden" name="carousel-anime" id="carousel-game-2" value="<%= gamesArray[2].image%>" title="<%= gamesArray[2].link %> " >
+
+	<input type="hidden" name="carousel-anime" id="carousel-game-3" value="<%= gamesArray[3].image%>" title="<%= gamesArray[3].link %> " >
+	<input type="hidden" name="carousel-anime" id="carousel-game-4" value="<%= gamesArray[4].image%>" title="<%= gamesArray[4].link %> " >
+
+
+
+
 	<!-- Menu de navegação -->
 
 	<%- include("./components/Page-Nav.ejs") %> 
@@ -38,38 +59,18 @@
 				<div class="card-header">
 					<h1>Animes em alta no momento</h1>
 				</div>
-				<div class="card-body">
-					<div class="carousel slide" id="carousel_anime" data-ride="carousel">
-						<!-- carousel indicadores -->
-						<ul class="carousel-indicators">
-							<li data-target="#carousel_anime" data-slide-to="0" class="active"></li>
-							<li data-target="#carousel_anime" data-slide-to="1"></li>
-							<li data-target="#carousel_anime" data-slide-to="2"></li>
-							<li data-target="#carousel_anime" data-slide-to="3"></li>
-							<li data-target="#carousel_anime" data-slide-to="4"></li>		
-						</ul>
-						<!-- Carousel Slides -->
-						<div class="carousel-inner">
-							<div class="carousel-item active">
-								<a href="https://www.meuanime.com/shingeki-no-kyojin" target="_blank"><img src="/images/animes/Shingeki.jpg" class="mx-auto d-block img-preenchimento"></a>
-							</div>
-							<div class="carousel-item">
-								<a href="https://www.meuanime.com/kimetsu-no-yaiba" target="_blank"><img src="/images/animes/DemonSlayer.jpg" class="mx-auto d-block img-preenchimento"></a>
-							</div>
-							<div class="carousel-item">
-								<a href="https://www.meuanime.com/black-clover" target="_blank"><img src="/images/animes/BlackClover.jpg" class="mx-auto d-block img-preenchimento"></a>
-							</div>
-							<div class="carousel-item">
-								<a href="https://www.meuanime.com/one-piece" target="_blank"><img src="/images/animes/OnePiece.jpg" class="mx-auto d-block img-preenchimento"></a>
-							</div>
-							<div class="carousel-item">
-								<a href="https://www.meuanime.com/boruto-naruto-next-generations" target="_blank"><img src="/images/animes/Boruto.jpg" class="mx-auto d-block img-preenchimento"></a>
-							</div>
+				<div class="card-body" id="animes-image">
+					
+					<button class="button-slid" onclick="replacementAnimes(-1)"> &lang; </button>
+
+					<div class="border-box-load">
+						<div id="box-load-animes">
+
 						</div>
-						<!-- Carousel controles -->
-						<a href="#carousel_anime" class="carousel-control-prev" data-slide="prev"><span class="carousel-control-prev-icon"></span></a>
-						<a href="#carousel_anime" class="carousel-control-next" data-slide="next"><span class="carousel-control-next-icon"></span></a>
 					</div>
+
+					<button class="button-slid"	onclick="replacementAnimes(1)"> &rang; </button>
+
 				</div>
 			</div>
 			<br>
@@ -98,30 +99,18 @@
 				<div class="card-header">
 					<h1>Jogos clássicos</h1>
 				</div>
-				<div class="card-body">
-					<div class="carousel slide" data-ride="carousel" id="carousel_jogo">
-						<!-- Carousel indicadores -->
-						<ul class="carousel-indicators">
-							<li data-target="#carousel_jogo" data-slide-to="0" class="active"></li>
-							<li data-target="#carousel_jogo" data-slide-to="1"></li>
-							<li data-target="#carousel_jogo" data-slide-to="2"></li>
-						</ul>
-						<!-- Carousel Slides -->
-						<div class="carousel-inner">
-							<div class="carousel-item active">
-								<a href="https://www.romsmax.com/snes/super-mario-world-portugues/" target="_blank"><img src="/images/jogos/SuperMario.jpg" class="mx-auto d-block img-preenchimento"></a>
-							</div>
-							<div class="carousel-item">
-								<a href="https://romsportugues.tk/resident-evil-directors-cut/" target="_blank"><img src="/images/jogos/ResidentEvil1.jpg" class="mx-auto d-block img-preenchimento"></a>
-							</div>
-							<div class="carousel-item">
-								<a href="https://www.emulatorgames.net/roms/nintendo-ds/need-for-speed-most-wanted/" target="_blank"><img src="/images/jogos/NeedForSpeedMostWanted.jpg" class="mx-auto d-block img-preenchimento"></a>
-							</div>
+				<div class="card-body" id="games-image">
+					
+					<button class="button-slid" onclick="replacementGames(-1)"> &lang; </button>
+
+					<div class="border-box-load">
+						<div id="box-load-games">
+
 						</div>
-						<!-- Carousel controles -->
-						<a href="#carousel_jogo" class="carousel-control-prev" data-slide="prev"><span class="carousel-control-prev-icon"></span></a>
-						<a href="#carousel_jogo" class="carousel-control-next" data-slide="next"><span class="carousel-control-next-icon"></span></a>
 					</div>
+
+					<button class="button-slid"	onclick="replacementGames(1)"> &rang; </button>
+
 				</div>
 			</div>
 		</main>
@@ -133,13 +122,15 @@
 			</div>
 				<div class="card-body">
 					<ul>
-						<li><a href="https://www.youtube.com/watch?v=-hLryBwWTiM" target="_blank" tabindex="21" class="link-margin-card-musica">FullMetal Alchemist Brotherhood OP 1 : Again - Yui - Full Version</a></li>
-						<br>
-						<li><a href="https://www.youtube.com/watch?v=sA7qYWH-UvU" target="_blank" tabindex="22" class="link-margin-card-musica">Shingeki no Kyojin | Linked Horizon - 紅蓮の弓矢 | Opening 1</a></li>
-						<br>
-						<li><a href="https://www.youtube.com/watch?v=lyTcR588Vms" target="_blank" tabindex="23" class="link-margin-card-musica">One Piece Opening 13 - "One Day"</a></li>
-						<br>
-						<li><a href="https://www.youtube.com/watch?v=MREJhcgFML0&t=172s" target="_blank" tabindex="24" class="link-margin-card-musica">Naruto Shippuden Opening 6 Flow-Sign</a></li>
+						<% dataSongs.forEach(song => { %>
+						
+							<li>
+								<a href="<%= song.link %>" target="_blank" tabindex="24" class="link-margin-card-musica"><%= song.name %></a>
+							</li>
+							<br>
+
+						<% }) %>
+						
 					</ul>
 			</div>		
 		</div>

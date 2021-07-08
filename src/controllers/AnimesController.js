@@ -13,7 +13,7 @@ module.exports = {
         const totalRows = await DataBaseAnimes.countRow()
         
         //quantidade de registro por página
-        let recordsPerPage = 27
+        let recordsPerPage = 18
 
         //quantidade de paginas 
         let numberOfPages = Math.ceil(totalRows / recordsPerPage)
@@ -69,9 +69,8 @@ module.exports = {
         return res.render("UpdatedRegisters")
     },
     async consultAnime(req, res){
-        const data = {
-           name: req.body["anime-name"]
-        }
+        const data = req.body["anime-name"]
+        
 
     
         const dataResult = await DataBaseAnimes.getForName(data)
