@@ -39,6 +39,25 @@
                                 <input type="text" name="site-link" id="site-link" value="<%= dataResult.link %>">
                             </div>
 
+                            <div class="input-group">
+                                <label for="site-category">Categoria:</label>
+                                <select name="site-category" id="site-category">
+                                    
+                                    <% if (dataResult.category == "anime") { %>
+                                        
+                                        <option selected value="anime">Anime</option>
+                                        <option value="game">Jogo</option>
+
+                                    <% } else if (dataResult.category == "game") { %>
+                                     
+                                        <option selected value="game">Jogo</option>
+                                        <option value="anime">Anime</option>
+
+                                    <% } %>
+                                                                            
+                                </select>
+                            </div>
+
                             <div id="button-group">
                                 <button type="submit" id="update-confirm-button">Confirmar</button>
                                 <button type="reset" class="clear">Limpar Alterações feitas</button>

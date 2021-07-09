@@ -76,33 +76,45 @@
             </div>
             
             <div id="multi-form">      
-                <!--Cadastrar novo contato-->
-                <form action="/registers/contacts" method="post" class="form-group">
+                <!--Cadstrar novo usuario-->
+                <form action="/registers/users" method="post" class="form-group">
                     <fieldset>
-                        <legend><h2>Cadastrar Contato </h2></legend>
-                        
+                        <legend>
+                            <h2>Cadastrar usuario </h2>
+                        </legend>
+                
                         <div class="content">
-
-                        <div class="input-group">
-                            <label for="contact-name">Nome:</label>
-                            <input type="text" name="contact-name" id="contact-name" >
-                        </div>
-
-                        <div class="input-group">
-                            <label for="contact-link">Link:</label>
-                            <input type="text" name="contact-link" id="contact-link" >
-                        </div>
-                        
-                        
-                        <div class="input-group">
-                            <label for="contact-description">Descrição:</label>
-                            <input type="text" name="contact-description" id="contact-description" >
-                        </div>
-
-                        <div id="button-group">
-                            <button type="submit" class="new-register">Criar Novo</button>
-                            <button type="reset" class="clear">Limpar</button>
-                        </div>
+                
+                            <div class="input-group">
+                                <label for="user-name">Nome:</label>
+                                <input type="text" name="user-name" id="user-name">
+                            </div>
+                
+                            <div class="input-group">
+                                <label for="user-password">Senha:</label>
+                                <input type="password" name="user-password" id="user-password">
+                            </div>
+                
+                
+                            <div class="input-group">
+                                <label for="avatar">Avatar:</label>
+                                <input type="text" name="avatar" id="avatar">
+                            </div>
+                
+                            <div class="input-group">
+                                <label for="email-contact-link">Link para contato, rede social:</label>
+                                <input type="text" name="email-contact-link" id="email-contact-link">
+                            </div>
+                
+                            <div class="input-group">
+                                <label for="user-description">Descrição do contato/rede social:</label>
+                                <input type="text" name="user-description" id="user-description">
+                            </div>
+                
+                            <div id="button-group">
+                                <button type="submit" class="new-register">Criar Novo</button>
+                                <button type="reset" class="clear">Limpar</button>
+                            </div>
                         </div>
                     </fieldset>
                 </form>
@@ -151,6 +163,14 @@
                             <input type="text" name="site-link" id="site-link" >
                         </div>
                         
+                        <div class="input-group">
+                            <label for="site-category">Categoria:</label>
+                            <select name="site-category" id="site-category" required>
+                                <option selected value="anime">Anime</option>
+                                <option value="game">Jogo</option>
+                            </select>
+                        </div>
+
                         <div id="button-group">
                             <button type="submit" class="new-register">Criar Novo</button>
                             <button type="reset" class="clear">Limpar</button>
@@ -183,46 +203,6 @@
                         </div>
                     </fieldset>
                 </form>
-            </div>
-
-            <div>
-                
-                <!--Cadstrar novo usuario-->
-                <form action="/registers/users" method="post" class="form-group">
-                    <fieldset>
-                        <legend><h2>Cadastrar usuario </h2></legend>
-                        
-                        <div class="content">
-
-                        <div class="input-group">
-                            <label for="user-name">Nome:</label>
-                            <input type="text" name="user-name" id="user-name" >
-                        </div>
-
-                        <div class="input-group">
-                            <label for="user-password">Senha:</label>
-                            <input type="password" name="user-password" id="user-password" >
-                        </div>
-                        
-                        
-                        <div class="input-group">
-                            <label for="avatar">Avatar:</label>
-                            <input type="text" name="avatar" id="avatar" >
-                        </div>
-                        
-                        <div class="input-group">
-                            <label for="email-contact-link">Link para contato, rede social:</label>
-                            <input type="text" name="email-contact-link" id="email-contact-link" >
-                        </div>
-
-
-                        <div id="button-group">
-                            <button type="submit" class="new-register">Criar Novo</button>
-                            <button type="reset" class="clear">Limpar</button>
-                        </div>
-                        </div>
-                    </fieldset>
-                </form>     
             </div>
         </main>
     </div>

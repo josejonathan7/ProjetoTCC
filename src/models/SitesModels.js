@@ -12,7 +12,8 @@ module.exports = {
         return sites.map(sites => ({
             id: sites.id,
             name: sites.name,
-            link:  sites.link
+            link:  sites.link,
+            category: sites.category
         }))
 
     },
@@ -23,11 +24,13 @@ module.exports = {
         await db.run(`INSERT INTO tb_sites (
             id,
             name, 
-            link) 
+            link,
+            category) 
             VALUES (
             "${newRegister.id}",
             "${newRegister.name}",
-            "${newRegister.link}"
+            "${newRegister.link}",
+            "${newRegister.category}"
         )`) 
 
         await db.close()
@@ -40,28 +43,29 @@ module.exports = {
 
         await db.close()
     },
-    async update(updatedSite, Id){
+    async update(updateSite, Id){
 
         const db = await DataBase()
 
-        await db.run(`UPDATE tb_sites SET name = "${updatedSite.name}", 
-        link = "${updatedSite.link}" WHERE id = ${Id}
+        await db.run(`UPDATE tb_sites SET name = "${updateSite.name}", 
+        link = "${updateSite.link}", category = "${updateSite.category}" WHERE id = ${Id}
         `)
 
         await db.close()
     },
-    async getForName(info){
+    async getForName(name){
 
         const db = await DataBase()
 
-        const site = await db.all(`SELECT * FROM tb_sites WHERE name = "${info.name}"`)
+        const site = await db.all(`SELECT * FROM tb_sites WHERE name = "${name}"`)
 
         await db.close()
 
         return site.map(site => ({
             id: site.id,
             name: site.name,
-            link:  site.link
+            link:  site.link,
+            category: site.category
         }))
     }
 }

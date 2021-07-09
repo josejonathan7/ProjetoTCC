@@ -12,7 +12,8 @@ module.exports = {
             name: users.name,
             password: users.password,
             avatar: users.avatar,
-            email_contact_link: users.email_contact_link
+            email_contact_link: users.email_contact_link,
+            description: users.description
         }))
     },
     async create(newRegister){
@@ -23,13 +24,15 @@ module.exports = {
             name, 
             password,
             avatar,
-            email_contact_link) 
+            email_contact_link,
+            description) 
             VALUES (
             "${newRegister.id}",
             "${newRegister.name}", 
             "${newRegister.password}",
             "${newRegister.avatar}",
-            "${newRegister.email_contact_link}"
+            "${newRegister.email_contact_link}",
+            "${newRegister.description}"
             );
         `)
 
@@ -42,22 +45,23 @@ module.exports = {
 
         await db.close()
     },
-    async update(updatedUsers, id){
+    async update(updateUsers, id){
         const db = await DataBase()
 
-        await db.run(`UPDATE tb_users SET name = "${updatedUsers.name}",
-        password = "${updatedUsers.password}",
-        avatar = "${updatedUsers.avatar}",
-        email_contact_link = "${updatedUsers.email_contact_link}" WHERE id = ${id}
+        await db.run(`UPDATE tb_users SET name = "${updateUsers.name}",
+        password = "${updateUsers.password}",
+        avatar = "${updateUsers.avatar}",
+        email_contact_link = "${updateUsers.email_contact_link}",
+        description = "${updateUsers.description}" WHERE id = ${id}
         `)
 
         await db.close()
     },
-    async getForName(info){
+    async getForName(name){
 
         const db = await DataBase()
 
-        const user = await db.all(`SELECT * FROM tb_users WHERE name = "${info}"`)
+        const user = await db.all(`SELECT * FROM tb_users WHERE name = "${name}"`)
 
         await db.close()
 
@@ -67,7 +71,8 @@ module.exports = {
                 password: user.password,
                 name: user.name,
                 avatar: user.avatar,
-                email_contact_link: user.email_contact_link
+                email_contact_link: user.email_contact_link,
+                description: user.description
             }))
         
     },

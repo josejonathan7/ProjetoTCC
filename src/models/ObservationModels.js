@@ -51,11 +51,11 @@ module.exports = {
 
         await db.close()
     },
-    async getForName(info){
+    async getForName(name){
 
         const db = await DataBase()
 
-        const observation = await db.all(`SELECT * FROM tb_observation WHERE name = "${info.name}"`)
+        const observation = await db.all(`SELECT * FROM tb_observation WHERE name = "${name}"`)
 
         await db.close()
 

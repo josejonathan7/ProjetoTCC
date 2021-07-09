@@ -7,10 +7,15 @@
 
             <% contacts.forEach(contacts => { %>
     
-                <p> Nome para contato:<%= contacts.name %></p>
-                <address>
-                    <p><a href="<%= contacts.link %>" target="_blank" tabindex="90"> <%= contacts.description %>  <i class="fa fa-facebook-official icon"></i></a></p>
-                </address>
+                <div>
+                    <p> Nome para contato:<%= contacts.name %></p>
+                    <address>
+                        <p><a href="<%= contacts.email_contact_link %>" target="_blank" tabindex="90"> <%= contacts.description %>  <i class="fa fa-facebook-official icon"></i></a></p>
+                    </address>
+                </div>
+                <div>
+                    <img src="<%= contacts.avatar %>" alt="Imagem não disponivel">
+                </div>
 
             <% }) %>
 

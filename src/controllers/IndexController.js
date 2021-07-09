@@ -1,4 +1,4 @@
-const DataBaseContact = require('../models/ContactModels');
+const DataBaseUsers = require('../models/UsersModels');
 const DataBaseObservation = require('../models/ObservationModels');
 const DataBaseAnimes = require('../models/AnimesModels');
 const DataBaseGames = require('../models/GamesModels');
@@ -46,7 +46,7 @@ module.exports = {
         selectRandomContent()
 
 
-        const dataContact = await DataBaseContact.get()
+        const dataUser = await DataBaseUsers.get()
         const dataObservation = await DataBaseObservation.get()
         const dataSites = await DataBaseSites.get()
         
@@ -81,16 +81,16 @@ module.exports = {
         }
 
         //dados de contato no rodapé
-        let contacts = [];
+        let contactUsers = [];
 
         for (let i = 0; i < 3; i++) {
             
-            if(dataContact[i] != null){
-                contacts[i] = dataContact[i]
+            if(dataUser[i] != null){
+                contactUsers[i] = dataUser[i]
             }
             
         }
 
-        return res.render("index", { animesArray: animesCarousel, gamesArray: gamesCarousel, contacts: contacts, dataSites, dataSongs: songsList, dataPageObjective: pageObjective, dataSuggestion: noteSuggestion })
+        return res.render("index", { animesArray: animesCarousel, gamesArray: gamesCarousel, contactUsers, dataSites, dataSongs: songsList, dataPageObjective: pageObjective, dataSuggestion: noteSuggestion })
     }
 }

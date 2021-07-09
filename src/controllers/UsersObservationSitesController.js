@@ -1,5 +1,4 @@
 const UsersData = require('../models/UsersModels')
-const ContactData = require('../models/ContactModels')
 const ObservationData = require('../models/ObservationModels')
 const SiteData = require('../models/SitesModels')
 const { hash, compare } = require('bcrypt')
@@ -13,7 +12,7 @@ module.exports = {
         const user = req.body["user-name"]
         const password = req.body["user-password"]
 
-        const data = await UsersData.get()    
+        /*const data = await UsersData.get()    
 
         const consult = data.find(data => data.name === user)
 
@@ -38,26 +37,17 @@ module.exports = {
         } catch {
             
             return res.status(500).send()
-        }
-    },
-    accesFormUpdate(req, res){
-        return res.render("UpdatedRegisters")
-    },
-
-
-
-    //criação de novo contato/observação/usuario/sites 
-    async registerContact(req, res){
-        
-        await ContactData.create({
-            id: uuid(),
-            name: req.body["contact-name"],
-            link: req.body["contact-link"],
-            description: req.body["contact-description"]
-        })
+        }*/
 
         return res.render("Register")
+
+
     },
+    accesFormUpdate(req, res){
+        return res.render("UpdateRegisters")
+    },
+
+    //criação de novo contato/observação/usuario/sites 
     async registerUsers(req, res){
         const passwordBody = req.body["user-password"]
         const encryptPasswordHash = await hash(passwordBody, 8)
@@ -67,7 +57,8 @@ module.exports = {
             name: req.body["user-name"],
             password: encryptPasswordHash,
             avatar: req.body.avatar,
-            email_contact_link: req.body["email-contact-link"]
+            email_contact_link: req.body["email-contact-link"],
+            description: req.body["user-description"]
         })
 
         return res.render("Register")
@@ -87,27 +78,14 @@ module.exports = {
         await SiteData.create({
             id: uuid(),
             name: req.body["site-name"],
-            link: req.body["site-link"]
+            link: req.body["site-link"],
+            category: req.body["site-category"]
         })
 
         return res.render("Register")
     },
 
-    //atualização de contato/observação/usuario/sites
-    async updatedContact(req, res){
-
-        const id = req.params.id
-
-        const bodyData = {
-            name: req.body["contact-name"],
-            link: req.body["contact-link"],
-            description: req.body["contact-description"]
-        }
-
-        await ContactData.update(bodyData, id)
-
-        return res.render("UpdatedRegisters")
-    },  
+    //atualização de contato/observação/usuario/sites 
     async updatedUser(req, res){
 
         const id = req.params.id
@@ -116,12 +94,13 @@ module.exports = {
             name: req.body["user-name"],
             password: req.body["user-password"],
             avatar: req.body.avatar,
-            email_contact_link: req.body["email-contact-link"]
+            email_contact_link: req.body["email-contact-link"],
+            description: req.body["user-description"]
         }
 
         await UsersData.update(bodyData, id)
 
-        return res.render("UpdatedRegisters")
+        return res.render("UpdateRegisters")
     },  
     async updatedObservation(req, res){
 
@@ -134,7 +113,7 @@ module.exports = {
 
         await ObservationData.update(bodyData, id)
 
-        return res.render("UpdatedRegisters")
+        return res.render("UpdateRegisters")
     },   
     async updatedSite(req, res){
 
@@ -142,37 +121,27 @@ module.exports = {
 
         const bodyData = {
             name: req.body["site-name"],
-            link: req.body["site-link"]
+            link: req.body["site-link"],
+            description: req.body["site-category"]
         }
 
         await SiteData.update(bodyData, id)
 
-        return res.render("UpdatedRegisters")
+        return res.render("UpdateRegisters")
     },
 
     //consultar registro unico
-    async consultContact(req, res){
-        const data = {
-           name: req.body["contact-name"]
-        }
-
-        const dataResult = await ContactData.getForName(data)
-
-        return res.render("updateDelete/UpdateDeleteShowContact", {dataResult: dataResult})
-    },
     async consultUser(req, res){
-        const data = {
-           name: req.body["user-name"]
-        }
+        const data =  req.body["user-name"]
+        
 
         const dataResult = await UsersData.getForName(data)
 
         return res.render("updateDelete/UpdateDeleteShowUser", {dataResult: dataResult})
     },
     async consultObservation(req, res){
-        const data = {
-           name: req.body["observation-name"]
-        }
+        const data = req.body["observation-name"]
+        
 
     
         const dataResult = await ObservationData.getForName(data)
@@ -180,46 +149,33 @@ module.exports = {
         return res.render("updateDelete/UpdateDeleteShowObservation", {dataResult: dataResult})
     },
     async consultSite(req, res){
-        const data = {
-           name: req.body["site-name"]
-        }
-
+        const data =  req.body["site-name"]
     
         const dataResult = await SiteData.getForName(data)
 
         return res.render("updateDelete/UpdateDeleteShowSite", {dataResult: dataResult})
     },
 
-
-
-
-    //deleção de contato/observação/usuario/sites
-    async deleteContact(req, res){
-        const id = req.params.id;
-
-        await ContactData.delete(id)
-
-        return res.render("UpdatedRegisters")
-    },  
+    //deleção de contato/observação/usuario/sites  
     async deleteUser(req, res){
         const id = req.params.id;
 
         await UsersData.delete(id)
 
-        return res.render("UpdatedRegisters")
+        return res.render("UpdateRegisters")
     },
     async deleteObservation(req, res){
         const id = req.params.id;
 
         await ObservationData.delete(id)
 
-        return res.render("UpdatedRegisters")
+        return res.render("UpdateRegisters")
     },
     async deleteSite(req, res){
         const id = req.params.id;
 
         await SiteData.delete(id)
 
-        return res.render("UpdatedRegisters")
+        return res.render("UpdateRegisters")
     }
 }

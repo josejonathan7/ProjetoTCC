@@ -20,11 +20,10 @@ const initDb = {
             ); 
         `)
 
-        await db.exec(`CREATE TABLE tb_contact(
+        await db.exec(`CREATE TABLE tb_songs(
             id TEXT PRIMARY KEY,
             name TEXT,
-            link TEXT,
-            description TEXT
+            link TEXT
             ); 
         `)
 
@@ -38,25 +37,21 @@ const initDb = {
         await db.exec(`CREATE TABLE tb_sites(
             id TEXT PRIMARY KEY,
             name TEXT,
-            link TEXT
+            link TEXT,
+            category TEXT
             ); 
-        `)
-
-        await db.exec(`CREATE TABLE tb_songs(
-            id TEXT PRIMARY KEY,
-            name TEXT,
-            link TEXT
-            ); 
-        `)
+        `) 
 
         await db.exec(`CREATE TABLE tb_users(
             id TEXT PRIMARY KEY,
             name TEXT,
             password TEXT,
             avatar TEXT,
-            email_contact_link TEXT
+            email_contact_link TEXT,
+            description TEXT
             );
         `)
+
     }
 }
 
