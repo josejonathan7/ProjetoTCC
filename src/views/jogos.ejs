@@ -25,20 +25,22 @@
 		
 			<div class="row">
 
-				<% dataGamesLimit.forEach(dataGamesLimit=> { %>
+				<% let tabIndexGames = 7; dataGamesLimit.forEach(dataGamesLimit=> { %>
 
 					<div class="col-sm-4">
 						<div class="card-content">
 
 							<img src="<%= dataGamesLimit.image %>" class="card-img-top">
 							<div class="card-footer">
-								<a href="<%= dataGamesLimit.link %>" target="_blank" tabindex="7">
+								<a href="<%= dataGamesLimit.link %>" target="_blank" tabindex="<%= tabIndexGames %>">
 									<%= dataGamesLimit.name %>
 								</a>
 							</div>
 
 						</div>
 					</div>
+
+					<% tabIndexGames++; %> 
 
 				<% }) %>
 

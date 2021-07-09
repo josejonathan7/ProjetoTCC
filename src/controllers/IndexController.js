@@ -82,15 +82,41 @@ module.exports = {
 
         //dados de contato no rodapé
         let contactUsers = [];
+        let countContact =0;
 
         for (let i = 0; i < 3; i++) {
             
             if(dataUser[i] != null){
-                contactUsers[i] = dataUser[i]
+                
+                contactUsers[countContact] = dataUser[i]
+                countContact++;
+
             }
             
         }
 
-        return res.render("index", { animesArray: animesCarousel, gamesArray: gamesCarousel, contactUsers, dataSites, dataSongs: songsList, dataPageObjective: pageObjective, dataSuggestion: noteSuggestion })
+        //filtragem dos sites entre animes e jogos
+
+        let animesSite = [];
+        let gamesSite = [];
+        let countAnime = 0;
+        let countGame = 0;
+
+        for(let i=0; i < dataSites.length; i++){
+            
+            if(dataSites[i].category === "anime"){
+
+                animesSite[countAnime] = dataSites[i]
+                countAnime++;
+
+            }else if(dataSites[i].category === "game"){
+
+                gamesSite[countGame] = dataSites[i]
+                countGame++;
+
+            }  
+        };
+
+        return res.render("index", { animesArray: animesCarousel, gamesArray: gamesCarousel, contactUsers, dataSongs: songsList, dataPageObjective: pageObjective, dataSuggestion: noteSuggestion, animesSite, gamesSite })
     }
 }

@@ -88,7 +88,6 @@ module.exports = {
         return res.render("Register")
     },
     async updatedAnime(req, res){
-
         const id = req.params.id
 
         const bodyData = {
@@ -111,11 +110,10 @@ module.exports = {
     },
     async consultAnime(req, res){
         const data = req.body["anime-name"]
+        const userData = req.body["send-user-data"]
         
-
-    
         const dataResult = await DataBaseAnimes.getForName(data)
 
-        return res.render("updateDelete/UpdateDeleteShowAnime", {dataResult: dataResult})
+        return res.render("updateDelete/UpdateDeleteShowAnime", { dataResult: dataResult, userData })
     }
 }

@@ -67,17 +67,17 @@ module.exports = {
 
         const db = await DataBase()
 
-        await db.run(`DELETE FROM tb_animes WHERE id = ${id}`)
+        await db.run(`DELETE FROM tb_animes WHERE id = "${id}"`)
 
         await db.close()
     },
-    async update(updatedAnime, Id){
+    async update(updateAnime, Id){
 
         const db = await DataBase()
 
-        await db.run(`UPDATE tb_animes SET name = "${updatedAnime.name}", 
-        link = "${updatedAnime.link}",
-        image = "${updatedAnime.image}" WHERE id = ${Id}
+        await db.run(`UPDATE tb_animes SET name = "${updateAnime.name}", 
+        link = "${updateAnime.link}",
+        image = "${updateAnime.image}" WHERE id = "${Id}"
         `)
 
         await db.close()

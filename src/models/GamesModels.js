@@ -68,7 +68,7 @@ module.exports = {
 
         const db = await DataBase()
 
-        await db.run(`DELETE FROM tb_games WHERE id = ${id}`)
+        await db.run(`DELETE FROM tb_games WHERE id = "${id}"`)
 
         await db.close()
     },
@@ -78,7 +78,7 @@ module.exports = {
 
         await db.run(`UPDATE tb_games SET name = "${updatedGames.name}", 
         link = "${updatedGames.link}",
-        image = "${updatedGames.image}" WHERE id = ${Id}
+        image = "${updatedGames.image}" WHERE id = "${Id}"
         `)
 
         await db.close()

@@ -40,17 +40,14 @@
 						<h3>Sites bons para assistir animes</h3>
 					</div>
 					<div class="card-body">
-						
-							<a href="https://assistiranimeson.com/" target="_blank" tabindex="5" class="link-margin-aside-animes">Animes ON</a>
-							<a href="https://animesonline.cc/tv/" target="_blank" tabindex="6" class="link-margin-aside-animes">Animes Online</a>		
-							<a href="https://animesonline.vip/" target="_blank" tabindex="7" class="link-margin-aside-animes">Animes Online Vip</a>		
-							<a href="https://animesorion.vip/" target="_blank" tabindex="8" class="link-margin-aside-animes">Animes Orion</a>
 					
-							<a href="https://www.anitube.site/" target="_blank" tabindex="9" class="link-margin-aside-animes">AniTube</a>
-							<a href="https://nowanimes.com/" target="_blank" tabindex="10" class="link-margin-aside-animes">BR animes (Now Animes)</a>
-							<a href="https://www.crunchyroll.com/pt-br" target="_blank" tabindex="11" class="link-margin-aside-animes">Crunchyroll</a>
-							<a href="https://www.meuanime.com/" target="_blank" tabindex="12" class="link-margin-aside-animes">Meu Anime</a>
-					
+						<%let tabIndexAnimes = 5; animesSite.forEach(animesSite => { %>
+
+							<a href="<%= animesSite.link %>" target="_blank" tabindex="<%= tabIndexAnimes %>" class="link-margin-aside-animes"><%= animesSite.name %> </a>
+
+							<% tabIndexAnimes++; %> 
+						<% }) %>
+
 					</div>
 				</div>
 			</aside>
@@ -82,15 +79,13 @@
 					</div>
 					<div class="card-body">
 						
-							<a href="https://coolrom.com.au/" target="_blank" tabindex="14" class="link-margin-aside-jogos">Cool Rom</a>
-							<a href="http://www.emuroms.ch/" target="_blank" tabindex="15" class="link-margin-aside-jogos">Emu Rooms</a>
-							<a href="https://www.freeroms.com/" target="_blank" tabindex="16" class="link-margin-aside-jogos">Free Roms</a>
-							<a href="https://roms-download.com/" target="_blank" tabindex="17" class="link-margin-aside-jogos">Roms-Download</a>
-						
-							<a href="https://www.romsgames.net/" target="_blank" tabindex="18" class="link-margin-aside-jogos">Roms Games</a>
-							<a href="https://romsmania.cc/" target="_blank" tabindex="19" class="link-margin-aside-jogos">Roma Mania</a>
-							<a href="https://www.romsmax.com/snes/" target="_blank" tabindex="20" class="link-margin-aside-jogos">Roms Max</a>	
-					
+						<%let tabIndexGame = 14; gamesSite.forEach(gamesSite => { %>
+
+							<a href="<%= gamesSite.link %>" target="_blank" tabindex="<%= tabIndexGame %>" class="link-margin-aside-animes"><%= gamesSite.name %> </a>
+
+							<% tabIndexGame++; %> 
+						<% }) %>
+
 					</div>
 				</div>
 			</aside>
@@ -122,12 +117,14 @@
 			</div>
 				<div class="card-body">
 					<ul>
-						<% dataSongs.forEach(song => { %>
+						<% let tabIndexSongs = 24; dataSongs.forEach(song => { %>
 						
 							<li>
-								<a href="<%= song.link %>" target="_blank" tabindex="24" class="link-margin-card-musica"><%= song.name %></a>
+								<a href="<%= song.link %>" target="_blank" tabindex="<%= tabIndexSongs %>" class="link-margin-card-musica"><%= song.name %></a>
 							</li>
 							<br>
+
+							<% tabIndexSongs++; %> 
 
 						<% }) %>
 						

@@ -14,6 +14,8 @@ router.get("/games", (req, res) => GamesController.getPage(req, res));
 
 router.get("/songs", (req, res) => SongsController.getData(req,res));
 
+router.get("/registers", (req, res) => UsersObservationSitesController.redirectUpdateForNewForm(req, res))
+
 
 
 router.post("/registers", (req, res) =>{UsersObservationSitesController.accesFormNew(req ,res)});
@@ -34,11 +36,11 @@ router.post("/registers/games", (req, res) => GamesController.registerGame(req,r
 router.post("/registers/songs", (req, res) => SongsController.registerSong(req,res))
 
 //atualização de registros
-router.post("/registers/update/observations/:id", (req, res) => UsersObservationSitesController.updatedObservation(req,res))
+router.post("/registers/update/observations/:id", (req, res) => UsersObservationSitesController.updateObservation(req,res))
 
-router.post("/registers/update/sites/:id", (req, res) => UsersObservationSitesController.updatedSite(req,res))
+router.post("/registers/update/sites/:id", (req, res) => UsersObservationSitesController.updateSite(req,res))
 
-router.post("/registers/update/users/:id", (req, res) => UsersObservationSitesController.updatedUser(req,res))
+router.post("/registers/update/users/:id", (req, res) => UsersObservationSitesController.updateUser(req,res))
 
 router.post("/registers/update/animes/:id", (req, res) => AnimesController.updatedAnime(req,res))
 

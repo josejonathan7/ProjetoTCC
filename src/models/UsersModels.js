@@ -41,7 +41,7 @@ module.exports = {
     async delete(id){
         const db = await DataBase()
 
-        await db.run(`DELETE FROM tb_users WHERE id = ${id}`)
+        await db.run(`DELETE FROM tb_users WHERE id = "${id}"`)
 
         await db.close()
     },
@@ -49,10 +49,9 @@ module.exports = {
         const db = await DataBase()
 
         await db.run(`UPDATE tb_users SET name = "${updateUsers.name}",
-        password = "${updateUsers.password}",
         avatar = "${updateUsers.avatar}",
         email_contact_link = "${updateUsers.email_contact_link}",
-        description = "${updateUsers.description}" WHERE id = ${id}
+        description = "${updateUsers.description}" WHERE id = "${id}"
         `)
 
         await db.close()

@@ -5,6 +5,8 @@ const { hash, compare } = require('bcrypt')
 const { v4 } = require('uuid')
 const uuid = v4;
 
+let userDataForDisplay = {};
+
 module.exports = {
     //acessando as páginas de criação, atualização, e deletar registros
     async accesFormNew(req, res){
@@ -12,7 +14,7 @@ module.exports = {
         const user = req.body["user-name"]
         const password = req.body["user-password"]
 
-        /*const data = await UsersData.get()    
+        const data = await UsersData.get()    
 
         const consult = data.find(data => data.name === user)
 
@@ -20,13 +22,13 @@ module.exports = {
             return res.status(401).send("Login/Password invalid!")
         }
 
-        console.log(consult.password)
-
         try {
 
             if(await compare(password, consult.password)){
                 
-                return res.render("Register", {userData: data})
+                userDataForDisplay = consult;
+
+                return res.render("Register", {userData: userDataForDisplay})
 
             }else{
             
@@ -37,17 +39,29 @@ module.exports = {
         } catch {
             
             return res.status(500).send()
-        }*/
-
-        return res.render("Register")
-
-
+        }
     },
-    accesFormUpdate(req, res){
-        return res.render("UpdateRegisters")
+    async accesFormUpdate(req, res){
+        const data = userDataForDisplay ? userDataForDisplay : ""
+
+        if(!data){
+            return res.status(401).send("User not logged in!")
+        }
+
+        return res.render("UpdateRegisters", { userData: data })
+    },
+    async redirectUpdateForNewForm(req, res){
+        const data = userDataForDisplay ? userDataForDisplay : ""
+
+        if(!data){
+            return res.status(401).send("User not logged in!")
+        }
+
+        return res.render("Register", { userData: data })
     },
 
-    //criação de novo contato/observação/usuario/sites 
+
+    //criação de novo observação/usuario/sites 
     async registerUsers(req, res){
         const passwordBody = req.body["user-password"]
         const encryptPasswordHash = await hash(passwordBody, 8)
@@ -85,14 +99,13 @@ module.exports = {
         return res.render("Register")
     },
 
-    //atualização de contato/observação/usuario/sites 
-    async updatedUser(req, res){
+    //atualização de observação/usuario/sites 
+    async updateUser(req, res){
 
         const id = req.params.id
 
         const bodyData = {
             name: req.body["user-name"],
-            password: req.body["user-password"],
             avatar: req.body.avatar,
             email_contact_link: req.body["email-contact-link"],
             description: req.body["user-description"]
@@ -102,7 +115,7 @@ module.exports = {
 
         return res.render("UpdateRegisters")
     },  
-    async updatedObservation(req, res){
+    async updateObservation(req, res){
 
         const id = req.params.id
 
@@ -115,14 +128,14 @@ module.exports = {
 
         return res.render("UpdateRegisters")
     },   
-    async updatedSite(req, res){
+    async updateSite(req, res){
 
         const id = req.params.id
 
         const bodyData = {
             name: req.body["site-name"],
             link: req.body["site-link"],
-            description: req.body["site-category"]
+            category: req.body["site-category"]
         }
 
         await SiteData.update(bodyData, id)
@@ -142,8 +155,6 @@ module.exports = {
     async consultObservation(req, res){
         const data = req.body["observation-name"]
         
-
-    
         const dataResult = await ObservationData.getForName(data)
 
         return res.render("updateDelete/UpdateDeleteShowObservation", {dataResult: dataResult})
@@ -156,7 +167,7 @@ module.exports = {
         return res.render("updateDelete/UpdateDeleteShowSite", {dataResult: dataResult})
     },
 
-    //deleção de contato/observação/usuario/sites  
+    //deletar de observação/usuario/sites  
     async deleteUser(req, res){
         const id = req.params.id;
 

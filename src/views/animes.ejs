@@ -23,20 +23,22 @@
 
 			<div class="row">
 
-				<% dataAnimesLimit.forEach(dataAnimesLimit=> { %>
+				<% let tabIndexAnimes = 7; dataAnimesLimit.forEach(dataAnimesLimit=> { %>
 
 					<div class="col-sm-4">
 						<div class="card-content">
 
 							<img src="<%= dataAnimesLimit.image %>" class="card-img-top">
 							<div class="card-footer">
-								<a href="<%= dataAnimesLimit.link %>" target="_blank" tabindex="7">
+								<a href="<%= dataAnimesLimit.link %>" target="_blank" tabindex="<%= tabIndexAnimes %>">
 									<%= dataAnimesLimit.name %>
 								</a>
 							</div>
 
 						</div>
 					</div>
+
+					<% tabIndexAnimes++; %> 
 
 				<% }) %>
 
@@ -47,7 +49,7 @@
 		<br>
 		<!-- Paginação -->
 		
-	<%- include("./components/Page-Pagination.ejs", {numberOfPages: numberOfPages, current: current}) %>
+		<%- include("./components/Page-Pagination.ejs", {numberOfPages: numberOfPages, current: current}) %>
 		
 		<!-- Observação -->
 		<%- include("./components/Page-Note.ejs", { title: "Observação!", suggestion: dataSuggestion, observation: dataObservation })  %> 

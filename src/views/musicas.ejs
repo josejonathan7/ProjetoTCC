@@ -26,7 +26,7 @@
 
 						<header><h3>Letra A:</h3></header>
 
-						<% let counterB = 0, counterC=0, counterD=0, counterE=0, counterF=0, counterG=0, counterH=0, counterI=0, counterJ=0, counterK=0, counterL=0, counterM=0, counterN=0, counterO=0, counterP=0, counterQ=0, counterR=0, counterS=0, counterT=0, counterU=0, counterV=0, counterX=0, counterY=0, counterZ=0, counterW=0;  let tabindex=5; %> 
+						<% let counterB = 0, counterC=0, counterD=0, counterE=0, counterF=0, counterG=0, counterH=0, counterI=0, counterJ=0, counterK=0, counterL=0, counterM=0, counterN=0, counterO=0, counterP=0, counterQ=0, counterR=0, counterS=0, counterT=0, counterU=0, counterV=0, counterX=0, counterY=0, counterZ=0, counterW=0;  let tabindexSongs=5; %> 
 
 						<%  dataSongs.forEach(dataSongs => { %>
 
@@ -182,10 +182,10 @@
 							<% counterW++; } %>
 
 							<li>
-								<a href="<%= dataSongs.link %>" target="_blank" tabindex="<%= tabindex %> "><%= dataSongs.name %></a><br>
+								<a href="<%= dataSongs.link %>" target="_blank" tabindex="<%= tabindexSongs %> "><%= dataSongs.name %></a><br>
 							</li>
 							
-						<% tabindex++; }) %>
+						<% tabindexSongs++; }) %>
 
 					</ol>	
 				</div>
@@ -194,6 +194,13 @@
 		<br>
 		<!-- Observação -->
 		
+		<%- include("./components/Page-Note.ejs", { title: "Observação!", observation: dataObservation, suggestion: dataSuggestion }) %> 
+
+	</div>
+		
+	<!--Rodapé-->
+	
+	<%- include("./components/Page-Footer.ejs", { contacts: contactUsers}) %> 
 
 </body>
 
