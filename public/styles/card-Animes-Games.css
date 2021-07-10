@@ -13,13 +13,15 @@
     box-sizing: border-box;
   }
 
-@media only screen and (min-device-width: 60.1875rem){
+
+@media only screen and (min-device-width: 963px){
 
      /*cards-animes-jogos*/
   main div.row div.col-sm-4 div.card-content{
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 480px;
   }
 
   main div.row div.col-sm-4 div.card-content img{
@@ -61,11 +63,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 480px;
   }
 
   main div.row div.col-sm-4 div.card-content img{
-    width: 18.75rem;
-    height: 18.75rem;
+    width: 300px;
+    height: 300px;
     border-left: 0.1875rem solid var(--white);
     border-right: 0.1875rem solid var(--white);
     border-top: 0.1875rem solid var(--white);
@@ -74,25 +77,16 @@
   main div.row div.col-sm-4 div.card-content div.card-footer{
     background-color: var(--grey);
     width: 104%;
-    line-height: 5rem;
+    height: 25%;
     border-left: 0.1875rem solid var(--white);
     border-right: 0.1875rem solid var(--white);
     border-bottom: 0.1875rem solid var(--white);
     text-align: center;
   }
 
-  main div.row div.col-sm-4 div.card-content div.card-footer#ajuste-linha{
-    line-height: normal;
-    text-align: center;
-  }
-
-  div.card-content div.card-footer#medium-fit{
-    line-height: normal;
-  }
-
 }
 
-@media only screen and (max-device-width: 48rem) and (min-device-width: 33.8125rem){
+@media only screen and (max-device-width: 768px) and (min-device-width: 541px){
 
      /*cards-animes-jogos*/
   div.container-fluid main{
@@ -111,11 +105,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 380px;
   }
 
   main div.row div.col-sm-4 div.card-content img{
-    width: 15.3125rem;
-    height: 15.3125rem;
+    width: 245px;
+    height: 245px;
     border-left: 0.1875rem solid var(--white);
     border-right: 0.1875rem solid var(--white);
     border-top: 0.1875rem solid var(--white);
@@ -124,17 +119,15 @@
   main div.row div.col-sm-4 div.card-content div.card-footer{
     background-color: var(--grey);
     width: 109%;
-    line-height: 4.125rem;
+    height: 100px;
+    
     border-left: 0.1875rem solid var(--white);
     border-right: 0.1875rem solid var(--white);
     border-bottom: 0.1875rem solid var(--white);
     text-align: center;
   }
 
-  main div.row div.col-sm-4 div.card-content div.card-footer#ajuste-linha{
-    line-height: normal;
-    text-align: center;
-  }
+  
 
 }
 

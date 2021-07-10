@@ -12,6 +12,27 @@
     padding: 0;
     box-sizing: border-box;
   }
+
+footer div.card-body{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+footer div.card-body div img{
+  border-radius: 50%;
+}
+
+footer div.card-body div#user-image{
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center
+}
+
+
   
 @media only screen and (min-device-width: 963px){
 
@@ -36,6 +57,10 @@
     border-left: 0.125rem solid var(--white);
     border-right: 0.125rem solid var(--white);
     border-bottom: 0.125rem solid var(--white);
+  }
+
+  footer div.card-body div img{
+    width: 20%;
   }
 
 }
@@ -65,6 +90,10 @@
     border-bottom: 2px solid var(--white);
   }
 
+  footer div.card-body div img{
+    width: 50%;
+  }
+
 }
 
 
@@ -91,6 +120,10 @@
     border-left: 2px solid var(--white);
     border-right: 2px solid var(--white);
     border-bottom: 2px solid var(--white);
+  }
+
+  footer div.card-body div img{
+    width: 50%;
   }
 
 }
@@ -122,6 +155,10 @@
     border-bottom: 2px solid var(--white);
   }
 
+  footer div.card-body div img{
+    width: 50%;
+  }
+
 }
 
 @media only screen and (max-device-width: 414px) and (min-device-width: 361px){
@@ -147,6 +184,10 @@
     border-bottom: 2px solid var(--white);
   }
 
+  footer div.card-body div img{
+    width: 50%;
+  }
+
 }
 
 @media only screen and (max-device-width: 360px){
@@ -170,6 +211,10 @@
     border-left: 2px solid var(--white);
     border-right: 2px solid var(--white);
     border-bottom: 2px solid var(--white);
+  }
+
+  footer div.card-body div img{
+    width: 60%;
   }
 
 }
