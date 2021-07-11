@@ -1,3 +1,9 @@
+:root{
+    --black: #000000;
+    --blue: #4169E1;
+    --whiteSmoke: #F5F5F5;
+    --darkgray: #A9A9A9;
+}
 
 /*Aside da página de registros*/
 
@@ -5,16 +11,16 @@ div#content aside{
     display: flex;
     flex-direction: column;
     width: 95%;
-    background-color: whitesmoke;
-    border-radius: 16px;
-    height: 500px;
-    border: 1px solid black;
+    background-color: var(--whitesmoke);
+    border-radius: 1rem;
+    border: 0.0625rem solid var(--black);
 }
 
 aside div header h2#user-data{
     text-align: center;
-    background-color: royalblue;
-    border-radius: 16px 16px 0 0;
+    background-color: var(--blue);
+    border-radius: 1rem 1rem 0 0;
+    padding: 0.9375rem;
 }
 
 aside div header div {
@@ -22,7 +28,7 @@ aside div header div {
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    margin: 20px 0;
+    margin: 1.25rem 0;
 }
 
 aside div header img{
@@ -32,14 +38,14 @@ aside div header img{
 
 aside div#aside-content{
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 30px 0 30px 0;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 1.875rem 0 1.875rem 0;
     align-items: center;
 }
 
 aside div#aside-content img{
-    width: 25%;
+    width: 45%;
 }
 
 aside div#aside-content a{
@@ -47,7 +53,8 @@ aside div#aside-content a{
     color: var(--black);
 }
 
-@media screen and (max-device-width:360px) {
+
+@media screen and (max-device-width: 962px) {
     div#content aside{
         height: 10%;
         margin: 5% 2%;
@@ -58,17 +65,49 @@ aside div#aside-content a{
         flex-direction: row;
         align-items: center;
         justify-content: space-around;
-        margin: 20px 0;
+        margin: 1.25rem 0;
     }
     
-
     aside div header h2#user-data{
-        font-size: 25px;
-        padding: 10px;
+        font-size: 2.1875rem;
+        padding: 0.625rem;
     }
 
     aside div#aside-content{
-        padding: 15px;
+        padding: 0.9375rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        align-self: center;
+    }
+
+    aside div#aside-content a img{
+        width: 45%;
+    }
+}
+
+@media screen and (max-device-width: 540px) {
+    div#content aside{
+        height: 10%;
+        margin: 5% 2%;
+    }
+
+    aside div header div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        margin: 1.25rem 0;
+    }
+    
+    aside div header h2#user-data{
+        font-size: 1.5625rem;
+        padding: 0.625rem;
+    }
+
+    aside div#aside-content{
+        padding: 0.9375rem;
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -76,21 +115,10 @@ aside div#aside-content a{
         align-self: center;
     }
 
-    aside div#aside-content div{
-        height: 100px;
-    }
-
-    aside div#aside-content a{
-        visibility: hidden;
-    }
-
     aside div#aside-content a img{
-        visibility: visible;
         width: 45%;
     }
 }
-
-
 
 
 /*aside da página para atualizar/deletar registros*/
@@ -98,22 +126,22 @@ div#update-delete-data main aside{
     width: 30%;
     position: relative;
     right: 5%;
-    background-color: whitesmoke;
-    border: 1px solid black;
-    border-radius: 12px;
+    background-color: var(--whitesmoke);
+    border: 0.0625rem solid var(--black);
+    border-radius: 0.75rem;
 }
 
 div#update-delete-data main aside div header{
-    padding: 10px;
-    background-color: darkgray;
-    border: 1px solid black;
-    border-radius: 8px 8px 0 0;
+    padding: 0.625rem;
+    background-color: var(--darkgray);
+    border: 0.0625rem solid var(--black);
+    border-radius: 0.5rem 0.5rem 0 0;
 }
 
 div#update-delete-data main aside div div#delete-image-button{
     display: flex;
     flex-direction: row;
-    padding: 10px;
+    padding: 0.625rem;
     align-items: center;
     justify-content: space-evenly;
 }
@@ -123,5 +151,61 @@ div#update-delete-data main aside div img{
     height: 35%;
 }
 
+@media screen and (min-device-width: 963px) {
+    div#update-delete-data main aside{
+        width: 30%;
+        margin-left: 5%;
+    }
 
+    main aside div{
+        width: 100%;     
+    }
+
+    aside div header h2#user-data{
+        font-size: 1.5625rem;
+        padding: 0.625rem;
+    }
+
+    aside div#aside-content{
+        padding: 0.9375rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        align-self: center;
+    }
+
+    aside div#aside-content a img{
+        width: 40%;
+    }
+}
+
+@media screen and (max-device-width: 962px) {
+    div#update-delete-data main aside{
+        width: 95%;
+        margin-left: 10%;
+    }
+
+    main aside div{
+        width: 100%;      
+    }
+
+    aside div header h2#user-data{
+        font-size: 1.5625rem;
+        padding: 0.625rem;
+    }
+
+    aside div#aside-content{
+        padding: 0.9375rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        align-self: center;
+    }
+
+    aside div#aside-content a img{
+        width: 40%;
+    }
+}
 

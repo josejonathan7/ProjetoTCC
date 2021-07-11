@@ -3,10 +3,11 @@
 
 <head>
 
-    <%- include("../components/Page-Head.ejs", {title: "AniJogos - Atualizar dados" }) %>
+    <% const pageStyles = ["asideRegisters.css", "updateFormStyle.css", "modalAuthenticateDelete.css"] %> 
+
+    <%- include("../components/Page-Head.ejs", {title: "AniJogos - Atualizar dados", styles: pageStyles}) %>
 
 </head>
-
 <body style="background-color: cornsilk">
     <div id="update-delete-data">
         <header>

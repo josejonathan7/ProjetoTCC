@@ -2,7 +2,9 @@
 <html>
 <head>
 
-    <%- include("./components/Page-Head.ejs", { title: "Cadastrar novos registros no banco de dados!" }) %> 
+    <% const pageStyles = ["asideRegisters.css", "formNewRegisterConsultRegister.css", "modalAuthenticateDelete.css", "nav.css"] %> 
+
+    <%- include("./components/Page-Head.ejs", { title: "Cadastrar novos registros no banco de dados!", styles: pageStyles }) %> 
 
 </head>
 <body style="background-color: beige;">
@@ -75,7 +77,7 @@
                 </form>
             </div>
             
-            <div id="multi-form">      
+            <div>      
                 <!--Cadstrar novo usuario-->
                 <form action="/registers/users" method="post" class="form-group">
                     <fieldset>
@@ -132,7 +134,7 @@
 
                             <div class="input-group">
                                 <label for="information">Observação:</label>
-                                <textarea name="information" id="information" cols="30" rows="5" class="form-control"></textarea>
+                                <textarea name="information" id="information" cols="30" rows="5"></textarea>
                             </div>
                             <div id="button-group">
                                 <button type="submit" class="new-register">Criar Novo</button>

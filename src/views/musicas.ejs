@@ -2,7 +2,9 @@
 <html lang="pt-br"> 
 <head>
 
-	<%- include("./components/Page-Head.ejs", {title: "AniJogos - Musicas"}) %> 
+	<% const pageStyles = ["modalAuthenticateDelete.css", "cardSongs.css", "cardFooter.css", "cardNote.css", "nav.css"] %> 
+
+	<%- include("./components/Page-Head.ejs", {title: "AniJogos - Musicas", styles: pageStyles}) %> 
 
 </head>
 <body>

@@ -1,5 +1,13 @@
 /*existe ao todo 2 Modals */
-
+:root{
+  --white: #FFFFFF;
+  --red: #FF0000;
+  --gainsboro: #DCDCDC;
+  --aliceblue: #F0F8FF;
+  --orangered: #FF4500;
+  --darkcyan: #008B8B;
+  --F0F2f5: #F0F2f5;
+}
 
 /*Modal de autenticação para entrar em registros*/
 
@@ -17,40 +25,40 @@ div.modal-config-site{
     visibility: hidden;
     opacity: 0;
   
-  }
+}
   
-  div.modal-config-site.active{
+div.modal-config-site.active{
     visibility: visible;
     opacity: 1;
     z-index: 10;
-  }
+}
   
-  div.modal-config-site div#modal{
-    background-color: #F0F2f5;
+div.modal-config-site div#modal{
+    background-color: var(--F0F2f5);
     width: 90%;
-    max-width: 500px;
+    max-width: 31.25rem;
     position: relative;
     z-index: 2;
-    border-radius: 6px;
-    border: 1px solid white;
-  }
+    border-radius: 0.375rem;
+    border: 0.0625rem solid var(--white);
+}
   
   div.modal-config-site div#modal form header,
   div.modal-config-site div#modal form header h2{
-    padding: 10px;
+    padding: 0.625rem;
     text-align: center;
-    background-color: gainsboro;
-  }
+    background-color: var(--gainsboro);
+}
   
   div.modal-config-site form div#content-login{
-    padding: 25px;
+    padding: 1.5625rem;
     display: flex;
     flex-direction: column;
-    background-color: aliceblue;
+    background-color: var(--aliceblue);
   }
   
   div.modal-config-site form div#content-login div.input-group{
-    margin: 0 0 20px;
+    margin: 0 0 1.25rem;
     display: flex;
     flex-direction: column;
     width: 95%;
@@ -63,12 +71,11 @@ div.modal-config-site{
   
   div.modal-config-site form div#content-login div.input-group input{
     width: 100%;
-    border-radius: 12px;
-    height: 40px;
-    padding: 10px;
-    font-size: 20px;
+    border-radius: 0.75rem;
+    height: 2.5rem;
+    padding: 0.625rem;
+    font-size: 1.25rem;
   }
-  
   
   div#modal div#content-login div#button-login-group{
     display: flex;
@@ -77,59 +84,56 @@ div.modal-config-site{
     justify-content: space-between;
     align-items: center;
   }
-  
-  
+    
   div#button-login-group button#login{
     width: 45%;
-    padding: 10px;
-    background-color: #F0F2f5;
-    color: orangered;
-    border: 1px solid orangered;
-    border-radius: 8px;
+    padding: 0.625rem;
+    background-color: var(--F0F2f5);
+    color: var(--orangered);
+    border: 0.0625rem solid var(--orangered);
+    border-radius: 0.5rem;
     transition: 0.5s;
-    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.7);
+    box-shadow: 0.1875rem 0.1875rem 0.1875rem 0.1875rem rgba(0, 0, 0, 0.7);
   }
   
   div#button-login-group button#login:hover{
     filter: brightness(0.6);
-    box-shadow: 3px 5px 5px 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 0.1875rem 0.3125rem 0.3125rem 0.3125rem rgba(0, 0, 0, 0.5);
   }
   
   div#button-login-group button#cancel-login{
     width: 45%;
-    padding: 10px;
-    background-color: #F0F2f5;
-    color: red;
-    border: 1px solid red;
-    border-radius: 8px;
+    padding: 0.625rem;
+    background-color: var(--F0F2f5);
+    color: var(--red);
+    border: 0.0625rem solid var(--red);
+    border-radius: 0.5rem;
     transition: 0.5s;
-    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.7); 
+    box-shadow: 0.1875rem 0.1875rem 0.1875rem 0.1875rem rgba(0, 0, 0, 0.7); 
   }
   
   div#button-login-group button#cancel-login:hover{
     filter: brightness(0.6);
-    box-shadow: 3px 5px 5px 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 0.1875rem 0.3125rem 0.3125rem 0.3125rem rgba(0, 0, 0, 0.5);
   }
 
 /*Modal para deletar registros */
-
 button#open-modal-delete-button{
   width: 45%;
-  padding: 10px;
-  background-color: #F0F2f5;
-  color: red;
-  border: 1px solid red;
-  border-radius: 8px;
+  padding: 0.625rem;
+  background-color: var(--F0F2f5);
+  color: var(--red);
+  border: 0.0625rem solid var(--red);
+  border-radius: 0.5rem;
   transition: 0.5s;
-  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.8);
+  box-shadow: 0.1875rem 0.1875rem 0.1875rem 0.1875rem rgba(0, 0, 0, 0.8);
   
 }
 
 button#open-modal-delete-button:hover{
   filter: brightness(0.6);
-  box-shadow: 3px 5px 5px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0.1875rem 0.3125rem 0.3125rem 0.3125rem rgba(0, 0, 0, 0.5);
 }
-
 
 div#update-delete-data div.modal-delete{
     width: 100%;
@@ -153,19 +157,19 @@ div#update-delete-data div.modal-delete.active{
 }
 
 div.modal-delete div#modal{
-    background-color: #F0F2f5;
-    padding: 2.4rem;
+    background-color: var(--F0F2f5);
     width: 90%;
-    max-width: 500px;
+    max-width: 31.25rem;
     position: relative;
     z-index: 1;
-    border-radius: 6px;
-    border: 1px soli white;
+    border-radius: 0.375rem;
+    border: 0.0625rem soli var(--white);
 }
 
 div#modal header,
 div#modal header h2{
-    background-color: #F0F2f5;
+    background-color: var(--F0F2f5);
+    padding: 0.625rem;
 }
 
 div#modal div#button-delete-group{
@@ -174,36 +178,37 @@ div#modal div#button-delete-group{
     width: 100%;
     justify-content: space-between;
     align-items: center;
+    padding: 0.625rem;
 }
 
 div#button-delete-group button#confirm-delete{
     width: 45%;
-    padding: 10px;
-    background-color: #F0F2f5;
-    color: red;
-    border: 1px solid red;
-    border-radius: 8px;
+    padding: 0.625rem;
+    background-color: var(--F0F2f5);
+    color: var(--red);
+    border: 0.0625rem solid var(--red);
+    border-radius: 0.5rem;
     transition: 0.5s;
-    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.7);
+    box-shadow: 0.1875rem 0.1875rem 0.1875rem 0.1875rem rgba(0, 0, 0, 0.7);
 }
 
 div#button-delete-group button#confirm-delete:hover{
     filter: brightness(0.6);
-    box-shadow: 3px 5px 5px 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 0.1875rem 0.3125rem 0.3125rem 0.3125rem rgba(0, 0, 0, 0.5);
 }
 
 div#button-delete-group button#cancel-delete{
     width: 45%;
-    padding: 10px;
-    background-color: #F0F2f5;
-    color: darkcyan;
-    border: 1px solid darkcyan;
-    border-radius: 8px;
+    padding: 0.625rem;
+    background-color: var(--F0F2f5);
+    color: var(--darkcyan);
+    border: 0.0625rem solid var(--darkcyan);
+    border-radius: 0.5rem;
     transition: 0.5s;
-    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.7); 
+    box-shadow: 0.1875rem 0.1875rem 0.1875rem 0.1875rem rgba(0, 0, 0, 0.7); 
 }
 
 div#button-delete-group button#cancel-delete:hover{
     filter: brightness(0.6);
-    box-shadow: 3px 5px 5px 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 0.1875rem 0.3125rem 0.3125rem 0.3125rem rgba(0, 0, 0, 0.5);
 }

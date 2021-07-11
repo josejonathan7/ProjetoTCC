@@ -1,11 +1,9 @@
 :root{
-    --black: black;
-    --cyan: cyan;
-    --grey: grey;
-    --white: white;
-    --red: #c9302c;
-    --blue: royalblue;
-  }
+    --grey: #808080;
+    --white: #FFFFFF;
+    --red: white;
+
+}
   
   *{
     margin: 0;
@@ -44,14 +42,14 @@ footer div.card-body div#user-image{
   footer div.card div.card-header{
     padding: 0.9375rem;
     background-color: var(--red);
-    border-radius: 16px 16px 0 0;
+    border-radius: 1rem 1rem 0 0;
   }
  
   footer div.card div.card-body{
     padding: 0.9375rem;
     background-color: var(--grey);
     color: var(--white);
-    border-radius: 0 0 16px 16px;
+    border-radius: 0 0 1rem 1rem;
     border-left: 0.125rem solid var(--white);
     border-right: 0.125rem solid var(--white);
     border-bottom: 0.125rem solid var(--white);
@@ -60,7 +58,6 @@ footer div.card-body div#user-image{
   footer div.card-body div img{
     width: 20%;
   }
-
 }
 
 @media only screen and (max-device-width: 962px) and (min-device-width: 769px){
@@ -69,31 +66,29 @@ footer div.card-body div#user-image{
   body footer{
     width: 78%;
     position: relative;
-    left: 108px;
+    left: 6.75rem;
   }
 
   footer div.card div.card-header{
-    padding: 15px;
+    padding: 0.9375rem;
     background-color: var(--red);
-    border-radius: 16px 16px 0 0;
+    border-radius: 1rem 1rem 0 0;
   }
  
   footer div.card div.card-body{
-    padding: 15px;
+    padding: 0.9375rem;
     background-color: var(--grey);
     color: var(--white);
-    border-radius: 0 0 16px 16px;
-    border-left: 2px solid var(--white);
-    border-right: 2px solid var(--white);
-    border-bottom: 2px solid var(--white);
+    border-radius: 0 0 1rem 1rem;
+    border-left: 0.125rem solid var(--white);
+    border-right: 0.125rem solid var(--white);
+    border-bottom: 0.125rem solid var(--white);
   }
 
   footer div.card-body div img{
     width: 50%;
   }
-
 }
-
 
 @media only screen and (max-device-width: 768px) and (min-device-width: 541px){
 
@@ -101,118 +96,113 @@ footer div.card-body div#user-image{
   body footer{
     width: 78%;
     position: relative;
-    left: 85px;
+    left: 5.3125rem;
   }
 
   footer div.card div.card-header{
-    padding: 15px;
+    padding: 0.9375rem;
     background-color: var(--red);
-    border-radius: 4px 4px 0 0;
+    border-radius: 0.25rem 0.25rem 0 0;
   }
  
   footer div.card div.card-body{
-    padding: 15px;
+    padding: 0.9375rem;
     background-color: var(--grey);
     color: var(--white);
-    border-radius: 0 0 4px 4px;
-    border-left: 2px solid var(--white);
-    border-right: 2px solid var(--white);
-    border-bottom: 2px solid var(--white);
+    border-radius: 0 0 0.25rem 0.25rem;
+    border-left: 0.125rem solid var(--white);
+    border-right: 0.125rem solid var(--white);
+    border-bottom: 0.125rem solid var(--white);
   }
 
   footer div.card-body div img{
     width: 50%;
   }
-
 }
-
 
 @media only screen and (max-device-width: 540px) and (min-device-width: 415px){
 
   /*rodapé*/
   body footer{
-    padding: 15px;
+    padding: 0.9375rem;
     position: relative;
-    left: 20px;
+    left: 1.25rem;
     width: 92%;
   }
 
   footer div.card div.card-header{
-    padding: 15px;
+    padding: 0.9375rem;
     background-color: var(--red);
-    border-radius: 4px 4px 0 0;
+    border-radius: 0.25rem 0.25rem 0 0;
   }
  
   footer div.card div.card-body{
-    padding: 15px;
+    padding: 0.9375rem;
     background-color: var(--grey);
     color: var(--white);
-    border-radius: 0 0 4px 4px;
-    border-left: 2px solid var(--white);
-    border-right: 2px solid var(--white);
-    border-bottom: 2px solid var(--white);
+    border-radius: 0 0 0.25rem 0.25rem;
+    border-left: 0.125rem solid var(--white);
+    border-right: 0.125rem solid var(--white);
+    border-bottom: 0.125rem solid var(--white);
   }
 
   footer div.card-body div img{
     width: 50%;
   }
-
 }
 
 @media only screen and (max-device-width: 414px) and (min-device-width: 361px){
 
    /*rodapé*/
    body footer{
-    padding: 15px;
+    padding: 0.9375rem;
   }
 
   footer div.card div.card-header{
-    padding: 15px;
+    padding: 0.9375rem;
     background-color: var(--red);
-    border-radius: 4px 4px 0 0;
+    border-radius: 0.25rem 0.25rem 0 0;
   }
  
   footer div.card div.card-body{
-    padding: 15px;
+    padding: 0.9375rem;
     background-color: var(--grey);
     color: var(--white);
-    border-radius: 0 0 4px 4px;
-    border-left: 2px solid var(--white);
-    border-right: 2px solid var(--white);
-    border-bottom: 2px solid var(--white);
+    border-radius: 0 0 0.25rem 0.25rem;
+    border-left: 0.125rem solid var(--white);
+    border-right: 0.125rem solid var(--white);
+    border-bottom: 0.125rem solid var(--white);
   }
 
   footer div.card-body div img{
     width: 50%;
   }
-
 }
 
 @media only screen and (max-device-width: 360px){
 
   /*rodapé*/
   body footer{
-    padding: 15px;
+    padding: 0.9375rem;
   }
 
   footer div.card div.card-header{
-    padding: 15px;
+    padding: 0.9375rem;
     background-color: var(--red);
-    border-radius: 4px 4px 0 0;
+    border-radius: 0.25rem 0.25rem 0 0;
   }
  
   footer div.card div.card-body{
-    padding: 15px;
+    padding: 0.9375rem;
     background-color: var(--grey);
     color: var(--white);
-    border-radius: 0 0 4px 4px;
-    border-left: 2px solid var(--white);
-    border-right: 2px solid var(--white);
-    border-bottom: 2px solid var(--white);
+    border-radius: 0 0 0.25rem 0.25rem;
+    border-left: 0.125rem solid var(--white);
+    border-right: 0.125rem solid var(--white);
+    border-bottom: 0.125rem solid var(--white);
   }
 
   footer div.card-body div img{
     width: 60%;
   }
-
 }

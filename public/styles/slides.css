@@ -1,11 +1,8 @@
 :root{
-    --black: black;
-    --cyan: cyan;
-    --grey: grey;
-    --white: white;
-    --red: #c9302c;
-    --blue: royalblue;
-  }
+    --cyan: #00FFFF;
+    --grey: #808080; 
+    --white: ##FFFFFF;
+}
   
   *{
     margin: 0;
@@ -17,20 +14,20 @@
     background-color: rgba(0, 0, 0, 0.4);
     height: 30%;
     width: 5%;
-    color: white;
+    color: var(--white);
     cursor: pointer;
     outline: none;
-    margin: 10px;
+    margin: 0.625rem;
     border: none;
   }
   
 div.card.card-carousel div.card-body div.border-box-load{
     width: 100%;
-    height: 15px;
+    height: 0.9375rem;
     margin-top: 25%;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 0.0625rem solid rgba(255, 255, 255, 0.3);
 
-  }
+}
 
   
   div.card.card-carousel div.card-body div#box-load-animes{
@@ -52,7 +49,6 @@ div.card.card-carousel div.card-body div.border-box-load{
     display: flex;
     justify-content: space-between;
     align-items: center;
-  
   }
   
 @media only screen and (min-device-width: 963px){
@@ -66,7 +62,7 @@ div.card.card-carousel div.card-body div.border-box-load{
   div.card.card-carousel div.card-header{
     background-color: var(--cyan);
     padding: 0.625rem;
-    border-radius: 16px 16px 0 0;
+    border-radius: 1rem 1rem 0 0;
   }
 
   div.card.card-carousel div.card-body{
@@ -76,12 +72,8 @@ div.card.card-carousel div.card-body div.border-box-load{
     border-bottom: 0.125rem solid var(--white);
     border-radius: 0 0 16px 16px;
     background-size: 70% 100%;
-    height: 400px;
+    height: 25rem;
   }
-
-  
-
-
 }
 
 @media only screen and (max-device-width: 962px) and (min-device-width: 769px){
@@ -92,23 +84,20 @@ div.card.card-carousel div.card-body div.border-box-load{
 
   div.card.card-carousel div.card-header{
     background-color: var(--cyan);
-    padding: 10px 0 10px 30px;
-    border-radius: 16px 16px 0 0;
+    padding: 0.625rem 0 0.625rem 1.875rem;
+    border-radius: 1rem 1rem 0 0;
   }
 
   div.card.card-carousel div.card-body{
     background-color: var(--grey);
-    border-left: 2px solid var(--white);
-    border-right: 2px solid var(--white);
-    border-bottom: 2px solid var(--white);
-    border-radius: 0 0 16px 16px;
+    border-left: 0.125rem solid var(--white);
+    border-right: 0.125rem solid var(--white);
+    border-bottom: 0.125rem solid var(--white);
+    border-radius: 0 0 1rem 1rem;
     background-size: 100% 100%;
-    height: 550px;
+    height: 34.375rem;
   }
-
-
 }
-
 
 @media only screen and (max-device-width: 768px) and (min-device-width: 541px){
    /*Carousel de animes e jogos*/
@@ -118,23 +107,19 @@ div.card.card-carousel div.card-body div.border-box-load{
 
   div.card.card-carousel div.card-header{
     background-color: var(--cyan);
-    padding: 10px;
-    border-radius: 4px 4px 0 0;
+    padding: 0.625rem;
+    border-radius: 0.25rem 0.25rem 0 0;
   }
 
   div.card.card-carousel div.card-body{
     background-color: var(--grey);
-    border-left: 2px solid var(--white);
-    border-right: 2px solid var(--white);
-    border-bottom: 2px solid var(--white);
+    border-left: 0.125rem solid var(--white);
+    border-right: 0.125rem solid var(--white);
+    border-bottom: 0.125rem solid var(--white);
     background-size: 100% 100%;
-    height: 490px;
+    height: 30.625rem;
   }
-
-
- 
 }
-
 
 @media only screen and (max-device-width: 540px) and (min-device-width: 415px){
 
@@ -145,19 +130,18 @@ div.card.card-carousel div.card-body div.border-box-load{
 
   div.card.card-carousel div.card-header{
     background-color: var(--cyan);
-    padding: 10px;
-    border-radius: 4px 4px 0 0;
+    padding: 0.625rem;
+    border-radius: 0.25rem 0.25rem 0 0;
   }
 
   div.card.card-carousel div.card-body{
     background-color: var(--grey);
-    border-left: 2px solid var(--white);
-    border-right: 2px solid var(--white);
-    border-bottom: 2px solid var(--white);
+    border-left: 0.125rem solid var(--white);
+    border-right: 0.125rem solid var(--white);
+    border-bottom: 0.125rem solid var(--white);
     background-size: 100% 100%;
-    height: 400px;
+    height: 25rem;
   }
-
 }
 
 @media only screen and (max-device-width: 414px) and (min-device-width: 361px){
@@ -169,19 +153,18 @@ div.card.card-carousel div.card-body div.border-box-load{
 
   div.card.card-carousel div.card-header{
     background-color: var(--cyan);
-    padding: 10px;
-    border-radius: 4px 4px 0 0;
+    padding: 0.625rem;
+    border-radius: 0.25rem 0.25rem 0 0;
   }
 
   div.card.card-carousel div.card-body{
     background-color: var(--grey);
-    border-left: 2px solid var(--white);
-    border-right: 2px solid var(--white);
-    border-bottom: 2px solid var(--white);
+    border-left: 0.125rem solid var(--white);
+    border-right: 0.125rem solid var(--white);
+    border-bottom: 0.125rem solid var(--white);
     background-size: 100% 100%;
-    height: 350px;
+    height: 21.875rem;
   }
-
 }
 
 @media only screen and (max-device-width: 360px){
@@ -193,18 +176,16 @@ div.card.card-carousel div.card-body div.border-box-load{
 
   div.card.card-carousel div.card-header{
     background-color: var(--cyan);
-    padding: 10px;
-    border-radius: 4px 4px 0 0;
+    padding: 0.625rem;
+    border-radius: 0.25rem 0.25rem 0 0;
   }
 
   div.card.card-carousel div.card-body{
     background-color: var(--grey);
-    border-left: 2px solid var(--white);
-    border-right: 2px solid var(--white);
-    border-bottom: 2px solid var(--white);
+    border-left: 0.125rem solid var(--white);
+    border-right: 0.125rem solid var(--white);
+    border-bottom: 0.125rem solid var(--white);
     background-size: 100% 100%;
-    height: 300px;
+    height: 18.75rem;
   }
-
-
 }

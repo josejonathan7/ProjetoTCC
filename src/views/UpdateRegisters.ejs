@@ -3,7 +3,9 @@
 
 <head>
 
-    <%- include("./components/Page-Head.ejs", {title: "AniJogos - Atualizar/Deletar Registros" }) %>
+    <% const pageStyles = ["asideRegisters.css", "formNewRegisterConsultRegister.css", "modalAuthenticateDelete.css", "nav.css"] %> 
+
+    <%- include("./components/Page-Head.ejs", {title: "AniJogos - Atualizar/Deletar Registros", styles: pageStyles}) %>
 
 </head>
 
@@ -11,7 +13,7 @@
 
     <%- include("./components/Page-Nav.ejs") %>
 
-        <div id="content-consult">
+        <div id="content">
             <%- include("./components/Page-Aside-Registers.ejs") %>
 
 

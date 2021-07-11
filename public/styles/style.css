@@ -1,10 +1,7 @@
 :root{
-  --black: black;
-  --cyan: cyan;
-  --grey: grey;
-  --white: white;
-  --red: #c9302c;
-  --blue: royalblue;
+  --cyan: #00FFFF;
+  --blue: #4169E1;
+  --blueviolet: #8A2BE2;
 }
 
 *{
@@ -37,18 +34,18 @@ a:hover{
 
 /*botões para trocar de página de conteu do em animes e jogos*/
 ul.pagination-styles{
-  gap: 10px; 
+  gap: 0.625rem; 
 }
 
 ul.pagination-styles li.page-item a{
-  border: 1px solid royalblue;
+  border: 0.0625rem solid royalblue;
   color: royalblue;
   filter: brightness(0.6);
 }
 
 ul.pagination-styles li.page-item a.page-link.active{
-  border: 1px solid blueviolet;
-  color: blueviolet;
+  border: 0.0625rem solid var(--blueviolet);
+  color: var(--blueviolet);
   filter: brightness(1);
   background-color: #fff;
 }
@@ -58,8 +55,7 @@ ul.pagination-styles li.page-item:hover{
   filter: brightness(0.6);
 }
 
-
-@media only screen and (min-device-width: 60.1875rem){
+@media only screen and (min-device-width: 963px){
   html{
     font-size:1.25rem;
   }
@@ -76,7 +72,7 @@ ul.pagination-styles li.page-item:hover{
   }
 }
 
-@media only screen and (max-device-width: 60.125rem) and (min-device-width: 48.0625rem){
+@media only screen and (max-device-width: 962px) and (min-device-width: 769px){
   html{
     font-size: 1.875rem;
   }
@@ -93,7 +89,7 @@ ul.pagination-styles li.page-item:hover{
   }
 }
 
-@media only screen and (max-device-width: 48rem) and (min-device-width: 33.8125rem){
+@media only screen and (max-device-width: 768px) and (min-device-width: 541px){
   html{
     font-size: 1.5625rem;
   }
@@ -110,7 +106,7 @@ ul.pagination-styles li.page-item:hover{
   }
 }
 
-@media only screen and (max-device-width: 33.75rem) and (min-device-width: 25.9375rem){
+@media only screen and (max-device-width: 540px) and (min-device-width: 415px){
   html{
     font-size: 1.25rem;
   }
@@ -127,7 +123,7 @@ ul.pagination-styles li.page-item:hover{
   }
 }
 
-@media only screen and (max-device-width: 25.875rem) and (min-device-width: 22.5625rem){
+@media only screen and (max-device-width: 414px) and (min-device-width: 361px){
   html{
     font-size: 1rem;
   }
@@ -144,7 +140,7 @@ ul.pagination-styles li.page-item:hover{
   }
 }
 
-@media only screen and (max-device-width: 22.5rem){
+@media only screen and (max-device-width: 360px){
   html{
     font-size: 1rem;
   }

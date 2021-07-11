@@ -1,11 +1,7 @@
 :root{
-    --black: black;
-    --cyan: cyan;
-    --grey: grey;
-    --white: white;
-    --red: #c9302c;
-    --blue: royalblue;
-  }
+    --grey: #808080;
+    --white: #FFFFFF;
+}
   
   *{
     margin: 0;
@@ -21,30 +17,29 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 480px;
+    height: 30rem;
   }
 
   main div.row div.col-sm-4 div.card-content img{
     width: 95%;
     height: 18.75rem;
-    border-left: 3px solid var(--white);
-    border-right: 3px solid var(--white);
-    border-top: 3px solid var(--white);
+    border-left: 0.1875rem solid var(--white);
+    border-right: 0.1875rem solid var(--white);
+    border-top: 0.1875rem solid var(--white);
   }
 
   main div.row div.col-sm-4 div.card-content div.card-footer{
     background-color: var(--grey);
     width: 95%;
     
-    border-left: 3px solid var(--white);
-    border-right: 3px solid var(--white);
-    border-bottom: 3px solid var(--white);
+    border-left: 0.1875rem solid var(--white);
+    border-right: 0.1875rem solid var(--white);
+    border-bottom: 0.1875rem solid var(--white);
     text-align: center;
   }
-
 }
 
-@media only screen and (max-device-width: 60.125rem) and (min-device-width: 48.0625rem){
+@media only screen and (max-device-width: 962px) and (min-device-width: 769px){
 
    /*cards-animes-jogos*/
   div.container-fluid main{
@@ -63,12 +58,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 480px;
+    height: 30rem;
   }
 
   main div.row div.col-sm-4 div.card-content img{
-    width: 300px;
-    height: 300px;
+    width: 18.75rem;
+    height: 18.75rem;
     border-left: 0.1875rem solid var(--white);
     border-right: 0.1875rem solid var(--white);
     border-top: 0.1875rem solid var(--white);
@@ -83,12 +78,11 @@
     border-bottom: 0.1875rem solid var(--white);
     text-align: center;
   }
-
 }
 
 @media only screen and (max-device-width: 768px) and (min-device-width: 541px){
 
-     /*cards-animes-jogos*/
+  /*cards-animes-jogos*/
   div.container-fluid main{
     display: flex;
     flex-direction: column;
@@ -105,12 +99,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 380px;
+    height: 23.75rem;
   }
 
   main div.row div.col-sm-4 div.card-content img{
-    width: 245px;
-    height: 245px;
+    width: 15.3125rem;
+    height: 15.3125rem;
     border-left: 0.1875rem solid var(--white);
     border-right: 0.1875rem solid var(--white);
     border-top: 0.1875rem solid var(--white);
@@ -119,21 +113,18 @@
   main div.row div.col-sm-4 div.card-content div.card-footer{
     background-color: var(--grey);
     width: 109%;
-    height: 100px;
+    height: 6.25rem;
     
     border-left: 0.1875rem solid var(--white);
     border-right: 0.1875rem solid var(--white);
     border-bottom: 0.1875rem solid var(--white);
     text-align: center;
   }
-
-  
-
 }
 
-@media only screen and (max-device-width: 33.75rem) and (min-device-width: 25.9375rem){
+@media only screen and (max-device-width: 540px) and (min-device-width: 415px){
 
-     /*cards-animes-jogos*/
+  /*cards-animes-jogos*/
   div.container-fluid main{
     display: flex;
     flex-direction: column;
@@ -149,9 +140,7 @@
   main div.row div.col-sm-4 div.card-content{
     display: flex;
     flex-direction: column;
-    
     align-items: center;
-   
   }
 
   main div.row div.col-sm-4 div.card-content img{
@@ -172,9 +161,9 @@
   }
 }
 
-@media only screen and (max-device-width: 25.875rem) and (min-device-width: 22.5625rem){
+@media only screen and (max-device-width: 414px) and (min-device-width: 361px){
 
-    /*cards-animes-jogos*/
+  /*cards-animes-jogos*/
   div.container-fluid main{
     display: flex;
     flex-direction: column;
@@ -190,9 +179,7 @@
   main div.row div.col-sm-4 div.card-content{
     display: flex;
     flex-direction: column;
-    
     align-items: center;
-   
   }
 
   main div.row div.col-sm-4 div.card-content img{
@@ -211,12 +198,11 @@
     border-bottom: 0.1875rem solid var(--white);
     text-align: center;
   }
-
 }
 
-@media only screen and (max-device-width: 22.5rem){
+@media only screen and (max-device-width: 360px){
 
-    /*cards-animes-jogos*/
+  /*cards-animes-jogos*/
   div.container-fluid main{
     display: flex;
     flex-direction: column;
@@ -232,9 +218,7 @@
   main div.row div.col-sm-4 div.card-content{
     display: flex;
     flex-direction: column;
-    
     align-items: center;
-   
   }
 
   main div.row div.col-sm-4 div.card-content img{
@@ -253,5 +237,4 @@
     border-bottom: 0.1875rem solid var(--white);
     text-align: center;
   }
-
 }

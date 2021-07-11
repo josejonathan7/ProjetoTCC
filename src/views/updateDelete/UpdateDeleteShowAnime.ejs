@@ -3,10 +3,11 @@
 
 <head>
 
-    <%- include("../components/Page-Head.ejs", {title: "AniJogos - Atualizar dados" }) %>
+    <% const pageStyles = ["asideRegisters.css", "updateFormStyle.css", "modalAuthenticateDelete.css"] %> 
+
+    <%- include("../components/Page-Head.ejs", {title: "AniJogos - Atualizar dados", styles: pageStyles}) %>    
 
 </head>
-
 <body style="background-color: cornsilk">
 
     <div id="update-delete-data">
@@ -17,6 +18,18 @@
 
         <% dataResult.forEach(dataResult=> { %>
             <main>
+                
+                <aside>
+                    <div>
+                        <header>
+                            <h2>Deletar Anime!</h2>
+                        </header>
+                        <div id="delete-image-button">
+                            <img src="<%= dataResult.image %> " alt="Imagem não disponivel!">
+                            <button type="submit" onclick="Modal.open()" id="open-modal-delete-button">Deletar</button>
+                        </div>
+                    </div>
+                </aside>
 
                 <form action="/registers/update/animes/<%= dataResult.id %> " method="post">
                     <fieldset>
@@ -50,17 +63,6 @@
                     </fieldset>
                 </form>
 
-                <aside>
-                    <div>
-                        <header>
-                            <h2>Deletar Anime!</h2>
-                        </header>
-                        <div id="delete-image-button">
-                            <img src="<%= dataResult.image %> " alt="Imagem não disponivel!">
-                            <button type="submit" onclick="Modal.open()" id="open-modal-delete-button">Deletar</button>
-                        </div>
-                    </div>
-                </aside>
             </main>
 
             <%- include("../components/Page-modal-Delete.ejs",{router: "animes", id: dataResult.id}) %> 
