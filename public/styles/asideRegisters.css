@@ -1,0 +1,127 @@
+
+/*Aside da página de registros*/
+
+div#content aside{
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    background-color: whitesmoke;
+    border-radius: 16px;
+    height: 500px;
+    border: 1px solid black;
+}
+
+aside div header h2#user-data{
+    text-align: center;
+    background-color: royalblue;
+    border-radius: 16px 16px 0 0;
+}
+
+aside div header div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+aside div header img{
+    width: 35%;
+    border-radius: 50%;
+}
+
+aside div#aside-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px 0 30px 0;
+    align-items: center;
+}
+
+aside div#aside-content img{
+    width: 25%;
+}
+
+aside div#aside-content a{
+    text-decoration: none;
+    color: var(--black);
+}
+
+@media screen and (max-device-width:360px) {
+    div#content aside{
+        height: 10%;
+        margin: 5% 2%;
+    }
+
+    aside div header div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        margin: 20px 0;
+    }
+    
+
+    aside div header h2#user-data{
+        font-size: 25px;
+        padding: 10px;
+    }
+
+    aside div#aside-content{
+        padding: 15px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        align-self: center;
+    }
+
+    aside div#aside-content div{
+        height: 100px;
+    }
+
+    aside div#aside-content a{
+        visibility: hidden;
+    }
+
+    aside div#aside-content a img{
+        visibility: visible;
+        width: 45%;
+    }
+}
+
+
+
+
+/*aside da página para atualizar/deletar registros*/
+div#update-delete-data main aside{
+    width: 30%;
+    position: relative;
+    right: 5%;
+    background-color: whitesmoke;
+    border: 1px solid black;
+    border-radius: 12px;
+}
+
+div#update-delete-data main aside div header{
+    padding: 10px;
+    background-color: darkgray;
+    border: 1px solid black;
+    border-radius: 8px 8px 0 0;
+}
+
+div#update-delete-data main aside div div#delete-image-button{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+div#update-delete-data main aside div img{
+    width: 35%;
+    height: 35%;
+}
+
+
+

@@ -84,7 +84,7 @@ module.exports = {
 
         return res.render("Register")
     },
-    async updatedGame(req, res){
+    async updateGame(req, res){
 
         const id = req.params.id
 

@@ -42,9 +42,9 @@ router.post("/registers/update/sites/:id", (req, res) => UsersObservationSitesCo
 
 router.post("/registers/update/users/:id", (req, res) => UsersObservationSitesController.updateUser(req,res))
 
-router.post("/registers/update/animes/:id", (req, res) => AnimesController.updatedAnime(req,res))
+router.post("/registers/update/animes/:id", (req, res) => AnimesController.updateAnime(req,res))
 
-router.post("/registers/update/games/:id", (req, res) => GamesController.updatedGame(req,res))
+router.post("/registers/update/games/:id", (req, res) => GamesController.updateGame(req,res))
 
 router.post("/registers/update/songs/:id", (req, res) => SongsController.updatedSong(req,res))
 

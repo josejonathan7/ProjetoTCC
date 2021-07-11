@@ -70,9 +70,8 @@ module.exports = {
             }
             
         }
-
     
-        return res.render("animes", { contactUsers, dataAnimesLimit, numberOfPages, current, dataSuggestion: noteSuggestion, dataObservation: pageObservation })
+        return res.render("animes", { contactUsers, dataAnimesLimit, numberOfPages, current: current, dataSuggestion: noteSuggestion, dataObservation: pageObservation })
     },
     async registerAnime(req, res){
         
@@ -87,7 +86,7 @@ module.exports = {
 
         return res.render("Register")
     },
-    async updatedAnime(req, res){
+    async updateAnime(req, res){
         const id = req.params.id
 
         const bodyData = {

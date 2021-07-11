@@ -1,9 +1,9 @@
-<ul class="pagination pagination-lg justify-content-center">
+<ul class="pagination pagination-lg justify-content-center pagination-styles">
     <% for( let i = 1; i <= numberOfPages; i++ ) { %>
 		
         <li class="page-item">
             <a href="?page=<%= i %>" class="page-link <% if (current == i) { %>
-                active
+                active 
             <% } %>"><%= i %></a>
             </li>
 
