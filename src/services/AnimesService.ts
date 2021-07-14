@@ -1,4 +1,6 @@
-const DataBase = require('../database/config')
+
+
+/*const DataBase = require('../database/config')
 
 module.exports = {
     async get(){
@@ -97,4 +99,4 @@ module.exports = {
             image: anime.image
         }))
     }
-}
+}*/
