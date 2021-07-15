@@ -12,7 +12,7 @@ interface IUserRequest {
 
 class UpdateUserService {
 
-    async execute({ avatar, description, email_contact_link, id, name, password}: IUserRequest){
+    async execute({ id, name, password, avatar, description, email_contact_link }: IUserRequest){
         const userRepositorie = getCustomRepository(UsersRepositories);
 
         await userRepositorie.update(id, {

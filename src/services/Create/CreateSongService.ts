@@ -2,18 +2,16 @@ import { getCustomRepository } from "typeorm";
 import { SongsRepositories } from "../../repositories/SongsRepositores";
 
 interface ISongsRequest{
-    id: string;
     name: string;
     link: string;
 }
 
 class CreateSongService {
 
-    async execute({ id, link, name}: ISongsRequest){
+    async execute({ name, link }: ISongsRequest){
         const songRepositorie = getCustomRepository(SongsRepositories);
 
         const song = songRepositorie.create({
-            id,
             name,
             link
         })

@@ -3,7 +3,6 @@ import { UsersRepositories } from "../../repositories/UsersRepositories";
 import { hash } from 'bcrypt'
 
 interface IUserRequest {
-    id: string;
     name: string;
     password: string;
     avatar: string;
@@ -13,11 +12,11 @@ interface IUserRequest {
 
 class CreateUserService {
 
-    async execute({ id, name, email_contact_link, password, avatar, description}: IUserRequest){
+    async execute({ name, email_contact_link, password, avatar, description}: IUserRequest){
         const userRepositorie = getCustomRepository(UsersRepositories);
 
         const userAlreadyExists = userRepositorie.findOne({
-            id
+            name: name
         })
 
         if(userAlreadyExists){
@@ -27,7 +26,6 @@ class CreateUserService {
         const passwordHash = await hash(password, 8);
 
         const user = userRepositorie.create({
-            id,
             name,
             password,
             avatar,

@@ -1,6 +1,6 @@
 import { getCustomRepository } from "typeorm";
 import { classToPlain } from "class-transformer";
-import { GamesRepositories } from "../../repositories/GamesRepositories";
+import { GamesRepositories } from "../../../repositories/GamesRepositories";
 
 class PaginationGameService {
 

@@ -2,7 +2,6 @@ import { getCustomRepository } from "typeorm";
 import { GamesRepositories } from "../../repositories/GamesRepositories";
 
 interface IGamesRequest {
-    id: string;
     name: string;
     link: string;
     image: string;
@@ -10,11 +9,10 @@ interface IGamesRequest {
 
 class CreateGameService {
 
-    async execute({ id, image, link, name}: IGamesRequest){
+    async execute({ name, link, image }: IGamesRequest){
         const gamesRepositorie = getCustomRepository(GamesRepositories);
 
         const game = gamesRepositorie.create({
-            id,
             name,
             link,
             image

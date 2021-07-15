@@ -2,7 +2,6 @@ import { getCustomRepository } from "typeorm";
 import { AnimesRepositories } from "../../repositories/AnimesRepositories";
 
 interface IAnimesRequest{
-    id: string;
     name: string;
     link: string;
     image: string;
@@ -10,11 +9,10 @@ interface IAnimesRequest{
 
 class CreateAnimeService {
 
-    async execute({ id, image, link, name }: IAnimesRequest ){
+    async execute({ name, link, image }: IAnimesRequest ){
         const animesRepositorie = getCustomRepository(AnimesRepositories);
 
         const animes = animesRepositorie.create({
-            id,
             name,
             image,
             link

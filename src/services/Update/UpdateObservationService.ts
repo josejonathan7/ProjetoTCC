@@ -9,7 +9,7 @@ interface IObservationRequest {
 
 class UpdateObservationService {
 
-    async execute({ id, information, name }: IObservationRequest){
+    async execute({ id, name, information }: IObservationRequest){
         const observationRepositorie = getCustomRepository(ObservationRepositories);
 
         await observationRepositorie.update(id, {

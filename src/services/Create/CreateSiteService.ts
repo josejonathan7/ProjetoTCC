@@ -2,7 +2,6 @@ import { getCustomRepository } from "typeorm";
 import { SitesRepositories } from "../../repositories/SitesRepositories";
 
 interface ISiteRequest {
-    id: string;
     name: string;
     link: string;
     category: string;
@@ -10,11 +9,10 @@ interface ISiteRequest {
 
 class CreateSiteService {
 
-    async execute({ category, id, link, name}: ISiteRequest){
+    async execute({ name,  link, category }: ISiteRequest){
         const siteRepositorie = getCustomRepository(SitesRepositories)
 
         const site = siteRepositorie.create({
-            id,
             name,
             link,
             category

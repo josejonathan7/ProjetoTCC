@@ -10,7 +10,7 @@ interface ISiteRequest{
 
 class UpdateSiteService {
 
-    async execute({ category, id, link, name }: ISiteRequest){
+    async execute({ id, name, link, category }: ISiteRequest){
         const siteRepositorie = getCustomRepository(SitesRepositories);
 
         await siteRepositorie.update(id, {

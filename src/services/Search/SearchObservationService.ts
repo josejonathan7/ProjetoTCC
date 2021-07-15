@@ -2,7 +2,7 @@ import { getCustomRepository } from "typeorm";
 import { classToPlain } from "class-transformer";
 import { ObservationRepositories } from "../../repositories/ObservationRepositories";
 
-class SearchObservationSService {
+class SearchObservationService {
 
     async execute(searchName: string){
         const observationRepositorie = getCustomRepository(ObservationRepositories);
@@ -15,4 +15,4 @@ class SearchObservationSService {
     }
 }
 
-export { SearchObservationSService }
+export { SearchObservationService }

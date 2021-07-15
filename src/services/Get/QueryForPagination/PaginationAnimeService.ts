@@ -1,6 +1,6 @@
 import { getCustomRepository } from "typeorm";
 import { classToPlain } from "class-transformer";
-import { AnimesRepositories } from "../../repositories/AnimesRepositories";
+import { AnimesRepositories } from "../../../repositories/AnimesRepositories";
 
 class PaginationAnimeService {
 
