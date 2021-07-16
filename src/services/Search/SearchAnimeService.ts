@@ -11,7 +11,9 @@ class SearchAnimeService {
             name: searchName
         })
 
-        return classToPlain(anime)
+        const status = anime.length ?  classToPlain(anime): "Falha na operação";
+
+        return status
     }
 }
 

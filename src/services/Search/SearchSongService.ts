@@ -11,7 +11,9 @@ class SearchSongService {
             name: searchName
         })
 
-        return classToPlain(song)
+        const status = song.length ?  classToPlain(song): "Falha na operação";
+
+        return status
     }
 }
 

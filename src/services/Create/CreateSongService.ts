@@ -17,6 +17,10 @@ class CreateSongService {
         })
 
         await songRepositorie.save(song)
+        
+        const status = song ? song : "Falha na operação"
+
+        return status
     }
 }
 

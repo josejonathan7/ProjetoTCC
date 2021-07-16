@@ -8,7 +8,7 @@ import { UpdateUserService } from "../services/Update/UpdateUserService";
 class UserController {
 
     async handleCreate(request: Request, response: Response){
-        const { name, email_contact_link, password, avatar, description } = request.body
+        const { name , email_contact_link, password, avatar, description } = request.body
 
         const creatUserService = new CreateUserService()
 
@@ -29,7 +29,7 @@ class UserController {
     }
     
     async handleSearch(request: Request, response: Response){
-        const name = request.body
+        const { name } = request.body
 
         const searchUserService = new SearchUserService()
 

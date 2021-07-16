@@ -11,7 +11,9 @@ class SearchObservationService {
             name: searchName
         })
 
-        return classToPlain(observation)
+        const status = observation.length ?  classToPlain(observation): "Falha na operação";
+
+        return status
     }
 }
 

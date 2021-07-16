@@ -29,7 +29,7 @@ class SiteController {
     }
 
     async handleSearch(request: Request, response: Response){
-        const name = request.body
+        const { name } = request.body
 
         const searchSiteService = new SearchSiteService()
 

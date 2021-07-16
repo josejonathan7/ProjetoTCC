@@ -11,7 +11,9 @@ class SearchSiteService {
             name: searchName
         })
 
-        return classToPlain(site)
+        const status = site.length ?  classToPlain(site): "Falha na operação";
+
+        return status
     }
 }
 

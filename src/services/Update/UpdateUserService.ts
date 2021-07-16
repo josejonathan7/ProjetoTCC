@@ -1,3 +1,4 @@
+import { hash } from "bcrypt";
 import { getCustomRepository } from "typeorm";
 import { UsersRepositories } from "../../repositories/UsersRepositories";
 
@@ -15,9 +16,11 @@ class UpdateUserService {
     async execute({ id, name, password, avatar, description, email_contact_link }: IUserRequest){
         const userRepositorie = getCustomRepository(UsersRepositories);
 
+        const passwordHash = await hash(password, 8);
+
         await userRepositorie.update(id, {
             name: name,
-            password: password,
+            password: passwordHash,
             avatar: avatar,
             description: description,
             email_contact_link: email_contact_link

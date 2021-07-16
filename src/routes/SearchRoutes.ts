@@ -25,6 +25,6 @@ router.post("/registers/consult/sites", siteController.handleSearch)
 
 router.post("/registers/consult/users", userController.handleSearch)
 
-router.post("/registers/consult/observations", observationController.handleCreate)
+router.post("/registers/consult/observations", observationController.handleSearch)
 
 module.exports = router

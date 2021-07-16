@@ -1,6 +1,7 @@
 import express, {Request, Response, NextFunction } from 'express'
-import 'reflect-metadata'
 import './database'
+import 'reflect-metadata'
+
 
 const server = express();
 const path = require('path');

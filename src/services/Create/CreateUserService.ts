@@ -15,8 +15,8 @@ class CreateUserService {
     async execute({ name, email_contact_link, password, avatar, description}: IUserRequest){
         const userRepositorie = getCustomRepository(UsersRepositories);
 
-        const userAlreadyExists = userRepositorie.findOne({
-            name: name
+        const userAlreadyExists = await userRepositorie.findOne({
+            name
         })
 
         if(userAlreadyExists){
@@ -27,14 +27,17 @@ class CreateUserService {
 
         const user = userRepositorie.create({
             name,
-            password,
+            password: passwordHash,
             avatar,
             email_contact_link,
             description
         })
 
         await userRepositorie.save(user)
+        
+        const status = user ? user : "Falha na operação"
 
+        return status
     }
 }
 

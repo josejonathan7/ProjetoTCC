@@ -29,7 +29,7 @@ class AnimeController {
     }
     
     async handleSearch(request: Request, response: Response){
-        const name = request.body
+        const { name } = request.body
 
         const searchAnimeService = new SearchAnimeService()
 
@@ -58,12 +58,14 @@ class AnimeController {
         //query que retorna os dados do banco de dados com o total de linhas
         const animePagination = await paginationAnimeService.execute(start, recordsPerPage)
         
+        console.log(animePagination[0])
+
         //quantidade de registros
         const totalRows = animePagination[1];
 
         
         //quantidade de paginas 
-        let numberOfPages = Math.ceil(totalRows / recordsPerPage)
+        let numberOfPages = Math.ceil(Number(totalRows) / recordsPerPage)
 
         //dados de observação da página
 

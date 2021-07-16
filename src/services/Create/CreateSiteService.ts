@@ -19,7 +19,10 @@ class CreateSiteService {
         })
 
         await siteRepositorie.save(site);
+        
+        const status = site ? site : "Falha na operação"
 
+        return status
     }
 }
 

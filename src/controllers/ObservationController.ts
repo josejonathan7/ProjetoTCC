@@ -29,7 +29,7 @@ class ObservationController {
     }
 
     async handleSearch(request: Request, response: Response){
-        const name = request.body
+        const { name } = request.body
 
         const searchObservationService = new SearchObservationService()
 

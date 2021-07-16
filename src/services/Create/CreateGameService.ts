@@ -19,6 +19,10 @@ class CreateGameService {
         })
 
         await gamesRepositorie.save(game);
+        
+        const status = game ? game : "Falha na operação"
+
+        return status
     }
 }
 
