@@ -8,7 +8,7 @@ interface IObservationRequest {
 
 class CreateObservationService {
 
-    async execute({name, information }: IObservationRequest){
+    async execute({ name, information }: IObservationRequest){
         const observationRepositorie = getCustomRepository(ObservationRepositories);
 
         const observation = observationRepositorie.create({
@@ -17,6 +17,10 @@ class CreateObservationService {
         })
 
         await observationRepositorie.save(observation)
+
+        const status = observation ? observation : "Falha na operação"
+
+        return status
     }
 }
 

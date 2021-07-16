@@ -1,25 +1,26 @@
-const DataBaseUsers = require('../models/UsersModels');
-const DataBaseObservation = require('../models/ObservationModels');
-const DataBaseAnimes = require('../models/AnimesModels');
-const DataBaseGames = require('../models/GamesModels');
-const DataBaseSongs = require('../models/SongsModels');
-const DataBaseSites = require('../models/SitesModels');
+import { Request, Response } from "express";
+import { AnimeController } from './AnimesController';
+import { GameController } from './GamesController';
+import { SongController } from './SongsController';
 
-module.exports = {
-    async getData(req,res) {
+
+class IndexController {
+
+    async handleGet(request: Request, response: Response){  
+        const animeController = new AnimeController()
+        const gameController = new GameController()
+        const songController = new SongController()
         
-        const animes = await DataBaseAnimes.get()
+        const animes = await animeController.handlePagination
         let animesCarousel = [];
         
-        const games = await DataBaseGames.get()
+        const games = await gameController.handlePagination
         let gamesCarousel = [];
 
-        const songs = await DataBaseSongs.get()
+        const songs = await songController.handleGet
         let songsList = [];
 
-
-
-        function selectRandomContent(){
+       /* function selectRandomContent(){
              
             for(let i=0; i<5; i++){
 
@@ -41,7 +42,23 @@ module.exports = {
                 songsList[i] = songs[songsfilter];
 
             }
-        }
+        }*/
+
+    }
+}
+
+export { IndexController }
+
+
+
+/*
+module.exports = {
+    async getData(req,res) {
+        
+
+
+
+        
 
         selectRandomContent()
 
@@ -120,3 +137,4 @@ module.exports = {
         return res.render("index", { animesArray: animesCarousel, gamesArray: gamesCarousel, contactUsers, dataSongs: songsList, dataPageObjective: pageObjective, dataSuggestion: noteSuggestion, animesSite, gamesSite })
     }
 }
+*/

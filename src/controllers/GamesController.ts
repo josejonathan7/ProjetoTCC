@@ -1,9 +1,61 @@
-const DataBaseGames = require('../models/GamesModels');
-const DataBaseUsers = require('../models/UsersModels');
-const DataBaseObservation = require('../models/ObservationModels');
-const { v4 } = require('uuid')
-const uuid = v4
+import { CreateGameService } from "../services/Create/CreateGameService";
+import { Request, Response } from "express";
+import { UpdateGameService } from "../services/Update/UpdateGameService";
+import { SearchGameService } from "../services/Search/SearchGameService";
+import { DeleteGameService } from "../services/Delete/DeleteGameService";
 
+class GameController {
+    async handlePagination(request: Request, response: Response) {
+        return response.send("Method not implemented.")
+    }
+
+    async handleCreate(request: Request, response: Response){
+        const { name, link, image } = request.body
+
+        const creatGameService = new CreateGameService()
+
+        const game = await creatGameService.execute({ name, link, image })
+
+        return response.json(game)
+    }
+    
+    async handleUpdate(request: Request, response: Response){
+        const id = request.params.id
+        const { name, link, image } = request.body
+
+        const updateGameService = new UpdateGameService()
+
+        await updateGameService.execute({id, name, link, image})
+        
+        return response.send(`Conteudo de ID:${id} Atualizado com sucesso`)
+    }
+    
+    async handleSearch(request: Request, response: Response){
+        const name = request.body
+
+        const searchGameService = new SearchGameService()
+
+        const game = await searchGameService.execute(name)
+
+        const status = game ? response.json(game) : response.send("Jogo não encontrado!")
+
+        return status
+    }
+    
+    async handleDelete(request: Request, response: Response){
+        const id = request.params.id
+
+        const deleteGameService = new DeleteGameService()
+
+        await deleteGameService.execute(id)
+
+        return response.send(`Conteudo de ID:${id} Deletado com sucesso`)
+    }
+}
+
+export { GameController }
+
+/*
 module.exports = {
     async getPage(req, res) {
         const dataUser = await DataBaseUsers.get()
@@ -72,45 +124,6 @@ module.exports = {
         }
 
         return res.render("jogos", { contactUsers, dataSuggestion: noteSuggestion, dataObservation: pageObservation , dataGamesLimit, numberOfPages, current })
-    },
-    async registerGame(req, res){
-        
-        await DataBaseGames.create({
-            id: uuid(),
-            name: req.body["games-name"],
-            link: req.body["games-link"],
-            image: req.body["games-image"]
-        })
-
-        return res.render("Register")
-    },
-    async updateGame(req, res){
-
-        const id = req.params.id
-
-        const bodyData = {
-            name: req.body["games-name"],
-            link: req.body["games-link"],
-            image: req.body["games-image"]
-        }
-
-        await DataBaseGames.update(bodyData, id)
-
-        return res.render("UpdateRegisters")
-    },
-    async deleteGame(req, res){
-        const id = req.params.id
-
-        await DataBaseGames.delete(id)
-
-        return res.render("UpdateRegisters")
-    },
-    async consultGame(req, res){
-        const data = req.body["games-name"]
-        
-
-        const dataResult = await DataBaseGames.getForName(data)
-
-        return res.render("updateDelete/UpdateDeleteShowGame", {dataResult: dataResult})
     }
 }
+*/
