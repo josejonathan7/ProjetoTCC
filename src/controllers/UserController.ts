@@ -8,44 +8,51 @@ import { UpdateUserService } from "../services/Update/UpdateUserService";
 class UserController {
 
     async handleCreate(request: Request, response: Response){
-        const { name , email_contact_link, password, avatar, description } = request.body
+        const name = request.body["user-name"]
+        const email_contact_link = request.body["email-contact-link"]
+        const password = request.body["user-password"]
+        const avatar = request.body.avatar
+        const description = request.body["user-description"]
 
         const creatUserService = new CreateUserService()
 
-        const user = await creatUserService.execute({ name, email_contact_link, password, avatar, description })
+        await creatUserService.execute({ name, email_contact_link, password, avatar, description })
 
-        return response.json(user)
+        return response.render("Register")
     }
     
     async handleUpdate(request: Request, response: Response){
         const id = request.params.id
-        const { name, password, avatar, description, email_contact_link } = request.body
+        const name = request.body["user-name"]
+        const email_contact_link = request.body["email-contact-link"]
+        const avatar = request.body.avatar
+        const description = request.body["user-description"]
 
         const updateUserService = new UpdateUserService()
 
-        await updateUserService.execute({ id, name, password, avatar, description, email_contact_link })
+        await updateUserService.execute({ id, name, avatar, description, email_contact_link })
         
-        return response.send(`Conteudo de ID:${id} Atualizado com sucesso`)
+        return response.render("UpdateRegisters")
     }
     
     async handleSearch(request: Request, response: Response){
-        const { name } = request.body
+        const name = request.body["user-name"]
 
         const searchUserService = new SearchUserService()
 
         const user = await searchUserService.execute(name)
 
-        const status = user ? response.json(user) : response.send("Usuario não encontrado!")
+        const status = user ? response.render("updateDelete/UpdateDeleteShowUser", { dataResult: user }) : response.status(401).send("Name Search not Found!")
 
         return status
     }
     
-    async handleGet(request: Request, response: Response){
+    async handleGet(){
         const getUserService = new GetUserService()
 
         const user = await getUserService.execute()
 
-        const status = user ? response.json(user) : response.send("Usuario não encontrado!")
+        const status = user ? user : "Usuario não encontrado!"
 
         return status
     }
@@ -57,74 +64,8 @@ class UserController {
 
         await deleteUserService.execute(id)
         
-        return response.send(`Conteudo de ID:${id} Deletado com sucesso`)
+        return response.render("UpdateRegisters")
     }
 }
 
 export { UserController }
-
-
-
-
-
-
-
-
-/*
-
-let userDataForDisplay = {};
-module.exports = {
-    //acessando as páginas de criação, atualização, e deletar registros
-    async accesFormNew(req, res){
-        
-        const user = req.body["user-name"]
-        const password = req.body["user-password"]
-
-        const data = await UsersData.get()    
-
-        const consult = data.find(data => data.name === user)
-
-        if(consult == null){
-            return res.status(401).send("Login/Password invalid!")
-        }
-
-        try {
-
-            if(await compare(password, consult.password)){
-                
-                userDataForDisplay = consult;
-
-                return res.render("Register", {userData: userDataForDisplay})
-
-            }else{
-            
-                    return res.status(401).send("Password invalid!")
-
-            }
-
-        } catch {
-            
-            return res.status(500).send()
-        }
-    },
-    async accesFormUpdate(req, res){
-        const data = userDataForDisplay ? userDataForDisplay : ""
-
-        if(!data){
-            return res.status(401).send("User not logged in!")
-        }
-
-        return res.render("UpdateRegisters", { userData: data })
-    },
-    async redirectUpdateForNewForm(req, res){
-        const data = userDataForDisplay ? userDataForDisplay : ""
-
-        if(!data){
-            return res.status(401).send("User not logged in!")
-        }
-
-        return res.render("Register", { userData: data })
-    },
-
-}
-*/

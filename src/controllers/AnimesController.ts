@@ -1,52 +1,64 @@
 import { CreateAnimeService } from "../services/Create/CreateAnimeService";
-import { Request, Response } from 'express';
+import { json, Request, Response } from 'express';
 import { UpdateAnimeService } from "../services/Update/UpdateAnimeService";
 import { SearchAnimeService } from "../services/Search/SearchAnimeService";
 import { PaginationAnimeService } from "../services/Get/QueryForPagination/PaginationAnimeService";
 import { DeleteAnimeService } from "../services/Delete/DeleteAnimeService";
+import { UserController } from "./UserController";
+import { ObservationController } from "./ObservationController";
+import { GetAnimeService } from "../services/Get/GetAnimeService";
 
 class AnimeController {
     
     async handleCreate(request: Request, response: Response){
-        const { name, link, image } = request.body
+        const name = request.body["anime-name"]
+        const link = request.body["anime-link"]
+        const image = request.body["anime-image"]
 
         const creatAnimeService = new CreateAnimeService()
 
-        const anime = await creatAnimeService.execute({name , link, image})
+        await creatAnimeService.execute({ name , link, image })
 
-        return response.json(anime)
+        return response.render("Register")
     }
     
     async handleUpdate(request: Request, response: Response){
         const id = request.params.id
-        const { name, link, image } = request.body
+        const name = request.body["anime-name"]
+        const link = request.body["anime-link"]
+        const image = request.body["anime-image"]
 
         const updateAnimeService = new UpdateAnimeService()
 
         await updateAnimeService.execute({ id, name, link, image })
 
-        return response.send(`Conteudo de ID:${id} Atualizado com sucesso`)
+        return response.render("UpdateRegisters")
     }
     
     async handleSearch(request: Request, response: Response){
-        const { name } = request.body
+        const name = request.body["anime-name"]
 
         const searchAnimeService = new SearchAnimeService()
 
         const anime = await searchAnimeService.execute(name)
 
-        const status = anime ? response.json(anime) : response.send("Anime não encontrada!")
+        const status = anime ? response.render("updateDelete/UpdateDeleteShowAnime", { dataResult: anime }) : response.status(401).send("Name Search Not Found!")
 
         return status
     }
     
     async handlePagination(request: Request, response: Response){
         const paginationAnimeService = new PaginationAnimeService()
+        const userController = new UserController()
+        const observationController = new ObservationController()
+
+        const observation = await observationController.handleGet()
+        const user = await userController.handleGet()
 
         //código para trabalhar com a páginação da página
 
         //quantidade de registro por página
-        let recordsPerPage = 18
+        let recordsPerPage = 2
 
         //página atual
         const urlParams = request.query.page
@@ -58,7 +70,6 @@ class AnimeController {
         //query que retorna os dados do banco de dados com o total de linhas
         const animePagination = await paginationAnimeService.execute(start, recordsPerPage)
         
-        console.log(animePagination[0])
 
         //quantidade de registros
         const totalRows = animePagination[1];
@@ -69,17 +80,17 @@ class AnimeController {
 
         //dados de observação da página
 
-        /*let noteSuggestion;
+        let noteSuggestion;
         let pageObservation;
 
-        for (let i = 0; i < dataObservation.length; i++) {
+        for (let i = 0; i < observation.length; i++) {
 
-            if (dataObservation[i].name.trim() === "sugestão") {
-                noteSuggestion = dataObservation[i]
+            if (observation[i].name.trim() === "sugestão") {
+                noteSuggestion = observation[i]
             }
 
-            if (dataObservation[i].name.trim() === "preferencia-anime") {
-                pageObservation = dataObservation[i]
+            if (observation[i].name.trim() === "preferencia-anime") {
+                pageObservation = observation[i]
             }
 
             if (!pageObservation) {
@@ -102,16 +113,15 @@ class AnimeController {
 
         for (let i = 0; i < 3; i++) {
 
-            if (dataUsers[i] != null) {
-                contactUsers[i] = dataUsers[i]
+            if (user[i] != null) {
+                contactUsers[i] = user[i]
             }
 
-        }*/
+        }
 
+        const status = animePagination ?  animePagination[0] : response.send("falha na paginação")
         
-        const status = animePagination ?  animePagination : response.send("falha na paginação")
-
-        return status
+        return response.render("animes", { contactUsers, dataAnimesLimit: status, numberOfPages, current, dataSuggestion: noteSuggestion, dataObservation: pageObservation })
     }
 
     async handleDelete(request: Request, response: Response){
@@ -121,83 +131,24 @@ class AnimeController {
 
         await deleteAnimeService.execute(id)
 
-        return response.send(`Conteudo de ID:${id} Deletado com sucesso`)
+        return response.render("UpdateRegisters")
+    }
+
+    //essa e a função handle paginatio fazem a mesma coisa no sentido geral que é buscar dados, a diferença é que a págination é para organizar a quantidade de conteudo a ser exibido por página, e essa ela traz todos os dados para que eles sejam selecionados aleatoriamente para saber qual vai ser exibido na página inicial
+    async handleGetAll(){
+        const getAnimeService = new GetAnimeService()
+
+        const animes = await getAnimeService.execute()
+        let animesCarousel = [];
+
+        for(let i=0; i<5; i++){
+
+            let animesfilter = Math.floor(Math.random() * (animes.length - 0))
+            animesCarousel[i] = animes[animesfilter];
+        }
+
+        return animesCarousel
     }
 }
 
 export { AnimeController }
-
-
-
-/*
-module.exports = {
-    async getPage(req,res){
-        const dataUsers = await DataBaseUsers.get()
-        const dataObservation = await DataBaseObservation.get()
-
-        //código para trabalhar com a páginação da página
-
-        //quantidade de registros
-        const totalRows = await DataBaseAnimes.countRow()
-        
-        //quantidade de registro por página
-        let recordsPerPage = 18
-
-        //quantidade de paginas 
-        let numberOfPages = Math.ceil(totalRows / recordsPerPage)
-
-        //página atual
-        const urlParams = req.query.page
-        const current = urlParams ? urlParams : 1  
-
-        //calculo de registro inicio da página
-        let start = (recordsPerPage * current) - recordsPerPage;
-
-        const dataAnimesLimit = await DataBaseAnimes.getLimit(start, recordsPerPage);
-
-
-        //dados de observação da página
-
-        let noteSuggestion;
-        let pageObservation;
-
-        for (let i = 0; i < dataObservation.length; i++) {
-            
-            if(dataObservation[i].name.trim() === "sugestão"){
-                noteSuggestion = dataObservation[i]
-            }
-            
-            if(dataObservation[i].name.trim() === "preferencia-anime"){
-                pageObservation = dataObservation[i]
-            }
-            
-            if(!pageObservation){
-                pageObservation = {
-                    name: "",
-                    information: ""
-                }
-            }
-
-            if(!noteSuggestion){
-                noteSuggestion = {
-                    name: "",
-                    information: ""
-                }
-            }
-        }
-
-        //dados de contato no rodapé
-        let contactUsers = [];
-
-        for (let i = 0; i < 3; i++) {
-            
-            if(dataUsers[i] != null){
-                contactUsers[i] = dataUsers[i]
-            }
-            
-        }
-    
-        return res.render("animes", { contactUsers, dataAnimesLimit, numberOfPages, current: current, dataSuggestion: noteSuggestion, dataObservation: pageObservation })
-    }
-}
-*/

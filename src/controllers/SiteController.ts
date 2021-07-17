@@ -8,44 +8,48 @@ import { UpdateSiteService } from "../services/Update/UpdateSiteService";
 class SiteController {
 
     async handleCreate(request: Request, response: Response){
-        const { name, link, category } = request.body
+        const name = request.body["site-name"]
+        const link = request.body["site-link"]
+        const category = request.body["site-category"]
 
         const creatSiteService = new CreateSiteService()
 
-        const site = await creatSiteService.execute({ name, link, category})
+        await creatSiteService.execute({ name, link, category})
 
-        return response.json(site)
+        return response.render("Register")
     }
 
     async handleUpdate(request: Request, response: Response){
         const id = request.params.id
-        const { name, link, category } = request.body
+        const name = request.body["site-name"]
+        const link = request.body["site-link"]
+        const category = request.body["site-category"]
 
         const updateSiteService = new UpdateSiteService()
 
         await updateSiteService.execute({ id, name, link, category })
         
-        return response.send(`Conteudo de ID:${id} Atualizado com sucesso`)
+        return response.render("UpdateRegisters")
     }
 
     async handleSearch(request: Request, response: Response){
-        const { name } = request.body
+        const name = request.body["site-name"]
 
         const searchSiteService = new SearchSiteService()
 
         const site = await searchSiteService.execute(name)
 
-        const status = site ? response.json(site) : response.send("Site não encontrado!")
+        const status = site ? response.render("updateDelete/UpdateDeleteShowSite", { dataResult: site }) : response.status(401).send("Name Search Not Found!")
 
         return status
     }
 
-    async handleGet(request: Request, response: Response){
+    async handleGet(){
         const getSiteService = new GetSiteService()
 
         const site = await getSiteService.execute()
 
-        const status = site ? response.json(site) : response.send("Site não encontrado!")
+        const status = site ? site : "Site não encontrado!"
 
         return status
     }
@@ -57,7 +61,7 @@ class SiteController {
 
         await deleteSiteService.execute(id)
         
-        return response.send(`Conteudo de ID:${id} Deletado com sucesso`)
+        return response.render("UpdateRegisters")
     }
 }
 

@@ -1,95 +1,52 @@
 import { Request, Response } from "express";
 import { AnimeController } from './AnimesController';
 import { GameController } from './GamesController';
+import { ObservationController } from "./ObservationController";
+import { SiteController } from "./SiteController";
 import { SongController } from './SongsController';
+import { UserController } from "./UserController";
 
 
 class IndexController {
 
-    async handleGet(request: Request, response: Response){  
+    async handleGet(request: Request, response: Response) {
         const animeController = new AnimeController()
         const gameController = new GameController()
         const songController = new SongController()
-        
-        const animes = await animeController.handlePagination
-        let animesCarousel = [];
-        
-        const games = await gameController.handlePagination
-        let gamesCarousel = [];
+        const siteController = new SiteController()
+        const observationController = new ObservationController()
+        const userController = new UserController()
 
-        const songs = await songController.handleGet
-        let songsList = [];
+        const randomAnime = await animeController.handleGetAll()
+        const randomGame = await gameController.handleGetAll()
+        const randomsong = await songController.handleGetForIndex()
+        const sites = await siteController.handleGet()
+        const users = await userController.handleGet()
+        const observation = await observationController.handleGet()
 
-       /* function selectRandomContent(){
-             
-            for(let i=0; i<5; i++){
-
-                let animesfilter = Math.floor(Math.random() * (animes.length - 0))
-                animesCarousel[i] = animes[animesfilter];
-
-            }
-
-            for(let i=0; i<5; i++){
-
-                let gamesfilter = Math.floor(Math.random() * (games.length - 0))
-                gamesCarousel[i] = games[gamesfilter];
-
-            }
-
-            for(let i=0; i<10; i++){
-
-                let songsfilter = Math.floor(Math.random() * (songs.length - 0))
-                songsList[i] = songs[songsfilter];
-
-            }
-        }*/
-
-    }
-}
-
-export { IndexController }
-
-
-
-/*
-module.exports = {
-    async getData(req,res) {
-        
-
-
-
-        
-
-        selectRandomContent()
-
-
-        const dataUser = await DataBaseUsers.get()
-        const dataObservation = await DataBaseObservation.get()
-        const dataSites = await DataBaseSites.get()
-        
 
         //dados de observação da página
         let noteSuggestion;
         let pageObjective;
 
-        for (let i = 0; i < dataObservation.length; i++) {
-            
-            if(dataObservation[i].name.trim() === "sugestão"){
-                noteSuggestion = dataObservation[i]
+        for (let i = 0; i < observation.length; i++) {
+
+            if (observation[i].name.trim() === "sugestão") {
+                noteSuggestion = observation[i]
             }
 
-            if(dataObservation[i].name.trim() === "objetivo-pagina"){
-                pageObjective = dataObservation[i]
+            if (observation[i].name.trim() === "objetivo-pagina") {
+                pageObjective = observation[i]
             }
 
-            if(!pageObjective){
+            if (!pageObjective) {
                 pageObjective = {
                     name: "",
                     information: ""
                 }
             }
 
-            if(!noteSuggestion){
+            if (!noteSuggestion) {
                 noteSuggestion = {
                     name: "",
                     information: ""
@@ -99,17 +56,17 @@ module.exports = {
 
         //dados de contato no rodapé
         let contactUsers = [];
-        let countContact =0;
+        let countContact = 0;
 
         for (let i = 0; i < 3; i++) {
-            
-            if(dataUser[i] != null){
-                
-                contactUsers[countContact] = dataUser[i]
+
+            if (users[i] != null) {
+
+                contactUsers[countContact] = users[i]
                 countContact++;
 
             }
-            
+
         }
 
         //filtragem dos sites entre animes e jogos
@@ -119,22 +76,24 @@ module.exports = {
         let countAnime = 0;
         let countGame = 0;
 
-        for(let i=0; i < dataSites.length; i++){
-            
-            if(dataSites[i].category === "anime"){
+        for (let i = 0; i < sites.length; i++) {
 
-                animesSite[countAnime] = dataSites[i]
+            if (sites[i].category === "anime") {
+
+                animesSite[countAnime] = sites[i]
                 countAnime++;
 
-            }else if(dataSites[i].category === "game"){
+            } else if (sites[i].category === "game") {
 
-                gamesSite[countGame] = dataSites[i]
+                gamesSite[countGame] = sites[i]
                 countGame++;
 
-            }  
+            }
         };
+   
+        return response.render("index", { animesArray: randomAnime, gamesArray: randomGame, contactUsers, dataSongs: randomsong, dataPageObjective: pageObjective, dataSuggestion: noteSuggestion, animesSite, gamesSite })
 
-        return res.render("index", { animesArray: animesCarousel, gamesArray: gamesCarousel, contactUsers, dataSongs: songsList, dataPageObjective: pageObjective, dataSuggestion: noteSuggestion, animesSite, gamesSite })
     }
 }
-*/
+
+export { IndexController }

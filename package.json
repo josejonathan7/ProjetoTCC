@@ -1,6 +1,6 @@
 {
   "name": "ProjetoTCC",
-  "version": "1.0.0",
+  "version": "2.5.0",
   "main": "src/server.js",
   "repository": "https://github.com/josejonathan7/ProjetoTCC",
   "author": "josé jonathan <josejonathan689@gmail.com>",
@@ -12,8 +12,6 @@
     "express": "^4.17.1",
     "pg": "^8.6.0",
     "reflect-metadata": "^0.1.13",
-    "sqlite": "^4.0.23",
-    "sqlite3": "^5.0.2",
     "tsconfig.json": "^1.0.8",
     "typeorm": "^0.2.34",
     "uuid": "^8.3.2"

@@ -8,44 +8,46 @@ import { UpdateObservationService } from '../services/Update/UpdateObservationSe
 class ObservationController {
 
     async handleCreate(request: Request, response: Response){
-        const { name, information } = request.body
+        const name = request.body["observation-name"]
+        const information = request.body.information
 
         const createObservationService = new CreateObservationService()
 
-        const observation = await createObservationService.execute({ name, information })
+        await createObservationService.execute({ name, information })
 
-        return response.json(observation)
+        return response.render("Register")
     }
     
     async handleUpdate(request: Request, response: Response){
         const id = request.params.id
-        const { name, information } = request.body
+        const name = request.body["observation-name"]
+        const information = request.body.information
 
         const updateObservationService = new UpdateObservationService()
 
         await updateObservationService.execute({ id, name, information })
         
-        return response.send(`Conteudo de ID:${id} Atualizado com sucesso`)
+        return response.render("UpdateRegisters")
     }
 
     async handleSearch(request: Request, response: Response){
-        const { name } = request.body
+        const name = request.body["observation-name"]
 
         const searchObservationService = new SearchObservationService()
 
         const observation = await searchObservationService.execute(name)
 
-        const status = observation ? response.json(observation) : response.send("Observação não encontrada!")
+        const status = observation ? response.render("updateDelete/UpdateDeleteShowObservation", { dataResult: observation}) : response.status(401).send("Name Search Not Found!")
 
         return status
     }
     
-    async handleGet(request: Request, response: Response){
+    async handleGet(){
         const getObservationService = new GetObservationService()
 
         const observation = await getObservationService.execute()
 
-        const status = observation ? response.json(observation) : response.send("Nenhuma observação encontrada!")
+        const status = observation ? observation : "Nenhuma observação encontrada!"
 
         return status
     }
@@ -57,7 +59,7 @@ class ObservationController {
 
         await deleteObservationService.execute(id)
 
-        return response.send(`Conteudo de ID:${id} Deletado com sucesso`)
+        return response.render("UpdateRegisters")
     }
 }
 
