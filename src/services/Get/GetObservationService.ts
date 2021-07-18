@@ -9,7 +9,9 @@ class GetObservationService{
 
         const observation = await observationRepositorie.find()
 
-        return classToPlain(observation)
+        const status = observation ? classToPlain(observation) : ""
+
+        return status
     }
 }
 

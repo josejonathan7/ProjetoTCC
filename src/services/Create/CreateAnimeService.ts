@@ -20,7 +20,7 @@ class CreateAnimeService {
 
         await animesRepositorie.save(animes)
         
-        const status = animes ? animes : "Falha na operação"
+        const status = animes ? animes : ""
 
         return status
     }

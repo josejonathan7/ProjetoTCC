@@ -9,7 +9,9 @@ class GetSiteService {
 
         const site = await siteRepositorie.find()
 
-        return classToPlain(site)
+        const status = site ? classToPlain(site) : ""
+
+        return status
     }
 }
 

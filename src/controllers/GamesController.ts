@@ -141,11 +141,14 @@ class GameController {
         const games = await getGameService.execute()
         let gamesCarousel = [];
 
-        for(let i=0; i<5; i++){
+        if(games){
+            
+            for(let i=0; i<5; i++){
 
-            let gamesfilter = Math.floor(Math.random() * (games.length - 0))
-            gamesCarousel[i] = games[gamesfilter];
+                let gamesfilter = Math.floor(Math.random() * (games.length - 0))
+                gamesCarousel[i] = games[gamesfilter];
 
+            }
         }
         
         return gamesCarousel

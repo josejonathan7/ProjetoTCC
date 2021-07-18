@@ -9,7 +9,9 @@ class GetUserService{
 
         const user = await userRepositorie.find()
 
-        return classToPlain(user)
+        const status = user ? classToPlain(user) : ""
+
+        return status
     }
 }
 

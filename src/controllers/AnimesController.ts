@@ -119,7 +119,7 @@ class AnimeController {
 
         }
 
-        const status = animePagination ?  animePagination[0] : response.send("falha na paginação")
+        const status = animePagination ?  animePagination[0] : response.status(401).send("Load Pagination Failed!")
         
         return response.render("animes", { contactUsers, dataAnimesLimit: status, numberOfPages, current, dataSuggestion: noteSuggestion, dataObservation: pageObservation })
     }
@@ -141,10 +141,14 @@ class AnimeController {
         const animes = await getAnimeService.execute()
         let animesCarousel = [];
 
-        for(let i=0; i<5; i++){
+        if(animes){
 
-            let animesfilter = Math.floor(Math.random() * (animes.length - 0))
-            animesCarousel[i] = animes[animesfilter];
+            for(let i=0; i<5; i++){
+
+                let animesfilter = Math.floor(Math.random() * (animes.length - 0))
+                animesCarousel[i] = animes[animesfilter];
+            }
+
         }
 
         return animesCarousel

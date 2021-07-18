@@ -47,7 +47,7 @@ class ObservationController {
 
         const observation = await getObservationService.execute()
 
-        const status = observation ? observation : "Nenhuma observação encontrada!"
+        const status = observation ? observation : ""
 
         return status
     }

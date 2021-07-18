@@ -11,7 +11,7 @@ class SearchUserService {
             name: searchName
         })
 
-        const status = user.length ?  classToPlain(user): "Falha na operação";
+        const status = user.length ?  classToPlain(user): "";
 
         return status
     }

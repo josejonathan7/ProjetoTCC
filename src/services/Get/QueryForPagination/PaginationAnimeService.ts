@@ -9,11 +9,13 @@ class PaginationAnimeService {
 
         const count = await animeRepositorie.count()
         const anime = await animeRepositorie.query(`SELECT * FROM tb_animes ORDER BY name LIMIT ${recordsPerPage} OFFSET ${start} `)
-
-        const status = [
+        
+        const array = [
             classToPlain(anime),
             count
         ]
+
+        const status = array ? array : "";
 
         return status
     }

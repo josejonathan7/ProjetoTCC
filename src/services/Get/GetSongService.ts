@@ -9,7 +9,9 @@ class GetSongService{
 
         const song = await songRepositorie.find()
 
-        return classToPlain(song)
+        const status = song ? classToPlain(song) : ""
+
+        return status
     }
 }
 

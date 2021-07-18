@@ -9,7 +9,7 @@ class GetAnimeService {
 
         const anime = await animeRepositorie.find()
 
-        const status = anime ? classToPlain(anime) : "Falha na operação" 
+        const status = anime ? classToPlain(anime) : "" 
 
         return status
     }

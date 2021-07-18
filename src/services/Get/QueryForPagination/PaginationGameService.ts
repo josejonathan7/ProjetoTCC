@@ -10,10 +10,12 @@ class PaginationGameService {
         const count = await gameRepositorie.count()
         const game = await gameRepositorie.query(`SELECT * FROM tb_games ORDER BY name LIMIT ${recordsPerPage} OFFSET  ${start} `)
         
-        const status = [
+        const array = [
             classToPlain(game),
             count
         ]
+
+        const status = array ? array : "";
 
         return status
     }

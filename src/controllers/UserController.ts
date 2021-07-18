@@ -52,7 +52,7 @@ class UserController {
 
         const user = await getUserService.execute()
 
-        const status = user ? user : "Usuario não encontrado!"
+        const status = user ? user : ""
 
         return status
     }

@@ -9,7 +9,7 @@ class GetGameService {
 
         const game = await gameRepositorie.find()
 
-        const status = game ? classToPlain(game) : "Falha na operação"
+        const status = game ? classToPlain(game) : ""
 
         return status
     }

@@ -90,8 +90,10 @@ class IndexController {
 
             }
         };
+
+        const status = randomAnime && randomGame && randomsong && sites && users ? response.render("index", { animesArray: randomAnime, gamesArray: randomGame, contactUsers, dataSongs: randomsong, dataPageObjective: pageObjective, dataSuggestion: noteSuggestion, animesSite, gamesSite }) : response.status(401).send("Requisition Failed!")
    
-        return response.render("index", { animesArray: randomAnime, gamesArray: randomGame, contactUsers, dataSongs: randomsong, dataPageObjective: pageObjective, dataSuggestion: noteSuggestion, animesSite, gamesSite })
+        return status
 
     }
 }

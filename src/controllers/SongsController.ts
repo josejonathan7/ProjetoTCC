@@ -82,7 +82,7 @@ class SongController {
         }
 
            
-        const status = song ? response.render("musicas", { dataSongs: song, observation, contactUsers, dataSuggestion: noteSuggestion, dataObservation: pageObservation }) : response.status(401).send("Page Not Found!")
+        const status = song ? response.render("musicas", { dataSongs: song, observation, contactUsers, dataSuggestion: noteSuggestion, dataObservation: pageObservation }) : response.status(401).send("Page Requisition Failed!")
         
         return status
     }
@@ -116,10 +116,14 @@ class SongController {
         const song = await getSongService.execute()
         let songsList = [];
         
-        for(let i=0; i<10; i++){
+        if(song){
 
-            let songsfilter = Math.floor(Math.random() * (song.length - 0))
-            songsList[i] = song[songsfilter];
+            for(let i=0; i<10; i++){
+
+                let songsfilter = Math.floor(Math.random() * (song.length - 0))
+                songsList[i] = song[songsfilter];
+            }
+
         }
 
         return songsList

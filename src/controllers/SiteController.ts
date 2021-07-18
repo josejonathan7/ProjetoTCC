@@ -49,7 +49,7 @@ class SiteController {
 
         const site = await getSiteService.execute()
 
-        const status = site ? site : "Site não encontrado!"
+        const status = site ? site : ""
 
         return status
     }

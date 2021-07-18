@@ -11,7 +11,7 @@ class SearchGameService {
             name: searchName
         })
 
-        const status = game.length ?  classToPlain(game): "Falha na operação";
+        const status = game.length ?  classToPlain(game): "";
 
         return status
     }
