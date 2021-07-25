@@ -11,10 +11,6 @@ class RecordsAccessController{
     accesFormUpdate(request: Request, response: Response){
         return response.render("UpdateRegisters")
     }
-
-    redirectUpdateForNewForm(request: Request, response: Response){
-        return response.render("Register")
-    }
     
 }
 

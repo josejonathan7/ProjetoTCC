@@ -15,6 +15,19 @@ class SearchUserService {
 
         return status
     }
+
+    
+    async searchId(id: string){
+        const userRepositorie = getCustomRepository(UsersRepositories);
+
+        const user = await userRepositorie.find({
+            id: id
+        })
+
+        const status = user.length ?  classToPlain(user): "";
+
+        return status
+    }
 }
 
 export { SearchUserService }

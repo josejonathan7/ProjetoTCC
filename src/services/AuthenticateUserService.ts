@@ -26,13 +26,11 @@ class AuthenticateUserService{
 
         const token = sign({
             name: user.name,
-            avatar: user.avatar,
-            email_contact_link: user.email_contact_link,
-            description: user.description
-        }, "32fe1db801db87ee9742046508726b89" , 
+            email_contact_link: user.email_contact_link
+        }, "AniJogos" , 
         {
             subject: user.id, 
-            expiresIn: "10s"
+            expiresIn: "1h"
         })
 
         return token

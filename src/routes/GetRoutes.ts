@@ -7,7 +7,7 @@ import { RecordsAccessController } from '../controllers/RecordsAccessController'
 import { SongController } from '../controllers/SongsController';
 import { ensureAuthenticate } from '../middleware/ensureAuthenticate';
 
-const router = Router()
+const getRouter = Router()
 const animeController = new AnimeController()
 const gameController = new GameController()
 const songController = new SongController()
@@ -15,18 +15,18 @@ const indexController = new IndexController()
 const recordsAccessController = new RecordsAccessController()
 const authenticateUserController = new AuthenticateUserController()
 
-router.get("/", indexController.handleGet);
+getRouter.get("/", indexController.handleGet);
 
-router.get("/animes", animeController.handlePagination);
+getRouter.get("/animes", animeController.handlePagination);
 
-router.get("/games", gameController.handlePagination);
+getRouter.get("/games", gameController.handlePagination);
 
-router.get("/songs", songController.handleGet);
+getRouter.get("/songs", songController.handleGet);
 
-router.get("/registers", ensureAuthenticate, recordsAccessController.accesFormNew)
+getRouter.get("/registers", ensureAuthenticate, recordsAccessController.accesFormNew)
 
-router.get("/registers/update", ensureAuthenticate, recordsAccessController.accesFormUpdate)
+getRouter.get("/registers/update", ensureAuthenticate, recordsAccessController.accesFormUpdate)
 
-router.post("/registers", authenticateUserController.handleAuthenticate)
+getRouter.post("/registers", authenticateUserController.handleAuthenticate)
 
-module.exports = router;
+export { getRouter };

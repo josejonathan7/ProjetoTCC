@@ -1,4 +1,5 @@
 import { MigrationInterface, QueryRunner, Table} from "typeorm";
+// await queryRunner.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"')
 
 export class AnimesTable1626193904129 implements MigrationInterface {
 
@@ -31,6 +32,7 @@ export class AnimesTable1626193904129 implements MigrationInterface {
 
     public async down(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.dropTable("tb_animes")
+        //await queryRunner.query('DROP EXTENSION "uuid-ossp"')
     }
 
 }

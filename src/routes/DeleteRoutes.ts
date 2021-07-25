@@ -5,8 +5,9 @@ import { ObservationController } from '../controllers/ObservationController';
 import { SiteController } from '../controllers/SiteController';
 import { SongController } from '../controllers/SongsController';
 import { UserController } from '../controllers/UserController';
+import { ensureAuthenticate } from '../middleware/ensureAuthenticate';
 
-const router = Router()
+const deleteRouter = Router()
 const animeController = new AnimeController()
 const gameController = new GameController()
 const songController = new SongController()
@@ -15,16 +16,16 @@ const observationController = new ObservationController()
 const siteController = new SiteController()
 
 //deletar registros
-router.post("/registers/delete/observations/:id", observationController.handleDelete)
+deleteRouter.post("/registers/delete/observations/:id", ensureAuthenticate, observationController.handleDelete)
 
-router.post("/registers/delete/sites/:id", siteController.handleDelete)
+deleteRouter.post("/registers/delete/sites/:id", ensureAuthenticate, siteController.handleDelete)
 
-router.post("/registers/delete/users/:id", userController.handleDelete)
+deleteRouter.post("/registers/delete/users/:id", ensureAuthenticate, userController.handleDelete)
 
-router.post("/registers/delete/animes/:id", animeController.handleDelete)
+deleteRouter.post("/registers/delete/animes/:id", ensureAuthenticate, animeController.handleDelete)
 
-router.post("/registers/delete/games/:id", gameController.handleDelete)
+deleteRouter.post("/registers/delete/games/:id", ensureAuthenticate, gameController.handleDelete)
 
-router.post("/registers/delete/songs/:id", songController.handleDelete)
+deleteRouter.post("/registers/delete/songs/:id", ensureAuthenticate, songController.handleDelete)
 
-module.exports = router
+export { deleteRouter }

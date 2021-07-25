@@ -6,7 +6,7 @@ import { SiteController } from '../controllers/SiteController';
 import { SongController } from '../controllers/SongsController';
 import { UserController } from '../controllers/UserController';
 
-const router = Router()
+const createRouter = Router()
 const animeController = new AnimeController()
 const gameController = new GameController()
 const songController = new SongController()
@@ -15,16 +15,16 @@ const observationController = new ObservationController()
 const siteController = new SiteController()
 
 //criação de novos registros
-router.post("/registers/observations", observationController.handleCreate)
+createRouter.post("/registers/observations", observationController.handleCreate)
 
-router.post("/registers/sites", siteController.handleCreate)
+createRouter.post("/registers/sites", siteController.handleCreate)
 
-router.post("/registers/users", userController.handleCreate)
+createRouter.post("/registers/users", userController.handleCreate)
 
-router.post("/registers/animes", animeController.handleCreate)
+createRouter.post("/registers/animes", animeController.handleCreate)
 
-router.post("/registers/games", gameController.handleCreate)
+createRouter.post("/registers/games", gameController.handleCreate)
 
-router.post("/registers/songs", songController.handleCreate)
+createRouter.post("/registers/songs", songController.handleCreate)
 
-module.exports = router
+export { createRouter }

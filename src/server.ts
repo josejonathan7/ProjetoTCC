@@ -2,28 +2,37 @@ import express, {Request, Response, NextFunction } from 'express'
 import './database'
 import 'reflect-metadata'
 
-
 const server = express();
-const path = require('path');
 
-const createRoutes = require('./routes/CreateRoutes')
-const updateRoutes = require('./routes/UpdateRouter')
-const deleteRoutes = require('./routes/DeleteRoutes')
-const searchRoutes = require('./routes/SearchRoutes')
-const getRoutes = require('./routes/GetRoutes')
+server.use(express.json())
+
+import path from 'path';
+
+import { createRouter } from './routes/CreateRoutes';
+import { updateRouter } from './routes/UpdateRouter';
+import { deleteRouter } from './routes/DeleteRoutes';
+import { searchRouter } from './routes/SearchRoutes';
+import { getRouter } from './routes/GetRoutes';
+import cookieSession from 'cookie-session';
 
 server.set('view engine', 'ejs')
 server.set("views", path.join(__dirname, "views"))
 
 server.use(express.static("public"))
 server.use(express.urlencoded({extended: true}))
-server.use(express.json())
+server.use(cookieSession({
+    name: 'tokenSession',
+    keys: ['key1'],
+    maxAge: 60 * 60 * 3// 3 hours
+}))
 
-server.use(createRoutes)
-server.use(updateRoutes)
-server.use(deleteRoutes)
-server.use(searchRoutes)
-server.use(getRoutes)
+server.use(getRouter)
+
+server.use(createRouter)
+server.use(updateRouter)
+server.use(deleteRouter)
+server.use(searchRouter)
+
 
 server.use((err: Error, request: Request, response: Response, next: NextFunction) => {
     if(err instanceof Error){
