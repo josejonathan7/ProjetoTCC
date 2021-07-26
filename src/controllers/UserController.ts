@@ -37,16 +37,11 @@ class UserController {
     
     async handleSearch(request: Request, response: Response){
         const name = request.body["user-name"]
-        const id = request.user_id
 
-        console.log(id)
         const searchUserService = new SearchUserService()
 
         const user = await searchUserService.execute(name)
-        const admin = await searchUserService.searchId(id)
-
-        console.log(admin)
-
+        
         const status = user ? response.render("updateDelete/UpdateDeleteShowUser", { dataResult: user }) : response.status(401).send("Name Search not Found!")
 
         return status
