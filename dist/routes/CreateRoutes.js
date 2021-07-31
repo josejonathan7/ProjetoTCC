@@ -1,0 +1,25 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.createRouter = void 0;
+var express_1 = require("express");
+var AnimesController_1 = require("../controllers/AnimesController");
+var GamesController_1 = require("../controllers/GamesController");
+var ObservationController_1 = require("../controllers/ObservationController");
+var SiteController_1 = require("../controllers/SiteController");
+var SongsController_1 = require("../controllers/SongsController");
+var UserController_1 = require("../controllers/UserController");
+var createRouter = express_1.Router();
+exports.createRouter = createRouter;
+var animeController = new AnimesController_1.AnimeController();
+var gameController = new GamesController_1.GameController();
+var songController = new SongsController_1.SongController();
+var userController = new UserController_1.UserController();
+var observationController = new ObservationController_1.ObservationController();
+var siteController = new SiteController_1.SiteController();
+//criação de novos registros
+createRouter.post("/registers/observations", observationController.handleCreate);
+createRouter.post("/registers/sites", siteController.handleCreate);
+createRouter.post("/registers/users", userController.handleCreate);
+createRouter.post("/registers/animes", animeController.handleCreate);
+createRouter.post("/registers/games", gameController.handleCreate);
+createRouter.post("/registers/songs", songController.handleCreate);

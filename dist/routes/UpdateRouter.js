@@ -1,0 +1,26 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.updateRouter = void 0;
+var express_1 = require("express");
+var AnimesController_1 = require("../controllers/AnimesController");
+var GamesController_1 = require("../controllers/GamesController");
+var ObservationController_1 = require("../controllers/ObservationController");
+var SiteController_1 = require("../controllers/SiteController");
+var SongsController_1 = require("../controllers/SongsController");
+var UserController_1 = require("../controllers/UserController");
+var ensureAuthenticate_1 = require("../middleware/ensureAuthenticate");
+var updateRouter = express_1.Router();
+exports.updateRouter = updateRouter;
+var animeController = new AnimesController_1.AnimeController();
+var gameController = new GamesController_1.GameController();
+var songController = new SongsController_1.SongController();
+var userController = new UserController_1.UserController();
+var observationController = new ObservationController_1.ObservationController();
+var siteController = new SiteController_1.SiteController();
+//atualização de registros
+updateRouter.post("/registers/update/observations/:id", ensureAuthenticate_1.ensureAuthenticate, observationController.handleUpdate);
+updateRouter.post("/registers/update/sites/:id", ensureAuthenticate_1.ensureAuthenticate, siteController.handleUpdate);
+updateRouter.post("/registers/update/users/:id", ensureAuthenticate_1.ensureAuthenticate, userController.handleUpdate);
+updateRouter.post("/registers/update/animes/:id", ensureAuthenticate_1.ensureAuthenticate, animeController.handleUpdate);
+updateRouter.post("/registers/update/games/:id", ensureAuthenticate_1.ensureAuthenticate, gameController.handleUpdate);
+updateRouter.post("/registers/update/songs/:id", ensureAuthenticate_1.ensureAuthenticate, songController.handleUpdate);

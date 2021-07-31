@@ -1,14 +1,7 @@
 import { Request, Response } from "express";
 import { AuthenticateUserService } from "../services/AuthenticateUserService";
 import { SearchUserService } from '../services/Search/SearchUserService'
-const express = require('express');
-const cookieSession = require('cookie-session');
-const app = express();
 
-app.use(cookieSession({
-    name: 'tokenSession',
-    keys: ['key1']
-}));
 class AuthenticateUserController {
 
     async handleAuthenticate(request: Request, response: Response){
@@ -25,7 +18,6 @@ class AuthenticateUserController {
                 password
             })
 
-            request.session.tokenSession = token;
         
             const userData = await searchUserService.execute(name)
 

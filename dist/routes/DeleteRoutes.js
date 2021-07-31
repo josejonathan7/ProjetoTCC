@@ -1,0 +1,26 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.deleteRouter = void 0;
+var express_1 = require("express");
+var AnimesController_1 = require("../controllers/AnimesController");
+var GamesController_1 = require("../controllers/GamesController");
+var ObservationController_1 = require("../controllers/ObservationController");
+var SiteController_1 = require("../controllers/SiteController");
+var SongsController_1 = require("../controllers/SongsController");
+var UserController_1 = require("../controllers/UserController");
+var ensureAuthenticate_1 = require("../middleware/ensureAuthenticate");
+var deleteRouter = express_1.Router();
+exports.deleteRouter = deleteRouter;
+var animeController = new AnimesController_1.AnimeController();
+var gameController = new GamesController_1.GameController();
+var songController = new SongsController_1.SongController();
+var userController = new UserController_1.UserController();
+var observationController = new ObservationController_1.ObservationController();
+var siteController = new SiteController_1.SiteController();
+//deletar registros
+deleteRouter.post("/registers/delete/observations/:id", ensureAuthenticate_1.ensureAuthenticate, observationController.handleDelete);
+deleteRouter.post("/registers/delete/sites/:id", ensureAuthenticate_1.ensureAuthenticate, siteController.handleDelete);
+deleteRouter.post("/registers/delete/users/:id", ensureAuthenticate_1.ensureAuthenticate, userController.handleDelete);
+deleteRouter.post("/registers/delete/animes/:id", ensureAuthenticate_1.ensureAuthenticate, animeController.handleDelete);
+deleteRouter.post("/registers/delete/games/:id", ensureAuthenticate_1.ensureAuthenticate, gameController.handleDelete);
+deleteRouter.post("/registers/delete/songs/:id", ensureAuthenticate_1.ensureAuthenticate, songController.handleDelete);

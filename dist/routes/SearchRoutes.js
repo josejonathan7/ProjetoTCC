@@ -1,0 +1,25 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.searchRouter = void 0;
+var express_1 = require("express");
+var AnimesController_1 = require("../controllers/AnimesController");
+var GamesController_1 = require("../controllers/GamesController");
+var ObservationController_1 = require("../controllers/ObservationController");
+var SiteController_1 = require("../controllers/SiteController");
+var SongsController_1 = require("../controllers/SongsController");
+var UserController_1 = require("../controllers/UserController");
+var searchRouter = express_1.Router();
+exports.searchRouter = searchRouter;
+var animeController = new AnimesController_1.AnimeController();
+var gameController = new GamesController_1.GameController();
+var songController = new SongsController_1.SongController();
+var userController = new UserController_1.UserController();
+var observationController = new ObservationController_1.ObservationController();
+var siteController = new SiteController_1.SiteController();
+/*Consultar registro unico*/
+searchRouter.post("/registers/consult/animes", animeController.handleSearch);
+searchRouter.post("/registers/consult/games", gameController.handleSearch);
+searchRouter.post("/registers/consult/songs", songController.handleSearch);
+searchRouter.post("/registers/consult/sites", siteController.handleSearch);
+searchRouter.post("/registers/consult/users", userController.handleSearch);
+searchRouter.post("/registers/consult/observations", observationController.handleSearch);
