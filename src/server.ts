@@ -39,4 +39,4 @@ server.use((err: Error, request: Request, response: Response, next: NextFunction
 
 dotenv.config()
 
-server.listen(3000, () => console.log("O servidor esta rodando"))
+server.listen(process.env.PORT || 3000, () => console.log("O servidor esta rodando"))

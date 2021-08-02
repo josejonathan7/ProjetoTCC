@@ -35,4 +35,4 @@ server.use(function (err, request, response, next) {
     });
 });
 dotenv_1.default.config();
-server.listen(3000, function () { return console.log("O servidor esta rodando"); });
+server.listen(process.env.PORT || 3000, function () { return console.log("O servidor esta rodando"); });
