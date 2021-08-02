@@ -1,0 +1,151 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+<head>
+
+	<% const pageStyles = ["modalAuthenticateDelete.css", "asideIndex.css", "cardFooter.css", "cardNote.css",  "nav.css", "cardSongs.css", "slides.css"] %> 
+
+	<%- include("./components/Page-Head.ejs", {title: "AniJogos - Inicio", styles: pageStyles}) %> 
+
+</head>
+<body>
+
+	
+	<input type="hidden" name="carousel-anime" id="carousel-anime-0" value="<%= animesArray[0].image%>" title="<%= animesArray[0].link %> " >							
+	<input type="hidden" name="carousel-anime" id="carousel-anime-1" value="<%= animesArray[1].image%>" title="<%= animesArray[1].link %> " >
+	
+	<input type="hidden" name="carousel-anime" id="carousel-anime-2" value="<%= animesArray[2].image%>" title="<%= animesArray[2].link %> " >
+
+	<input type="hidden" name="carousel-anime" id="carousel-anime-3" value="<%= animesArray[3].image%>" title="<%= animesArray[3].link %> " >
+	<input type="hidden" name="carousel-anime" id="carousel-anime-4" value="<%= animesArray[4].image%>" title="<%= animesArray[4].link %> " >
+
+	<input type="hidden" name="carousel-anime" id="carousel-game-0" value="<%= gamesArray[0].image%>" title="<%= gamesArray[0].link %> " >							
+	<input type="hidden" name="carousel-anime" id="carousel-game-1" value="<%= gamesArray[1].image%>" title="<%= gamesArray[1].link %> " >
+	
+	<input type="hidden" name="carousel-anime" id="carousel-game-2" value="<%= gamesArray[2].image%>" title="<%= gamesArray[2].link %> " >
+
+	<input type="hidden" name="carousel-anime" id="carousel-game-3" value="<%= gamesArray[3].image%>" title="<%= gamesArray[3].link %> " >
+	<input type="hidden" name="carousel-anime" id="carousel-game-4" value="<%= gamesArray[4].image%>" title="<%= gamesArray[4].link %> " >
+
+
+
+
+	<!-- Menu de navegação -->
+
+	<%- include("./components/Page-Nav.ejs") %> 
+
+	<div class="container-fluid">
+		<main>
+			<!-- Menu Lateral, sites de animes -->
+			<aside id="anime-menu">
+				<div class="card">
+					<div class="card-header">
+						<h3>Sites bons para assistir animes</h3>
+					</div>
+					<div class="card-body">
+					
+						<%let tabIndexAnimes = 5; animesSite.forEach(animesSite => { %>
+
+							<a href="<%= animesSite.link %>" target="_blank" tabindex="<%= tabIndexAnimes %>" class="link-margin-aside-animes"><%= animesSite.name %> </a>
+
+							<% tabIndexAnimes++; %> 
+						<% }) %>
+
+					</div>
+				</div>
+			</aside>
+			<!--Carousel Animes --->
+			<div class="card card-carousel">
+				<div class="card-header">
+					<h1>Animes em alta no momento</h1>
+				</div>
+				<div class="card-body" id="animes-image">
+					
+					<button class="button-slid" onclick="replacementAnimes(-1)"> &lang; </button>
+
+					<div class="border-box-load">
+						<div id="box-load-animes">
+
+						</div>
+					</div>
+
+					<button class="button-slid"	onclick="replacementAnimes(1)"> &rang; </button>
+
+				</div>
+			</div>
+			<br>
+			<!-- Guia Lateral, sites de jogos -->
+			<aside id="games-menu">
+				<div class="card">
+					<div class="card-header">
+						<h3>Sites bons para baixar jogos</h3>
+					</div>
+					<div class="card-body">
+						
+						<%let tabIndexGame = 14; gamesSite.forEach(gamesSite => { %>
+
+							<a href="<%= gamesSite.link %>" target="_blank" tabindex="<%= tabIndexGame %>" class="link-margin-aside-animes"><%= gamesSite.name %> </a>
+
+							<% tabIndexGame++; %> 
+						<% }) %>
+
+					</div>
+				</div>
+			</aside>
+			<!-- Carousel de Jogos -->
+			<div class="card card-carousel">
+				<div class="card-header">
+					<h1>Jogos clássicos</h1>
+				</div>
+				<div class="card-body" id="games-image">
+					
+					<button class="button-slid" onclick="replacementGames(-1)"> &lang; </button>
+
+					<div class="border-box-load">
+						<div id="box-load-games">
+
+						</div>
+					</div>
+
+					<button class="button-slid"	onclick="replacementGames(1)"> &rang; </button>
+
+				</div>
+			</div>
+		</main>
+		<br>
+		<!-- Musicas mais tocadas -->
+		<div id="card-music-home">
+			<div class="card-header">
+				<h1 class="cabecalho-musica-observacao">Músicas mais tocadas</h1>
+			</div>
+				<div class="card-body">
+					<ul>
+						<% let tabIndexSongs = 24; dataSongs.forEach(song => { %>
+						
+							<li>
+								<a href="<%= song.link %>" target="_blank" tabindex="<%= tabIndexSongs %>" class="link-margin-card-musica"><%= song.name %></a>
+							</li>
+							<br>
+
+							<% tabIndexSongs++; %> 
+
+						<% }) %>
+						
+					</ul>
+			</div>		
+		</div>
+		<br>
+		<!-- Quem Somos? E qual o intuito dessa página? -->
+		
+		<%- include("./components/Page-Note.ejs", {title: "Quem Somos? E qual o intuito dessa página?", observation: dataPageObjective, suggestion: dataSuggestion }) %> 
+
+		<br>
+	</div>
+
+	<!--Rodapé-->
+	
+	<%- include("./components/Page-Footer.ejs",  { contacts: contactUsers}) %> 
+
+	<script src="/scripts/SlidesIndexPage.js" defer></script>
+
+</body>
+</html>

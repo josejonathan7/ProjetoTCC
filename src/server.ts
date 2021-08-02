@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 import express, {Request, Response, NextFunction } from 'express';
-import './database';
 import 'reflect-metadata';
+import './database';
 import 'express-async-error';
 import path from 'path';
 import { createRouter } from './routes/CreateRoutes';
@@ -19,8 +19,6 @@ server.set("views", path.join(__dirname, "views"))
 
 server.use(express.static("public"))
 server.use(express.urlencoded({extended: true}))
-
-
 
 server.use(getRouter)
 server.use(createRouter)
@@ -41,4 +39,4 @@ server.use((err: Error, request: Request, response: Response, next: NextFunction
 
 dotenv.config()
 
-server.listen( 5432, () => console.log("O servidor esta rodando"))
+server.listen(3000, () => console.log("O servidor esta rodando"))

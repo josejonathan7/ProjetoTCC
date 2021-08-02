@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <% const pageStyles = ["asideRegisters.css", "formNewRegisterConsultRegister.css", "modalAuthenticateDelete.css", "nav.css"] %> 
+
+    <%- include("./components/Page-Head.ejs", {title: "AniJogos - Atualizar/Deletar Registros", styles: pageStyles}) %>
+
+</head>
+
+<body style="background-color: beige;">
+
+    <%- include("./components/Page-Nav.ejs") %>
+
+        <div id="content">
+            <%- include("./components/Page-Aside-Registers.ejs") %>
+
+
+                <main id="main-form">
+                    <div>
+                        <!--Atualizar/Deletar animes-->
+                        <form action="/registers/consult/animes" method="post" class="form-group">
+                            <fieldset>
+                                <legend>
+                                    <h2>Anime</h2>
+                                </legend>
+                                <div class="content">
+                                    <div class="input-group">
+                                        <label for="anime-name">Nome do anime para atualizar/deletar:</label>
+                                        <input type="text" name="anime-name" id="anime-name">
+                                    </div>
+
+                                    <div id="button-group">
+                                        <button type="submit" class="search">Pesquisar</button>
+                                        <button type="reset" class="clear">Limpar</button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+
+                        <!--Atualizar/Deletar jogos-->
+                        <form action="/registers/consult/games" method="post" class="form-group">
+                            <fieldset>
+                                <legend>
+                                    <h2>Jogo</h2>
+                                </legend>
+                                <div class="content">
+                                    <div class="input-group">
+                                        <label for="game-name">Nome do jogo:</label>
+                                        <input type="text" name="game-name" id="game-name">
+                                    </div>
+
+                                    <div id="button-group">
+                                        <button type="submit" class="search">Pesquisar</button>
+                                        <button type="reset" class="clear">Limpar</button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+
+                    <div>
+                        <!--Atualizar/Deletar site-->
+                        <form action="/registers/consult/sites" method="post" class="form-group">
+                            <fieldset>
+                                <legend>
+                                    <h2>Site</h2>
+                                </legend>
+
+                                <div class="content">
+                                    <div class="input-group">
+                                        <label for="site-name">Nome do site:</label>
+                                        <input type="text" name="site-name" id="site-name">
+                                    </div>
+
+                                    <div id="button-group">
+                                        <button type="submit" class="search">Pesquisar</button>
+                                        <button type="reset" class="clear">Limpar</button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+
+                        <!--Atualizar/Deletar musicas-->
+                        <form action="/registers/consult/songs" method="post" class="form-group">
+                            <fieldset>
+                                <legend>
+                                    <h2>Música</h2>
+                                </legend>
+
+                                <div class="content">
+                                    <div class="input-group">
+                                        <label for="song-name">Nome da musica:</label>
+                                        <input type="text" name="song-name" id="song-name">
+                                    </div>
+
+                                    <div id="button-group">
+                                        <button type="submit" class="search">Pesquisar</button>
+                                        <button type="reset" class="clear">Limpar</button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+
+                    <div>
+                        <!--Atualizar/Deletar observações-->
+                        <form action="/registers/consult/observations" method="post" class="form-group">
+                            <fieldset>
+                                <legend>
+                                    <h2>Observações</h2>
+                                </legend>
+
+                                <div class="content">
+                                    <div class="input-group">
+                                        <label for="observation-name">Nome identificador:</label>
+                                        <input type="text" name="observation-name" id="observation-name">
+                                    </div>
+                                    <div id="button-group">
+                                        <button type="submit" class="search">Pesquisar</button>
+                                        <button type="reset" class="clear">Limpar</button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+
+
+                        <!--Atualizar/Deletar usuario-->
+                        <form action="/registers/consult/users" method="post" class="form-group">
+                            <fieldset>
+                                <legend>
+                                    <h2>Usuário</h2>
+                                </legend>
+
+                                <div class="content">
+                                    <div class="input-group">
+                                        <label for="user-name">Nome do usuário:</label>
+                                        <input type="text" name="user-name" id="user-name">
+                                    </div>
+
+                                    <div id="button-group">
+                                        <button type="submit" class="search">Pesquisar</button>
+                                        <button type="reset" class="clear">Limpar</button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+
+                </main>
+
+        </div>
+
+</html>

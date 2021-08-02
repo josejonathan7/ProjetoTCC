@@ -5,8 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var dotenv_1 = __importDefault(require("dotenv"));
 var express_1 = __importDefault(require("express"));
-require("./database");
 require("reflect-metadata");
+require("./database");
 require("express-async-error");
 var path_1 = __importDefault(require("path"));
 var CreateRoutes_1 = require("./routes/CreateRoutes");

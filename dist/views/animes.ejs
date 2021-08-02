@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<% const pageStyles = ["modalAuthenticateDelete.css", "card-Animes-Games.css", "cardFooter.css", "cardNote.css",  "nav.css"] %> 
+
+	<%- include("./components/Page-Head.ejs", {title: "AniJogos - Animes", styles: pageStyles }) %>
+</head>
+
+<body>
+	<!--Menu de navegação-->
+	<%- include("./components/Page-Nav.ejs") %>
+
+		<div class="container-fluid">
+			<header>
+				<h1>Lista de Animes:</h1>
+			</header>
+			<br>
+			<!-- Paginação -->
+
+			<%- include("./components/Page-Pagination.ejs", {numberOfPages: numberOfPages, current: current}) %>
+
+				<main>
+					<div class="row">
+
+						<% let tabIndexAnimes=7; dataAnimesLimit.forEach(dataAnimesLimit=> { %>
+
+							<div class="col-sm-4">
+								<div class="card-content">
+
+									<img src="<%= dataAnimesLimit.image %>" class="card-img-top">
+									<div class="card-footer">
+										<a href="<%= dataAnimesLimit.link %>" target="_blank"
+											tabindex="<%= tabIndexAnimes %>">
+											<%= dataAnimesLimit.name %>
+										</a>
+									</div>
+
+								</div>
+							</div>
+
+							<% tabIndexAnimes++; %>
+
+								<% }) %>
+					</div>
+				</main>
+				<br>
+				<!-- Paginação -->
+
+				<%- include("./components/Page-Pagination.ejs", {numberOfPages: numberOfPages, current: current}) %>
+
+					<!-- Observação -->
+					<%- include("./components/Page-Note.ejs", { title: "Observação!" , suggestion: dataSuggestion,
+						observation: dataObservation }) %>
+		</div>
+
+		<!--Rodapé-->
+		<%- include("./components/Page-Footer.ejs", { contacts: contactUsers}) %>
+</body>
+
+</html>

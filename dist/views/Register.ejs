@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <% const pageStyles = ["asideRegisters.css", "formNewRegisterConsultRegister.css", "modalAuthenticateDelete.css", "nav.css"] %> 
+
+    <%- include("./components/Page-Head.ejs", { title: "Cadastrar novos registros no banco de dados!", styles: pageStyles }) %> 
+
+</head>
+<body style="background-color: beige;">
+
+    <%- include("./components/Page-Nav.ejs") %> 
+    <div id="content">
+     
+        <%- include("./components/Page-Aside-Registers.ejs") %> 
+
+        <main id="main-form">
+            <div>
+                <!--Cadastrar novos animes-->
+                <form action="/registers/animes" method="post" class="form-group">
+                    <fieldset>
+                        <legend><h2>Cadastrar Anime</h2></legend>
+                        
+                        <div class="content">
+
+                        <div class="input-group">
+                            <label for="anime-name">Nome:</label>
+                            <input type="text" name="anime-name" id="anime-name" >
+                        </div>
+
+                        <div class="input-group">
+                            <label for="anime-link">Link:</label>
+                            <input type="text" name="anime-link" id="anime-link" >
+                        </div>
+
+                        <div class="input-group">
+                            <label for="anime-image">Endereço da foto no projeto:</label>
+                            <input type="text" name="anime-image" id="anime-image" >
+                        </div>
+
+                        <div id="button-group">
+                            <button type="submit" class="new-register">Criar Novo</button>
+                            <button type="reset" class="clear">Limpar</button>
+                        </div>
+                        </div>
+                    </fieldset>
+                </form>
+            
+                <!--Cadstrar novos jogos-->
+                <form action="/registers/games" method="post" class="form-group">
+                    <fieldset>
+                        <legend><h2>Cadastrar Jogo </h2></legend>
+                        
+                        <div class="content">
+
+                        <div class="input-group">
+                            <label for="game-name">Nome:</label>
+                            <input type="text" name="game-name" id="game-name" >
+                        </div>
+
+                        <div class="input-group">
+                            <label for="game-link">Link:</label>
+                            <input type="text" name="game-link" id="game-link" >
+                        </div>
+
+                        <div class="input-group">
+                            <label for="games-image">Endereço da foto no projeto:</label>
+                            <input type="text" name="game-image" id="game-image" >
+                        </div>
+            
+                        <div id="button-group">
+                            <button type="submit" class="new-register">Criar Novo</button>
+                            <button type="reset" class="clear">Limpar</button>
+                        </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            
+            <div>      
+                <!--Cadstrar novo usuario-->
+                <form action="/registers/users" method="post" class="form-group">
+                    <fieldset>
+                        <legend>
+                            <h2>Cadastrar usuario </h2>
+                        </legend>
+                
+                        <div class="content">
+                
+                            <div class="input-group">
+                                <label for="user-name">Nome:</label>
+                                <input type="text" name="user-name" id="user-name">
+                            </div>
+                
+                            <div class="input-group">
+                                <label for="user-password">Senha:</label>
+                                <input type="password" name="user-password" id="user-password">
+                            </div>
+                
+                
+                            <div class="input-group">
+                                <label for="avatar">Avatar:</label>
+                                <input type="text" name="avatar" id="avatar">
+                            </div>
+                
+                            <div class="input-group">
+                                <label for="email-contact-link">Link para contato, rede social:</label>
+                                <input type="text" name="email-contact-link" id="email-contact-link">
+                            </div>
+                
+                            <div class="input-group">
+                                <label for="user-description">Descrição do contato/rede social:</label>
+                                <input type="text" name="user-description" id="user-description">
+                            </div>
+                
+                            <div id="button-group">
+                                <button type="submit" class="new-register">Criar Novo</button>
+                                <button type="reset" class="clear">Limpar</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+
+                <!--Cadastrar Observação-->
+                <form action="/registers/observations" method="post" class="form-group">
+                    <fieldset>
+                        <legend><h2>Cadastrar informação </h2></legend>
+                        
+                        <div class="content">
+                            <div class="input-group">
+                                <label for="observation-name">Nome para identificação da observação:</label>
+                                <input type="text" name="observation-name" id="observation-name">
+                            </div>
+
+                            <div class="input-group">
+                                <label for="information">Observação:</label>
+                                <textarea name="information" id="information" cols="30" rows="5"></textarea>
+                            </div>
+                            <div id="button-group">
+                                <button type="submit" class="new-register">Criar Novo</button>
+                                <button type="reset" class="clear">Limpar</button>
+                            </div>
+                    
+                            </div>
+                    </fieldset>
+                </form>
+                    
+            </div>
+
+            <div>
+                <!--Cadastrar novo site-->
+                <form action="/registers/sites" method="post" class="form-group">
+                    <fieldset>
+                        <legend><h2>Cadastrar Site </h2></legend>
+                        
+                        <div class="content">
+
+                        <div class="input-group">
+                            <label for="site-name">Nome:</label>
+                            <input type="text" name="site-name" id="site-name" >
+                        </div>
+
+                        <div class="input-group">
+                            <label for="site-link">Link:</label>
+                            <input type="text" name="site-link" id="site-link" >
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="site-category">Categoria:</label>
+                            <select name="site-category" id="site-category" required>
+                                <option selected value="anime">Anime</option>
+                                <option value="game">Jogo</option>
+                            </select>
+                        </div>
+
+                        <div id="button-group">
+                            <button type="submit" class="new-register">Criar Novo</button>
+                            <button type="reset" class="clear">Limpar</button>
+                        </div>
+                        </div>
+                    </fieldset>
+                </form>
+
+                <!--Cadastrar novas musicas-->
+                <form action="/registers/songs" method="post" class="form-group">
+                    <fieldset>
+                        <legend><h2>Cadastrar Musica </h2></legend>
+                        
+                        <div class="content">
+
+                        <div class="input-group">
+                            <label for="song-name">Nome:</label>
+                            <input type="text" name="song-name" id="song-name" >
+                        </div>
+
+                        <div class="input-group">
+                            <label for="song-link">Link:</label>
+                            <input type="text" name="song-link" id="song-link" >
+                        </div>
+                        
+                        <div id="button-group">
+                            <button type="submit" class="new-register">Criar Novo</button>
+                            <button type="reset" class="clear">Limpar</button>
+                        </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
