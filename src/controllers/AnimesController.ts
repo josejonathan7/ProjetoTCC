@@ -11,9 +11,9 @@ import { GetAnimeService } from "../services/Get/GetAnimeService";
 class AnimeController {
     
     async handleCreate(request: Request, response: Response){
-        const name = request.body["anime-name"]
-        const link = request.body["anime-link"]
-        const image = request.body["anime-image"]
+        const name: string = request.body["anime-name"]
+        const link: string = request.body["anime-link"]
+        const image: string = request.body["anime-image"]
 
         const creatAnimeService = new CreateAnimeService()
 
@@ -23,10 +23,10 @@ class AnimeController {
     }
     
     async handleUpdate(request: Request, response: Response){
-        const id = request.params.id
-        const name = request.body["anime-name"]
-        const link = request.body["anime-link"]
-        const image = request.body["anime-image"]
+        const id: string = request.params.id
+        const name: string = request.body["anime-name"]
+        const link: string = request.body["anime-link"]
+        const image: string = request.body["anime-image"]
 
         const updateAnimeService = new UpdateAnimeService()
 
@@ -36,7 +36,7 @@ class AnimeController {
     }
     
     async handleSearch(request: Request, response: Response){
-        const name = request.body["anime-name"]
+        const name: string = request.body["anime-name"]
 
         const searchAnimeService = new SearchAnimeService()
 
@@ -113,7 +113,7 @@ class AnimeController {
 
         for (let i = 0; i < 3; i++) {
 
-            if (user[i] != null) {
+            if (user[i] !== null) {
                 contactUsers[i] = user[i]
             }
 

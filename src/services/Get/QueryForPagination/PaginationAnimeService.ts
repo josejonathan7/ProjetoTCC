@@ -7,17 +7,21 @@ class PaginationAnimeService {
     async execute(start: number, recordsPerPage: number){
         const animeRepositorie = getCustomRepository(AnimesRepositories);
 
-        const count = await animeRepositorie.count()
-        const anime = await animeRepositorie.query(`SELECT * FROM tb_animes ORDER BY name LIMIT ${recordsPerPage} OFFSET ${start} `)
+        const count = await animeRepositorie.count();
+        const anime = await animeRepositorie.query(`SELECT * FROM tb_animes ORDER BY name LIMIT ${recordsPerPage} OFFSET ${start} `);
         
         const array = [
             classToPlain(anime),
             count
         ]
 
-        const status = array ? array : "";
+        const status = array ? array : undefined;
 
-        return status
+        if (typeof status === "undefined") {           
+            throw new Error ("Nenhum Anime encontrado");
+        }
+            
+        return status;
     }
 }
 

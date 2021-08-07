@@ -47,8 +47,12 @@ class ObservationController {
 
         const observation = await getObservationService.execute()
 
-        const status = observation ? observation : ""
+        const status = observation ? observation : false
 
+        if(typeof status === "boolean"){
+            throw new Error ("Nenhum dado encontrado")
+        }
+        
         return status
     }
 

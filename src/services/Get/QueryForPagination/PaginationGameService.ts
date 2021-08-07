@@ -7,17 +7,21 @@ class PaginationGameService {
     async execute(start: number, recordsPerPage: number){
         const gameRepositorie = getCustomRepository(GamesRepositories);
 
-        const count = await gameRepositorie.count()
-        const game = await gameRepositorie.query(`SELECT * FROM tb_games ORDER BY name LIMIT ${recordsPerPage} OFFSET  ${start} `)
+        const count = await gameRepositorie.count();
+        const game = await gameRepositorie.query(`SELECT * FROM tb_games ORDER BY name LIMIT ${recordsPerPage} OFFSET  ${start} `);
         
         const array = [
             classToPlain(game),
             count
         ]
 
-        const status = array ? array : "";
+        const status = array ? array : undefined;
 
-        return status
+        if(typeof status === "undefined"){
+            throw new Error("Nenhum jogo encontrado");
+        }
+
+        return status;
     }
 }
 

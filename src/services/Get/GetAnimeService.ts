@@ -5,13 +5,17 @@ import { AnimesRepositories } from "../../repositories/AnimesRepositories";
 class GetAnimeService {
 
     async execute(){
-        const animeRepositorie = getCustomRepository(AnimesRepositories)
+        const animeRepositorie = getCustomRepository(AnimesRepositories);
 
-        const anime = await animeRepositorie.find()
+        const anime = await animeRepositorie.find();
 
-        const status = anime ? classToPlain(anime) : "" 
+        const status = anime ? classToPlain(anime) : undefined;
 
-        return status
+        if(typeof status === "undefined"){
+            throw new Error ("Nenhum Anime encontrado");
+        }
+
+        return status;
     }
 }
 

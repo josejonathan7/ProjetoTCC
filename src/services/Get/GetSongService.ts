@@ -7,11 +7,15 @@ class GetSongService{
     async execute(){
         const songRepositorie = getCustomRepository(SongsRepositories);
 
-        const song = await songRepositorie.find()
+        const song = await songRepositorie.find();
 
-        const status = song ? classToPlain(song) : ""
+        const status = song ? classToPlain(song) : undefined;
 
-        return status
+        if(typeof status === "undefined"){
+            throw new Error("Nenhuma música encontrada");
+        }
+
+        return status;
     }
 }
 

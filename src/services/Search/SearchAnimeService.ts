@@ -9,11 +9,15 @@ class SearchAnimeService {
 
         const anime = await animeRepositorie.find({
             name: searchName
-        })
+        });
 
-        const status = anime.length ?  classToPlain(anime): "";
+        const status = anime.length ?  classToPlain(anime): undefined;
 
-        return status
+        if(typeof status === "undefined"){
+            throw new Error ("Nenhum dado encontrado");
+        }
+
+        return status;
     }
 }
 

@@ -12,10 +12,18 @@ class UpdateObservationService {
     async execute({ id, name, information }: IObservationRequest){
         const observationRepositorie = getCustomRepository(ObservationRepositories);
 
-        await observationRepositorie.update(id, {
+        const observation = await observationRepositorie.update(id, {
             name: name,
             information: information
-        })
+        });
+
+        const status = observation ? "Anime atualizado com sucesso" : undefined;
+
+        if(typeof status === "undefined"){
+            throw new Error("Falha na atualização");
+        }
+
+        return status;
     }
 }
 

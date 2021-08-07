@@ -5,13 +5,17 @@ import { classToPlain } from "class-transformer";
 class GetGameService {
 
     async execute(){
-        const gameRepositorie = getCustomRepository(GamesRepositories)
+        const gameRepositorie = getCustomRepository(GamesRepositories);
 
-        const game = await gameRepositorie.find()
+        const game = await gameRepositorie.find();
 
-        const status = game ? classToPlain(game) : ""
+        const status = game ? classToPlain(game) : undefined;
 
-        return status
+        if(typeof status === "undefined"){
+            throw new Error("Nenhum jogo encontrado");
+        }
+
+        return status;
     }
 }
 

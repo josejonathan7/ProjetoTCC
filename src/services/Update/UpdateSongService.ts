@@ -12,10 +12,18 @@ class UpdateSongService {
     async execute({ id, link, name}: ISongRequest){
         const songRepositorie = getCustomRepository(SongsRepositories);
 
-        await songRepositorie.update(id, {
+        const song = await songRepositorie.update(id, {
             name: name,
             link: link
-        })
+        });
+
+        const status = song ? "Anime atualizado com sucesso" : undefined;
+
+        if(typeof status === "undefined"){
+            throw new Error("Falha na atualização");
+        }
+
+        return status;
     }
 }
 

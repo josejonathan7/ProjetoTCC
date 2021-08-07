@@ -13,11 +13,19 @@ class UpdateGameService {
     async execute({ id, name, link, image }: IGameRequest){
         const gameRepositorie = getCustomRepository(GamesRepositories);
 
-        await gameRepositorie.update(id, {
+        const game = await gameRepositorie.update(id, {
             name: name,
             link: link,
             image: image
-        })
+        });
+
+        const status = game ? "Anime atualizado com sucesso" : undefined;
+
+        if(typeof status === "undefined"){
+            throw new Error("Falha na atualização");
+        }
+
+        return status;
     }
 }
 

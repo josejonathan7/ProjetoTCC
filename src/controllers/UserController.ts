@@ -8,63 +8,59 @@ import { UpdateUserService } from "../services/Update/UpdateUserService";
 class UserController {
 
     async handleCreate(request: Request, response: Response){
-        const name = request.body["user-name"]
-        const email_contact_link = request.body["email-contact-link"]
-        const password = request.body["user-password"]
-        const avatar = request.body.avatar
-        const description = request.body["user-description"]
+        const name: string = request.body["user-name"];
+        const email_contact_link: string = request.body["email-contact-link"];
+        const password: string = request.body["user-password"];
+        const avatar: string = request.body.avatar;
+        const description: string = request.body["user-description"];
 
-        const creatUserService = new CreateUserService()
+        const creatUserService = new CreateUserService();
 
-        await creatUserService.execute({ name, email_contact_link, password, avatar, description })
-
-        return response.render("Register")
+         
+        const createUser = await creatUserService.execute({ name, email_contact_link, password, avatar, description });
+        return response.send(createUser);
     }
     
     async handleUpdate(request: Request, response: Response){
-        const id = request.params.id
-        const name = request.body["user-name"]
-        const email_contact_link = request.body["email-contact-link"]
-        const avatar = request.body.avatar
-        const description = request.body["user-description"]
+        const id: string = request.params.id;
+        const name: string = request.body["user-name"];
+        const email_contact_link: string = request.body["email-contact-link"];
+        const avatar: string = request.body.avatar;
+        const description: string = request.body["user-description"];
 
-        const updateUserService = new UpdateUserService()
+        const updateUserService = new UpdateUserService();
 
-        await updateUserService.execute({ id, name, avatar, description, email_contact_link })
+        const updateUser = await updateUserService.execute({ id, name, avatar, description, email_contact_link });
         
-        return response.render("UpdateRegisters")
+        return response.send(updateUser);
     }
     
     async handleSearch(request: Request, response: Response){
-        const name = request.body["user-name"]
+        const name: string = request.body["user-name"];
 
-        const searchUserService = new SearchUserService()
+        const searchUserService = new SearchUserService();
 
-        const user = await searchUserService.execute(name)
+        const user = await searchUserService.execute(name);
         
-        const status = user ? response.render("updateDelete/UpdateDeleteShowUser", { dataResult: user }) : response.status(401).send("Name Search not Found!")
-
-        return status
+        return response.json(user);
     }
     
     async handleGet(){
-        const getUserService = new GetUserService()
+        const getUserService = new GetUserService();
 
-        const user = await getUserService.execute()
+        const user = await getUserService.execute();
 
-        const status = user ? user : ""
-
-        return status
+        return user;
     }
     
     async handleDelete(request: Request, response: Response){
-        const id = request.params.id
+        const id = request.params.id;
 
-        const deleteUserService = new DeleteUserService()
+        const deleteUserService = new DeleteUserService();
 
-        await deleteUserService.execute(id)
+        const deleteUser = await deleteUserService.execute(id);
         
-        return response.render("UpdateRegisters")
+        return response.send(deleteUser);
     }
 }
 

@@ -10,19 +10,23 @@ interface ISiteRequest {
 class CreateSiteService {
 
     async execute({ name,  link, category }: ISiteRequest){
-        const siteRepositorie = getCustomRepository(SitesRepositories)
+        const siteRepositorie = getCustomRepository(SitesRepositories);
 
         const site = siteRepositorie.create({
             name,
             link,
             category
-        })
+        });
 
         await siteRepositorie.save(site);
         
-        const status = site ? site : "Falha na operação"
+        const status = site ? "Site criado com sucesso" : undefined;
 
-        return status
+        if(typeof status === "undefined"){
+            throw new Error ("Falha na criação do registro");
+        }
+
+        return status;
     }
 }
 

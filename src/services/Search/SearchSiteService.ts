@@ -9,11 +9,15 @@ class SearchSiteService {
 
         const site = await siteRepositorie.find({
             name: searchName
-        })
+        });
 
-        const status = site.length ?  classToPlain(site): "";
+        const status = site.length ?  classToPlain(site): undefined;
 
-        return status
+        if(typeof status === "undefined"){
+            throw new Error("Nenhum dado encontrado");
+        }
+
+        return status;
     }
 }
 

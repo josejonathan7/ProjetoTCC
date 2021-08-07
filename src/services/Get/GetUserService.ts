@@ -7,11 +7,15 @@ class GetUserService{
     async execute(){
         const userRepositorie = getCustomRepository(UsersRepositories);
 
-        const user = await userRepositorie.find()
+        const user = await userRepositorie.find();
 
-        const status = user ? classToPlain(user) : ""
+        const status = user ? classToPlain(user) : undefined;
 
-        return status
+        if(typeof status === "undefined"){
+            throw new Error("Nenhum usuário encontrado");
+        }
+
+        return status;
     }
 }
 

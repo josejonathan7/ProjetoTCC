@@ -16,13 +16,17 @@ class CreateAnimeService {
             name,
             image,
             link
-        })
+        });
 
-        await animesRepositorie.save(animes)
+        await animesRepositorie.save(animes);
         
-        const status = animes ? animes : ""
+        const status = animes ? "Anime criado com sucesso" : undefined;
 
-        return status
+        if(typeof status === "undefined"){
+            throw new Error ("Falha na criação do registro");
+        }
+
+        return status;
     }
 }
 

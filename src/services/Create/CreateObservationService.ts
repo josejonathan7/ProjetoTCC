@@ -14,13 +14,17 @@ class CreateObservationService {
         const observation = observationRepositorie.create({
             name,
             information
-        })
+        });
 
-        await observationRepositorie.save(observation)
+        await observationRepositorie.save(observation);
 
-        const status = observation ? observation : "Falha na operação"
+        const status = observation ? "Observação criada com sucesso" : undefined;
 
-        return status
+        if(typeof status === "undefined"){
+            throw new Error ("Falha na criação do registro");
+        }
+
+        return status;
     }
 }
 

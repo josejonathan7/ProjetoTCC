@@ -6,9 +6,17 @@ class DeleteGameService{
     async execute(id: string){
         const gameRepositorie = getCustomRepository(GamesRepositories);
 
-        await gameRepositorie.delete({
+        const game = await gameRepositorie.delete({
             id
-        })
+        });
+
+        const status = game ? "Jogo deletado com sucesso" : undefined;
+        
+        if(typeof status === "undefined"){
+            throw new Error("Falha na criação do registro");
+        }
+
+        return status;
     }
 }
 

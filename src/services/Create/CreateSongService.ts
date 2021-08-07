@@ -14,13 +14,17 @@ class CreateSongService {
         const song = songRepositorie.create({
             name,
             link
-        })
+        });
 
-        await songRepositorie.save(song)
+        await songRepositorie.save(song);
         
-        const status = song ? song : "Falha na operação"
+        const status = song ? "Música criada com sucesso" : undefined;
 
-        return status
+        if(typeof status === "undefined"){
+            throw new Error("Falha na criação do registro");
+        }
+
+        return status;
     }
 }
 

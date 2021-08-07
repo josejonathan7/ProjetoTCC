@@ -7,11 +7,15 @@ class GetObservationService{
     async execute(){
         const observationRepositorie = getCustomRepository(ObservationRepositories);
 
-        const observation = await observationRepositorie.find()
+        const observation = await observationRepositorie.find();
 
-        const status = observation ? classToPlain(observation) : ""
+        const status = observation ? classToPlain(observation) : undefined;
 
-        return status
+        if(typeof status === "undefined"){
+            throw new Error("Nenhuma observaçaõ encontrada");
+        }
+
+        return status;
     }
 }
 

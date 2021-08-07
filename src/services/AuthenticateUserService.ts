@@ -1,7 +1,7 @@
-import { getCustomRepository } from 'typeorm'
-import { UsersRepositories } from '../repositories/UsersRepositories'
-import { compare } from 'bcrypt'
-import { sign } from 'jsonwebtoken'
+import { getCustomRepository } from 'typeorm';
+import { UsersRepositories } from '../repositories/UsersRepositories';
+import { compare } from 'bcrypt';
+import { sign } from 'jsonwebtoken';
 
 interface IAuthenticateRequest {
     name: string;
@@ -11,17 +11,17 @@ interface IAuthenticateRequest {
 class AuthenticateUserService{
 
     async execute({ name, password }: IAuthenticateRequest){
-        const userRepositorie = getCustomRepository(UsersRepositories)
-        const user = await userRepositorie.findOne({name})
+        const userRepositorie = getCustomRepository(UsersRepositories);
+        const user = await userRepositorie.findOne({name});
 
         if(!user){
-            throw new Error("Email/Password incorrect")
+            throw new Error("Email/Password incorrect");
         }
 
-        const passwordMatch = await compare(password, user.password)
+        const passwordMatch = await compare(password, user.password);
 
         if(!passwordMatch){
-            throw new Error("Email/Password incorrect")
+            throw new Error("Email/Password incorrect");
         }
 
         const token = sign({
@@ -31,9 +31,9 @@ class AuthenticateUserService{
         {
             subject: user.id, 
             expiresIn: "1h"
-        })
+        });
 
-        return token
+        return token;
     }
 }
 

@@ -7,11 +7,15 @@ class GetSiteService {
     async execute(){
         const siteRepositorie = getCustomRepository(SitesRepositories);
 
-        const site = await siteRepositorie.find()
+        const site = await siteRepositorie.find();
 
-        const status = site ? classToPlain(site) : ""
+        const status = site ? classToPlain(site) : undefined;
 
-        return status
+        if(typeof status === "undefined"){
+            throw new Error("Nenhum site encontrado");
+        }
+
+        return status;
     }
 }
 

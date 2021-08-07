@@ -9,11 +9,15 @@ class SearchObservationService {
 
         const observation = await observationRepositorie.find({
             name: searchName
-        })
+        });
 
-        const status = observation.length ?  classToPlain(observation): "";
+        const status = observation.length ?  classToPlain(observation): undefined;
 
-        return status
+        if(typeof status === "undefined"){
+            throw new Error("Nenhum dado encontrado");
+        }
+
+        return status;
     }
 }
 

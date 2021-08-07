@@ -9,11 +9,15 @@ class SearchGameService {
 
         const game = await gameRepositorie.find({
             name: searchName
-        })
+        });
 
-        const status = game.length ?  classToPlain(game): "";
+        const status = game.length ?  classToPlain(game): undefined;
 
-        return status
+        if(typeof status === "undefined"){
+            throw new Error("Nenhum dado encontrado");
+        }
+
+        return status;
     }
 }
 

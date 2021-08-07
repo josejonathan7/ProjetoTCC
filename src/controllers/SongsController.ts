@@ -10,48 +10,41 @@ import { ObservationController } from "./ObservationController";
 class SongController {
 
     async handleCreate(request: Request, response: Response){
-        const name = request.body["song-name"]
-        const link = request.body["song-link"]
+        const name: string = request.body["song-name"];
+        const link: string = request.body["song-link"];
 
-        const creatSongService = new CreateSongService()
+        const creatSongService = new CreateSongService();
 
-        await creatSongService.execute({ name, link})
+        const creatSong = await creatSongService.execute({ name, link});
 
-        return response.render("Register")
+        return response.send(creatSong);
     }
 
     async handleUpdate(request: Request, response: Response){
-        const id = request.params.id
-        const name = request.body["song-name"]
-        const link = request.body["song-link"]
+        const id = request.params.id;
+        const name: string = request.body["song-name"];
+        const link: string = request.body["song-link"];
 
-        const updateSongService = new UpdateSongService()
+        const updateSongService = new UpdateSongService();
 
-        await updateSongService.execute({id, link, name})
+        const updatedSong = await updateSongService.execute({id, link, name});
         
-        return response.render("UpdateRegisters")
+        return response.send(updatedSong);
     }
 
     async handleGet(request: Request, response: Response){
-        const getSongService = new GetSongService()
-        const userController = new UserController()
-        const observationController = new ObservationController()
+        const getSongService = new GetSongService();
+        const userController = new UserController();
+        const observationController = new ObservationController();
 
-        const observation = await observationController.handleGet()
-        const user = await userController.handleGet()
-        const song = await getSongService.execute()
+        const observation = await observationController.handleGet();
+        const user = await userController.handleGet();
+        const song = await getSongService.execute();
 
-           //dados de contato no rodapé
-           let contactUsers = [];
-
-           for (let i = 0; i < 3; i++) {
-               
-               if(user[i] != null){
-                   contactUsers[i] = user[i]
-               }
-               
-           }
-
+        //dados de contato no rodapé
+        let randomUser =  Math.floor(Math.random() * (user.length - 0));
+        let contactUsers = user[randomUser];
+     
         //dados de observação da página
         let noteSuggestion;
         let pageObservation;
@@ -82,7 +75,7 @@ class SongController {
         }
 
            
-        const status = song ? response.render("musicas", { dataSongs: song, observation, contactUsers, dataSuggestion: noteSuggestion, dataObservation: pageObservation }) : response.status(401).send("Page Requisition Failed!")
+        const status = song ? response.render("musicas", { dataSongs: song, observation, contactUsers, dataSuggestion: noteSuggestion, dataObservation: pageObservation }) : response.status(401).send("Page Requisition Failed!");
         
         return status
     }

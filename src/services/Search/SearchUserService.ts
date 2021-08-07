@@ -9,11 +9,15 @@ class SearchUserService {
 
         const user = await userRepositorie.find({
             name: searchName
-        })
+        });
 
-        const status = user.length ?  classToPlain(user): "";
+        const status = user.length ?  classToPlain(user): undefined;
 
-        return status
+        if(typeof status === "undefined"){
+            throw new Error("Nenhum dado encontrado");
+        }
+
+        return status;
     }
 
     

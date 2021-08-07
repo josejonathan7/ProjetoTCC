@@ -13,11 +13,19 @@ class UpdateAnimeService {
     async execute({ id, name, link, image}: IAnimeRequest){
         const animeRepositorie = getCustomRepository(AnimesRepositories);
 
-        await animeRepositorie.update(id, {
+        const anime = await animeRepositorie.update(id, {
             name: name,
             link: link,
             image: image
-        })
+        });
+
+        const status = anime ? "Anime atualizado com sucesso" : undefined;
+
+        if(typeof status === "undefined"){
+            throw new Error("Falha na atualização");
+        }
+
+        return status;
     }
 }
 

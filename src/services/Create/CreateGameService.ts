@@ -16,13 +16,17 @@ class CreateGameService {
             name,
             link,
             image
-        })
+        });
 
         await gamesRepositorie.save(game);
         
-        const status = game ? game : "Falha na operação"
+        const status = game ? "Jogo criado com sucesso" : undefined;
 
-        return status
+        if(typeof status === "undefined"){
+            throw new Error ("Falha na criação do registro");
+        }
+
+        return status;
     }
 }
 

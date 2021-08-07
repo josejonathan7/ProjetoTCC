@@ -16,12 +16,20 @@ class UpdateUserService {
     async execute({ id, name, avatar, description, email_contact_link }: IUserRequest){
         const userRepositorie = getCustomRepository(UsersRepositories);
 
-        await userRepositorie.update(id, {
+        const user = await userRepositorie.update(id, {
             name: name,
             avatar: avatar,
             description: description,
             email_contact_link: email_contact_link
-        })
+        });
+
+        const status = user ? "Anime atualizado com sucesso" : undefined;
+
+        if(typeof status === "undefined"){
+            throw new Error("Falha na atualização");
+        }
+
+        return status;
     }
 }
 
