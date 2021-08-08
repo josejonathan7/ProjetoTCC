@@ -53,9 +53,15 @@ class UserController {
     async handleGet(){
         const getUserService = new GetUserService();
 
-        const user = await getUserService.execute();
+        try {
 
-        return user;
+            const user = await getUserService.execute();
+
+            return user;
+        } catch(err){
+            return JSON.stringify({error:err.message});
+        }
+        
     }
     
     async handleDelete(request: Request, response: Response){

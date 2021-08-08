@@ -52,9 +52,14 @@ class ObservationController {
     async handleGet(){
         const getObservationService = new GetObservationService();
 
-        const observation = await getObservationService.execute();
+        try{
+            const observation = await getObservationService.execute();
         
-        return observation;
+            return observation;
+        }catch(err){
+            return JSON.stringify({ error: err.message });
+        }
+     
     }
 
     async handleDelete(request: Request, response: Response){

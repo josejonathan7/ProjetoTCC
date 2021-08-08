@@ -55,80 +55,93 @@ class AnimeController {
     }
     
     async handlePagination(request: Request, response: Response){
-        const paginationAnimeService = new PaginationAnimeService()
-        const userController = new UserController()
-        const observationController = new ObservationController()
+        const paginationAnimeService = new PaginationAnimeService();
+        const userController = new UserController();
+        const observationController = new ObservationController();
 
-        const observation = await observationController.handleGet()
-        const user = await userController.handleGet()
+        try{
+            const observation = await observationController.handleGet();
+            const user = await userController.handleGet();
 
-        //código para trabalhar com a páginação da página
+            //código para trabalhar com a páginação da página
 
-        //quantidade de registro por página
-        let recordsPerPage = 2
+            //quantidade de registro por página
+            let recordsPerPage = 2;
 
-        //página atual
-        const urlParams = request.query.page
-        const current = Number (urlParams ? urlParams : 1)
+            //página atual
+            const urlParams = request.query.page;
+            const current = Number (urlParams ? urlParams : 1);
 
-        //calculo de registro inicio da página
-        let start = (recordsPerPage * current) - recordsPerPage;
+            //calculo de registro inicio da página
+            let start = (recordsPerPage * current) - recordsPerPage;
 
-        //query que retorna os dados do banco de dados com o total de linhas
-        const animePagination = await paginationAnimeService.execute(start, recordsPerPage)
-        
+            //query que retorna os dados do banco de dados com o total de linhas
+            const animePagination = await paginationAnimeService.execute(start, recordsPerPage);
+            
 
-        //quantidade de registros
-        const totalRows = animePagination[1];
+            //quantidade de registros
+            const totalRows = animePagination[1];
 
-        
-        //quantidade de paginas 
-        let numberOfPages = Math.ceil(Number(totalRows) / recordsPerPage)
+            
+            //quantidade de paginas 
+            let numberOfPages = Math.ceil(Number(totalRows) / recordsPerPage);
 
-        //dados de observação da página
+            //dados de observação da página
 
-        let noteSuggestion;
-        let pageObservation;
+            let noteSuggestion;
+            let pageObservation;
 
-        for (let i = 0; i < observation.length; i++) {
+            if(typeof observation === "object"){
+                for (let i = 0; i < observation.length; i++) {
 
-            if (observation[i].name.trim() === "sugestão") {
-                noteSuggestion = observation[i]
-            }
+                    if (observation[i].name.trim() === "sugestão") {
+                        noteSuggestion = observation[i];
+                    }
 
-            if (observation[i].name.trim() === "preferencia-anime") {
-                pageObservation = observation[i]
-            }
+                    if (observation[i].name.trim() === "preferencia-anime") {
+                        pageObservation = observation[i];
+                    }
 
-            if (!pageObservation) {
-                pageObservation = {
-                    name: "",
-                    information: ""
+                    if (!pageObservation) {
+                        pageObservation = {
+                            name: "",
+                            information: ""
+                        };
+                    }
+
+                    if (!noteSuggestion) {
+                        noteSuggestion = {
+                            name: "",
+                            information: ""
+                        };
+                    }
                 }
+            }else{
+                noteSuggestion = observation;
+                pageObservation = observation;
             }
 
-            if (!noteSuggestion) {
-                noteSuggestion = {
-                    name: "",
-                    information: ""
-                }
+
+
+            //dados de contato no rodapé
+            let randomUser =  Math.floor(Math.random() * (user.length - 0));
+            let contactUsers: string | [];
+
+            if(typeof user === "object"){
+                contactUsers = user[randomUser]
+            }else {
+                contactUsers = user;
             }
+
+            const status = animePagination ?  animePagination[0] : response.status(401).send("Load Pagination Failed!");
+            
+            //return response.render("animes", { contactUsers, dataAnimesLimit: status, numberOfPages, current, dataSuggestion: noteSuggestion, dataObservation: pageObservation });
+
+            return response.json({contactUsers, noteSuggestion, pageObservation, status, numberOfPages, current});
+
+        }catch(err){
+            return response.json({ error: err.message });
         }
-
-        //dados de contato no rodapé
-        let contactUsers = [];
-
-        for (let i = 0; i < 3; i++) {
-
-            if (user[i] !== null) {
-                contactUsers[i] = user[i]
-            }
-
-        }
-
-        const status = animePagination ?  animePagination[0] : response.status(401).send("Load Pagination Failed!")
-        
-        return response.render("animes", { contactUsers, dataAnimesLimit: status, numberOfPages, current, dataSuggestion: noteSuggestion, dataObservation: pageObservation })
     }
 
     async handleDelete(request: Request, response: Response){
@@ -143,22 +156,26 @@ class AnimeController {
 
     //essa e a função handle paginatio fazem a mesma coisa no sentido geral que é buscar dados, a diferença é que a págination é para organizar a quantidade de conteudo a ser exibido por página, e essa ela traz todos os dados para que eles sejam selecionados aleatoriamente para saber qual vai ser exibido na página inicial
     async handleGetAll(){
-        const getAnimeService = new GetAnimeService()
+        const getAnimeService = new GetAnimeService();
 
-        const animes = await getAnimeService.execute()
-        let animesCarousel = [];
+        try{
+            const animes = await getAnimeService.execute();
+            let animesCarousel = [];
 
-        if(animes){
+            if(animes){
 
-            for(let i=0; i<5; i++){
+                for(let i=0; i<5; i++){
 
-                let animesfilter = Math.floor(Math.random() * (animes.length - 0))
-                animesCarousel[i] = animes[animesfilter];
+                    let animesfilter = Math.floor(Math.random() * (animes.length - 0));
+                    animesCarousel[i] = animes[animesfilter];
+                }
+
             }
 
+            return animesCarousel;
+        }catch(err){
+            return JSON.stringify({ error: err.message });
         }
-
-        return animesCarousel
     }
 }
 

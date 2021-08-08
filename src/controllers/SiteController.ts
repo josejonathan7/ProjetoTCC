@@ -55,9 +55,14 @@ class SiteController {
     async handleGet(){
         const getSiteService = new GetSiteService();
 
-        const site = await getSiteService.execute();
+        try {
+            const site = await getSiteService.execute();
 
-        return site;
+            return site;
+        }catch (err){
+            return JSON.stringify({ error: err.message });
+        }
+      
     }
 
     async handleDelete(request: Request, response: Response){

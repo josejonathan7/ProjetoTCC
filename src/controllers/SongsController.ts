@@ -20,7 +20,7 @@ class SongController {
 
             return response.send(creatSong);
         }catch(err){
-            return response.json({error: err.message});asd
+            return response.json({error: err.message});
         }
        
     }
@@ -42,46 +42,65 @@ class SongController {
         const userController = new UserController();
         const observationController = new ObservationController();
 
-        const observation = await observationController.handleGet();
-        const user = await userController.handleGet();
-        const song = await getSongService.execute();
-
-        //dados de contato no rodapé
-        let randomUser =  Math.floor(Math.random() * (user.length - 0));
-        let contactUsers = user[randomUser];
-     
-        //dados de observação da página
-        let noteSuggestion;
-        let pageObservation;
-
-        for (let i = 0; i < observation.length; i++) {
-            
-            if(observation[i].name.trim() === "sugestão"){
-                noteSuggestion = observation[i];
-            }
-
-            if(observation[i].name.trim() === "preferencia-musica"){
-                pageObservation = observation[i];
-            }
-
-            if(!pageObservation){
-                pageObservation = {
-                    name: "",
-                    information: ""
-                }
-            }
-
-            if(!noteSuggestion){
-                noteSuggestion = {
-                    name: "",
-                    information: ""
-                }
-            }
-        }
-
-        //const status = song ? response.render("musicas", { dataSongs: song, observation, contactUsers, dataSuggestion: noteSuggestion, dataObservation: pageObservation }) : response.status(401).send("Page Requisition Failed!");
+        try {
+            const observation = await observationController.handleGet();
+            const user = await userController.handleGet();
+            const song = await getSongService.execute();
         
-        return response.send(song);
+            //dados de contato no rodapé
+            let randomUser =  Math.floor(Math.random() * (user.length - 0));
+            let contactUsers: string | [];
+
+            if(typeof user === "object"){
+                contactUsers = user[randomUser]
+            }else {
+                contactUsers = user;
+            }
+
+        
+            //dados de observação da página
+            let noteSuggestion;
+            let pageObservation;
+
+            if(typeof observation === "object"){
+                
+                for (let i = 0; i < observation.length; i++) {
+                    
+                    if(observation[i].name.trim() === "sugestão"){
+                        noteSuggestion = observation[i];
+                    }
+
+                    if(observation[i].name.trim() === "preferencia-musica"){
+                        pageObservation = observation[i];
+                    }
+
+                    if(!pageObservation){
+                        pageObservation = {
+                            name: "",
+                            information: ""
+                        }
+                    }
+
+                    if(!noteSuggestion){
+                        noteSuggestion = {
+                            name: "",
+                            information: ""
+                        }
+                    }
+                }
+            }else {
+                noteSuggestion = observation;
+                pageObservation = observation;
+            }
+
+
+            //const status = song ? response.render("musicas", { dataSongs: song, observation, contactUsers, dataSuggestion: noteSuggestion, dataObservation: pageObservation }) : response.status(401).send("Page Requisition Failed!");
+            
+            return response.json({ song, contactUsers, noteSuggestion, pageObservation });
+
+        } catch(err){
+            return response.json({ error: err.message });
+        }
     }
     
     async handleSearch(request: Request, response: Response){
