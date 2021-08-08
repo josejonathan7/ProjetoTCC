@@ -11,15 +11,22 @@ import { GetAnimeService } from "../services/Get/GetAnimeService";
 class AnimeController {
     
     async handleCreate(request: Request, response: Response){
-        const name: string = request.body["anime-name"]
-        const link: string = request.body["anime-link"]
-        const image: string = request.body["anime-image"]
+        const name: string = request.body["anime-name"];
+        const link: string = request.body["anime-link"];
+        const image: string = request.body["anime-image"];
 
-        const creatAnimeService = new CreateAnimeService()
+        const creatAnimeService = new CreateAnimeService();
 
-        await creatAnimeService.execute({ name , link, image })
+        try {
+            const creatAnime = await creatAnimeService.execute({ name , link, image });
 
-        return response.render("Register")
+            //return response.render("Register");
+            return response.send(creatAnime);
+        }catch(err){
+            return response.json({error: err.message})
+        }
+
+        //return response.render("Register")
     }
     
     async handleUpdate(request: Request, response: Response){

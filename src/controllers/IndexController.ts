@@ -3,26 +3,23 @@ import { AnimeController } from './AnimesController';
 import { GameController } from './GamesController';
 import { ObservationController } from "./ObservationController";
 import { SiteController } from "./SiteController";
-import { SongController } from './SongsController';
 import { UserController } from "./UserController";
 
 
 class IndexController {
 
     async handleGet(request: Request, response: Response) {
-        const animeController = new AnimeController()
-        const gameController = new GameController()
-        const songController = new SongController()
-        const siteController = new SiteController()
-        const observationController = new ObservationController()
-        const userController = new UserController()
+        const animeController = new AnimeController();
+        const gameController = new GameController();
+        const siteController = new SiteController();
+        const observationController = new ObservationController();
+        const userController = new UserController();
 
-        const randomAnime = await animeController.handleGetAll()
-        const randomGame = await gameController.handleGetAll()
-        const randomsong = await songController.handleGetForIndex()
-        const sites = await siteController.handleGet()
-        const users = await userController.handleGet()
-        const observation = await observationController.handleGet()
+        const randomAnime = await animeController.handleGetAll();
+        const randomGame = await gameController.handleGetAll();
+        const sites = await siteController.handleGet();
+        const users = await userController.handleGet();
+        const observation = await observationController.handleGet();
 
 
         //dados de observação da página
@@ -55,19 +52,8 @@ class IndexController {
         }
 
         //dados de contato no rodapé
-        let contactUsers = [];
-        let countContact = 0;
-
-        for (let i = 0; i < 3; i++) {
-
-            if (users[i] != null) {
-
-                contactUsers[countContact] = users[i]
-                countContact++;
-
-            }
-
-        }
+        const randomUsers = Math.floor(Math.random() * (users.length - 0))
+        const contactUsers = users[randomUsers];
 
         //filtragem dos sites entre animes e jogos
 
@@ -91,10 +77,9 @@ class IndexController {
             }
         };
 
-        const status = randomAnime && randomGame && randomsong && sites && users ? response.render("index", { animesArray: randomAnime, gamesArray: randomGame, contactUsers, dataSongs: randomsong, dataPageObjective: pageObjective, dataSuggestion: noteSuggestion, animesSite, gamesSite }) : response.status(401).send("Requisition Failed!")
+        //const status = randomAnime && randomGame && sites && users ? response.render("index", { animesArray: randomAnime, gamesArray: randomGame, contactUsers, dataPageObjective: pageObjective, dataSuggestion: noteSuggestion, animesSite, gamesSite }) : response.status(401).send("Requisition Failed!")
    
-        return status
-
+        return response.json({randomAnime, randomGame, contactUsers, pageObjective, noteSuggestion, animesSite, gamesSite});
     }
 }
 

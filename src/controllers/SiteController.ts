@@ -8,60 +8,68 @@ import { UpdateSiteService } from "../services/Update/UpdateSiteService";
 class SiteController {
 
     async handleCreate(request: Request, response: Response){
-        const name = request.body["site-name"]
-        const link = request.body["site-link"]
-        const category = request.body["site-category"]
+        const name: string = request.body["site-name"];
+        const link: string = request.body["site-link"];
+        const category: string = request.body["site-category"];
 
-        const creatSiteService = new CreateSiteService()
+        const creatSiteService = new CreateSiteService();
 
-        await creatSiteService.execute({ name, link, category})
+        try{
+            const creatSite = await creatSiteService.execute({ name, link, category});
 
-        return response.render("Register")
+            //return response.render("Register")
+
+            return response.send(creatSite);
+        }catch(err){
+            return response.json({error: err.message})
+        }
     }
 
     async handleUpdate(request: Request, response: Response){
-        const id = request.params.id
-        const name = request.body["site-name"]
-        const link = request.body["site-link"]
-        const category = request.body["site-category"]
+        const id = request.params.id;
+        const name: string = request.body["site-name"];
+        const link: string = request.body["site-link"];
+        const category: string = request.body["site-category"];
 
-        const updateSiteService = new UpdateSiteService()
+        const updateSiteService = new UpdateSiteService();
 
-        await updateSiteService.execute({ id, name, link, category })
+        const updateSite = await updateSiteService.execute({ id, name, link, category });
         
-        return response.render("UpdateRegisters")
+        //return response.render("UpdateRegisters");
+
+        return response.send(updateSite);
     }
 
     async handleSearch(request: Request, response: Response){
-        const name = request.body["site-name"]
+        const name: string = request.body["site-name"];
 
-        const searchSiteService = new SearchSiteService()
+        const searchSiteService = new SearchSiteService();
 
-        const site = await searchSiteService.execute(name)
+        const site = await searchSiteService.execute(name);
 
-        const status = site ? response.render("updateDelete/UpdateDeleteShowSite", { dataResult: site }) : response.status(401).send("Name Search Not Found!")
+        //const status = site ? response.render("updateDelete/UpdateDeleteShowSite", { dataResult: site }) : response.status(401).send("Name Search Not Found!");
 
-        return status
+        return site;
     }
 
     async handleGet(){
-        const getSiteService = new GetSiteService()
+        const getSiteService = new GetSiteService();
 
-        const site = await getSiteService.execute()
+        const site = await getSiteService.execute();
 
-        const status = site ? site : ""
-
-        return status
+        return site;
     }
 
     async handleDelete(request: Request, response: Response){
-        const id = request.params.id
+        const id = request.params.id;
 
-        const deleteSiteService = new DeleteSiteService()
+        const deleteSiteService = new DeleteSiteService();
 
-        await deleteSiteService.execute(id)
+        const deleteSite = await deleteSiteService.execute(id);
         
-        return response.render("UpdateRegisters")
+        //return response.render("UpdateRegisters");
+
+        return response.send(deleteSite);
     }
 }
 

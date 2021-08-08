@@ -16,9 +16,14 @@ class UserController {
 
         const creatUserService = new CreateUserService();
 
-         
-        const createUser = await creatUserService.execute({ name, email_contact_link, password, avatar, description });
-        return response.send(createUser);
+        try {
+
+            const createUser = await creatUserService.execute({ name, email_contact_link, password, avatar, description });
+            return response.send(createUser);
+
+        }catch(err){
+            return response.json({error: err.message});
+        }
     }
     
     async handleUpdate(request: Request, response: Response){

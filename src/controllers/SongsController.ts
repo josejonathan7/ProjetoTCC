@@ -15,9 +15,14 @@ class SongController {
 
         const creatSongService = new CreateSongService();
 
-        const creatSong = await creatSongService.execute({ name, link});
+        try {
+            const creatSong = await creatSongService.execute({ name, link});
 
-        return response.send(creatSong);
+            return response.send(creatSong);
+        }catch(err){
+            return response.json({error: err.message});asd
+        }
+       
     }
 
     async handleUpdate(request: Request, response: Response){
@@ -52,11 +57,11 @@ class SongController {
         for (let i = 0; i < observation.length; i++) {
             
             if(observation[i].name.trim() === "sugestão"){
-                noteSuggestion = observation[i]
+                noteSuggestion = observation[i];
             }
 
             if(observation[i].name.trim() === "preferencia-musica"){
-                pageObservation = observation[i]
+                pageObservation = observation[i];
             }
 
             if(!pageObservation){
@@ -74,52 +79,33 @@ class SongController {
             }
         }
 
-           
-        const status = song ? response.render("musicas", { dataSongs: song, observation, contactUsers, dataSuggestion: noteSuggestion, dataObservation: pageObservation }) : response.status(401).send("Page Requisition Failed!");
+        //const status = song ? response.render("musicas", { dataSongs: song, observation, contactUsers, dataSuggestion: noteSuggestion, dataObservation: pageObservation }) : response.status(401).send("Page Requisition Failed!");
         
-        return status
+        return response.send(song);
     }
     
     async handleSearch(request: Request, response: Response){
-        const name = request.body["song-name"]
+        const name: string = request.body["song-name"];
 
-        const searchSongService = new SearchSongService()
+        const searchSongService = new SearchSongService();
 
-        const song = await searchSongService.execute(name)
+        const song = await searchSongService.execute(name);
 
-        const status = song ? response.render("updateDelete/UpdateDeleteShowSong", { dataResult: song }) : response.status(401).send("Name Search not Found!")
+        //const status = song ? response.render("updateDelete/UpdateDeleteShowSong", { dataResult: song }) : response.status(401).send("Name Search not Found!");
 
-        return status
+        return song;
     }
 
     async handleDelete(request: Request, response: Response){
-        const id = request.params.id
+        const id = request.params.id;
 
-        const deleteSongService = new DeleteSongService()
+        const deleteSongService = new DeleteSongService();
 
-        await deleteSongService.execute(id)
+        const deleteSong = await deleteSongService.execute(id);
         
-        return response.render("UpdateRegisters")
-    }
+        //return response.render("UpdateRegisters")
 
-    //assim como o handleGet esse método pega todas as músicas, mas com a diferença de que ele seleciona uma certa quantia aleatoria para ser exibida na página index, como o handleGet possui outras funcionalidades com ele achei melhor construir um método a parte para fazer essa seleção
-    async handleGetForIndex(){
-        const getSongService = new GetSongService()
-
-        const song = await getSongService.execute()
-        let songsList = [];
-        
-        if(song){
-
-            for(let i=0; i<10; i++){
-
-                let songsfilter = Math.floor(Math.random() * (song.length - 0))
-                songsList[i] = song[songsfilter];
-            }
-
-        }
-
-        return songsList
+        return deleteSong;
     }
 }
 

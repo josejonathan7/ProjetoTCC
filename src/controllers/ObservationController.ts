@@ -1,69 +1,71 @@
-import { Request , Response } from 'express'
-import { CreateObservationService } from '../services/Create/CreateObservationService'
-import { DeleteObservationService } from '../services/Delete/DeleteObservationService'
-import { GetObservationService } from '../services/Get/GetObservationService'
-import { SearchObservationService } from '../services/Search/SearchObservationService'
-import { UpdateObservationService } from '../services/Update/UpdateObservationService'
+import { Request , response, Response } from 'express';
+import { CreateObservationService } from '../services/Create/CreateObservationService';
+import { DeleteObservationService } from '../services/Delete/DeleteObservationService';
+import { GetObservationService } from '../services/Get/GetObservationService';
+import { SearchObservationService } from '../services/Search/SearchObservationService';
+import { UpdateObservationService } from '../services/Update/UpdateObservationService';
 
 class ObservationController {
 
     async handleCreate(request: Request, response: Response){
-        const name = request.body["observation-name"]
-        const information = request.body.information
+        const name: string = request.body["observation-name"];
+        const information: string = request.body.information;
 
-        const createObservationService = new CreateObservationService()
+        const createObservationService = new CreateObservationService();
 
-        await createObservationService.execute({ name, information })
+        try {
+            const creatObs = await createObservationService.execute({ name, information });
 
-        return response.render("Register")
+            //return response.render("Register");
+            return response.send(creatObs);
+        }catch(err){
+            return response.json({error: err.message})
+        }
+  
     }
     
     async handleUpdate(request: Request, response: Response){
-        const id = request.params.id
-        const name = request.body["observation-name"]
-        const information = request.body.information
+        const id: string = request.params.id;
+        const name: string = request.body["observation-name"];
+        const information: string = request.body.information;
 
-        const updateObservationService = new UpdateObservationService()
+        const updateObservationService = new UpdateObservationService();
 
-        await updateObservationService.execute({ id, name, information })
+        const updateObs = await updateObservationService.execute({ id, name, information });
         
-        return response.render("UpdateRegisters")
+        return response.send(updateObs);
+        //return response.render("UpdateRegisters");
     }
 
     async handleSearch(request: Request, response: Response){
-        const name = request.body["observation-name"]
+        const name: string = request.body["observation-name"];
 
-        const searchObservationService = new SearchObservationService()
+        const searchObservationService = new SearchObservationService();
 
-        const observation = await searchObservationService.execute(name)
+        const observation = await searchObservationService.execute(name);
 
-        const status = observation ? response.render("updateDelete/UpdateDeleteShowObservation", { dataResult: observation}) : response.status(401).send("Name Search Not Found!")
+        //const status = observation ? response.render("updateDelete/UpdateDeleteShowObservation", { dataResult: observation}) : response.status(401).send("Name Search Not Found!");
 
-        return status
+        return response.json(observation);
     }
     
     async handleGet(){
-        const getObservationService = new GetObservationService()
+        const getObservationService = new GetObservationService();
 
-        const observation = await getObservationService.execute()
-
-        const status = observation ? observation : false
-
-        if(typeof status === "boolean"){
-            throw new Error ("Nenhum dado encontrado")
-        }
+        const observation = await getObservationService.execute();
         
-        return status
+        return observation;
     }
 
     async handleDelete(request: Request, response: Response){
-        const id = request.params.id
+        const id = request.params.id;
 
-        const deleteObservationService = new DeleteObservationService()
+        const deleteObservationService = new DeleteObservationService();
 
-        await deleteObservationService.execute(id)
+        const deleteObs = await deleteObservationService.execute(id);
 
-        return response.render("UpdateRegisters")
+        return response.json(deleteObs);
+        //return response.render("UpdateRegisters");
     }
 }
 
