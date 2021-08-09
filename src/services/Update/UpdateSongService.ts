@@ -17,7 +17,7 @@ class UpdateSongService {
             link: link
         });
 
-        const status = song ? "Anime atualizado com sucesso" : undefined;
+        const status = song ? "Música atualizado com sucesso" : undefined;
 
         if(typeof status === "undefined"){
             throw new Error("Falha na atualização");

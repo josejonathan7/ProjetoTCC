@@ -33,11 +33,16 @@ class SiteController {
 
         const updateSiteService = new UpdateSiteService();
 
-        const updateSite = await updateSiteService.execute({ id, name, link, category });
-        
-        //return response.render("UpdateRegisters");
+        try{
+            const updateSite = await updateSiteService.execute({ id, name, link, category });
+            
+            //return response.render("UpdateRegisters");
 
-        return response.send(updateSite);
+            return response.send(updateSite);
+        }catch(err){
+            return response.json({ error: err.message });
+        }
+
     }
 
     async handleSearch(request: Request, response: Response){

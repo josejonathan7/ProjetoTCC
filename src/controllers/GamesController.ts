@@ -119,16 +119,22 @@ class GameController {
     }
     
     async handleUpdate(request: Request, response: Response){
-        const id = request.params.id
-        const name =   request.body["game-name"]
-        const link = request.body["game-link"]
-        const image = request.body["game-image"]
+        const id = request.params.id;
+        const name: string =   request.body["game-name"];
+        const link: string = request.body["game-link"];
+        const image: string = request.body["game-image"];
 
-        const updateGameService = new UpdateGameService()
+        const updateGameService = new UpdateGameService();
 
-        await updateGameService.execute({ id, name, link, image })
-        
-        return response.render("UpdateRegisters")
+        try{
+            const updateGame = await updateGameService.execute({ id, name, link, image });
+            
+            //return response.render("UpdateRegisters");
+            return response.send(updateGame)
+
+        }catch(err){
+            return response.json({ error: err.message });
+        }
     }
     
     async handleSearch(request: Request, response: Response){

@@ -19,7 +19,7 @@ class UpdateSiteService {
             category: category
         });
 
-        const status = site ? "Anime atualizado com sucesso" : undefined;
+        const status = site ? "Site atualizado com sucesso" : undefined;
 
         if(typeof status === "undefined"){
             throw new Error("Falha na atualização");

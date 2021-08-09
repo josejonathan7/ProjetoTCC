@@ -35,9 +35,13 @@ class UserController {
 
         const updateUserService = new UpdateUserService();
 
-        const updateUser = await updateUserService.execute({ id, name, avatar, description, email_contact_link });
-        
-        return response.send(updateUser);
+        try{ 
+            const updateUser = await updateUserService.execute({ id, name, avatar, description, email_contact_link });
+            
+            return response.send(updateUser);
+        }catch(err){
+            return response.json({ error: err.message });
+        }
     }
     
     async handleSearch(request: Request, response: Response){

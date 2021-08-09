@@ -30,16 +30,21 @@ class AnimeController {
     }
     
     async handleUpdate(request: Request, response: Response){
-        const id: string = request.params.id
-        const name: string = request.body["anime-name"]
-        const link: string = request.body["anime-link"]
-        const image: string = request.body["anime-image"]
+        const id: string = request.params.id;
+        const name: string = request.body["anime-name"];
+        const link: string = request.body["anime-link"];
+        const image: string = request.body["anime-image"];
 
-        const updateAnimeService = new UpdateAnimeService()
+        const updateAnimeService = new UpdateAnimeService();
 
-        await updateAnimeService.execute({ id, name, link, image })
+        try{
+            const updateAnime = await updateAnimeService.execute({ id, name, link, image });
 
-        return response.render("UpdateRegisters")
+            //return response.render("UpdateRegisters");
+            return response.send(updateAnime);
+        }catch(err){
+            return response.json({ error: err.message });
+        }
     }
     
     async handleSearch(request: Request, response: Response){

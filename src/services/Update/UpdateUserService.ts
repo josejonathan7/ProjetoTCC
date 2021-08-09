@@ -23,7 +23,7 @@ class UpdateUserService {
             email_contact_link: email_contact_link
         });
 
-        const status = user ? "Anime atualizado com sucesso" : undefined;
+        const status = user ? "Usuario atualizado com sucesso" : undefined;
 
         if(typeof status === "undefined"){
             throw new Error("Falha na atualização");

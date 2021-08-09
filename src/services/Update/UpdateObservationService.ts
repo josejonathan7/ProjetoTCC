@@ -17,7 +17,7 @@ class UpdateObservationService {
             information: information
         });
 
-        const status = observation ? "Anime atualizado com sucesso" : undefined;
+        const status = observation ? "Observação atualizada com sucesso" : undefined;
 
         if(typeof status === "undefined"){
             throw new Error("Falha na atualização");

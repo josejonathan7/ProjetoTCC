@@ -31,10 +31,14 @@ class ObservationController {
 
         const updateObservationService = new UpdateObservationService();
 
-        const updateObs = await updateObservationService.execute({ id, name, information });
-        
-        return response.send(updateObs);
-        //return response.render("UpdateRegisters");
+        try{
+            const updateObs = await updateObservationService.execute({ id, name, information });
+            
+            return response.send(updateObs);
+            //return response.render("UpdateRegisters");
+        }catch(err){
+            return response.json({ error: err.message });
+        }
     }
 
     async handleSearch(request: Request, response: Response){

@@ -32,9 +32,13 @@ class SongController {
 
         const updateSongService = new UpdateSongService();
 
-        const updatedSong = await updateSongService.execute({id, link, name});
-        
-        return response.send(updatedSong);
+        try{
+            const updatedSong = await updateSongService.execute({id, link, name});
+            
+            return response.send(updatedSong);
+        }catch(err){
+            return response.json({ error: err.message });
+        }
     }
 
     async handleGet(request: Request, response: Response){
