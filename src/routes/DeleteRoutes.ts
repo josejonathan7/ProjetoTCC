@@ -16,16 +16,16 @@ const observationController = new ObservationController()
 const siteController = new SiteController()
 
 //deletar registros
-deleteRouter.post("/registers/delete/observations/:id", ensureAuthenticate, observationController.handleDelete)
+deleteRouter.delete("/registers/delete/observations/:id", ensureAuthenticate, observationController.handleDelete)
 
-deleteRouter.post("/registers/delete/sites/:id", ensureAuthenticate, siteController.handleDelete)
+deleteRouter.delete("/registers/delete/sites/:id", ensureAuthenticate, siteController.handleDelete)
 
-deleteRouter.post("/registers/delete/users/:id", ensureAuthenticate, userController.handleDelete)
+deleteRouter.delete("/registers/delete/users/:id", ensureAuthenticate, userController.handleDelete)
 
-deleteRouter.post("/registers/delete/animes/:id", ensureAuthenticate, animeController.handleDelete)
+deleteRouter.delete("/registers/delete/animes/:id", ensureAuthenticate, animeController.handleDelete)
 
-deleteRouter.post("/registers/delete/games/:id", ensureAuthenticate, gameController.handleDelete)
+deleteRouter.delete("/registers/delete/games/:id", ensureAuthenticate, gameController.handleDelete)
 
-deleteRouter.post("/registers/delete/songs/:id", ensureAuthenticate, songController.handleDelete)
+deleteRouter.delete("/registers/delete/songs/:id", ensureAuthenticate, songController.handleDelete)
 
 export { deleteRouter }

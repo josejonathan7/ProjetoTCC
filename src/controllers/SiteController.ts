@@ -50,11 +50,15 @@ class SiteController {
 
         const searchSiteService = new SearchSiteService();
 
-        const site = await searchSiteService.execute(name);
+        try{
+            const site = await searchSiteService.execute(name);
 
-        //const status = site ? response.render("updateDelete/UpdateDeleteShowSite", { dataResult: site }) : response.status(401).send("Name Search Not Found!");
+            //const status = site ? response.render("updateDelete/UpdateDeleteShowSite", { dataResult: site }) : response.status(401).send("Name Search Not Found!");
 
-        return site;
+            return response.json(site);
+        }catch(err){
+            return response.status(403).json({ error: err.message });
+        }
     }
 
     async handleGet(){
@@ -75,11 +79,15 @@ class SiteController {
 
         const deleteSiteService = new DeleteSiteService();
 
-        const deleteSite = await deleteSiteService.execute(id);
-        
-        //return response.render("UpdateRegisters");
+        try{
+            const deleteSite = await deleteSiteService.execute(id);
+            
+            //return response.render("UpdateRegisters");
 
-        return response.send(deleteSite);
+            return response.json(deleteSite);
+        }catch(err){
+            return response.status(400).json({ error: err.message });
+        }
     }
 }
 

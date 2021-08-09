@@ -112,11 +112,15 @@ class SongController {
 
         const searchSongService = new SearchSongService();
 
-        const song = await searchSongService.execute(name);
+        try{
+            const song = await searchSongService.execute(name);
 
-        //const status = song ? response.render("updateDelete/UpdateDeleteShowSong", { dataResult: song }) : response.status(401).send("Name Search not Found!");
+            //const status = song ? response.render("updateDelete/UpdateDeleteShowSong", { dataResult: song }) : response.status(401).send("Name Search not Found!");
 
-        return song;
+            return response.json(song);
+        }catch(err){
+            return response.status(401).json({ error: err.message });
+        }
     }
 
     async handleDelete(request: Request, response: Response){
@@ -124,11 +128,15 @@ class SongController {
 
         const deleteSongService = new DeleteSongService();
 
-        const deleteSong = await deleteSongService.execute(id);
-        
-        //return response.render("UpdateRegisters")
+        try{
+            const deleteSong = await deleteSongService.execute(id);
+            
+            //return response.render("UpdateRegisters")
 
-        return deleteSong;
+            return response.json(deleteSong);
+        }catch(err){
+            return response.status(400).json({ error: err.message });
+        }
     }
 }
 

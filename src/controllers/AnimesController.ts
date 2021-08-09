@@ -52,11 +52,15 @@ class AnimeController {
 
         const searchAnimeService = new SearchAnimeService()
 
-        const anime = await searchAnimeService.execute(name)
+        try{
+            const anime = await searchAnimeService.execute(name)
 
-        const status = anime ? response.render("updateDelete/UpdateDeleteShowAnime", { dataResult: anime }) : response.status(401).send("Name Search Not Found!")
+            //const status = anime ? response.render("updateDelete/UpdateDeleteShowAnime", { dataResult: anime }) : response.status(401).send("Name Search Not Found!")
 
-        return status
+            return response.json(anime)
+        }catch(err){
+            return response.status(401).json({ error: err.message });
+        }
     }
     
     async handlePagination(request: Request, response: Response){
@@ -150,13 +154,19 @@ class AnimeController {
     }
 
     async handleDelete(request: Request, response: Response){
-        const id = request.params.id
+        const id = request.params.id;
 
-        const deleteAnimeService = new DeleteAnimeService()
+        const deleteAnimeService = new DeleteAnimeService();
 
-        await deleteAnimeService.execute(id)
+        try{
+            const deletAnime = await deleteAnimeService.execute(id);
 
-        return response.render("UpdateRegisters")
+            //return response.render("UpdateRegisters")
+            return response.json(deletAnime);
+
+        }catch(err){
+            return response.status(400).json({ error: err.message });
+        }
     }
 
     //essa e a função handle paginatio fazem a mesma coisa no sentido geral que é buscar dados, a diferença é que a págination é para organizar a quantidade de conteudo a ser exibido por página, e essa ela traz todos os dados para que eles sejam selecionados aleatoriamente para saber qual vai ser exibido na página inicial

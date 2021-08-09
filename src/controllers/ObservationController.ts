@@ -46,11 +46,15 @@ class ObservationController {
 
         const searchObservationService = new SearchObservationService();
 
-        const observation = await searchObservationService.execute(name);
+        try{
+            const observation = await searchObservationService.execute(name);
 
-        //const status = observation ? response.render("updateDelete/UpdateDeleteShowObservation", { dataResult: observation}) : response.status(401).send("Name Search Not Found!");
+            //const status = observation ? response.render("updateDelete/UpdateDeleteShowObservation", { dataResult: observation}) : response.status(401).send("Name Search Not Found!");
 
-        return response.json(observation);
+            return response.json(observation);
+        }catch(err){
+            return response.status(400).json({ error: err.message });
+        }
     }
     
     async handleGet(){
@@ -71,10 +75,14 @@ class ObservationController {
 
         const deleteObservationService = new DeleteObservationService();
 
-        const deleteObs = await deleteObservationService.execute(id);
+        try{
+            const deleteObs = await deleteObservationService.execute(id);
 
-        return response.json(deleteObs);
-        //return response.render("UpdateRegisters");
+            return response.json(deleteObs);
+            //return response.render("UpdateRegisters");
+        }catch(err){
+            return response.status(400).json({ error: err.message });
+        }
     }
 }
 

@@ -16,16 +16,16 @@ const observationController = new ObservationController()
 const siteController = new SiteController()
 
 //atualização de registros
-updateRouter.post("/registers/update/observations/:id", ensureAuthenticate, observationController.handleUpdate)
+updateRouter.put("/registers/update/observations/:id", ensureAuthenticate, observationController.handleUpdate)
 
-updateRouter.post("/registers/update/sites/:id", ensureAuthenticate, siteController.handleUpdate)
+updateRouter.put("/registers/update/sites/:id", ensureAuthenticate, siteController.handleUpdate)
 
-updateRouter.post("/registers/update/users/:id", ensureAuthenticate, userController.handleUpdate)
+updateRouter.put("/registers/update/users/:id", ensureAuthenticate, userController.handleUpdate)
 
-updateRouter.post("/registers/update/animes/:id", ensureAuthenticate, animeController.handleUpdate)
+updateRouter.put("/registers/update/animes/:id", ensureAuthenticate, animeController.handleUpdate)
 
-updateRouter.post("/registers/update/games/:id", ensureAuthenticate, gameController.handleUpdate)
+updateRouter.put("/registers/update/games/:id", ensureAuthenticate, gameController.handleUpdate)
 
-updateRouter.post("/registers/update/songs/:id", ensureAuthenticate, songController.handleUpdate)
+updateRouter.put("/registers/update/songs/:id", ensureAuthenticate, songController.handleUpdate)
 
 export { updateRouter }

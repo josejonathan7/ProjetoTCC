@@ -49,9 +49,14 @@ class UserController {
 
         const searchUserService = new SearchUserService();
 
-        const user = await searchUserService.execute(name);
-        
-        return response.json(user);
+        try{
+            const user = await searchUserService.execute(name);
+            
+            return response.json(user);
+            
+        }catch(err){
+            return response.status(400).json({ error: err.message });
+        }
     }
     
     async handleGet(){
@@ -73,9 +78,13 @@ class UserController {
 
         const deleteUserService = new DeleteUserService();
 
-        const deleteUser = await deleteUserService.execute(id);
-        
-        return response.send(deleteUser);
+        try{
+            const deleteUser = await deleteUserService.execute(id);
+            
+            return response.json(deleteUser);
+        }catch(err){
+            return response.status(400).json({ error: err.message });
+        }
     }
 }
 

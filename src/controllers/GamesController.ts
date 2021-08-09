@@ -138,25 +138,36 @@ class GameController {
     }
     
     async handleSearch(request: Request, response: Response){
-        const name = request.body["game-name"]
+        const name: string = request.body["game-name"];
 
-        const searchGameService = new SearchGameService()
+        const searchGameService = new SearchGameService();
 
-        const game = await searchGameService.execute(name)
+        try{
 
-        const status = game ? response.render("updateDelete/UpdateDeleteShowGame", { dataResult: game }) : response.status(401).send("Name Search Not Found!")
+            const game = await searchGameService.execute(name);
 
-        return status
+            //const status = game ? response.render("updateDelete/UpdateDeleteShowGame", { dataResult: game }) : response.status(401).send("Name Search Not Found!")
+
+            return response.json(game);
+
+        }catch(err){
+            return response.status(400).json({ error: err.message });
+        }
     }
     
     async handleDelete(request: Request, response: Response){
-        const id = request.params.id
+        const id = request.params.id;
 
-        const deleteGameService = new DeleteGameService()
+        const deleteGameService = new DeleteGameService();
 
-        await deleteGameService.execute(id)
+        try{
+            const deleteGame = await deleteGameService.execute(id);
 
-        return response.render("UpdateRegisters")
+            //return response.render("UpdateRegisters");
+            return response.json(deleteGame);
+        }catch(err){
+            return response.status(400).json({ error: err.message });
+        }
     }
 
     //essa e a função handle paginatio fazem a mesma coisa no sentido geral que é buscar dados, a diferença é que a págination é para organizar a quantidade de conteudo a ser exibido por página, e essa ela traz todos os dados para que eles sejam selecionados aleatoriamente para saber qual vai ser exibido na página inicial
