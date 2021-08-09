@@ -35,13 +35,11 @@ class CreateUserService {
 
         await userRepositorie.save(user);
         
-        const status = user ? "Usuário criado com sucesso" : undefined;
+        const status = user ? "Sucess" : undefined;
 
         if(typeof status === "undefined"){
             throw new Error("Falha na criação do registro");
         }
-
-        return status;
     }
 }
 

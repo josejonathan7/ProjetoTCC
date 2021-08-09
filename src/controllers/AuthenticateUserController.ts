@@ -20,12 +20,11 @@ class AuthenticateUserController {
 
             const userData = await searchUserService.execute(name);
 
-            //return response.render("Register", { token, userData });
-            return response.json({token, userData});
+            return response.render("Register", { token, userData });  
 
         }catch{
 
-            return response.send("Email/password Invalid!");
+            return response.status(401).send("Email/password Invalid!");
         }
     }
 }

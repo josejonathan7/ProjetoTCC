@@ -19,13 +19,11 @@ class UpdateAnimeService {
             image: image
         });
 
-        const status = anime ? "Anime atualizado com sucesso" : undefined;
+        const status = anime ? "Sucess" : undefined;
 
         if(typeof status === "undefined"){
             throw new Error("Falha na atualização");
         }
-
-        return status;
     }
 }
 

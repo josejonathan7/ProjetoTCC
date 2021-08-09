@@ -10,13 +10,11 @@ class DeleteSongService {
             id
         });
 
-        const status = song ? "Música deletado com sucesso" : undefined;
+        const status = song ? "Sucess" : undefined;
 
         if(typeof status === "undefined"){
-            throw new Error("Falha na criação do registro");
+            throw new Error("Falha ao deletar registro");
         }
-
-        return status;
     }
 }
 

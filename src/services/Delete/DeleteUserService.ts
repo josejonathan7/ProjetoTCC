@@ -10,13 +10,11 @@ class DeleteUserService{
             id
         });
 
-        const status = user ? "Usuário deletado com sucesso" : undefined;
+        const status = user ? "Sucess" : undefined;
         
         if(typeof status === "undefined"){
-            throw new Error("Falha na criação do registro");
+            throw new Error("Falha ao deletar registro");
         }
-
-        return status;
     }
 }
 

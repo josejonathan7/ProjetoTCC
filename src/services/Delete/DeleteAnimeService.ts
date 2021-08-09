@@ -10,13 +10,11 @@ class DeleteAnimeService{
             id
         });
 
-        const status = anime ? "Anime deletado com sucesso" : undefined;
+        const status = anime ? "Sucess" : undefined;
 
         if(typeof status === "undefined"){
-            throw new Error("Falha na criação do registro");
+            throw new Error("Falha ao deletar registro");
         }
-
-        return status;
     }
 }
 

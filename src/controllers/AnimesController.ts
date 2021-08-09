@@ -5,7 +5,6 @@ import { SearchAnimeService } from "../services/Search/SearchAnimeService";
 import { PaginationAnimeService } from "../services/Get/QueryForPagination/PaginationAnimeService";
 import { DeleteAnimeService } from "../services/Delete/DeleteAnimeService";
 import { UserController } from "./UserController";
-import { ObservationController } from "./ObservationController";
 import { GetAnimeService } from "../services/Get/GetAnimeService";
 
 class AnimeController {
@@ -18,15 +17,14 @@ class AnimeController {
         const creatAnimeService = new CreateAnimeService();
 
         try {
-            const creatAnime = await creatAnimeService.execute({ name , link, image });
 
-            //return response.render("Register");
-            return response.send(creatAnime);
+            await creatAnimeService.execute({ name , link, image });
+
+            return response.render("Register");
+            
         }catch(err){
-            return response.json({error: err.message})
+            return response.status(400).send(err.message);
         }
-
-        //return response.render("Register")
     }
     
     async handleUpdate(request: Request, response: Response){
@@ -38,38 +36,38 @@ class AnimeController {
         const updateAnimeService = new UpdateAnimeService();
 
         try{
-            const updateAnime = await updateAnimeService.execute({ id, name, link, image });
 
-            //return response.render("UpdateRegisters");
-            return response.send(updateAnime);
+            await updateAnimeService.execute({ id, name, link, image });
+
+            return response.render("UpdateRegisters");
+
         }catch(err){
-            return response.json({ error: err.message });
+            return response.status(400).send(err.message);
         }
     }
     
     async handleSearch(request: Request, response: Response){
-        const name: string = request.body["anime-name"]
+        const name: string = request.body["anime-name"];
 
-        const searchAnimeService = new SearchAnimeService()
+        const searchAnimeService = new SearchAnimeService();
 
         try{
-            const anime = await searchAnimeService.execute(name)
 
-            //const status = anime ? response.render("updateDelete/UpdateDeleteShowAnime", { dataResult: anime }) : response.status(401).send("Name Search Not Found!")
+            const anime = await searchAnimeService.execute(name);
 
-            return response.json(anime)
+            return response.render("updateDelete/UpdateDeleteShowAnime", { dataResult: anime });
+
         }catch(err){
-            return response.status(401).json({ error: err.message });
+            return response.status(404).send(err.message);
         }
     }
     
     async handlePagination(request: Request, response: Response){
         const paginationAnimeService = new PaginationAnimeService();
         const userController = new UserController();
-        const observationController = new ObservationController();
 
         try{
-            const observation = await observationController.handleGet();
+    
             const user = await userController.handleGet();
 
             //código para trabalhar com a páginação da página
@@ -95,61 +93,23 @@ class AnimeController {
             //quantidade de paginas 
             let numberOfPages = Math.ceil(Number(totalRows) / recordsPerPage);
 
-            //dados de observação da página
-
-            let noteSuggestion;
-            let pageObservation;
-
-            if(typeof observation === "object"){
-                for (let i = 0; i < observation.length; i++) {
-
-                    if (observation[i].name.trim() === "sugestão") {
-                        noteSuggestion = observation[i];
-                    }
-
-                    if (observation[i].name.trim() === "preferencia-anime") {
-                        pageObservation = observation[i];
-                    }
-
-                    if (!pageObservation) {
-                        pageObservation = {
-                            name: "",
-                            information: ""
-                        };
-                    }
-
-                    if (!noteSuggestion) {
-                        noteSuggestion = {
-                            name: "",
-                            information: ""
-                        };
-                    }
-                }
-            }else{
-                noteSuggestion = observation;
-                pageObservation = observation;
-            }
-
-
 
             //dados de contato no rodapé
             let randomUser =  Math.floor(Math.random() * (user.length - 0));
             let contactUsers: string | [];
 
             if(typeof user === "object"){
-                contactUsers = user[randomUser]
+                contactUsers = user[randomUser];
             }else {
                 contactUsers = user;
             }
 
-            const status = animePagination ?  animePagination[0] : response.status(401).send("Load Pagination Failed!");
-            
-            //return response.render("animes", { contactUsers, dataAnimesLimit: status, numberOfPages, current, dataSuggestion: noteSuggestion, dataObservation: pageObservation });
+            const status = animePagination[0];
 
-            return response.json({contactUsers, noteSuggestion, pageObservation, status, numberOfPages, current});
+            return response.render("animes", { contactUsers, dataAnimesLimit: status, numberOfPages, current });
 
         }catch(err){
-            return response.json({ error: err.message });
+            return response.status(404).send(err.message);
         }
     }
 
@@ -159,13 +119,13 @@ class AnimeController {
         const deleteAnimeService = new DeleteAnimeService();
 
         try{
-            const deletAnime = await deleteAnimeService.execute(id);
 
-            //return response.render("UpdateRegisters")
-            return response.json(deletAnime);
+            await deleteAnimeService.execute(id);
 
+            return response.render("UpdateRegisters");
+        
         }catch(err){
-            return response.status(400).json({ error: err.message });
+            return response.status(404).send(err.message);
         }
     }
 
@@ -188,8 +148,9 @@ class AnimeController {
             }
 
             return animesCarousel;
+
         }catch(err){
-            return JSON.stringify({ error: err.message });
+            throw new Error("Falha");
         }
     }
 }

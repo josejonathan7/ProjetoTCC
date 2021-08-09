@@ -14,23 +14,10 @@ class SearchUserService {
         const status = user.length ?  classToPlain(user): undefined;
 
         if(typeof status === "undefined"){
-            throw new Error("Nenhum dado encontrado");
+            throw new Error (`${ searchName } não encontrado!`);
         }
 
         return status;
-    }
-
-    
-    async searchId(id: string){
-        const userRepositorie = getCustomRepository(UsersRepositories);
-
-        const user = await userRepositorie.find({
-            id: id
-        })
-
-        const status = user.length ?  classToPlain(user): "";
-
-        return status
     }
 }
 

@@ -19,13 +19,11 @@ class UpdateGameService {
             image: image
         });
 
-        const status = game ? "Jogo atualizado com sucesso" : undefined;
+        const status = game ? "Sucess" : undefined;
 
         if(typeof status === "undefined"){
             throw new Error("Falha na atualização");
         }
-
-        return status;
     }
 }
 

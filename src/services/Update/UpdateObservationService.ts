@@ -17,13 +17,11 @@ class UpdateObservationService {
             information: information
         });
 
-        const status = observation ? "Observação atualizada com sucesso" : undefined;
+        const status = observation ? "Sucess" : undefined;
 
         if(typeof status === "undefined"){
             throw new Error("Falha na atualização");
         }
-
-        return status;
     }
 }
 

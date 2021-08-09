@@ -112,31 +112,10 @@
 			</div>
 		</main>
 		<br>
-		<!-- Musicas mais tocadas -->
-		<div id="card-music-home">
-			<div class="card-header">
-				<h1 class="cabecalho-musica-observacao">Músicas mais tocadas</h1>
-			</div>
-				<div class="card-body">
-					<ul>
-						<% let tabIndexSongs = 24; dataSongs.forEach(song => { %>
-						
-							<li>
-								<a href="<%= song.link %>" target="_blank" tabindex="<%= tabIndexSongs %>" class="link-margin-card-musica"><%= song.name %></a>
-							</li>
-							<br>
-
-							<% tabIndexSongs++; %> 
-
-						<% }) %>
-						
-					</ul>
-			</div>		
-		</div>
-		<br>
+	
 		<!-- Quem Somos? E qual o intuito dessa página? -->
 		
-		<%- include("./components/Page-Note.ejs", {title: "Quem Somos? E qual o intuito dessa página?", observation: dataPageObjective, suggestion: dataSuggestion }) %> 
+		<%- include("./components/Page-Note.ejs", {title: "Quem Somos? E qual o intuito dessa página?", observation: dataPageObjective }) %> 
 
 		<br>
 	</div>

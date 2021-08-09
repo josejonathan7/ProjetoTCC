@@ -4,7 +4,6 @@ import { UpdateGameService } from "../services/Update/UpdateGameService";
 import { SearchGameService } from "../services/Search/SearchGameService";
 import { DeleteGameService } from "../services/Delete/DeleteGameService";
 import { UserController } from "./UserController";
-import { ObservationController } from "./ObservationController";
 import { PaginationGameService } from "../services/Get/QueryForPagination/PaginationGameService";
 import { GetGameService } from "../services/Get/GetGameService";
 
@@ -14,10 +13,9 @@ class GameController {
     async handlePagination(request: Request, response: Response) {
         const paginationGameService = new PaginationGameService();
         const userController = new UserController();
-        const observationController = new ObservationController();
 
         try{
-            const observation = await observationController.handleGet();
+        
             const user = await userController.handleGet();
 
             //código para trabalhar com a páginação da página
@@ -42,60 +40,23 @@ class GameController {
             //quantidade de paginas 
             let numberOfPages = Math.ceil(Number(totalRows) / recordsPerPage);
 
-            //dados de observação da página
-
-            let noteSuggestion;
-            let pageObservation;
-
-            if(typeof observation ==="object"){
-                for (let i = 0; i < observation.length; i++) {
-
-                    if (observation[i].name.trim() === "sugestão") {
-                        noteSuggestion = observation[i];
-                    }
-
-                    if (observation[i].name.trim() === "preferencia-anime") {
-                        pageObservation = observation[i];
-                    }
-
-                    if (!pageObservation) {
-                        pageObservation = {
-                            name: "",
-                            information: ""
-                        };
-                    }
-
-                    if (!noteSuggestion) {
-                        noteSuggestion = {
-                            name: "",
-                            information: ""
-                        };
-                    }
-                }
-            }else {
-                pageObservation = observation;
-                noteSuggestion = observation;
-            }
-
             //dados de contato no rodapé
             let randomUser =  Math.floor(Math.random() * (user.length - 0));
             let contactUsers: string | [];
 
             if(typeof user === "object"){
-                contactUsers = user[randomUser]
+                contactUsers = user[randomUser];
             }else {
                 contactUsers = user;
             }
             
 
-            const status = gamePagination ?  gamePagination[0] : response.status(401).send("Load Pagination Failed!")
+            const status = gamePagination[0];
             
-            //return response.render("jogos", { contactUsers, dataSuggestion: noteSuggestion, dataObservation: pageObservation , dataGamesLimit: status, numberOfPages, current })
+            return response.render("jogos", { contactUsers, dataGamesLimit: status, numberOfPages, current });
 
-            return response.json({contactUsers, noteSuggestion, pageObservation, status, numberOfPages, current});
-        
         }catch(err){
-            return response.json({ error: err.message })
+            return response.status(404).send(err.message);
         }
     }
 
@@ -107,15 +68,14 @@ class GameController {
         const creatGameService = new CreateGameService();
 
         try {
-            const creatGame = await creatGameService.execute({ name, link, image });
 
-            return response.send(creatGame);
+            await creatGameService.execute({ name, link, image });
+
+           return response.render("Register");
             
         } catch (err) {
-            return response.json({error: err.message});
+            return response.status(400).send(err.message);
         }
-
-        //return response.render("Register")
     }
     
     async handleUpdate(request: Request, response: Response){
@@ -127,13 +87,13 @@ class GameController {
         const updateGameService = new UpdateGameService();
 
         try{
-            const updateGame = await updateGameService.execute({ id, name, link, image });
+
+            await updateGameService.execute({ id, name, link, image });
             
-            //return response.render("UpdateRegisters");
-            return response.send(updateGame)
+            return response.render("UpdateRegisters");
 
         }catch(err){
-            return response.json({ error: err.message });
+            return response.status(400).send(err.message);
         }
     }
     
@@ -146,12 +106,10 @@ class GameController {
 
             const game = await searchGameService.execute(name);
 
-            //const status = game ? response.render("updateDelete/UpdateDeleteShowGame", { dataResult: game }) : response.status(401).send("Name Search Not Found!")
-
-            return response.json(game);
+            return response.render("updateDelete/UpdateDeleteShowGame", { dataResult: game });
 
         }catch(err){
-            return response.status(400).json({ error: err.message });
+            return response.status(404).json({ error: err.message });
         }
     }
     
@@ -161,12 +119,13 @@ class GameController {
         const deleteGameService = new DeleteGameService();
 
         try{
-            const deleteGame = await deleteGameService.execute(id);
+            
+            await deleteGameService.execute(id);
 
-            //return response.render("UpdateRegisters");
-            return response.json(deleteGame);
+            return response.render("UpdateRegisters");
+        
         }catch(err){
-            return response.status(400).json({ error: err.message });
+            return response.status(404).json({ error: err.message });
         }
     }
 
@@ -175,6 +134,7 @@ class GameController {
         const getGameService = new GetGameService();
         
         try{
+
             const games = await getGameService.execute();
             let gamesCarousel = [];
 
@@ -191,7 +151,7 @@ class GameController {
             return gamesCarousel;
 
         }catch(err){
-            return JSON.stringify({ error: err.message });
+            throw new Error("Falha");
         }
     }
 }

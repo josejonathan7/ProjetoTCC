@@ -6,7 +6,6 @@ import { SiteController } from "./SiteController";
 import { UserController } from "./UserController";
 
 
-
 class IndexController {
 
     async handleGet(request: Request, response: Response) {
@@ -25,36 +24,22 @@ class IndexController {
 
 
             //dados de observação da página
-            let noteSuggestion;
             let pageObjective;
 
             if(typeof observation === "object"){
-                for (let i = 0; i < observation.length; i++) {
+    
+                if (observation) {
 
-                    if (observation[i].name.trim() === "sugestão") {
-                        noteSuggestion = observation[i];
-                    }
-
-                    if (observation[i].name.trim() === "objetivo-pagina") {
-                        pageObjective = observation[i];
-                    }
-
-                    if (!pageObjective) {
-                        pageObjective = {
-                            name: "",
-                            information: ""
-                        };
-                    }
-
-                    if (!noteSuggestion) {
-                        noteSuggestion = {
-                            name: "",
-                            information: ""
-                        };
-                    }
+                    pageObjective = observation[observation.length -1];    
+           
+                }else {
+                    pageObjective = {
+                        name: "",
+                        information: ""
+                    };
                 }
+                
             }else{
-                noteSuggestion = observation;
                 pageObjective = observation;
             }
 
@@ -63,7 +48,7 @@ class IndexController {
             let contactUsers: string | [] | {};
 
             if(typeof users === "object"){
-                contactUsers = users[randomUser]
+                contactUsers = users[randomUser];
             }else {
                 contactUsers = users;
             }
@@ -96,12 +81,12 @@ class IndexController {
                 gamesSite = ["falha na tipagem"];
             }
 
-            //const status = randomAnime && randomGame && sites && users ? response.render("index", { animesArray: randomAnime, gamesArray: randomGame, contactUsers, dataPageObjective: pageObjective, dataSuggestion: noteSuggestion, animesSite, gamesSite }) : response.status(401).send("Requisition Failed!")
+            const status = randomAnime && randomGame && sites && users ? response.render("index", { animesArray: randomAnime, gamesArray: randomGame, contactUsers, dataPageObjective: pageObjective, animesSite, gamesSite }) : response.status(401).send("Requisition Failed!");
     
-            return response.json({randomAnime, randomGame, contactUsers, pageObjective, noteSuggestion, animesSite, gamesSite});
+            return status;
 
         }catch(err){
-            return response.json({ error: err.message });
+            return response.status(404).send(err.message);
         }
     }
 }

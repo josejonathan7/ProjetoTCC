@@ -20,13 +20,12 @@ class CreateAnimeService {
 
         await animesRepositorie.save(animes);
         
-        const status = animes ? "Anime criado com sucesso" : undefined;
+        const status = animes ? "Sucess" : undefined;
 
         if(typeof status === "undefined"){
             throw new Error ("Falha na criação do registro");
         }
 
-        return status;
     }
 }
 

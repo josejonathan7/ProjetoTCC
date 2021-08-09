@@ -14,7 +14,7 @@ class SearchGameService {
         const status = game.length ?  classToPlain(game): undefined;
 
         if(typeof status === "undefined"){
-            throw new Error("Nenhum dado encontrado");
+            throw new Error (`${ searchName } não encontrado!`);
         }
 
         return status;

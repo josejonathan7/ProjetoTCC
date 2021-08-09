@@ -14,7 +14,7 @@ class SearchAnimeService {
         const status = anime.length ?  classToPlain(anime): undefined;
 
         if(typeof status === "undefined"){
-            throw new Error ("Nenhum dado encontrado");
+            throw new Error (`${ searchName } não encontrado!`);
         }
 
         return status;

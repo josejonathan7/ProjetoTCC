@@ -23,13 +23,11 @@ class UpdateUserService {
             email_contact_link: email_contact_link
         });
 
-        const status = user ? "Usuario atualizado com sucesso" : undefined;
+        const status = user ? "Sucess" : undefined;
 
         if(typeof status === "undefined"){
             throw new Error("Falha na atualização");
         }
-
-        return status;
     }
 }
 

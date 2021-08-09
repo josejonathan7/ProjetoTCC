@@ -15,13 +15,13 @@ class SiteController {
         const creatSiteService = new CreateSiteService();
 
         try{
-            const creatSite = await creatSiteService.execute({ name, link, category});
 
-            //return response.render("Register")
+            await creatSiteService.execute({ name, link, category});
 
-            return response.send(creatSite);
+            return response.render("Register");
+
         }catch(err){
-            return response.json({error: err.message})
+            return response.status(400).send(err.message);
         }
     }
 
@@ -34,15 +34,14 @@ class SiteController {
         const updateSiteService = new UpdateSiteService();
 
         try{
-            const updateSite = await updateSiteService.execute({ id, name, link, category });
+
+            await updateSiteService.execute({ id, name, link, category });
             
-            //return response.render("UpdateRegisters");
+            return response.render("UpdateRegisters");
 
-            return response.send(updateSite);
         }catch(err){
-            return response.json({ error: err.message });
+            return response.status(400).send(err.message);
         }
-
     }
 
     async handleSearch(request: Request, response: Response){
@@ -51,13 +50,13 @@ class SiteController {
         const searchSiteService = new SearchSiteService();
 
         try{
+
             const site = await searchSiteService.execute(name);
 
-            //const status = site ? response.render("updateDelete/UpdateDeleteShowSite", { dataResult: site }) : response.status(401).send("Name Search Not Found!");
+            return response.render("updateDelete/UpdateDeleteShowSite", { dataResult: site });
 
-            return response.json(site);
         }catch(err){
-            return response.status(403).json({ error: err.message });
+            return response.status(404).send(err.message);
         }
     }
 
@@ -65,11 +64,13 @@ class SiteController {
         const getSiteService = new GetSiteService();
 
         try {
+
             const site = await getSiteService.execute();
 
             return site;
+
         }catch (err){
-            return JSON.stringify({ error: err.message });
+            throw new Error("falha");
         }
       
     }
@@ -80,13 +81,13 @@ class SiteController {
         const deleteSiteService = new DeleteSiteService();
 
         try{
-            const deleteSite = await deleteSiteService.execute(id);
-            
-            //return response.render("UpdateRegisters");
 
-            return response.json(deleteSite);
+            await deleteSiteService.execute(id);
+            
+            return response.render("UpdateRegisters");
+
         }catch(err){
-            return response.status(400).json({ error: err.message });
+            return response.status(404).send(err.message);
         }
     }
 }

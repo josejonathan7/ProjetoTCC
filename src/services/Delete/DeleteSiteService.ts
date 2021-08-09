@@ -10,13 +10,11 @@ class DeleteSiteService {
             id
         });
 
-        const status = site ? "Site deletado com sucesso" : undefined;
+        const status = site ? "Sucess" : undefined;
 
         if(typeof status === "undefined"){
-            throw new Error("Falha na criação do registro");
+            throw new Error("Falha ao deletar registro");
         }
-
-        return status;
     }
 }
 

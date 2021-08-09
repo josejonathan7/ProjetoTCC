@@ -18,11 +18,12 @@ class UserController {
 
         try {
 
-            const createUser = await creatUserService.execute({ name, email_contact_link, password, avatar, description });
-            return response.send(createUser);
+            await creatUserService.execute({ name, email_contact_link, password, avatar, description });
+
+            return response.render("Register");
 
         }catch(err){
-            return response.json({error: err.message});
+            return response.status(400).send(err.message);
         }
     }
     
@@ -36,11 +37,13 @@ class UserController {
         const updateUserService = new UpdateUserService();
 
         try{ 
-            const updateUser = await updateUserService.execute({ id, name, avatar, description, email_contact_link });
             
-            return response.send(updateUser);
+            await updateUserService.execute({ id, name, avatar, description, email_contact_link });
+            
+            return response.render("UpdateRegisters");
+
         }catch(err){
-            return response.json({ error: err.message });
+            return response.status(400).send(err.message);
         }
     }
     
@@ -50,12 +53,13 @@ class UserController {
         const searchUserService = new SearchUserService();
 
         try{
+
             const user = await searchUserService.execute(name);
             
-            return response.json(user);
+            return response.render("updateDelete/UpdateDeleteShowSong", { dataResult: user });
             
         }catch(err){
-            return response.status(400).json({ error: err.message });
+            return response.status(404).send(err.message);
         }
     }
     
@@ -67,10 +71,10 @@ class UserController {
             const user = await getUserService.execute();
 
             return user;
+
         } catch(err){
-            return JSON.stringify({error:err.message});
+            throw new Error("falha");
         }
-        
     }
     
     async handleDelete(request: Request, response: Response){
@@ -79,11 +83,12 @@ class UserController {
         const deleteUserService = new DeleteUserService();
 
         try{
-            const deleteUser = await deleteUserService.execute(id);
+            await deleteUserService.execute(id);
             
-            return response.json(deleteUser);
+            return response.render("UpdateRegisters");
+
         }catch(err){
-            return response.status(400).json({ error: err.message });
+            return response.status(404).send(err.message);
         }
     }
 }

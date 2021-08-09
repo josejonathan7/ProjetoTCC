@@ -18,13 +18,11 @@ class CreateSongService {
 
         await songRepositorie.save(song);
         
-        const status = song ? "Música criada com sucesso" : undefined;
+        const status = song ? "Sucess" : undefined;
 
         if(typeof status === "undefined"){
             throw new Error("Falha na criação do registro");
         }
-
-        return status;
     }
 }
 

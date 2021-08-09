@@ -17,13 +17,11 @@ class UpdateSongService {
             link: link
         });
 
-        const status = song ? "Música atualizado com sucesso" : undefined;
+        const status = song ? "Sucess" : undefined;
 
         if(typeof status === "undefined"){
             throw new Error("Falha na atualização");
         }
-
-        return status;
     }
 }
 

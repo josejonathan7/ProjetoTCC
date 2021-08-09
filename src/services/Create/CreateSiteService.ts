@@ -20,13 +20,11 @@ class CreateSiteService {
 
         await siteRepositorie.save(site);
         
-        const status = site ? "Site criado com sucesso" : undefined;
+        const status = site ? "Sucess" : undefined;
 
         if(typeof status === "undefined"){
             throw new Error ("Falha na criação do registro");
         }
-
-        return status;
     }
 }
 

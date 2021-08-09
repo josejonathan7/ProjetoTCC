@@ -14,7 +14,7 @@ class SearchSiteService {
         const status = site.length ?  classToPlain(site): undefined;
 
         if(typeof status === "undefined"){
-            throw new Error("Nenhum dado encontrado");
+            throw new Error (`${ searchName } não encontrado!`);
         }
 
         return status;
