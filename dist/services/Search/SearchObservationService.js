@@ -55,7 +55,10 @@ var SearchObservationService = /** @class */ (function () {
                             })];
                     case 1:
                         observation = _a.sent();
-                        status = observation.length ? class_transformer_1.classToPlain(observation) : "";
+                        status = observation.length ? class_transformer_1.classToPlain(observation) : undefined;
+                        if (typeof status === "undefined") {
+                            throw new Error(searchName + " n\u00E3o encontrado!");
+                        }
                         return [2 /*return*/, status];
                 }
             });

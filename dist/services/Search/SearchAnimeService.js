@@ -55,7 +55,10 @@ var SearchAnimeService = /** @class */ (function () {
                             })];
                     case 1:
                         anime = _a.sent();
-                        status = anime.length ? class_transformer_1.classToPlain(anime) : "";
+                        status = anime.length ? class_transformer_1.classToPlain(anime) : undefined;
+                        if (typeof status === "undefined") {
+                            throw new Error(searchName + " n\u00E3o encontrado!");
+                        }
                         return [2 /*return*/, status];
                 }
             });

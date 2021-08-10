@@ -5,11 +5,11 @@ class RecordsAccessController{
   
     //acessando as páginas de criação, atualização, e deletar registros
     accesFormNew(request: Request, response: Response){
-        return response.render("Register");
+        return response.send("ok");
     }
 
     accesFormUpdate(request: Request, response: Response){
-        return response.render("UpdateRegisters");
+        return response.send("ok");
     }
     
 }

@@ -43,30 +43,36 @@ var GetSongService_1 = require("../services/Get/GetSongService");
 var SearchSongService_1 = require("../services/Search/SearchSongService");
 var DeleteSongService_1 = require("../services/Delete/DeleteSongService");
 var UserController_1 = require("./UserController");
-var ObservationController_1 = require("./ObservationController");
 var SongController = /** @class */ (function () {
     function SongController() {
     }
     SongController.prototype.handleCreate = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var name, link, creatSongService;
+            var name, link, creatSongService, err_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         name = request.body["song-name"];
                         link = request.body["song-link"];
                         creatSongService = new CreateSongService_1.CreateSongService();
-                        return [4 /*yield*/, creatSongService.execute({ name: name, link: link })];
+                        _a.label = 1;
                     case 1:
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, creatSongService.execute({ name: name, link: link })];
+                    case 2:
                         _a.sent();
-                        return [2 /*return*/, response.render("Register")];
+                        return [2 /*return*/, response.send("ok")];
+                    case 3:
+                        err_1 = _a.sent();
+                        return [2 /*return*/, response.status(400).send(err_1.message)];
+                    case 4: return [2 /*return*/];
                 }
             });
         });
     };
     SongController.prototype.handleUpdate = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var id, name, link, updateSongService;
+            var id, name, link, updateSongService, err_2;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -74,118 +80,97 @@ var SongController = /** @class */ (function () {
                         name = request.body["song-name"];
                         link = request.body["song-link"];
                         updateSongService = new UpdateSongService_1.UpdateSongService();
-                        return [4 /*yield*/, updateSongService.execute({ id: id, link: link, name: name })];
+                        _a.label = 1;
                     case 1:
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, updateSongService.execute({ id: id, link: link, name: name })];
+                    case 2:
                         _a.sent();
-                        return [2 /*return*/, response.render("UpdateRegisters")];
+                        return [2 /*return*/, response.send("ok")];
+                    case 3:
+                        err_2 = _a.sent();
+                        return [2 /*return*/, response.status(400).send(err_2.message)];
+                    case 4: return [2 /*return*/];
                 }
             });
         });
     };
     SongController.prototype.handleGet = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var getSongService, userController, observationController, observation, user, song, contactUsers, i, noteSuggestion, pageObservation, i, status;
+            var getSongService, userController, user, song, randomUser, contactUsers, err_3;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         getSongService = new GetSongService_1.GetSongService();
                         userController = new UserController_1.UserController();
-                        observationController = new ObservationController_1.ObservationController();
-                        return [4 /*yield*/, observationController.handleGet()];
+                        _a.label = 1;
                     case 1:
-                        observation = _a.sent();
+                        _a.trys.push([1, 4, , 5]);
                         return [4 /*yield*/, userController.handleGet()];
                     case 2:
                         user = _a.sent();
-                        return [4 /*yield*/, getSongService.execute()
-                            //dados de contato no rodapé
-                        ];
+                        return [4 /*yield*/, getSongService.execute()];
                     case 3:
                         song = _a.sent();
-                        contactUsers = [];
-                        for (i = 0; i < 3; i++) {
-                            if (user[i] != null) {
-                                contactUsers[i] = user[i];
-                            }
+                        randomUser = Math.floor(Math.random() * (user.length - 0));
+                        contactUsers = void 0;
+                        if (typeof user === "object") {
+                            contactUsers = user[randomUser];
                         }
-                        for (i = 0; i < observation.length; i++) {
-                            if (observation[i].name.trim() === "sugestão") {
-                                noteSuggestion = observation[i];
-                            }
-                            if (observation[i].name.trim() === "preferencia-musica") {
-                                pageObservation = observation[i];
-                            }
-                            if (!pageObservation) {
-                                pageObservation = {
-                                    name: "",
-                                    information: ""
-                                };
-                            }
-                            if (!noteSuggestion) {
-                                noteSuggestion = {
-                                    name: "",
-                                    information: ""
-                                };
-                            }
+                        else {
+                            contactUsers = user;
                         }
-                        status = song ? response.render("musicas", { dataSongs: song, observation: observation, contactUsers: contactUsers, dataSuggestion: noteSuggestion, dataObservation: pageObservation }) : response.status(401).send("Page Requisition Failed!");
-                        return [2 /*return*/, status];
+                        return [2 /*return*/, response.json({ dataSongs: song, contactUsers: contactUsers })];
+                    case 4:
+                        err_3 = _a.sent();
+                        return [2 /*return*/, response.status(400).send(err_3.message)];
+                    case 5: return [2 /*return*/];
                 }
             });
         });
     };
     SongController.prototype.handleSearch = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var name, searchSongService, song, status;
+            var name, searchSongService, song, err_4;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         name = request.body["song-name"];
                         searchSongService = new SearchSongService_1.SearchSongService();
-                        return [4 /*yield*/, searchSongService.execute(name)];
+                        _a.label = 1;
                     case 1:
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, searchSongService.execute(name)];
+                    case 2:
                         song = _a.sent();
-                        status = song ? response.render("updateDelete/UpdateDeleteShowSong", { dataResult: song }) : response.status(401).send("Name Search not Found!");
-                        return [2 /*return*/, status];
+                        return [2 /*return*/, response.json({ dataResult: song })];
+                    case 3:
+                        err_4 = _a.sent();
+                        return [2 /*return*/, response.status(404).send(err_4.message)];
+                    case 4: return [2 /*return*/];
                 }
             });
         });
     };
     SongController.prototype.handleDelete = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var id, deleteSongService;
+            var id, deleteSongService, err_5;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         id = request.params.id;
                         deleteSongService = new DeleteSongService_1.DeleteSongService();
+                        _a.label = 1;
+                    case 1:
+                        _a.trys.push([1, 3, , 4]);
                         return [4 /*yield*/, deleteSongService.execute(id)];
-                    case 1:
+                    case 2:
                         _a.sent();
-                        return [2 /*return*/, response.render("UpdateRegisters")];
-                }
-            });
-        });
-    };
-    //assim como o handleGet esse método pega todas as músicas, mas com a diferença de que ele seleciona uma certa quantia aleatoria para ser exibida na página index, como o handleGet possui outras funcionalidades com ele achei melhor construir um método a parte para fazer essa seleção
-    SongController.prototype.handleGetForIndex = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var getSongService, song, songsList, i, songsfilter;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        getSongService = new GetSongService_1.GetSongService();
-                        return [4 /*yield*/, getSongService.execute()];
-                    case 1:
-                        song = _a.sent();
-                        songsList = [];
-                        if (song) {
-                            for (i = 0; i < 10; i++) {
-                                songsfilter = Math.floor(Math.random() * (song.length - 0));
-                                songsList[i] = song[songsfilter];
-                            }
-                        }
-                        return [2 /*return*/, songsList];
+                        return [2 /*return*/, response.send("ok")];
+                    case 3:
+                        err_5 = _a.sent();
+                        return [2 /*return*/, response.status(404).send(err_5.message)];
+                    case 4: return [2 /*return*/];
                 }
             });
         });

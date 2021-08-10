@@ -41,88 +41,89 @@ var AnimesController_1 = require("./AnimesController");
 var GamesController_1 = require("./GamesController");
 var ObservationController_1 = require("./ObservationController");
 var SiteController_1 = require("./SiteController");
-var SongsController_1 = require("./SongsController");
 var UserController_1 = require("./UserController");
 var IndexController = /** @class */ (function () {
     function IndexController() {
     }
     IndexController.prototype.handleGet = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var animeController, gameController, songController, siteController, observationController, userController, randomAnime, randomGame, randomsong, sites, users, observation, noteSuggestion, pageObjective, i, contactUsers, countContact, i, animesSite, gamesSite, countAnime, countGame, i, status;
+            var animeController, gameController, siteController, observationController, userController, randomAnime, randomGame, sites, users, observation, pageObjective, randomUser, contactUsers, animesSite, gamesSite, countAnime, countGame, i, status_1, err_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         animeController = new AnimesController_1.AnimeController();
                         gameController = new GamesController_1.GameController();
-                        songController = new SongsController_1.SongController();
                         siteController = new SiteController_1.SiteController();
                         observationController = new ObservationController_1.ObservationController();
                         userController = new UserController_1.UserController();
-                        return [4 /*yield*/, animeController.handleGetAll()];
+                        _a.label = 1;
                     case 1:
+                        _a.trys.push([1, 7, , 8]);
+                        return [4 /*yield*/, animeController.handleGetAll()];
+                    case 2:
                         randomAnime = _a.sent();
                         return [4 /*yield*/, gameController.handleGetAll()];
-                    case 2:
-                        randomGame = _a.sent();
-                        return [4 /*yield*/, songController.handleGetForIndex()];
                     case 3:
-                        randomsong = _a.sent();
+                        randomGame = _a.sent();
                         return [4 /*yield*/, siteController.handleGet()];
                     case 4:
                         sites = _a.sent();
                         return [4 /*yield*/, userController.handleGet()];
                     case 5:
                         users = _a.sent();
-                        return [4 /*yield*/, observationController.handleGet()
-                            //dados de observação da página
-                        ];
+                        return [4 /*yield*/, observationController.handleGet()];
                     case 6:
                         observation = _a.sent();
-                        for (i = 0; i < observation.length; i++) {
-                            if (observation[i].name.trim() === "sugestão") {
-                                noteSuggestion = observation[i];
+                        pageObjective = void 0;
+                        if (typeof observation === "object") {
+                            if (observation) {
+                                pageObjective = observation[observation.length - 1];
                             }
-                            if (observation[i].name.trim() === "objetivo-pagina") {
-                                pageObjective = observation[i];
-                            }
-                            if (!pageObjective) {
+                            else {
                                 pageObjective = {
                                     name: "",
                                     information: ""
                                 };
                             }
-                            if (!noteSuggestion) {
-                                noteSuggestion = {
-                                    name: "",
-                                    information: ""
-                                };
-                            }
                         }
-                        contactUsers = [];
-                        countContact = 0;
-                        for (i = 0; i < 3; i++) {
-                            if (users[i] != null) {
-                                contactUsers[countContact] = users[i];
-                                countContact++;
-                            }
+                        else {
+                            pageObjective = observation;
+                        }
+                        randomUser = Math.floor(Math.random() * (users.length - 0));
+                        contactUsers = void 0;
+                        if (typeof users === "object") {
+                            contactUsers = users[randomUser];
+                        }
+                        else {
+                            contactUsers = users;
                         }
                         animesSite = [];
                         gamesSite = [];
                         countAnime = 0;
                         countGame = 0;
-                        for (i = 0; i < sites.length; i++) {
-                            if (sites[i].category === "anime") {
-                                animesSite[countAnime] = sites[i];
-                                countAnime++;
+                        if (typeof sites === "object") {
+                            for (i = 0; i < sites.length; i++) {
+                                if (sites[i].category === "anime") {
+                                    animesSite[countAnime] = sites[i];
+                                    countAnime++;
+                                }
+                                else if (sites[i].category === "game") {
+                                    gamesSite[countGame] = sites[i];
+                                    countGame++;
+                                }
                             }
-                            else if (sites[i].category === "game") {
-                                gamesSite[countGame] = sites[i];
-                                countGame++;
-                            }
+                            ;
                         }
-                        ;
-                        status = randomAnime && randomGame && randomsong && sites && users ? response.render("index", { animesArray: randomAnime, gamesArray: randomGame, contactUsers: contactUsers, dataSongs: randomsong, dataPageObjective: pageObjective, dataSuggestion: noteSuggestion, animesSite: animesSite, gamesSite: gamesSite }) : response.status(401).send("Requisition Failed!");
-                        return [2 /*return*/, status];
+                        else {
+                            animesSite = ["falha na tipagem"];
+                            gamesSite = ["falha na tipagem"];
+                        }
+                        status_1 = randomAnime && randomGame && sites && users ? response.json({ animesArray: randomAnime, gamesArray: randomGame, contactUsers: contactUsers, dataPageObjective: pageObjective, animesSite: animesSite, gamesSite: gamesSite }) : response.status(401).send("Requisition Failed!");
+                        return [2 /*return*/, status_1];
+                    case 7:
+                        err_1 = _a.sent();
+                        return [2 /*return*/, response.status(404).send(err_1.message)];
+                    case 8: return [2 /*return*/];
                 }
             });
         });

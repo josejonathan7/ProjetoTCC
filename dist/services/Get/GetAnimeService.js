@@ -53,7 +53,10 @@ var GetAnimeService = /** @class */ (function () {
                         return [4 /*yield*/, animeRepositorie.find()];
                     case 1:
                         anime = _a.sent();
-                        status = anime ? class_transformer_1.classToPlain(anime) : "";
+                        status = anime ? class_transformer_1.classToPlain(anime) : undefined;
+                        if (typeof status === "undefined") {
+                            throw new Error("Nenhum Anime encontrado");
+                        }
                         return [2 /*return*/, status];
                 }
             });

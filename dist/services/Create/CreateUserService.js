@@ -72,8 +72,11 @@ var CreateUserService = /** @class */ (function () {
                         return [4 /*yield*/, userRepositorie.save(user)];
                     case 3:
                         _b.sent();
-                        status = user ? user : "Falha na operação";
-                        return [2 /*return*/, status];
+                        status = user ? "Sucess" : undefined;
+                        if (typeof status === "undefined") {
+                            throw new Error("Falha na criação do registro");
+                        }
+                        return [2 /*return*/];
                 }
             });
         });

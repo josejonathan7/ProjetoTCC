@@ -55,7 +55,10 @@ var SearchSongService = /** @class */ (function () {
                             })];
                     case 1:
                         song = _a.sent();
-                        status = song.length ? class_transformer_1.classToPlain(song) : "";
+                        status = song.length ? class_transformer_1.classToPlain(song) : undefined;
+                        if (typeof status === "undefined") {
+                            throw new Error(searchName + " n\u00E3o encontrado!");
+                        }
                         return [2 /*return*/, status];
                 }
             });

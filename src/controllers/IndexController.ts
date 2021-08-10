@@ -81,7 +81,7 @@ class IndexController {
                 gamesSite = ["falha na tipagem"];
             }
 
-            const status = randomAnime && randomGame && sites && users ? response.render("index", { animesArray: randomAnime, gamesArray: randomGame, contactUsers, dataPageObjective: pageObjective, animesSite, gamesSite }) : response.status(401).send("Requisition Failed!");
+            const status = randomAnime && randomGame && sites && users ? response.json({ animesArray: randomAnime, gamesArray: randomGame, contactUsers, dataPageObjective: pageObjective, animesSite, gamesSite }) : response.status(401).send("Requisition Failed!");
     
             return status;
 

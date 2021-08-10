@@ -53,7 +53,10 @@ var GetObservationService = /** @class */ (function () {
                         return [4 /*yield*/, observationRepositorie.find()];
                     case 1:
                         observation = _a.sent();
-                        status = observation ? class_transformer_1.classToPlain(observation) : "";
+                        status = observation ? class_transformer_1.classToPlain(observation) : undefined;
+                        if (typeof status === "undefined") {
+                            throw new Error("Nenhuma observaçaõ encontrada");
+                        }
                         return [2 /*return*/, status];
                 }
             });

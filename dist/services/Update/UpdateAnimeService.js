@@ -45,7 +45,7 @@ var UpdateAnimeService = /** @class */ (function () {
     UpdateAnimeService.prototype.execute = function (_a) {
         var id = _a.id, name = _a.name, link = _a.link, image = _a.image;
         return __awaiter(this, void 0, void 0, function () {
-            var animeRepositorie;
+            var animeRepositorie, anime, status;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
@@ -56,7 +56,11 @@ var UpdateAnimeService = /** @class */ (function () {
                                 image: image
                             })];
                     case 1:
-                        _b.sent();
+                        anime = _b.sent();
+                        status = anime ? "Sucess" : undefined;
+                        if (typeof status === "undefined") {
+                            throw new Error("Falha na atualização");
+                        }
                         return [2 /*return*/];
                 }
             });

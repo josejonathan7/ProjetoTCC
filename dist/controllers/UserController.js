@@ -47,7 +47,7 @@ var UserController = /** @class */ (function () {
     }
     UserController.prototype.handleCreate = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var name, email_contact_link, password, avatar, description, creatUserService;
+            var name, email_contact_link, password, avatar, description, creatUserService, err_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -57,17 +57,24 @@ var UserController = /** @class */ (function () {
                         avatar = request.body.avatar;
                         description = request.body["user-description"];
                         creatUserService = new CreateUserService_1.CreateUserService();
-                        return [4 /*yield*/, creatUserService.execute({ name: name, email_contact_link: email_contact_link, password: password, avatar: avatar, description: description })];
+                        _a.label = 1;
                     case 1:
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, creatUserService.execute({ name: name, email_contact_link: email_contact_link, password: password, avatar: avatar, description: description })];
+                    case 2:
                         _a.sent();
-                        return [2 /*return*/, response.render("Register")];
+                        return [2 /*return*/, response.send("ok")];
+                    case 3:
+                        err_1 = _a.sent();
+                        return [2 /*return*/, response.status(400).send(err_1.message)];
+                    case 4: return [2 /*return*/];
                 }
             });
         });
     };
     UserController.prototype.handleUpdate = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var id, name, email_contact_link, avatar, description, updateUserService;
+            var id, name, email_contact_link, avatar, description, updateUserService, err_2;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -77,59 +84,85 @@ var UserController = /** @class */ (function () {
                         avatar = request.body.avatar;
                         description = request.body["user-description"];
                         updateUserService = new UpdateUserService_1.UpdateUserService();
-                        return [4 /*yield*/, updateUserService.execute({ id: id, name: name, avatar: avatar, description: description, email_contact_link: email_contact_link })];
+                        _a.label = 1;
                     case 1:
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, updateUserService.execute({ id: id, name: name, avatar: avatar, description: description, email_contact_link: email_contact_link })];
+                    case 2:
                         _a.sent();
-                        return [2 /*return*/, response.render("UpdateRegisters")];
+                        return [2 /*return*/, response.send("ok")];
+                    case 3:
+                        err_2 = _a.sent();
+                        return [2 /*return*/, response.status(400).send(err_2.message)];
+                    case 4: return [2 /*return*/];
                 }
             });
         });
     };
     UserController.prototype.handleSearch = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var name, searchUserService, user, status;
+            var name, searchUserService, user, err_3;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         name = request.body["user-name"];
                         searchUserService = new SearchUserService_1.SearchUserService();
-                        return [4 /*yield*/, searchUserService.execute(name)];
+                        _a.label = 1;
                     case 1:
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, searchUserService.execute(name)];
+                    case 2:
                         user = _a.sent();
-                        status = user ? response.render("updateDelete/UpdateDeleteShowUser", { dataResult: user }) : response.status(401).send("Name Search not Found!");
-                        return [2 /*return*/, status];
+                        return [2 /*return*/, response.json({ dataResult: user })];
+                    case 3:
+                        err_3 = _a.sent();
+                        return [2 /*return*/, response.status(404).send(err_3.message)];
+                    case 4: return [2 /*return*/];
                 }
             });
         });
     };
     UserController.prototype.handleGet = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var getUserService, user, status;
+            var getUserService, user, err_4;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         getUserService = new GetUserService_1.GetUserService();
-                        return [4 /*yield*/, getUserService.execute()];
+                        _a.label = 1;
                     case 1:
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, getUserService.execute()];
+                    case 2:
                         user = _a.sent();
-                        status = user ? user : "";
-                        return [2 /*return*/, status];
+                        return [2 /*return*/, user];
+                    case 3:
+                        err_4 = _a.sent();
+                        throw new Error("falha");
+                    case 4: return [2 /*return*/];
                 }
             });
         });
     };
     UserController.prototype.handleDelete = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var id, deleteUserService;
+            var id, deleteUserService, err_5;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         id = request.params.id;
                         deleteUserService = new DeleteUserService_1.DeleteUserService();
-                        return [4 /*yield*/, deleteUserService.execute(id)];
+                        _a.label = 1;
                     case 1:
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, deleteUserService.execute(id)];
+                    case 2:
                         _a.sent();
-                        return [2 /*return*/, response.render("UpdateRegisters")];
+                        return [2 /*return*/, response.send("ok")];
+                    case 3:
+                        err_5 = _a.sent();
+                        return [2 /*return*/, response.status(404).send(err_5.message)];
+                    case 4: return [2 /*return*/];
                 }
             });
         });

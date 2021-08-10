@@ -3,21 +3,19 @@ import express, {Request, Response, NextFunction } from 'express';
 import 'reflect-metadata';
 import './database';
 import 'express-async-error';
-import path from 'path';
 import { createRouter } from './routes/CreateRoutes';
 import { updateRouter } from './routes/UpdateRouter';
 import { deleteRouter } from './routes/DeleteRoutes';
 import { searchRouter } from './routes/SearchRoutes';
 import { getRouter } from './routes/GetRoutes';
+import cors from 'cors';
 
 const server = express();
 
 server.use(express.json())
 
-server.set('view engine', 'ejs')
-server.set("views", path.join(__dirname, "views"))
+server.use(cors());
 
-server.use(express.static("public"))
 server.use(express.urlencoded({extended: true}))
 
 server.use(getRouter)
@@ -39,4 +37,4 @@ server.use((err: Error, request: Request, response: Response, next: NextFunction
 
 dotenv.config()
 
-server.listen(process.env.PORT || 3000, () => console.log("O servidor esta rodando"))
+server.listen(process.env.PORT || 3010, () => console.log("O servidor esta rodando"))

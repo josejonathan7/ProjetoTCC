@@ -64,10 +64,10 @@ var AuthenticateUserController = /** @class */ (function () {
                         return [4 /*yield*/, searchUserService.execute(name)];
                     case 3:
                         userData = _b.sent();
-                        return [2 /*return*/, response.render("Register", { token: token, userData: userData })];
+                        return [2 /*return*/, response.json({ token: token, userData: userData })];
                     case 4:
                         _a = _b.sent();
-                        return [2 /*return*/, response.send("Email/password Invalid!")];
+                        return [2 /*return*/, response.status(401).send("Email/password Invalid!")];
                     case 5: return [2 /*return*/];
                 }
             });

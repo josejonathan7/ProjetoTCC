@@ -6,10 +6,10 @@ var RecordsAccessController = /** @class */ (function () {
     }
     //acessando as páginas de criação, atualização, e deletar registros
     RecordsAccessController.prototype.accesFormNew = function (request, response) {
-        return response.render("Register");
+        return response.send("ok");
     };
     RecordsAccessController.prototype.accesFormUpdate = function (request, response) {
-        return response.render("UpdateRegisters");
+        return response.send("ok");
     };
     return RecordsAccessController;
 }());

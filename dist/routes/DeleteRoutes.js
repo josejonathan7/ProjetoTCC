@@ -18,9 +18,9 @@ var userController = new UserController_1.UserController();
 var observationController = new ObservationController_1.ObservationController();
 var siteController = new SiteController_1.SiteController();
 //deletar registros
-deleteRouter.post("/registers/delete/observations/:id", ensureAuthenticate_1.ensureAuthenticate, observationController.handleDelete);
-deleteRouter.post("/registers/delete/sites/:id", ensureAuthenticate_1.ensureAuthenticate, siteController.handleDelete);
-deleteRouter.post("/registers/delete/users/:id", ensureAuthenticate_1.ensureAuthenticate, userController.handleDelete);
-deleteRouter.post("/registers/delete/animes/:id", ensureAuthenticate_1.ensureAuthenticate, animeController.handleDelete);
-deleteRouter.post("/registers/delete/games/:id", ensureAuthenticate_1.ensureAuthenticate, gameController.handleDelete);
-deleteRouter.post("/registers/delete/songs/:id", ensureAuthenticate_1.ensureAuthenticate, songController.handleDelete);
+deleteRouter.delete("/registers/delete/observations/:id", ensureAuthenticate_1.ensureAuthenticate, observationController.handleDelete);
+deleteRouter.delete("/registers/delete/sites/:id", ensureAuthenticate_1.ensureAuthenticate, siteController.handleDelete);
+deleteRouter.delete("/registers/delete/users/:id", ensureAuthenticate_1.ensureAuthenticate, userController.handleDelete);
+deleteRouter.delete("/registers/delete/animes/:id", ensureAuthenticate_1.ensureAuthenticate, animeController.handleDelete);
+deleteRouter.delete("/registers/delete/games/:id", ensureAuthenticate_1.ensureAuthenticate, gameController.handleDelete);
+deleteRouter.delete("/registers/delete/songs/:id", ensureAuthenticate_1.ensureAuthenticate, songController.handleDelete);

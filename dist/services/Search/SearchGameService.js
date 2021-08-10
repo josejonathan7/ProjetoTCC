@@ -55,7 +55,10 @@ var SearchGameService = /** @class */ (function () {
                             })];
                     case 1:
                         game = _a.sent();
-                        status = game.length ? class_transformer_1.classToPlain(game) : "";
+                        status = game.length ? class_transformer_1.classToPlain(game) : undefined;
+                        if (typeof status === "undefined") {
+                            throw new Error(searchName + " n\u00E3o encontrado!");
+                        }
                         return [2 /*return*/, status];
                 }
             });

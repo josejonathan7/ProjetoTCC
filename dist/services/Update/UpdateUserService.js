@@ -45,7 +45,7 @@ var UpdateUserService = /** @class */ (function () {
     UpdateUserService.prototype.execute = function (_a) {
         var id = _a.id, name = _a.name, avatar = _a.avatar, description = _a.description, email_contact_link = _a.email_contact_link;
         return __awaiter(this, void 0, void 0, function () {
-            var userRepositorie;
+            var userRepositorie, user, status;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
@@ -57,7 +57,11 @@ var UpdateUserService = /** @class */ (function () {
                                 email_contact_link: email_contact_link
                             })];
                     case 1:
-                        _b.sent();
+                        user = _b.sent();
+                        status = user ? "Sucess" : undefined;
+                        if (typeof status === "undefined") {
+                            throw new Error("Falha na atualização");
+                        }
                         return [2 /*return*/];
                 }
             });

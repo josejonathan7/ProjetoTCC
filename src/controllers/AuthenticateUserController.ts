@@ -20,7 +20,7 @@ class AuthenticateUserController {
 
             const userData = await searchUserService.execute(name);
 
-            return response.render("Register", { token, userData });  
+            return response.json({ token, userData });  
 
         }catch{
 

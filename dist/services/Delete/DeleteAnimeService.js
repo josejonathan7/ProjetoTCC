@@ -44,7 +44,7 @@ var DeleteAnimeService = /** @class */ (function () {
     }
     DeleteAnimeService.prototype.execute = function (id) {
         return __awaiter(this, void 0, void 0, function () {
-            var animeRepositorie;
+            var animeRepositorie, anime, status;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -53,7 +53,11 @@ var DeleteAnimeService = /** @class */ (function () {
                                 id: id
                             })];
                     case 1:
-                        _a.sent();
+                        anime = _a.sent();
+                        status = anime ? "Sucess" : undefined;
+                        if (typeof status === "undefined") {
+                            throw new Error("Falha ao deletar registro");
+                        }
                         return [2 /*return*/];
                 }
             });

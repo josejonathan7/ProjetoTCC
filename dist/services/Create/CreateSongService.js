@@ -57,8 +57,11 @@ var CreateSongService = /** @class */ (function () {
                         return [4 /*yield*/, songRepositorie.save(song)];
                     case 1:
                         _b.sent();
-                        status = song ? song : "Falha na operação";
-                        return [2 /*return*/, status];
+                        status = song ? "Sucess" : undefined;
+                        if (typeof status === "undefined") {
+                            throw new Error("Falha na criação do registro");
+                        }
+                        return [2 /*return*/];
                 }
             });
         });

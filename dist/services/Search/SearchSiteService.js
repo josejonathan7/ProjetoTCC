@@ -55,7 +55,10 @@ var SearchSiteService = /** @class */ (function () {
                             })];
                     case 1:
                         site = _a.sent();
-                        status = site.length ? class_transformer_1.classToPlain(site) : "";
+                        status = site.length ? class_transformer_1.classToPlain(site) : undefined;
+                        if (typeof status === "undefined") {
+                            throw new Error(searchName + " n\u00E3o encontrado!");
+                        }
                         return [2 /*return*/, status];
                 }
             });

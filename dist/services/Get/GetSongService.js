@@ -53,7 +53,10 @@ var GetSongService = /** @class */ (function () {
                         return [4 /*yield*/, songRepositorie.find()];
                     case 1:
                         song = _a.sent();
-                        status = song ? class_transformer_1.classToPlain(song) : "";
+                        status = song ? class_transformer_1.classToPlain(song) : undefined;
+                        if (typeof status === "undefined") {
+                            throw new Error("Nenhuma música encontrada");
+                        }
                         return [2 /*return*/, status];
                 }
             });

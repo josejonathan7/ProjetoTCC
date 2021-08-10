@@ -53,7 +53,10 @@ var GetUserService = /** @class */ (function () {
                         return [4 /*yield*/, userRepositorie.find()];
                     case 1:
                         user = _a.sent();
-                        status = user ? class_transformer_1.classToPlain(user) : "";
+                        status = user ? class_transformer_1.classToPlain(user) : undefined;
+                        if (typeof status === "undefined") {
+                            throw new Error("Nenhum usuário encontrado");
+                        }
                         return [2 /*return*/, status];
                 }
             });

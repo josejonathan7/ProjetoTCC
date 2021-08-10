@@ -57,8 +57,11 @@ var CreateObservationService = /** @class */ (function () {
                         return [4 /*yield*/, observationRepositorie.save(observation)];
                     case 1:
                         _b.sent();
-                        status = observation ? observation : "Falha na operação";
-                        return [2 /*return*/, status];
+                        status = observation ? "Sucess" : undefined;
+                        if (typeof status === "undefined") {
+                            throw new Error("Falha na criação do registro");
+                        }
+                        return [2 /*return*/];
                 }
             });
         });

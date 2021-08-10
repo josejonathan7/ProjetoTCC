@@ -58,8 +58,11 @@ var CreateSiteService = /** @class */ (function () {
                         return [4 /*yield*/, siteRepositorie.save(site)];
                     case 1:
                         _b.sent();
-                        status = site ? site : "Falha na operação";
-                        return [2 /*return*/, status];
+                        status = site ? "Sucess" : undefined;
+                        if (typeof status === "undefined") {
+                            throw new Error("Falha na criação do registro");
+                        }
+                        return [2 /*return*/];
                 }
             });
         });

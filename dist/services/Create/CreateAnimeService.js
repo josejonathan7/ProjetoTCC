@@ -58,8 +58,11 @@ var CreateAnimeService = /** @class */ (function () {
                         return [4 /*yield*/, animesRepositorie.save(animes)];
                     case 1:
                         _b.sent();
-                        status = animes ? animes : "";
-                        return [2 /*return*/, status];
+                        status = animes ? "Sucess" : undefined;
+                        if (typeof status === "undefined") {
+                            throw new Error("Falha na criação do registro");
+                        }
+                        return [2 /*return*/];
                 }
             });
         });

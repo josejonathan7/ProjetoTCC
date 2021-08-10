@@ -20,7 +20,7 @@ class AnimeController {
 
             await creatAnimeService.execute({ name , link, image });
 
-            return response.render("Register");
+            return response.send("sucess");
             
         }catch(err){
             return response.status(400).send(err.message);
@@ -39,7 +39,7 @@ class AnimeController {
 
             await updateAnimeService.execute({ id, name, link, image });
 
-            return response.render("UpdateRegisters");
+            return response.send("sucess");
 
         }catch(err){
             return response.status(400).send(err.message);
@@ -55,7 +55,7 @@ class AnimeController {
 
             const anime = await searchAnimeService.execute(name);
 
-            return response.render("updateDelete/UpdateDeleteShowAnime", { dataResult: anime });
+            return response.json({ dataResult: anime });
 
         }catch(err){
             return response.status(404).send(err.message);
@@ -106,7 +106,7 @@ class AnimeController {
 
             const status = animePagination[0];
 
-            return response.render("animes", { contactUsers, dataAnimesLimit: status, numberOfPages, current });
+            return response.json({ contactUsers, dataAnimesLimit: status, numberOfPages, current });
 
         }catch(err){
             return response.status(404).send(err.message);
@@ -122,7 +122,7 @@ class AnimeController {
 
             await deleteAnimeService.execute(id);
 
-            return response.render("UpdateRegisters");
+            return response.send("ok");
         
         }catch(err){
             return response.status(404).send(err.message);

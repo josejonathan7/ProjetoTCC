@@ -45,7 +45,7 @@ var UpdateObservationService = /** @class */ (function () {
     UpdateObservationService.prototype.execute = function (_a) {
         var id = _a.id, name = _a.name, information = _a.information;
         return __awaiter(this, void 0, void 0, function () {
-            var observationRepositorie;
+            var observationRepositorie, observation, status;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
@@ -55,7 +55,11 @@ var UpdateObservationService = /** @class */ (function () {
                                 information: information
                             })];
                     case 1:
-                        _b.sent();
+                        observation = _b.sent();
+                        status = observation ? "Sucess" : undefined;
+                        if (typeof status === "undefined") {
+                            throw new Error("Falha na atualização");
+                        }
                         return [2 /*return*/];
                 }
             });

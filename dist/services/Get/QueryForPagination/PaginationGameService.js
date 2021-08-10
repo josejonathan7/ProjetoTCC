@@ -60,7 +60,10 @@ var PaginationGameService = /** @class */ (function () {
                             class_transformer_1.classToPlain(game),
                             count
                         ];
-                        status = array ? array : "";
+                        status = array ? array : undefined;
+                        if (typeof status === "undefined") {
+                            throw new Error("Nenhum jogo encontrado");
+                        }
                         return [2 /*return*/, status];
                 }
             });

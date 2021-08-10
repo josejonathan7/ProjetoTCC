@@ -45,7 +45,7 @@ var UpdateSiteService = /** @class */ (function () {
     UpdateSiteService.prototype.execute = function (_a) {
         var id = _a.id, name = _a.name, link = _a.link, category = _a.category;
         return __awaiter(this, void 0, void 0, function () {
-            var siteRepositorie;
+            var siteRepositorie, site, status;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
@@ -56,7 +56,11 @@ var UpdateSiteService = /** @class */ (function () {
                                 category: category
                             })];
                     case 1:
-                        _b.sent();
+                        site = _b.sent();
+                        status = site ? "Sucess" : undefined;
+                        if (typeof status === "undefined") {
+                            throw new Error("Falha na atualização");
+                        }
                         return [2 /*return*/];
                 }
             });

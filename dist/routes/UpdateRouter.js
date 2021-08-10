@@ -18,9 +18,9 @@ var userController = new UserController_1.UserController();
 var observationController = new ObservationController_1.ObservationController();
 var siteController = new SiteController_1.SiteController();
 //atualização de registros
-updateRouter.post("/registers/update/observations/:id", ensureAuthenticate_1.ensureAuthenticate, observationController.handleUpdate);
-updateRouter.post("/registers/update/sites/:id", ensureAuthenticate_1.ensureAuthenticate, siteController.handleUpdate);
-updateRouter.post("/registers/update/users/:id", ensureAuthenticate_1.ensureAuthenticate, userController.handleUpdate);
-updateRouter.post("/registers/update/animes/:id", ensureAuthenticate_1.ensureAuthenticate, animeController.handleUpdate);
-updateRouter.post("/registers/update/games/:id", ensureAuthenticate_1.ensureAuthenticate, gameController.handleUpdate);
-updateRouter.post("/registers/update/songs/:id", ensureAuthenticate_1.ensureAuthenticate, songController.handleUpdate);
+updateRouter.put("/registers/update/observations/:id", ensureAuthenticate_1.ensureAuthenticate, observationController.handleUpdate);
+updateRouter.put("/registers/update/sites/:id", ensureAuthenticate_1.ensureAuthenticate, siteController.handleUpdate);
+updateRouter.put("/registers/update/users/:id", ensureAuthenticate_1.ensureAuthenticate, userController.handleUpdate);
+updateRouter.put("/registers/update/animes/:id", ensureAuthenticate_1.ensureAuthenticate, animeController.handleUpdate);
+updateRouter.put("/registers/update/games/:id", ensureAuthenticate_1.ensureAuthenticate, gameController.handleUpdate);
+updateRouter.put("/registers/update/songs/:id", ensureAuthenticate_1.ensureAuthenticate, songController.handleUpdate);

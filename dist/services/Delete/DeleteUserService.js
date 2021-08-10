@@ -44,7 +44,7 @@ var DeleteUserService = /** @class */ (function () {
     }
     DeleteUserService.prototype.execute = function (id) {
         return __awaiter(this, void 0, void 0, function () {
-            var userRepositorie;
+            var userRepositorie, user, status;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -53,7 +53,11 @@ var DeleteUserService = /** @class */ (function () {
                                 id: id
                             })];
                     case 1:
-                        _a.sent();
+                        user = _a.sent();
+                        status = user ? "Sucess" : undefined;
+                        if (typeof status === "undefined") {
+                            throw new Error("Falha ao deletar registro");
+                        }
                         return [2 /*return*/];
                 }
             });

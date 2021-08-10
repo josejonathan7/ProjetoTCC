@@ -53,7 +53,7 @@ class GameController {
 
             const status = gamePagination[0];
             
-            return response.render("jogos", { contactUsers, dataGamesLimit: status, numberOfPages, current });
+            return response.json({ contactUsers, dataGamesLimit: status, numberOfPages, current });
 
         }catch(err){
             return response.status(404).send(err.message);
@@ -71,7 +71,7 @@ class GameController {
 
             await creatGameService.execute({ name, link, image });
 
-           return response.render("Register");
+           return response.send("ok");
             
         } catch (err) {
             return response.status(400).send(err.message);
@@ -90,7 +90,7 @@ class GameController {
 
             await updateGameService.execute({ id, name, link, image });
             
-            return response.render("UpdateRegisters");
+            return response.send("ok");
 
         }catch(err){
             return response.status(400).send(err.message);
@@ -106,7 +106,7 @@ class GameController {
 
             const game = await searchGameService.execute(name);
 
-            return response.render("updateDelete/UpdateDeleteShowGame", { dataResult: game });
+            return response.json({ dataResult: game });
 
         }catch(err){
             return response.status(404).json({ error: err.message });
@@ -122,7 +122,7 @@ class GameController {
             
             await deleteGameService.execute(id);
 
-            return response.render("UpdateRegisters");
+            return response.send("ok");
         
         }catch(err){
             return response.status(404).json({ error: err.message });

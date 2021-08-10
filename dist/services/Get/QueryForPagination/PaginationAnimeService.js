@@ -60,7 +60,10 @@ var PaginationAnimeService = /** @class */ (function () {
                             class_transformer_1.classToPlain(anime),
                             count
                         ];
-                        status = array ? array : "";
+                        status = array ? array : undefined;
+                        if (typeof status === "undefined") {
+                            throw new Error("Nenhum Anime encontrado");
+                        }
                         return [2 /*return*/, status];
                 }
             });

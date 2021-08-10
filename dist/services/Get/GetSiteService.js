@@ -53,7 +53,10 @@ var GetSiteService = /** @class */ (function () {
                         return [4 /*yield*/, siteRepositorie.find()];
                     case 1:
                         site = _a.sent();
-                        status = site ? class_transformer_1.classToPlain(site) : "";
+                        status = site ? class_transformer_1.classToPlain(site) : undefined;
+                        if (typeof status === "undefined") {
+                            throw new Error("Nenhum site encontrado");
+                        }
                         return [2 /*return*/, status];
                 }
             });

@@ -55,25 +55,10 @@ var SearchUserService = /** @class */ (function () {
                             })];
                     case 1:
                         user = _a.sent();
-                        status = user.length ? class_transformer_1.classToPlain(user) : "";
-                        return [2 /*return*/, status];
-                }
-            });
-        });
-    };
-    SearchUserService.prototype.searchId = function (id) {
-        return __awaiter(this, void 0, void 0, function () {
-            var userRepositorie, user, status;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        userRepositorie = typeorm_1.getCustomRepository(UsersRepositories_1.UsersRepositories);
-                        return [4 /*yield*/, userRepositorie.find({
-                                id: id
-                            })];
-                    case 1:
-                        user = _a.sent();
-                        status = user.length ? class_transformer_1.classToPlain(user) : "";
+                        status = user.length ? class_transformer_1.classToPlain(user) : undefined;
+                        if (typeof status === "undefined") {
+                            throw new Error(searchName + " n\u00E3o encontrado!");
+                        }
                         return [2 /*return*/, status];
                 }
             });

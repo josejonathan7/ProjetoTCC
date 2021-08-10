@@ -47,7 +47,7 @@ var SiteController = /** @class */ (function () {
     }
     SiteController.prototype.handleCreate = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var name, link, category, creatSiteService;
+            var name, link, category, creatSiteService, err_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -55,17 +55,24 @@ var SiteController = /** @class */ (function () {
                         link = request.body["site-link"];
                         category = request.body["site-category"];
                         creatSiteService = new CreateSiteService_1.CreateSiteService();
-                        return [4 /*yield*/, creatSiteService.execute({ name: name, link: link, category: category })];
+                        _a.label = 1;
                     case 1:
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, creatSiteService.execute({ name: name, link: link, category: category })];
+                    case 2:
                         _a.sent();
-                        return [2 /*return*/, response.render("Register")];
+                        return [2 /*return*/, response.send("ok")];
+                    case 3:
+                        err_1 = _a.sent();
+                        return [2 /*return*/, response.status(400).send(err_1.message)];
+                    case 4: return [2 /*return*/];
                 }
             });
         });
     };
     SiteController.prototype.handleUpdate = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var id, name, link, category, updateSiteService;
+            var id, name, link, category, updateSiteService, err_2;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -74,59 +81,85 @@ var SiteController = /** @class */ (function () {
                         link = request.body["site-link"];
                         category = request.body["site-category"];
                         updateSiteService = new UpdateSiteService_1.UpdateSiteService();
-                        return [4 /*yield*/, updateSiteService.execute({ id: id, name: name, link: link, category: category })];
+                        _a.label = 1;
                     case 1:
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, updateSiteService.execute({ id: id, name: name, link: link, category: category })];
+                    case 2:
                         _a.sent();
-                        return [2 /*return*/, response.render("UpdateRegisters")];
+                        return [2 /*return*/, response.send("ok")];
+                    case 3:
+                        err_2 = _a.sent();
+                        return [2 /*return*/, response.status(400).send(err_2.message)];
+                    case 4: return [2 /*return*/];
                 }
             });
         });
     };
     SiteController.prototype.handleSearch = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var name, searchSiteService, site, status;
+            var name, searchSiteService, site, err_3;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         name = request.body["site-name"];
                         searchSiteService = new SearchSiteService_1.SearchSiteService();
-                        return [4 /*yield*/, searchSiteService.execute(name)];
+                        _a.label = 1;
                     case 1:
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, searchSiteService.execute(name)];
+                    case 2:
                         site = _a.sent();
-                        status = site ? response.render("updateDelete/UpdateDeleteShowSite", { dataResult: site }) : response.status(401).send("Name Search Not Found!");
-                        return [2 /*return*/, status];
+                        return [2 /*return*/, response.json({ dataResult: site })];
+                    case 3:
+                        err_3 = _a.sent();
+                        return [2 /*return*/, response.status(404).send(err_3.message)];
+                    case 4: return [2 /*return*/];
                 }
             });
         });
     };
     SiteController.prototype.handleGet = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var getSiteService, site, status;
+            var getSiteService, site, err_4;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         getSiteService = new GetSiteService_1.GetSiteService();
-                        return [4 /*yield*/, getSiteService.execute()];
+                        _a.label = 1;
                     case 1:
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, getSiteService.execute()];
+                    case 2:
                         site = _a.sent();
-                        status = site ? site : "";
-                        return [2 /*return*/, status];
+                        return [2 /*return*/, site];
+                    case 3:
+                        err_4 = _a.sent();
+                        throw new Error("falha");
+                    case 4: return [2 /*return*/];
                 }
             });
         });
     };
     SiteController.prototype.handleDelete = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var id, deleteSiteService;
+            var id, deleteSiteService, err_5;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         id = request.params.id;
                         deleteSiteService = new DeleteSiteService_1.DeleteSiteService();
-                        return [4 /*yield*/, deleteSiteService.execute(id)];
+                        _a.label = 1;
                     case 1:
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, deleteSiteService.execute(id)];
+                    case 2:
                         _a.sent();
-                        return [2 /*return*/, response.render("UpdateRegisters")];
+                        return [2 /*return*/, response.send("ok")];
+                    case 3:
+                        err_5 = _a.sent();
+                        return [2 /*return*/, response.status(404).send(err_5.message)];
+                    case 4: return [2 /*return*/];
                 }
             });
         });
