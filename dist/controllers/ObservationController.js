@@ -60,7 +60,7 @@ var ObservationController = /** @class */ (function () {
                         return [4 /*yield*/, createObservationService.execute({ name: name, information: information })];
                     case 2:
                         _a.sent();
-                        return [2 /*return*/, response.send("ok")];
+                        return [2 /*return*/, response.json("ok")];
                     case 3:
                         err_1 = _a.sent();
                         return [2 /*return*/, response.status(400).send(err_1.message)];
@@ -85,7 +85,7 @@ var ObservationController = /** @class */ (function () {
                         return [4 /*yield*/, updateObservationService.execute({ id: id, name: name, information: information })];
                     case 2:
                         _a.sent();
-                        return [2 /*return*/, response.send("ok")];
+                        return [2 /*return*/, response.json("ok")];
                     case 3:
                         err_2 = _a.sent();
                         return [2 /*return*/, response.status(400).send(err_2.message)];
@@ -108,7 +108,7 @@ var ObservationController = /** @class */ (function () {
                         return [4 /*yield*/, searchObservationService.execute(name)];
                     case 2:
                         observation = _a.sent();
-                        return [2 /*return*/, response.json({ dataResult: observation })];
+                        return [2 /*return*/, response.json({ observation: observation })];
                     case 3:
                         err_3 = _a.sent();
                         return [2 /*return*/, response.status(404).send(err_3.message)];
@@ -153,7 +153,7 @@ var ObservationController = /** @class */ (function () {
                         return [4 /*yield*/, deleteObservationService.execute(id)];
                     case 2:
                         _a.sent();
-                        return [2 /*return*/, response.send("ok")];
+                        return [2 /*return*/, response.json("ok")];
                     case 3:
                         err_5 = _a.sent();
                         return [2 /*return*/, response.status(404).send(err_5.message)];

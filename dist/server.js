@@ -16,6 +16,7 @@ var GetRoutes_1 = require("./routes/GetRoutes");
 var cors_1 = __importDefault(require("cors"));
 var server = express_1.default();
 server.use(express_1.default.json());
+server.use(express_1.default.static("public"));
 server.use(cors_1.default());
 server.use(express_1.default.urlencoded({ extended: true }));
 server.use(GetRoutes_1.getRouter);

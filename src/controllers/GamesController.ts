@@ -71,7 +71,7 @@ class GameController {
 
             await creatGameService.execute({ name, link, image });
 
-           return response.send("ok");
+           return response.json("ok");
             
         } catch (err) {
             return response.status(400).send(err.message);
@@ -90,7 +90,7 @@ class GameController {
 
             await updateGameService.execute({ id, name, link, image });
             
-            return response.send("ok");
+            return response.json("ok");
 
         }catch(err){
             return response.status(400).send(err.message);
@@ -106,7 +106,7 @@ class GameController {
 
             const game = await searchGameService.execute(name);
 
-            return response.json({ dataResult: game });
+            return response.json({ game });
 
         }catch(err){
             return response.status(404).json({ error: err.message });
@@ -122,7 +122,7 @@ class GameController {
             
             await deleteGameService.execute(id);
 
-            return response.send("ok");
+            return response.json("ok");
         
         }catch(err){
             return response.status(404).json({ error: err.message });

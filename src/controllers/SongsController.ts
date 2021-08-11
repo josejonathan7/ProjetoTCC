@@ -18,7 +18,7 @@ class SongController {
             
             await creatSongService.execute({ name, link});
 
-            return response.send("ok");
+            return response.json("ok");
 
         }catch(err){
             return response.status(400).send(err.message);
@@ -36,7 +36,7 @@ class SongController {
             
             await updateSongService.execute({id, link, name});
             
-            return response.send("ok");
+            return response.json("ok");
 
         }catch(err){
             return response.status(400).send(err.message);
@@ -63,7 +63,7 @@ class SongController {
             }
 
 
-            return response.json({ dataSongs: song, contactUsers });
+            return response.json({ song, contactUsers });
 
         } catch(err){
             return response.status(400).send(err.message);
@@ -79,7 +79,7 @@ class SongController {
 
             const song = await searchSongService.execute(name);
 
-            return response.json({ dataResult: song });
+            return response.json({ song });
 
         }catch(err){
             return response.status(404).send(err.message);
@@ -95,7 +95,7 @@ class SongController {
 
             await deleteSongService.execute(id);
             
-            return response.send("ok");
+            return response.json("ok");
 
         }catch(err){
             return response.status(404).send(err.message);

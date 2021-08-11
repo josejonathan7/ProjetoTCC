@@ -32,12 +32,12 @@ class IndexController {
 
                     pageObjective = observation[observation.length -1];    
            
-                }else {
+                }/*else {
                     pageObjective = {
                         name: "",
                         information: ""
                     };
-                }
+                }*/
                 
             }else{
                 pageObjective = observation;
@@ -45,10 +45,10 @@ class IndexController {
 
             //dados de contato no rodapé
             let randomUser =  Math.floor(Math.random() * (users.length - 0));
-            let contactUsers: string | [] | {};
+            let contactUsers= [];
 
             if(typeof users === "object"){
-                contactUsers = users[randomUser];
+                contactUsers.push(users[randomUser]);
             }else {
                 contactUsers = users;
             }
@@ -81,7 +81,12 @@ class IndexController {
                 gamesSite = ["falha na tipagem"];
             }
 
-            const status = randomAnime && randomGame && sites && users ? response.json({ animesArray: randomAnime, gamesArray: randomGame, contactUsers, dataPageObjective: pageObjective, animesSite, gamesSite }) : response.status(401).send("Requisition Failed!");
+            const status = randomAnime && randomGame && sites && users ? response.json({ randomAnime,
+                randomGame,
+                contactUsers,
+                pageObjective,
+                animesSite, 
+                gamesSite }) : response.status(401).send("Requisition Failed!");
     
             return status;
 

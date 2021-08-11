@@ -61,7 +61,7 @@ var SongController = /** @class */ (function () {
                         return [4 /*yield*/, creatSongService.execute({ name: name, link: link })];
                     case 2:
                         _a.sent();
-                        return [2 /*return*/, response.send("ok")];
+                        return [2 /*return*/, response.json("ok")];
                     case 3:
                         err_1 = _a.sent();
                         return [2 /*return*/, response.status(400).send(err_1.message)];
@@ -86,7 +86,7 @@ var SongController = /** @class */ (function () {
                         return [4 /*yield*/, updateSongService.execute({ id: id, link: link, name: name })];
                     case 2:
                         _a.sent();
-                        return [2 /*return*/, response.send("ok")];
+                        return [2 /*return*/, response.json("ok")];
                     case 3:
                         err_2 = _a.sent();
                         return [2 /*return*/, response.status(400).send(err_2.message)];
@@ -120,7 +120,7 @@ var SongController = /** @class */ (function () {
                         else {
                             contactUsers = user;
                         }
-                        return [2 /*return*/, response.json({ dataSongs: song, contactUsers: contactUsers })];
+                        return [2 /*return*/, response.json({ song: song, contactUsers: contactUsers })];
                     case 4:
                         err_3 = _a.sent();
                         return [2 /*return*/, response.status(400).send(err_3.message)];
@@ -143,7 +143,7 @@ var SongController = /** @class */ (function () {
                         return [4 /*yield*/, searchSongService.execute(name)];
                     case 2:
                         song = _a.sent();
-                        return [2 /*return*/, response.json({ dataResult: song })];
+                        return [2 /*return*/, response.json({ song: song })];
                     case 3:
                         err_4 = _a.sent();
                         return [2 /*return*/, response.status(404).send(err_4.message)];
@@ -166,7 +166,7 @@ var SongController = /** @class */ (function () {
                         return [4 /*yield*/, deleteSongService.execute(id)];
                     case 2:
                         _a.sent();
-                        return [2 /*return*/, response.send("ok")];
+                        return [2 /*return*/, response.json("ok")];
                     case 3:
                         err_5 = _a.sent();
                         return [2 /*return*/, response.status(404).send(err_5.message)];

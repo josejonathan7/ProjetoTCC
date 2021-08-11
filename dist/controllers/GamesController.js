@@ -104,7 +104,7 @@ var GameController = /** @class */ (function () {
                         return [4 /*yield*/, creatGameService.execute({ name: name, link: link, image: image })];
                     case 2:
                         _a.sent();
-                        return [2 /*return*/, response.send("ok")];
+                        return [2 /*return*/, response.json("ok")];
                     case 3:
                         err_2 = _a.sent();
                         return [2 /*return*/, response.status(400).send(err_2.message)];
@@ -130,7 +130,7 @@ var GameController = /** @class */ (function () {
                         return [4 /*yield*/, updateGameService.execute({ id: id, name: name, link: link, image: image })];
                     case 2:
                         _a.sent();
-                        return [2 /*return*/, response.send("ok")];
+                        return [2 /*return*/, response.json("ok")];
                     case 3:
                         err_3 = _a.sent();
                         return [2 /*return*/, response.status(400).send(err_3.message)];
@@ -153,7 +153,7 @@ var GameController = /** @class */ (function () {
                         return [4 /*yield*/, searchGameService.execute(name)];
                     case 2:
                         game = _a.sent();
-                        return [2 /*return*/, response.json({ dataResult: game })];
+                        return [2 /*return*/, response.json({ game: game })];
                     case 3:
                         err_4 = _a.sent();
                         return [2 /*return*/, response.status(404).json({ error: err_4.message })];
@@ -176,7 +176,7 @@ var GameController = /** @class */ (function () {
                         return [4 /*yield*/, deleteGameService.execute(id)];
                     case 2:
                         _a.sent();
-                        return [2 /*return*/, response.send("ok")];
+                        return [2 /*return*/, response.json("ok")];
                     case 3:
                         err_5 = _a.sent();
                         return [2 /*return*/, response.status(404).json({ error: err_5.message })];

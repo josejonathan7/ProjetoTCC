@@ -20,7 +20,7 @@ class UserController {
 
             await creatUserService.execute({ name, email_contact_link, password, avatar, description });
 
-            return response.send("ok");
+            return response.json("ok");
 
         }catch(err){
             return response.status(400).send(err.message);
@@ -40,7 +40,7 @@ class UserController {
             
             await updateUserService.execute({ id, name, avatar, description, email_contact_link });
             
-            return response.send("ok");
+            return response.json("ok");
 
         }catch(err){
             return response.status(400).send(err.message);
@@ -56,7 +56,7 @@ class UserController {
 
             const user = await searchUserService.execute(name);
             
-            return response.json({ dataResult: user });
+            return response.json({ user });
             
         }catch(err){
             return response.status(404).send(err.message);
@@ -85,7 +85,7 @@ class UserController {
         try{
             await deleteUserService.execute(id);
             
-            return response.send("ok");
+            return response.json("ok");
 
         }catch(err){
             return response.status(404).send(err.message);

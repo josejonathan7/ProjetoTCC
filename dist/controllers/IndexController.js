@@ -78,21 +78,20 @@ var IndexController = /** @class */ (function () {
                         if (typeof observation === "object") {
                             if (observation) {
                                 pageObjective = observation[observation.length - 1];
-                            }
-                            else {
+                            } /*else {
                                 pageObjective = {
                                     name: "",
                                     information: ""
                                 };
-                            }
+                            }*/
                         }
                         else {
                             pageObjective = observation;
                         }
                         randomUser = Math.floor(Math.random() * (users.length - 0));
-                        contactUsers = void 0;
+                        contactUsers = [];
                         if (typeof users === "object") {
-                            contactUsers = users[randomUser];
+                            contactUsers.push(users[randomUser]);
                         }
                         else {
                             contactUsers = users;
@@ -118,7 +117,7 @@ var IndexController = /** @class */ (function () {
                             animesSite = ["falha na tipagem"];
                             gamesSite = ["falha na tipagem"];
                         }
-                        status_1 = randomAnime && randomGame && sites && users ? response.json({ animesArray: randomAnime, gamesArray: randomGame, contactUsers: contactUsers, dataPageObjective: pageObjective, animesSite: animesSite, gamesSite: gamesSite }) : response.status(401).send("Requisition Failed!");
+                        status_1 = randomAnime && randomGame && sites && users ? response.json({ randomAnime: randomAnime, randomGame: randomGame, contactUsers: contactUsers, pageObjective: pageObjective, animesSite: animesSite, gamesSite: gamesSite }) : response.status(401).send("Requisition Failed!");
                         return [2 /*return*/, status_1];
                     case 7:
                         err_1 = _a.sent();

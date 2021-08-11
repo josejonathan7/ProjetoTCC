@@ -63,7 +63,7 @@ var AnimeController = /** @class */ (function () {
                         return [4 /*yield*/, creatAnimeService.execute({ name: name, link: link, image: image })];
                     case 2:
                         _a.sent();
-                        return [2 /*return*/, response.send("sucess")];
+                        return [2 /*return*/, response.json("ok")];
                     case 3:
                         err_1 = _a.sent();
                         return [2 /*return*/, response.status(400).send(err_1.message)];
@@ -89,7 +89,7 @@ var AnimeController = /** @class */ (function () {
                         return [4 /*yield*/, updateAnimeService.execute({ id: id, name: name, link: link, image: image })];
                     case 2:
                         _a.sent();
-                        return [2 /*return*/, response.send("sucess")];
+                        return [2 /*return*/, response.json("ok")];
                     case 3:
                         err_2 = _a.sent();
                         return [2 /*return*/, response.status(400).send(err_2.message)];
@@ -112,7 +112,7 @@ var AnimeController = /** @class */ (function () {
                         return [4 /*yield*/, searchAnimeService.execute(name)];
                     case 2:
                         anime = _a.sent();
-                        return [2 /*return*/, response.json({ dataResult: anime })];
+                        return [2 /*return*/, response.json({ anime: anime })];
                     case 3:
                         err_3 = _a.sent();
                         return [2 /*return*/, response.status(404).send(err_3.message)];
@@ -176,7 +176,7 @@ var AnimeController = /** @class */ (function () {
                         return [4 /*yield*/, deleteAnimeService.execute(id)];
                     case 2:
                         _a.sent();
-                        return [2 /*return*/, response.send("ok")];
+                        return [2 /*return*/, response.json("ok")];
                     case 3:
                         err_5 = _a.sent();
                         return [2 /*return*/, response.status(404).send(err_5.message)];
