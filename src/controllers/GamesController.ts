@@ -11,34 +11,13 @@ import { GetGameService } from "../services/Get/GetGameService";
 class GameController {
 
     async handlePagination(request: Request, response: Response) {
-        const paginationGameService = new PaginationGameService();
+        const getGameService = new GetGameService();
         const userController = new UserController();
 
         try{
         
             const user = await userController.handleGet();
-
-            //código para trabalhar com a páginação da página
-
-            //quantidade de registro por página
-            let recordsPerPage = 2;
-
-            //página atual
-            const urlParams = request.query.page;
-            const current = Number (urlParams ? urlParams : 1);
-
-            //calculo de registro inicio da página
-            let start = (recordsPerPage * current) - recordsPerPage;
-
-            //query que retorna os dados do banco de dados com o total de linhas
-            const gamePagination = await paginationGameService.execute(start, recordsPerPage);
-
-            //quantidade de registros
-            const totalRows = gamePagination[1];
-
-            
-            //quantidade de paginas 
-            let numberOfPages = Math.ceil(Number(totalRows) / recordsPerPage);
+            const games = await getGameService.execute()
 
             //dados de contato no rodapé
             let randomUser =  Math.floor(Math.random() * (user.length - 0));
@@ -50,10 +29,7 @@ class GameController {
                 contactUsers = user;
             }
             
-
-            const status = gamePagination[0];
-            
-            return response.json({ contactUsers, dataGamesLimit: status, numberOfPages, current });
+            return response.json({ contactUsers, games });
 
         }catch(err){
             return response.status(404).send(err.message);

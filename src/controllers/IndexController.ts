@@ -48,7 +48,7 @@ class IndexController {
             let contactUsers= [];
 
             if(typeof users === "object"){
-                contactUsers.push(users[randomUser]);
+                contactUsers = users[randomUser];
             }else {
                 contactUsers = users;
             }

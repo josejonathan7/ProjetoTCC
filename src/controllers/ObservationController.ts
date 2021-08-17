@@ -17,7 +17,7 @@ class ObservationController {
             
             await createObservationService.execute({ name, information });
 
-            return response.json("ok");
+            return response.status(201).json("ok");
          
         }catch(err){
             return response.status(400).send(err.message);

@@ -2,7 +2,6 @@ import { CreateAnimeService } from "../services/Create/CreateAnimeService";
 import { json, Request, Response } from 'express';
 import { UpdateAnimeService } from "../services/Update/UpdateAnimeService";
 import { SearchAnimeService } from "../services/Search/SearchAnimeService";
-import { PaginationAnimeService } from "../services/Get/QueryForPagination/PaginationAnimeService";
 import { DeleteAnimeService } from "../services/Delete/DeleteAnimeService";
 import { UserController } from "./UserController";
 import { GetAnimeService } from "../services/Get/GetAnimeService";
@@ -20,7 +19,7 @@ class AnimeController {
 
             await creatAnimeService.execute({ name , link, image });
 
-            return response.json("ok");
+            return response.status(201).json("ok");
             
         }catch(err){
             return response.status(400).send(err.message);
@@ -63,40 +62,18 @@ class AnimeController {
     }
     
     async handlePagination(request: Request, response: Response){
-        const paginationAnimeService = new PaginationAnimeService();
+        const getAnimeService = new GetAnimeService();
         const userController = new UserController();
 
         try{
     
             const user = await userController.handleGet();
-
-            //código para trabalhar com a páginação da página
-
-            //quantidade de registro por página
-            let recordsPerPage = 2;
-
-            //página atual
-            const urlParams = request.query.page;
-            const current = Number (urlParams ? urlParams : 1);
-
-            //calculo de registro inicio da página
-            let start = (recordsPerPage * current) - recordsPerPage;
-
-            //query que retorna os dados do banco de dados com o total de linhas
-            const animePagination = await paginationAnimeService.execute(start, recordsPerPage);
-            
-
-            //quantidade de registros
-            const totalRows = animePagination[1];
-
-            
-            //quantidade de paginas 
-            let numberOfPages = Math.ceil(Number(totalRows) / recordsPerPage);
+            const animes = await getAnimeService.execute();
 
 
             //dados de contato no rodapé
             let randomUser =  Math.floor(Math.random() * (user.length - 0));
-            let contactUsers: string | [];
+            let contactUsers= [];
 
             if(typeof user === "object"){
                 contactUsers = user[randomUser];
@@ -104,9 +81,8 @@ class AnimeController {
                 contactUsers = user;
             }
 
-            const status = animePagination[0];
 
-            return response.json({ contactUsers, dataAnimesLimit: status, numberOfPages, current });
+            return response.json({ contactUsers, animes });
 
         }catch(err){
             return response.status(404).send(err.message);

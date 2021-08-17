@@ -20,7 +20,7 @@ class UserController {
 
             await creatUserService.execute({ name, email_contact_link, password, avatar, description });
 
-            return response.json("ok");
+            return response.status(201).json("ok");
 
         }catch(err){
             return response.status(400).send(err.message);

@@ -18,7 +18,7 @@ class SongController {
             
             await creatSongService.execute({ name, link});
 
-            return response.json("ok");
+            return response.status(201).json("ok");
 
         }catch(err){
             return response.status(400).send(err.message);
@@ -61,7 +61,6 @@ class SongController {
             }else {
                 contactUsers = user;
             }
-
 
             return response.json({ song, contactUsers });
 

@@ -18,7 +18,7 @@ class SiteController {
 
             await creatSiteService.execute({ name, link, category});
 
-            return response.json("ok");
+            return response.status(201).json("ok");
 
         }catch(err){
             return response.status(400).send(err.message);
