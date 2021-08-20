@@ -23,7 +23,8 @@ export class AnimesTable1626193904129 implements MigrationInterface {
                     },
                     {
                         name: "image",
-                        type: "varchar"
+                        type: "varchar",
+                        isNullable: true
                     }
                 ]
             })

@@ -8,7 +8,6 @@ import { UpdateUserService } from "../services/Update/UpdateUserService";
 class UserController {
 
     async handleCreate(request: Request, response: Response){
-        const data = request.body
         const name = request.body["create-login"];
         let email_contact_link = request.body.email;
         const password = request.body["create-password"];
@@ -36,12 +35,13 @@ class UserController {
         const email_contact_link: string = request.body["email-contact-link"];
         const avatar: string = request.body.avatar;
         const description: string = request.body["user-description"];
+        const admin = request.body.admin;
 
         const updateUserService = new UpdateUserService();
 
         try{ 
             
-            await updateUserService.execute({ id, name, avatar, description, email_contact_link });
+            await updateUserService.execute({ id, name, avatar, description, email_contact_link, admin });
             
             return response.json("ok");
 

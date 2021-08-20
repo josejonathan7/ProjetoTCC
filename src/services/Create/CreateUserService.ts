@@ -26,9 +26,7 @@ class CreateUserService {
         const user = userRepositorie.create({
             name,
             password: passwordHash,
-            avatar: "null",
             email_contact_link,
-            description: "null"
         });
 
         await userRepositorie.save(user);

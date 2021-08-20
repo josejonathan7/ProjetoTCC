@@ -1,6 +1,6 @@
 {
   "name": "projetotcc",
-  "version": "2.9.0",
+  "version": "2.9.2",
   "engines": {
     "node": "14.x",
     "npm": "7.x"

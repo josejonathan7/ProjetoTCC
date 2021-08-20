@@ -22,7 +22,8 @@ export class GamesTable1626193944173 implements MigrationInterface {
                     },
                     {
                         name: "image",
-                        type: "varchar"
+                        type: "varchar",
+                        isNullable: true
                     }
                 ]
             })
