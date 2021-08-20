@@ -81,6 +81,8 @@ class IndexController {
                 gamesSite = ["falha na tipagem"];
             }
 
+
+            
             const status = randomAnime && randomGame && sites && users ? response.json({ randomAnime,
                 randomGame,
                 contactUsers,

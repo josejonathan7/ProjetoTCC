@@ -8,17 +8,20 @@ import { UpdateUserService } from "../services/Update/UpdateUserService";
 class UserController {
 
     async handleCreate(request: Request, response: Response){
-        const name: string = request.body["user-name"];
-        const email_contact_link: string = request.body["email-contact-link"];
-        const password: string = request.body["user-password"];
-        const avatar: string = request.body.avatar;
-        const description: string = request.body["user-description"];
+        const data = request.body
+        const name = request.body["create-login"];
+        let email_contact_link = request.body.email;
+        const password = request.body["create-password"];
+     
+        if(email_contact_link === ""){
+            email_contact_link = "null";
+        }
 
         const creatUserService = new CreateUserService();
 
         try {
 
-            await creatUserService.execute({ name, email_contact_link, password, avatar, description });
+            await creatUserService.execute({ name, email_contact_link, password });
 
             return response.status(201).json("ok");
 

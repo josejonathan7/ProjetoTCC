@@ -1,11 +1,11 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { AuthenticateUserService } from "../services/AuthenticateUserService";
 import { SearchUserService } from '../services/Search/SearchUserService';
 
 class AuthenticateUserController {
 
-    async handleAuthenticate(request: Request, response: Response){
-        const name: string = request.body["user-name"];
+    async handleAuthenticate(request: Request, response: Response, next: NextFunction){
+        const name: string = request.body["user-login"];
         const password: string = request.body["user-password"];
 
         const searchUserService = new SearchUserService();
@@ -20,7 +20,7 @@ class AuthenticateUserController {
 
             const userData = await searchUserService.execute(name);
 
-            return response.json({ token, userData });  
+            next(); 
 
         }catch{
 

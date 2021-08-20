@@ -15,6 +15,8 @@ const indexController = new IndexController()
 const recordsAccessController = new RecordsAccessController()
 const authenticateUserController = new AuthenticateUserController()
 
+getRouter.post("/", authenticateUserController.handleAuthenticate, indexController.handleGet);
+
 getRouter.get("/", indexController.handleGet);
 
 getRouter.get("/animes", animeController.handlePagination);

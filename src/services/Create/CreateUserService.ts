@@ -5,14 +5,12 @@ import { hash } from 'bcrypt';
 interface IUserRequest {
     name: string;
     password: string;
-    avatar: string;
     email_contact_link: string;
-    description: string;
 }
 
 class CreateUserService {
 
-    async execute({ name, email_contact_link, password, avatar, description}: IUserRequest){
+    async execute({ name, email_contact_link, password}: IUserRequest){
         const userRepositorie = getCustomRepository(UsersRepositories);
 
         const userAlreadyExists = await userRepositorie.findOne({
@@ -28,9 +26,9 @@ class CreateUserService {
         const user = userRepositorie.create({
             name,
             password: passwordHash,
-            avatar,
+            avatar: "null",
             email_contact_link,
-            description
+            description: "null"
         });
 
         await userRepositorie.save(user);

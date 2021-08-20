@@ -24,6 +24,9 @@ class UsersEntity {
     @Column()
     description: string;
 
+    @Column()
+    admin: boolean;
+
     @CreateDateColumn()
     created_at: Date;
 

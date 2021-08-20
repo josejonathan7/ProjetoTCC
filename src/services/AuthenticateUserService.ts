@@ -26,7 +26,8 @@ class AuthenticateUserService{
 
         const token = sign({
             name: user.name,
-            email_contact_link: user.email_contact_link
+            email_contact_link: user.email_contact_link,
+            admin: user.admin
         }, "AniJogos" , 
         {
             subject: user.id, 
