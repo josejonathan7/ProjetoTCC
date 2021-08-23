@@ -8,9 +8,12 @@ import { UpdateSiteService } from "../services/Update/UpdateSiteService";
 class SiteController {
 
     async handleCreate(request: Request, response: Response){
-        const name: string = request.body["site-name"];
-        const link: string = request.body["site-link"];
+        let name: string = request.body["site-name"];
+        let link: string = request.body["site-link"];
         const category: string = request.body.category;
+
+        name = name.trim();
+        link = link.trim();
 
         const creatSiteService = new CreateSiteService();
 
@@ -18,7 +21,7 @@ class SiteController {
 
             await creatSiteService.execute({ name, link, category});
 
-            return response.status(201).json("ok");
+            return response.status(201);
 
         }catch(err){
             return response.status(400).send(err.message);
@@ -27,9 +30,12 @@ class SiteController {
 
     async handleUpdate(request: Request, response: Response){
         const id = request.params.id;
-        const name: string = request.body["site-name"];
-        const link: string = request.body["site-link"];
-        const category: string = request.body["site-category"];
+        let name: string = request.body["site-name"];
+        let link: string = request.body["site-link"];
+        const category: string = request.body.category;
+
+        name = name.trim();
+        link = link.trim();
 
         const updateSiteService = new UpdateSiteService();
 
@@ -45,13 +51,31 @@ class SiteController {
     }
 
     async handleSearch(request: Request, response: Response){
-        const name: string = request.body["site-name"];
+        let name: string = request.body["site-name"];
 
+        name = name.trim();
+      
         const searchSiteService = new SearchSiteService();
 
         try{
 
             const site = await searchSiteService.execute(name);
+
+            return response.json({ site });
+
+        }catch(err){
+            return response.status(404).send(err.message);
+        }
+    }
+
+    async handleSearchId(request: Request, response: Response){
+        const id = request.params.id;
+
+        const searchSiteService = new SearchSiteService();
+
+        try{
+
+            const site = await searchSiteService.executeId(id);
 
             return response.json({ site });
 

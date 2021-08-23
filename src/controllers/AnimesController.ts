@@ -9,9 +9,13 @@ import { GetAnimeService } from "../services/Get/GetAnimeService";
 class AnimeController {
     
     async handleCreate(request: Request, response: Response){
-        const name: string = request.body["anime-name"];
-        const link: string = request.body["anime-link"];
-        const image: string = request.body["anime-image"];
+        let name: string = request.body["anime-name"];
+        let link: string = request.body["anime-link"];
+        let image: string = request.body["anime-image"];
+
+        name = name.trim();
+        link = link.trim();
+        image = image.trim();
 
         const creatAnimeService = new CreateAnimeService();
 
@@ -28,11 +32,13 @@ class AnimeController {
     
     async handleUpdate(request: Request, response: Response){
         const id: string = request.params.id;
-        const name: string = request.body["anime-name"];
-        const link: string = request.body["anime-link"];
-        const image: string = request.body["anime-image"];
+        let name: string = request.body["anime-name"];
+        let link: string = request.body["anime-link"];
+        let image: string = request.body["anime-image"];
 
-        
+        name = name.trim();
+        link = link.trim();
+        image = image.trim();
 
         const updateAnimeService = new UpdateAnimeService();
 
@@ -48,7 +54,9 @@ class AnimeController {
     }
     
     async handleSearchName(request: Request, response: Response){
-        const name: string = request.body["anime-name"];
+        let name: string = request.body["anime-name"];
+
+        name = name.trim();
 
         const searchAnimeService = new SearchAnimeService();
 

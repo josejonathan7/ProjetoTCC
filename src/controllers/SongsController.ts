@@ -9,8 +9,11 @@ import { UserController } from "./UserController";
 class SongController {
 
     async handleCreate(request: Request, response: Response){
-        const name: string = request.body["song-name"];
-        const link: string = request.body["song-link"];
+        let name: string = request.body["song-name"];
+        let link: string = request.body["song-link"];
+
+        name = name.trim();
+        link = link.trim();
 
         const creatSongService = new CreateSongService();
 
@@ -27,8 +30,11 @@ class SongController {
 
     async handleUpdate(request: Request, response: Response){
         const id = request.params.id;
-        const name: string = request.body["song-name"];
-        const link: string = request.body["song-link"];
+        let name: string = request.body["song-name"];
+        let link: string = request.body["song-link"];
+
+        name = name.trim();
+        link = link.trim();
 
         const updateSongService = new UpdateSongService();
 
@@ -70,13 +76,30 @@ class SongController {
     }
     
     async handleSearch(request: Request, response: Response){
-        const name: string = request.body["song-name"];
+        let name: string = request.body["song-name"];
 
+        name = name.trim();
+      
         const searchSongService = new SearchSongService();
 
         try{
 
             const song = await searchSongService.execute(name);
+
+            return response.json({ song });
+
+        }catch(err){
+            return response.status(404).send(err.message);
+        }
+    }
+    
+    async handleSearchId(request: Request, response: Response){
+        const id = request.params.id;
+        const searchSongService = new SearchSongService();
+
+        try{
+
+            const song = await searchSongService.executeId(id);
 
             return response.json({ song });
 

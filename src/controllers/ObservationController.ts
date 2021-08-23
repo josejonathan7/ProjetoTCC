@@ -8,8 +8,11 @@ import { UpdateObservationService } from '../services/Update/UpdateObservationSe
 class ObservationController {
 
     async handleCreate(request: Request, response: Response){
-        const name: string = request.body["observation-name"];
-        const information: string = request.body.information;
+        let name: string = request.body["observation-name"];
+        let information: string = request.body.information;
+
+        name = name.trim();
+        information = information.trim();
 
         const createObservationService = new CreateObservationService();
 
@@ -26,8 +29,11 @@ class ObservationController {
     
     async handleUpdate(request: Request, response: Response){
         const id: string = request.params.id;
-        const name: string = request.body["observation-name"];
-        const information: string = request.body.information;
+        let name: string = request.body["observation-name"];
+        let information: string = request.body.information;
+
+        name = name.trim();
+        information = information.trim();
 
         const updateObservationService = new UpdateObservationService();
 
@@ -43,12 +49,29 @@ class ObservationController {
     }
 
     async handleSearch(request: Request, response: Response){
-        const name: string = request.body["observation-name"];
+        let name: string = request.body["observation-name"];
+
+        name = name.trim();
 
         const searchObservationService = new SearchObservationService();
 
         try{
             const observation = await searchObservationService.execute(name);
+
+            return response.json({ observation });
+
+        }catch(err){
+            return response.status(404).send(err.message);
+        }
+    }
+    
+    async handleSearchId(request: Request, response: Response){
+        const id = request.params.id;
+
+        const searchObservationService = new SearchObservationService();
+
+        try{
+            const observation = await searchObservationService.executeId(id);
 
             return response.json({ observation });
 

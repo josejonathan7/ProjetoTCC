@@ -19,6 +19,22 @@ class SearchSiteService {
 
         return status;
     }
+
+    async executeId(id: string){
+        const siteRepositorie = getCustomRepository(SitesRepositories);
+
+        const site = await siteRepositorie.find({
+            id
+        });
+
+        const status = site.length ? classToPlain(site) : undefined;
+
+        if(typeof status === "undefined"){
+            throw new Error (`${ id } não encontrado!`);
+        }
+
+        return status
+    }
 }
 
 export { SearchSiteService }

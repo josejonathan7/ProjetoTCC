@@ -19,6 +19,22 @@ class SearchObservationService {
 
         return status;
     }
+
+    async executeId(id: string){
+        const observationRepositorie = getCustomRepository(ObservationRepositories);
+
+        const observation = await observationRepositorie.find({
+            id
+        });
+
+        const status = observation.length ? classToPlain(observation) : undefined;
+
+        if(typeof status === "undefined"){
+            throw new Error (`${ id } não encontrado!`);
+        }
+
+        return status
+    }
 }
 
 export { SearchObservationService }

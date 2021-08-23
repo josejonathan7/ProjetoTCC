@@ -19,6 +19,22 @@ class SearchUserService {
 
         return status;
     }
+
+    async executeId(id: string){
+        const userRepositorie = getCustomRepository(UsersRepositories);
+
+        const user = await userRepositorie.find({
+            id
+        });
+
+        const status = user.length ? classToPlain(user) : undefined;
+
+        if(typeof status === "undefined"){
+            throw new Error (`${ id } não encontrado!`);
+        }
+
+        return status
+    }
 }
 
 export { SearchUserService }

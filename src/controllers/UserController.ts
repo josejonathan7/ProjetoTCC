@@ -8,13 +8,19 @@ import { UpdateUserService } from "../services/Update/UpdateUserService";
 class UserController {
 
     async handleCreate(request: Request, response: Response){
-        const name = request.body["create-login"];
+        let name = request.body["create-login"];
         let email_contact_link = request.body.email;
-        const password = request.body["create-password"];
+        let password = request.body["create-password"];
         let admin = request.body.admin;
         let description = request.body.description
         let avatar = request.body.avatar;
      
+        name = name.trim();
+        email_contact_link = email_contact_link.trim();
+        avatar = avatar.trim();
+        description = description.trim();
+        password = password.trim();
+
         if(email_contact_link === ""){
             email_contact_link = null;
         }
@@ -48,11 +54,23 @@ class UserController {
     
     async handleUpdate(request: Request, response: Response){
         const id: string = request.params.id;
-        const name: string = request.body["user-name"];
-        const email_contact_link: string = request.body["email-contact-link"];
-        const avatar: string = request.body.avatar;
-        const description: string = request.body["user-description"];
-        const admin = request.body.admin;
+        let name: string = request.body["user-name"];
+        let email_contact_link: string = request.body.email;
+        let avatar: string = request.body.avatar;
+        let description: string = request.body["user-description"];
+        let admin = request.body.admin;
+
+        name = name.trim();
+        email_contact_link = email_contact_link.trim();
+        avatar = avatar.trim();
+        description = description.trim();
+        
+
+        if(admin === "true"){
+            admin = true;
+        }else {
+            admin = false;
+        }
 
         const updateUserService = new UpdateUserService();
 
@@ -68,13 +86,31 @@ class UserController {
     }
     
     async handleSearch(request: Request, response: Response){
-        const name: string = request.body["user-name"];
+        let name: string = request.body["user-name"];
+
+        name = name.trim();
 
         const searchUserService = new SearchUserService();
 
         try{
 
             const user = await searchUserService.execute(name);
+            
+            return response.json({ user });
+            
+        }catch(err){
+            return response.status(404).send(err.message);
+        }
+    }
+
+    async handleSearchId(request: Request, response: Response){
+        const id = request.params.id;
+
+        const searchUserService = new SearchUserService();
+
+        try{
+
+            const user = await searchUserService.executeId(id);
             
             return response.json({ user });
             

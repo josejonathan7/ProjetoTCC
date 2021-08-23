@@ -19,6 +19,22 @@ class SearchSongService {
 
         return status;
     }
+
+    async executeId(id: string){
+        const songRepositorie = getCustomRepository(SongsRepositories);
+
+        const song = await songRepositorie.find({
+            id
+        });
+
+        const status = song.length ? classToPlain(song) : undefined;
+
+        if(typeof status === "undefined"){
+            throw new Error (`${ id } não encontrado!`);
+        }
+
+        return status
+    }
 }
 
 

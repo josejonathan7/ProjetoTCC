@@ -37,9 +37,13 @@ class GameController {
     }
 
     async handleCreate(request: Request, response: Response){
-        const name: string = request.body["game-name"];
-        const link: string = request.body["game-link"];
-        const image: string = request.body["game-image"];
+        let name: string = request.body["game-name"];
+        let link: string = request.body["game-link"];
+        let image: string = request.body["game-image"];
+
+        name = name.trim();
+        link = link.trim();
+        image = image.trim();
 
         const creatGameService = new CreateGameService();
 
@@ -56,9 +60,13 @@ class GameController {
     
     async handleUpdate(request: Request, response: Response){
         const id = request.params.id;
-        const name: string =   request.body["game-name"];
-        const link: string = request.body["game-link"];
-        const image: string = request.body["game-image"];
+        let name: string =   request.body["game-name"];
+        let link: string = request.body["game-link"];
+        let image: string = request.body["game-image"];
+
+        name = name.trim();
+        link = link.trim();
+        image = image.trim();
 
         const updateGameService = new UpdateGameService();
 
@@ -74,7 +82,9 @@ class GameController {
     }
     
     async handleSearch(request: Request, response: Response){
-        const name: string = request.body["game-name"];
+        let name: string = request.body["game-name"];
+
+        name = name.trim();
 
         const searchGameService = new SearchGameService();
 
@@ -85,7 +95,23 @@ class GameController {
             return response.json({ game });
 
         }catch(err){
-            return response.status(404).json({ error: err.message });
+            return response.status(404).send(err.message);
+        }
+    }
+   
+    async handleSearchId(request: Request, response: Response){
+        const id = request.params.id;
+        
+        const searchGameService = new SearchGameService();
+
+        try{
+
+            const game = await searchGameService.executeId(id);
+
+            return response.json({ game });
+
+        }catch(err){
+            return response.status(404).send(err.message);
         }
     }
     
@@ -101,7 +127,7 @@ class GameController {
             return response.json("ok");
         
         }catch(err){
-            return response.status(404).json({ error: err.message });
+            return response.status(404).send(err.message);
         }
     }
 
