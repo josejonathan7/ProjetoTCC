@@ -11,16 +11,33 @@ class UserController {
         const name = request.body["create-login"];
         let email_contact_link = request.body.email;
         const password = request.body["create-password"];
+        let admin = request.body.admin;
+        let description = request.body.description
+        let avatar = request.body.avatar;
      
         if(email_contact_link === ""){
-            email_contact_link = "null";
+            email_contact_link = null;
+        }
+
+        if(avatar === ""){
+            avatar = null;
+        }
+
+        if(description === ""){
+            description= null;
+        }
+
+        if(admin === "true"){
+            admin = true;
+        }else {
+            admin = false;
         }
 
         const creatUserService = new CreateUserService();
 
         try {
 
-            await creatUserService.execute({ name, email_contact_link, password });
+            await creatUserService.execute({ name, email_contact_link, password, avatar, description, admin });
 
             return response.status(201).json("ok");
 

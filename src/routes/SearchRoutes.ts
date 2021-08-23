@@ -15,7 +15,8 @@ const observationController = new ObservationController()
 const siteController = new SiteController()
 
 /*Consultar registro unico*/
-searchRouter.post("/registers/consult/animes", animeController.handleSearch)
+searchRouter.post("/registers/consult/animes", animeController.handleSearchName)
+searchRouter.get("/registers/consult/animes/:id", animeController.handleSearchId)
 
 searchRouter.post("/registers/consult/games", gameController.handleSearch)
 

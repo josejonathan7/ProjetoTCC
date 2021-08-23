@@ -10,7 +10,7 @@ class SiteController {
     async handleCreate(request: Request, response: Response){
         const name: string = request.body["site-name"];
         const link: string = request.body["site-link"];
-        const category: string = request.body["site-category"];
+        const category: string = request.body.category;
 
         const creatSiteService = new CreateSiteService();
 

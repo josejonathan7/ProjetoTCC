@@ -32,6 +32,8 @@ class AnimeController {
         const link: string = request.body["anime-link"];
         const image: string = request.body["anime-image"];
 
+        
+
         const updateAnimeService = new UpdateAnimeService();
 
         try{
@@ -45,7 +47,7 @@ class AnimeController {
         }
     }
     
-    async handleSearch(request: Request, response: Response){
+    async handleSearchName(request: Request, response: Response){
         const name: string = request.body["anime-name"];
 
         const searchAnimeService = new SearchAnimeService();
@@ -53,6 +55,22 @@ class AnimeController {
         try{
 
             const anime = await searchAnimeService.execute(name);
+
+            return response.json({ anime });
+
+        }catch(err){
+            return response.status(404).send(err.message);
+        }
+    }
+
+    async handleSearchId(request: Request, response: Response){
+        const id = request.params.id;
+
+        const searchAnimeService = new SearchAnimeService();
+
+        try{
+
+            const anime = await searchAnimeService.executeId(id);
 
             return response.json({ anime });
 
