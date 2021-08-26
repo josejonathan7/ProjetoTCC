@@ -5,6 +5,7 @@ import { ObservationController } from '../controllers/ObservationController';
 import { SiteController } from '../controllers/SiteController';
 import { SongController } from '../controllers/SongsController';
 import { UserController } from '../controllers/UserController';
+import { ensureAuthenticate } from '../middleware/ensureAuthenticate';
 
 const searchRouter = Router();
 const animeController = new AnimeController();
@@ -32,5 +33,7 @@ searchRouter.get("/registers/consult/users/:id", userController.handleSearchId);
 
 searchRouter.post("/registers/consult/observations", observationController.handleSearch);
 searchRouter.get("/registers/consult/observations/:id", observationController.handleSearchId);
+
+searchRouter.post("/consult/token", ensureAuthenticate)
 
 export  { searchRouter }

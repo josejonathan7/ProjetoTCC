@@ -15,7 +15,7 @@ const indexController = new IndexController()
 const recordsAccessController = new RecordsAccessController()
 const authenticateUserController = new AuthenticateUserController()
 
-getRouter.post("/", authenticateUserController.handleAuthenticate, indexController.handleGet);
+getRouter.post("/login", authenticateUserController.handleAuthenticate);
 
 getRouter.get("/", indexController.handleGet);
 
