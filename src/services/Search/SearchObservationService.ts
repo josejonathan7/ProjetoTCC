@@ -7,6 +7,10 @@ class SearchObservationService {
     async execute(searchName: string){
         const observationRepositorie = getCustomRepository(ObservationRepositories);
 
+        if(searchName === ""){
+            throw new Error ("Informe o nome da observação que desejar pesquisar!");
+        }
+
         const observation = await observationRepositorie.find({
             name: searchName
         });
@@ -22,6 +26,10 @@ class SearchObservationService {
 
     async executeId(id: string){
         const observationRepositorie = getCustomRepository(ObservationRepositories);
+
+        if(id === ""){
+            throw new Error ("Informe o ID do registro que desejar pesquisar!");
+        }
 
         const observation = await observationRepositorie.find({
             id

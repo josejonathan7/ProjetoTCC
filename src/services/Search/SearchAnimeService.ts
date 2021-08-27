@@ -7,6 +7,10 @@ class SearchAnimeService {
     async execute(searchName: string){
         const animeRepositorie = getCustomRepository(AnimesRepositories);
 
+        if(searchName === ""){
+            throw new Error ("Informe o nome do anime que desejar pesquisar!");
+        }
+
         const anime = await animeRepositorie.find({
             name: searchName
         });
@@ -26,6 +30,10 @@ class SearchAnimeService {
 
     async executeId(id: string){
         const animeRepositorie = getCustomRepository(AnimesRepositories);
+
+        if(id === ""){
+            throw new Error ("Informe o ID do registro que desejar pesquisar!");
+        }
 
         const anime = await animeRepositorie.find({
             id: id

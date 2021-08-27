@@ -47,7 +47,7 @@ var IndexController = /** @class */ (function () {
     }
     IndexController.prototype.handleGet = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var animeController, gameController, siteController, observationController, userController, randomAnime, randomGame, sites, users, observation, pageObjective, randomUser, contactUsers, animesSite, gamesSite, countAnime, countGame, i, status_1, err_1;
+            var animeController, gameController, siteController, observationController, userController, randomAnime, randomGame, sites, users, observation, pageObjective, randomUser, contactUsers, animesSite, gamesSite, countAnime, countGame, i, status, err_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -68,7 +68,7 @@ var IndexController = /** @class */ (function () {
                         return [4 /*yield*/, siteController.handleGet()];
                     case 4:
                         sites = _a.sent();
-                        return [4 /*yield*/, userController.handleGet()];
+                        return [4 /*yield*/, userController.handleGetAdmin()];
                     case 5:
                         users = _a.sent();
                         return [4 /*yield*/, observationController.handleGet()];
@@ -91,7 +91,7 @@ var IndexController = /** @class */ (function () {
                         randomUser = Math.floor(Math.random() * (users.length - 0));
                         contactUsers = [];
                         if (typeof users === "object") {
-                            contactUsers.push(users[randomUser]);
+                            contactUsers = users[randomUser];
                         }
                         else {
                             contactUsers = users;
@@ -117,8 +117,8 @@ var IndexController = /** @class */ (function () {
                             animesSite = ["falha na tipagem"];
                             gamesSite = ["falha na tipagem"];
                         }
-                        status_1 = randomAnime && randomGame && sites && users ? response.json({ randomAnime: randomAnime, randomGame: randomGame, contactUsers: contactUsers, pageObjective: pageObjective, animesSite: animesSite, gamesSite: gamesSite }) : response.status(401).send("Requisition Failed!");
-                        return [2 /*return*/, status_1];
+                        status = randomAnime && randomGame && sites && users ? response.status(200).json({ randomAnime: randomAnime, randomGame: randomGame, contactUsers: contactUsers, pageObjective: pageObjective, animesSite: animesSite, gamesSite: gamesSite }) : response.status(401).send("Requisition Failed!");
+                        return [2 /*return*/, status];
                     case 7:
                         err_1 = _a.sent();
                         return [2 /*return*/, response.status(404).send(err_1.message)];

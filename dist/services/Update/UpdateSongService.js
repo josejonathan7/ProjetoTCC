@@ -50,6 +50,12 @@ var UpdateSongService = /** @class */ (function () {
                 switch (_b.label) {
                     case 0:
                         songRepositorie = typeorm_1.getCustomRepository(SongsRepositores_1.SongsRepositories);
+                        if (id === "") {
+                            throw new Error("Informe o ID do registro que desejar deletar!");
+                        }
+                        if (name === "" || link === "") {
+                            throw new Error("Preencha todos os campos");
+                        }
                         return [4 /*yield*/, songRepositorie.update(id, {
                                 name: name,
                                 link: link

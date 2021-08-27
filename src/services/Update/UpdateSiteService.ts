@@ -13,6 +13,18 @@ class UpdateSiteService {
     async execute({ id, name, link, category }: ISiteRequest){
         const siteRepositorie = getCustomRepository(SitesRepositories);
 
+        if(id === ""){
+            throw new Error ("Informe o ID do registro que desejar deletar!");
+        }
+        
+        if(name === "" || link === ""){
+            throw new Error ("Preencha todos os campos");
+        }
+        
+        if(category === "" || category !== "anime" && category !== "game"){
+            throw new Error ("Preencha a categoria corretamente!!");
+        }
+
         const site = await siteRepositorie.update(id, {
             name: name,
             link: link,

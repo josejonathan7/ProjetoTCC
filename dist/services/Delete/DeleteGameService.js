@@ -49,6 +49,9 @@ var DeleteGameService = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         gameRepositorie = typeorm_1.getCustomRepository(GamesRepositories_1.GamesRepositories);
+                        if (id === "") {
+                            throw new Error("Informe o ID do registro que desejar deletar!");
+                        }
                         return [4 /*yield*/, gameRepositorie.delete({
                                 id: id
                             })];

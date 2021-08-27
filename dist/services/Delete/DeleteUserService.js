@@ -49,6 +49,9 @@ var DeleteUserService = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         userRepositorie = typeorm_1.getCustomRepository(UsersRepositories_1.UsersRepositories);
+                        if (id === "") {
+                            throw new Error("Informe o ID do registro que desejar deletar!");
+                        }
                         return [4 /*yield*/, userRepositorie.delete({
                                 id: id
                             })];

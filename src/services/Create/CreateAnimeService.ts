@@ -12,6 +12,10 @@ class CreateAnimeService {
     async execute({ name, link, image }: IAnimesRequest ){
         const animesRepositorie = getCustomRepository(AnimesRepositories);
 
+        if(name === "" || link === "" || image === ""){
+            throw new Error ("Preencha todos os campos");
+        }
+
         const animes = animesRepositorie.create({
             name,
             image,

@@ -50,6 +50,12 @@ var UpdateAnimeService = /** @class */ (function () {
                 switch (_b.label) {
                     case 0:
                         animeRepositorie = typeorm_1.getCustomRepository(AnimesRepositories_1.AnimesRepositories);
+                        if (id === "") {
+                            throw new Error("Informe o ID do registro que desejar deletar!");
+                        }
+                        if (name === "" || link === "" || image === "") {
+                            throw new Error("Preencha todos os campos");
+                        }
                         return [4 /*yield*/, animeRepositorie.update(id, {
                                 name: name,
                                 link: link,

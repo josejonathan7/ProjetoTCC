@@ -50,6 +50,9 @@ var SearchAnimeService = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         animeRepositorie = typeorm_1.getCustomRepository(AnimesRepositories_1.AnimesRepositories);
+                        if (searchName === "") {
+                            throw new Error("Informe o nome do anime que desejar pesquisar!");
+                        }
                         return [4 /*yield*/, animeRepositorie.find({
                                 name: searchName
                             })];
@@ -58,6 +61,33 @@ var SearchAnimeService = /** @class */ (function () {
                         status = anime.length ? class_transformer_1.classToPlain(anime) : undefined;
                         if (typeof status === "undefined") {
                             throw new Error(searchName + " n\u00E3o encontrado!");
+                        }
+                        delete status[0].name;
+                        delete status[0].link;
+                        delete status[0].image;
+                        return [2 /*return*/, status];
+                }
+            });
+        });
+    };
+    SearchAnimeService.prototype.executeId = function (id) {
+        return __awaiter(this, void 0, void 0, function () {
+            var animeRepositorie, anime, status;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        animeRepositorie = typeorm_1.getCustomRepository(AnimesRepositories_1.AnimesRepositories);
+                        if (id === "") {
+                            throw new Error("Informe o ID do registro que desejar pesquisar!");
+                        }
+                        return [4 /*yield*/, animeRepositorie.find({
+                                id: id
+                            })];
+                    case 1:
+                        anime = _a.sent();
+                        status = anime.length ? class_transformer_1.classToPlain(anime) : undefined;
+                        if (typeof status === "undefined") {
+                            throw new Error(id + " n\u00E3o encontrado!");
                         }
                         return [2 /*return*/, status];
                 }

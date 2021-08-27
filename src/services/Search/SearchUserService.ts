@@ -7,6 +7,10 @@ class SearchUserService {
     async execute(searchName: string){
         const userRepositorie = getCustomRepository(UsersRepositories);
 
+        if(searchName === ""){
+            throw new Error ("Informe o nome do usuário que desejar pesquisar!");
+        }
+
         const user = await userRepositorie.find({
             name: searchName
         });
@@ -22,6 +26,10 @@ class SearchUserService {
 
     async executeId(id: string){
         const userRepositorie = getCustomRepository(UsersRepositories);
+
+        if(id === ""){
+            throw new Error ("Informe o ID do registro que desejar pesquisar!");
+        }
 
         const user = await userRepositorie.find({
             id

@@ -26,8 +26,6 @@ getRouter.get("/songs", songController.handleGet);
 
 getRouter.get("/registers", recordsAccessController.accesFormNew)
 
-getRouter.get("/registers/update", recordsAccessController.accesFormUpdate)
-
 getRouter.post("/registers", authenticateUserController.handleAuthenticate)
 
 export { getRouter };

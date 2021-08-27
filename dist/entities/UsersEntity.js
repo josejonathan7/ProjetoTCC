@@ -45,6 +45,10 @@ var UsersEntity = /** @class */ (function () {
         __metadata("design:type", String)
     ], UsersEntity.prototype, "description", void 0);
     __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", Boolean)
+    ], UsersEntity.prototype, "admin", void 0);
+    __decorate([
         typeorm_1.CreateDateColumn(),
         __metadata("design:type", Date)
     ], UsersEntity.prototype, "created_at", void 0);

@@ -6,6 +6,10 @@ class DeleteGameService{
     async execute(id: string){
         const gameRepositorie = getCustomRepository(GamesRepositories);
 
+        if(id === ""){
+            throw new Error ("Informe o ID do registro que desejar deletar!");
+        }
+
         const game = await gameRepositorie.delete({
             id
         });

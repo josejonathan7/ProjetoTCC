@@ -50,6 +50,9 @@ var SearchObservationService = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         observationRepositorie = typeorm_1.getCustomRepository(ObservationRepositories_1.ObservationRepositories);
+                        if (searchName === "") {
+                            throw new Error("Informe o nome da observação que desejar pesquisar!");
+                        }
                         return [4 /*yield*/, observationRepositorie.find({
                                 name: searchName
                             })];
@@ -58,6 +61,30 @@ var SearchObservationService = /** @class */ (function () {
                         status = observation.length ? class_transformer_1.classToPlain(observation) : undefined;
                         if (typeof status === "undefined") {
                             throw new Error(searchName + " n\u00E3o encontrado!");
+                        }
+                        return [2 /*return*/, status];
+                }
+            });
+        });
+    };
+    SearchObservationService.prototype.executeId = function (id) {
+        return __awaiter(this, void 0, void 0, function () {
+            var observationRepositorie, observation, status;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        observationRepositorie = typeorm_1.getCustomRepository(ObservationRepositories_1.ObservationRepositories);
+                        if (id === "") {
+                            throw new Error("Informe o ID do registro que desejar pesquisar!");
+                        }
+                        return [4 /*yield*/, observationRepositorie.find({
+                                id: id
+                            })];
+                    case 1:
+                        observation = _a.sent();
+                        status = observation.length ? class_transformer_1.classToPlain(observation) : undefined;
+                        if (typeof status === "undefined") {
+                            throw new Error(id + " n\u00E3o encontrado!");
                         }
                         return [2 /*return*/, status];
                 }

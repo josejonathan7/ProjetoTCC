@@ -4,7 +4,6 @@ import { UpdateGameService } from "../services/Update/UpdateGameService";
 import { SearchGameService } from "../services/Search/SearchGameService";
 import { DeleteGameService } from "../services/Delete/DeleteGameService";
 import { UserController } from "./UserController";
-import { PaginationGameService } from "../services/Get/QueryForPagination/PaginationGameService";
 import { GetGameService } from "../services/Get/GetGameService";
 
 
@@ -29,7 +28,7 @@ class GameController {
                 contactUsers = user;
             }
             
-            return response.json({ contactUsers, games });
+            return response.status(200).json({ contactUsers, games });
 
         }catch(err){
             return response.status(404).send(err.message);
@@ -51,7 +50,7 @@ class GameController {
 
             await creatGameService.execute({ name, link, image });
 
-           return response.json("ok");
+           return response.status(200).json("ok");
             
         } catch (err) {
             return response.status(400).send(err.message);
@@ -59,7 +58,7 @@ class GameController {
     }
     
     async handleUpdate(request: Request, response: Response){
-        const id = request.params.id;
+        const id: string = request.params.id;
         let name: string =   request.body["game-name"];
         let link: string = request.body["game-link"];
         let image: string = request.body["game-image"];
@@ -74,7 +73,7 @@ class GameController {
 
             await updateGameService.execute({ id, name, link, image });
             
-            return response.json("ok");
+            return response.status(200).json("ok");
 
         }catch(err){
             return response.status(400).send(err.message);
@@ -92,7 +91,7 @@ class GameController {
 
             const game = await searchGameService.execute(name);
 
-            return response.json({ game });
+            return response.status(200).json({ game });
 
         }catch(err){
             return response.status(404).send(err.message);
@@ -100,7 +99,7 @@ class GameController {
     }
    
     async handleSearchId(request: Request, response: Response){
-        const id = request.params.id;
+        const id: string = request.params.id;
         
         const searchGameService = new SearchGameService();
 
@@ -108,7 +107,7 @@ class GameController {
 
             const game = await searchGameService.executeId(id);
 
-            return response.json({ game });
+            return response.status(200).json({ game });
 
         }catch(err){
             return response.status(404).send(err.message);
@@ -116,7 +115,7 @@ class GameController {
     }
     
     async handleDelete(request: Request, response: Response){
-        const id = request.params.id;
+        const id: string = request.params.id;
 
         const deleteGameService = new DeleteGameService();
 
@@ -124,7 +123,7 @@ class GameController {
             
             await deleteGameService.execute(id);
 
-            return response.json("ok");
+            return response.status(200).json("ok");
         
         }catch(err){
             return response.status(404).send(err.message);

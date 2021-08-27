@@ -50,6 +50,9 @@ var CreateSongService = /** @class */ (function () {
                 switch (_b.label) {
                     case 0:
                         songRepositorie = typeorm_1.getCustomRepository(SongsRepositores_1.SongsRepositories);
+                        if (name === "" || link === "") {
+                            throw new Error("Preencha todos os campos");
+                        }
                         song = songRepositorie.create({
                             name: name,
                             link: link

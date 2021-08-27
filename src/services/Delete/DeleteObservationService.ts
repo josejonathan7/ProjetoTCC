@@ -6,6 +6,10 @@ class DeleteObservationService {
     async execute(id: string){
         const observationRepositorie = getCustomRepository(ObservationRepositories);
 
+        if(id === ""){
+            throw new Error ("Informe o ID do registro que desejar deletar!");
+        }
+
         const observation = await observationRepositorie.delete({
             id
         });

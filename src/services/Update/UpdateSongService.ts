@@ -12,6 +12,14 @@ class UpdateSongService {
     async execute({ id, link, name}: ISongRequest){
         const songRepositorie = getCustomRepository(SongsRepositories);
 
+        if(id === ""){
+            throw new Error ("Informe o ID do registro que desejar deletar!");
+        }
+        
+        if(name === "" || link === ""){
+            throw new Error ("Preencha todos os campos");
+        }
+
         const song = await songRepositorie.update(id, {
             name: name,
             link: link

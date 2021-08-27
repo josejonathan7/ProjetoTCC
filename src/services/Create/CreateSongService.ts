@@ -10,6 +10,10 @@ class CreateSongService {
 
     async execute({ name, link }: ISongsRequest){
         const songRepositorie = getCustomRepository(SongsRepositories);
+  
+        if(name === "" || link === ""){
+            throw new Error ("Preencha todos os campos");
+        }
 
         const song = songRepositorie.create({
             name,

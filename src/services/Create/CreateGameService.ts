@@ -11,6 +11,11 @@ class CreateGameService {
 
     async execute({ name, link, image }: IGamesRequest){
         const gamesRepositorie = getCustomRepository(GamesRepositories);
+ 
+        if(name === "" || link === "" || image === ""){
+            throw new Error ("Preencha todos os campos");
+        }
+
 
         const game = gamesRepositorie.create({
             name,

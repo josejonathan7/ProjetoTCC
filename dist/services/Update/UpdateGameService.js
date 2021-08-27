@@ -50,6 +50,12 @@ var UpdateGameService = /** @class */ (function () {
                 switch (_b.label) {
                     case 0:
                         gameRepositorie = typeorm_1.getCustomRepository(GamesRepositories_1.GamesRepositories);
+                        if (id === "") {
+                            throw new Error("Informe o ID do registro que desejar deletar!");
+                        }
+                        if (name === "" || link === "" || image === "") {
+                            throw new Error("Preencha todos os campos");
+                        }
                         return [4 /*yield*/, gameRepositorie.update(id, {
                                 name: name,
                                 link: link,

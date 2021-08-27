@@ -63,7 +63,8 @@ var GamesTable1626193944173 = /** @class */ (function () {
                                 },
                                 {
                                     name: "image",
-                                    type: "varchar"
+                                    type: "varchar",
+                                    isNullable: true
                                 }
                             ]
                         }))];

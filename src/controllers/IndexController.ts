@@ -83,7 +83,7 @@ class IndexController {
 
 
             
-            const status = randomAnime && randomGame && sites && users ? response.json({ randomAnime,
+            const status = randomAnime && randomGame && sites && users ? response.status(200).json({ randomAnime,
                 randomGame,
                 contactUsers,
                 pageObjective,

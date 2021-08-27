@@ -1,5 +1,5 @@
 import { CreateAnimeService } from "../services/Create/CreateAnimeService";
-import { json, Request, Response } from 'express';
+import { Request, Response } from 'express';
 import { UpdateAnimeService } from "../services/Update/UpdateAnimeService";
 import { SearchAnimeService } from "../services/Search/SearchAnimeService";
 import { DeleteAnimeService } from "../services/Delete/DeleteAnimeService";
@@ -46,7 +46,7 @@ class AnimeController {
 
             await updateAnimeService.execute({ id, name, link, image });
 
-            return response.json("ok");
+            return response.status(200).json("ok");
 
         }catch(err){
             return response.status(400).send(err.message);
@@ -64,7 +64,7 @@ class AnimeController {
 
             const anime = await searchAnimeService.execute(name);
 
-            return response.json({ anime });
+            return response.status(200).json({ anime });
 
         }catch(err){
             return response.status(404).send(err.message);
@@ -72,7 +72,7 @@ class AnimeController {
     }
 
     async handleSearchId(request: Request, response: Response){
-        const id = request.params.id;
+        const id: string = request.params.id;
 
         const searchAnimeService = new SearchAnimeService();
 
@@ -80,7 +80,7 @@ class AnimeController {
 
             const anime = await searchAnimeService.executeId(id);
 
-            return response.json({ anime });
+            return response.status(200).json({ anime });
 
         }catch(err){
             return response.status(404).send(err.message);
@@ -108,7 +108,7 @@ class AnimeController {
             }
 
 
-            return response.json({ contactUsers, animes });
+            return response.status(200).json({ contactUsers, animes });
 
         }catch(err){
             return response.status(404).send(err.message);
@@ -116,7 +116,7 @@ class AnimeController {
     }
 
     async handleDelete(request: Request, response: Response){
-        const id = request.params.id;
+        const id: string = request.params.id;
 
         const deleteAnimeService = new DeleteAnimeService();
 
@@ -124,7 +124,7 @@ class AnimeController {
 
             await deleteAnimeService.execute(id);
 
-            return response.json("ok");
+            return response.status(200).json("ok");
         
         }catch(err){
             return response.status(404).send(err.message);

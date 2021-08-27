@@ -13,6 +13,14 @@ class UpdateGameService {
     async execute({ id, name, link, image }: IGameRequest){
         const gameRepositorie = getCustomRepository(GamesRepositories);
 
+        if(id === ""){
+            throw new Error ("Informe o ID do registro que desejar deletar!");
+        }
+        
+        if(name === "" || link === "" || image === ""){
+            throw new Error ("Preencha todos os campos");
+        }
+
         const game = await gameRepositorie.update(id, {
             name: name,
             link: link,

@@ -15,34 +15,38 @@ class UserController {
         let admin = request.body.admin;
         let description = request.body.description
         let avatar = request.body.avatar;
-     
-        name = name.trim();
-        email_contact_link = email_contact_link.trim();
-        avatar = avatar.trim();
-        description = description.trim();
-        password = password.trim();
-
-        if(email_contact_link === ""){
-            email_contact_link = null;
-        }
-
-        if(avatar === ""){
-            avatar = null;
-        }
-
-        if(description === ""){
-            description= null;
-        }
-
-        if(admin === "true"){
-            admin = true;
-        }else {
-            admin = false;
-        }
+      
 
         const creatUserService = new CreateUserService();
 
         try {
+
+            name = name.trim();
+            password = password.trim();
+    
+            if(email_contact_link === "" || typeof email_contact_link === "undefined"){
+                email_contact_link = null;
+            }else{
+                email_contact_link = email_contact_link.trim();
+            }
+    
+            if(avatar === "" || typeof avatar === "undefined"){
+                avatar = null;
+            }else{
+                avatar = avatar.trim();
+            }
+    
+            if(description === "" || typeof description === "undefined"){
+                description= null;
+            }else{
+                description = description.trim();
+            }
+    
+            if(admin === "true"){
+                admin = true;
+            }else {
+                admin = false;
+            }
 
             await creatUserService.execute({ name, email_contact_link, password, avatar, description, admin });
 
@@ -57,20 +61,22 @@ class UserController {
         let name = request.body["create-login"];
         let email_contact_link = request.body.email;
         let password = request.body["create-password"];
-     
-        name = name.trim();
-        email_contact_link = email_contact_link.trim();
-        password = password.trim();
-
-        if(email_contact_link === ""){
-            email_contact_link = null;
-        }
 
         const creatUserService = new CreateUserService();
         const authenticateUserService = new AuthenticateUserService();
         const searchUserService = new SearchUserService();
 
         try {
+
+            name = name.trim();
+            password = password.trim();
+
+           
+            if(email_contact_link === "" || typeof email_contact_link === "undefined"){
+                email_contact_link = null;
+            }else{
+                email_contact_link = email_contact_link.trim();
+            }
 
             await creatUserService.executeCommonUser({ name, email_contact_link, password });
 
@@ -91,18 +97,13 @@ class UserController {
     async handleUpdate(request: Request, response: Response){
         const id: string = request.params.id;
         let name: string = request.body["user-name"];
-        let email_contact_link: string = request.body.email;
-        let avatar: string = request.body.avatar;
-        let description: string = request.body["user-description"];
+        let email_contact_link = request.body.email;
+        let avatar = request.body.avatar;
+        let description = request.body["user-description"];
         let admin = request.body.admin;
 
-        name = name.trim();
-        email_contact_link = email_contact_link.trim();
-        avatar = avatar.trim();
-        description = description.trim();
-        
-
-        if(admin === "true"){
+    
+        if(admin.trim() === "true"){
             admin = true;
         }else {
             admin = false;
@@ -111,10 +112,32 @@ class UserController {
         const updateUserService = new UpdateUserService();
 
         try{ 
+
+            name = name.trim();
+            
+            if(email_contact_link === "" || typeof email_contact_link === "undefined"){
+                email_contact_link = null;
+            }else{
+                email_contact_link = email_contact_link.trim();
+            }
+
+            
+            if(avatar === "" || typeof avatar === "undefined"){
+                avatar = null;
+            }else{
+                avatar = avatar.trim();
+            }
+    
+            if(description === "" || typeof description === "undefined"){
+                description= null;
+            }else{
+                description = description.trim();
+            }
+    
             
             await updateUserService.execute({ id, name, avatar, description, email_contact_link, admin });
             
-            return response.json("ok");
+            return response.status(200).json("ok");
 
         }catch(err){
             return response.status(400).send(err.message);
@@ -132,7 +155,7 @@ class UserController {
 
             const user = await searchUserService.execute(name);
             
-            return response.json({ user });
+            return response.status(200).json({ user });
             
         }catch(err){
             return response.status(404).send(err.message);
@@ -140,7 +163,7 @@ class UserController {
     }
 
     async handleSearchId(request: Request, response: Response){
-        const id = request.params.id;
+        const id: string = request.params.id;
 
         const searchUserService = new SearchUserService();
 
@@ -148,7 +171,7 @@ class UserController {
 
             const user = await searchUserService.executeId(id);
             
-            return response.json({ user });
+            return response.status(200).json({ user });
             
         }catch(err){
             return response.status(404).send(err.message);
@@ -192,7 +215,7 @@ class UserController {
         try{
             await deleteUserService.execute(id);
             
-            return response.json("ok");
+            return response.status(200).json("ok");
 
         }catch(err){
             return response.status(404).send(err.message);

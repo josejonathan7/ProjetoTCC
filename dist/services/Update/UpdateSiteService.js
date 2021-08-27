@@ -50,6 +50,15 @@ var UpdateSiteService = /** @class */ (function () {
                 switch (_b.label) {
                     case 0:
                         siteRepositorie = typeorm_1.getCustomRepository(SitesRepositories_1.SitesRepositories);
+                        if (id === "") {
+                            throw new Error("Informe o ID do registro que desejar deletar!");
+                        }
+                        if (name === "" || link === "") {
+                            throw new Error("Preencha todos os campos");
+                        }
+                        if (category === "" || category !== "anime" && category !== "game") {
+                            throw new Error("Preencha a categoria corretamente!!");
+                        }
                         return [4 /*yield*/, siteRepositorie.update(id, {
                                 name: name,
                                 link: link,

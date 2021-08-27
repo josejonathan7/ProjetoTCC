@@ -52,21 +52,28 @@ var AuthenticateUserService = /** @class */ (function () {
                 switch (_b.label) {
                     case 0:
                         userRepositorie = typeorm_1.getCustomRepository(UsersRepositories_1.UsersRepositories);
+                        if (name === "") {
+                            throw new Error("Preencha o campo Nome!");
+                        }
+                        if (password === "") {
+                            throw new Error("Preencha o campo senha!");
+                        }
                         return [4 /*yield*/, userRepositorie.findOne({ name: name })];
                     case 1:
                         user = _b.sent();
                         if (!user) {
-                            throw new Error("Email/Password incorrect");
+                            throw new Error("Email/Senha incorreto");
                         }
                         return [4 /*yield*/, bcrypt_1.compare(password, user.password)];
                     case 2:
                         passwordMatch = _b.sent();
                         if (!passwordMatch) {
-                            throw new Error("Email/Password incorrect");
+                            throw new Error("Email/Password incorreto");
                         }
                         token = jsonwebtoken_1.sign({
                             name: user.name,
-                            email_contact_link: user.email_contact_link
+                            email_contact_link: user.email_contact_link,
+                            admin: user.admin
                         }, "AniJogos", {
                             subject: user.id,
                             expiresIn: "1h"

@@ -64,7 +64,8 @@ var AnimesTable1626193904129 = /** @class */ (function () {
                                 },
                                 {
                                     name: "image",
-                                    type: "varchar"
+                                    type: "varchar",
+                                    isNullable: true
                                 }
                             ]
                         }))];

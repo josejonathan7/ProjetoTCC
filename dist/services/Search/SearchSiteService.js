@@ -50,6 +50,9 @@ var SearchSiteService = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         siteRepositorie = typeorm_1.getCustomRepository(SitesRepositories_1.SitesRepositories);
+                        if (searchName === "") {
+                            throw new Error("Informe o nome do site que desejar pesquisar!");
+                        }
                         return [4 /*yield*/, siteRepositorie.find({
                                 name: searchName
                             })];
@@ -58,6 +61,30 @@ var SearchSiteService = /** @class */ (function () {
                         status = site.length ? class_transformer_1.classToPlain(site) : undefined;
                         if (typeof status === "undefined") {
                             throw new Error(searchName + " n\u00E3o encontrado!");
+                        }
+                        return [2 /*return*/, status];
+                }
+            });
+        });
+    };
+    SearchSiteService.prototype.executeId = function (id) {
+        return __awaiter(this, void 0, void 0, function () {
+            var siteRepositorie, site, status;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        siteRepositorie = typeorm_1.getCustomRepository(SitesRepositories_1.SitesRepositories);
+                        if (id === "") {
+                            throw new Error("Informe o ID do registro que desejar pesquisar!");
+                        }
+                        return [4 /*yield*/, siteRepositorie.find({
+                                id: id
+                            })];
+                    case 1:
+                        site = _a.sent();
+                        status = site.length ? class_transformer_1.classToPlain(site) : undefined;
+                        if (typeof status === "undefined") {
+                            throw new Error(id + " n\u00E3o encontrado!");
                         }
                         return [2 /*return*/, status];
                 }

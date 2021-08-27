@@ -7,6 +7,10 @@ class SearchSiteService {
     async execute(searchName: string){
         const siteRepositorie = getCustomRepository(SitesRepositories);
 
+        if(searchName === ""){
+            throw new Error ("Informe o nome do site que desejar pesquisar!");
+        }
+
         const site = await siteRepositorie.find({
             name: searchName
         });
@@ -22,6 +26,10 @@ class SearchSiteService {
 
     async executeId(id: string){
         const siteRepositorie = getCustomRepository(SitesRepositories);
+
+        if(id === ""){
+            throw new Error ("Informe o ID do registro que desejar pesquisar!");
+        }
 
         const site = await siteRepositorie.find({
             id

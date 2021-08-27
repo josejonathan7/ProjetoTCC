@@ -49,6 +49,9 @@ var DeleteObservationService = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         observationRepositorie = typeorm_1.getCustomRepository(ObservationRepositories_1.ObservationRepositories);
+                        if (id === "") {
+                            throw new Error("Informe o ID do registro que desejar deletar!");
+                        }
                         return [4 /*yield*/, observationRepositorie.delete({
                                 id: id
                             })];

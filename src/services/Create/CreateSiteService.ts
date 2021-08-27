@@ -12,6 +12,16 @@ class CreateSiteService {
     async execute({ name,  link, category }: ISiteRequest){
         const siteRepositorie = getCustomRepository(SitesRepositories);
 
+        
+        if(name === "" || link === ""){
+            throw new Error ("Preencha todos os campos");
+        }
+
+        if(category === "" || category !== "anime" && category !== "game"){
+            throw new Error ("Preencha a categoria corretamente!!");
+        }
+
+
         const site = siteRepositorie.create({
             name,
             link,

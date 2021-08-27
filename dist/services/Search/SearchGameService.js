@@ -50,6 +50,9 @@ var SearchGameService = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         gameRepositorie = typeorm_1.getCustomRepository(GamesRepositories_1.GamesRepositories);
+                        if (searchName === "") {
+                            throw new Error("Informe o nome do jogo que desejar pesquisar!");
+                        }
                         return [4 /*yield*/, gameRepositorie.find({
                                 name: searchName
                             })];
@@ -58,6 +61,30 @@ var SearchGameService = /** @class */ (function () {
                         status = game.length ? class_transformer_1.classToPlain(game) : undefined;
                         if (typeof status === "undefined") {
                             throw new Error(searchName + " n\u00E3o encontrado!");
+                        }
+                        return [2 /*return*/, status];
+                }
+            });
+        });
+    };
+    SearchGameService.prototype.executeId = function (id) {
+        return __awaiter(this, void 0, void 0, function () {
+            var gameRepositorie, game, status;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        gameRepositorie = typeorm_1.getCustomRepository(GamesRepositories_1.GamesRepositories);
+                        if (id === "") {
+                            throw new Error("Informe o ID do registro que desejar pesquisar!");
+                        }
+                        return [4 /*yield*/, gameRepositorie.find({
+                                id: id
+                            })];
+                    case 1:
+                        game = _a.sent();
+                        status = game.length ? class_transformer_1.classToPlain(game) : undefined;
+                        if (typeof status === "undefined") {
+                            throw new Error(id + " n\u00E3o encontrado!");
                         }
                         return [2 /*return*/, status];
                 }

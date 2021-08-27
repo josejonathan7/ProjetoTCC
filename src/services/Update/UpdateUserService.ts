@@ -17,6 +17,18 @@ class UpdateUserService {
     async execute({ id, name, avatar, description, email_contact_link, admin }: IUserRequest){
         const userRepositorie = getCustomRepository(UsersRepositories);
 
+        if(id === ""){
+            throw new Error ("Informe o ID do registro que desejar deletar!");
+        }
+        
+        if(name === ""){
+            throw new Error ("Preencha todos os campos");
+        }
+
+        if(admin !== true && admin !== false){
+            throw new Error ("O campo administrador esta preenchido de forma inválida!");
+        }
+        
         const user = await userRepositorie.update(id, {
             name: name,
             avatar: avatar,

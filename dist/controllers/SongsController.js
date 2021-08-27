@@ -54,6 +54,8 @@ var SongController = /** @class */ (function () {
                     case 0:
                         name = request.body["song-name"];
                         link = request.body["song-link"];
+                        name = name.trim();
+                        link = link.trim();
                         creatSongService = new CreateSongService_1.CreateSongService();
                         _a.label = 1;
                     case 1:
@@ -61,7 +63,7 @@ var SongController = /** @class */ (function () {
                         return [4 /*yield*/, creatSongService.execute({ name: name, link: link })];
                     case 2:
                         _a.sent();
-                        return [2 /*return*/, response.json("ok")];
+                        return [2 /*return*/, response.status(201).json("ok")];
                     case 3:
                         err_1 = _a.sent();
                         return [2 /*return*/, response.status(400).send(err_1.message)];
@@ -79,6 +81,8 @@ var SongController = /** @class */ (function () {
                         id = request.params.id;
                         name = request.body["song-name"];
                         link = request.body["song-link"];
+                        name = name.trim();
+                        link = link.trim();
                         updateSongService = new UpdateSongService_1.UpdateSongService();
                         _a.label = 1;
                     case 1:
@@ -86,7 +90,7 @@ var SongController = /** @class */ (function () {
                         return [4 /*yield*/, updateSongService.execute({ id: id, link: link, name: name })];
                     case 2:
                         _a.sent();
-                        return [2 /*return*/, response.json("ok")];
+                        return [2 /*return*/, response.status(200).json("ok")];
                     case 3:
                         err_2 = _a.sent();
                         return [2 /*return*/, response.status(400).send(err_2.message)];
@@ -106,7 +110,7 @@ var SongController = /** @class */ (function () {
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 4, , 5]);
-                        return [4 /*yield*/, userController.handleGet()];
+                        return [4 /*yield*/, userController.handleGetAdmin()];
                     case 2:
                         user = _a.sent();
                         return [4 /*yield*/, getSongService.execute()];
@@ -120,7 +124,7 @@ var SongController = /** @class */ (function () {
                         else {
                             contactUsers = user;
                         }
-                        return [2 /*return*/, response.json({ song: song, contactUsers: contactUsers })];
+                        return [2 /*return*/, response.status(200).json({ song: song, contactUsers: contactUsers })];
                     case 4:
                         err_3 = _a.sent();
                         return [2 /*return*/, response.status(400).send(err_3.message)];
@@ -136,6 +140,7 @@ var SongController = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         name = request.body["song-name"];
+                        name = name.trim();
                         searchSongService = new SearchSongService_1.SearchSongService();
                         _a.label = 1;
                     case 1:
@@ -143,7 +148,7 @@ var SongController = /** @class */ (function () {
                         return [4 /*yield*/, searchSongService.execute(name)];
                     case 2:
                         song = _a.sent();
-                        return [2 /*return*/, response.json({ song: song })];
+                        return [2 /*return*/, response.status(200).json({ song: song })];
                     case 3:
                         err_4 = _a.sent();
                         return [2 /*return*/, response.status(404).send(err_4.message)];
@@ -152,9 +157,32 @@ var SongController = /** @class */ (function () {
             });
         });
     };
+    SongController.prototype.handleSearchId = function (request, response) {
+        return __awaiter(this, void 0, void 0, function () {
+            var id, searchSongService, song, err_5;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        id = request.params.id;
+                        searchSongService = new SearchSongService_1.SearchSongService();
+                        _a.label = 1;
+                    case 1:
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, searchSongService.executeId(id)];
+                    case 2:
+                        song = _a.sent();
+                        return [2 /*return*/, response.status(200).json({ song: song })];
+                    case 3:
+                        err_5 = _a.sent();
+                        return [2 /*return*/, response.status(404).send(err_5.message)];
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
+    };
     SongController.prototype.handleDelete = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var id, deleteSongService, err_5;
+            var id, deleteSongService, err_6;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -166,10 +194,10 @@ var SongController = /** @class */ (function () {
                         return [4 /*yield*/, deleteSongService.execute(id)];
                     case 2:
                         _a.sent();
-                        return [2 /*return*/, response.json("ok")];
+                        return [2 /*return*/, response.status(200).json("ok")];
                     case 3:
-                        err_5 = _a.sent();
-                        return [2 /*return*/, response.status(404).send(err_5.message)];
+                        err_6 = _a.sent();
+                        return [2 /*return*/, response.status(404).send(err_6.message)];
                     case 4: return [2 /*return*/];
                 }
             });

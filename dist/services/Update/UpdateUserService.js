@@ -43,18 +43,28 @@ var UpdateUserService = /** @class */ (function () {
     function UpdateUserService() {
     }
     UpdateUserService.prototype.execute = function (_a) {
-        var id = _a.id, name = _a.name, avatar = _a.avatar, description = _a.description, email_contact_link = _a.email_contact_link;
+        var id = _a.id, name = _a.name, avatar = _a.avatar, description = _a.description, email_contact_link = _a.email_contact_link, admin = _a.admin;
         return __awaiter(this, void 0, void 0, function () {
             var userRepositorie, user, status;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         userRepositorie = typeorm_1.getCustomRepository(UsersRepositories_1.UsersRepositories);
+                        if (id === "") {
+                            throw new Error("Informe o ID do registro que desejar deletar!");
+                        }
+                        if (name === "") {
+                            throw new Error("Preencha todos os campos");
+                        }
+                        if (admin !== true && admin !== false) {
+                            throw new Error("O campo administrador esta preenchido de forma inválida!");
+                        }
                         return [4 /*yield*/, userRepositorie.update(id, {
                                 name: name,
                                 avatar: avatar,
                                 description: description,
-                                email_contact_link: email_contact_link
+                                email_contact_link: email_contact_link,
+                                admin: admin
                             })];
                     case 1:
                         user = _b.sent();

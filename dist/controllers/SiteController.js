@@ -53,7 +53,9 @@ var SiteController = /** @class */ (function () {
                     case 0:
                         name = request.body["site-name"];
                         link = request.body["site-link"];
-                        category = request.body["site-category"];
+                        category = request.body.category;
+                        name = name.trim();
+                        link = link.trim();
                         creatSiteService = new CreateSiteService_1.CreateSiteService();
                         _a.label = 1;
                     case 1:
@@ -61,7 +63,7 @@ var SiteController = /** @class */ (function () {
                         return [4 /*yield*/, creatSiteService.execute({ name: name, link: link, category: category })];
                     case 2:
                         _a.sent();
-                        return [2 /*return*/, response.json("ok")];
+                        return [2 /*return*/, response.status(201).json("ok")];
                     case 3:
                         err_1 = _a.sent();
                         return [2 /*return*/, response.status(400).send(err_1.message)];
@@ -79,7 +81,9 @@ var SiteController = /** @class */ (function () {
                         id = request.params.id;
                         name = request.body["site-name"];
                         link = request.body["site-link"];
-                        category = request.body["site-category"];
+                        category = request.body.category;
+                        name = name.trim();
+                        link = link.trim();
                         updateSiteService = new UpdateSiteService_1.UpdateSiteService();
                         _a.label = 1;
                     case 1:
@@ -87,7 +91,7 @@ var SiteController = /** @class */ (function () {
                         return [4 /*yield*/, updateSiteService.execute({ id: id, name: name, link: link, category: category })];
                     case 2:
                         _a.sent();
-                        return [2 /*return*/, response.json("ok")];
+                        return [2 /*return*/, response.status(200).json("ok")];
                     case 3:
                         err_2 = _a.sent();
                         return [2 /*return*/, response.status(400).send(err_2.message)];
@@ -103,6 +107,7 @@ var SiteController = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         name = request.body["site-name"];
+                        name = name.trim();
                         searchSiteService = new SearchSiteService_1.SearchSiteService();
                         _a.label = 1;
                     case 1:
@@ -110,7 +115,7 @@ var SiteController = /** @class */ (function () {
                         return [4 /*yield*/, searchSiteService.execute(name)];
                     case 2:
                         site = _a.sent();
-                        return [2 /*return*/, response.json({ site: site })];
+                        return [2 /*return*/, response.status(200).json({ site: site })];
                     case 3:
                         err_3 = _a.sent();
                         return [2 /*return*/, response.status(404).send(err_3.message)];
@@ -119,9 +124,32 @@ var SiteController = /** @class */ (function () {
             });
         });
     };
+    SiteController.prototype.handleSearchId = function (request, response) {
+        return __awaiter(this, void 0, void 0, function () {
+            var id, searchSiteService, site, err_4;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        id = request.params.id;
+                        searchSiteService = new SearchSiteService_1.SearchSiteService();
+                        _a.label = 1;
+                    case 1:
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, searchSiteService.executeId(id)];
+                    case 2:
+                        site = _a.sent();
+                        return [2 /*return*/, response.status(200).json({ site: site })];
+                    case 3:
+                        err_4 = _a.sent();
+                        return [2 /*return*/, response.status(404).send(err_4.message)];
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
+    };
     SiteController.prototype.handleGet = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var getSiteService, site, err_4;
+            var getSiteService, site, err_5;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -134,7 +162,7 @@ var SiteController = /** @class */ (function () {
                         site = _a.sent();
                         return [2 /*return*/, site];
                     case 3:
-                        err_4 = _a.sent();
+                        err_5 = _a.sent();
                         throw new Error("falha");
                     case 4: return [2 /*return*/];
                 }
@@ -143,7 +171,7 @@ var SiteController = /** @class */ (function () {
     };
     SiteController.prototype.handleDelete = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var id, deleteSiteService, err_5;
+            var id, deleteSiteService, err_6;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -155,10 +183,10 @@ var SiteController = /** @class */ (function () {
                         return [4 /*yield*/, deleteSiteService.execute(id)];
                     case 2:
                         _a.sent();
-                        return [2 /*return*/, response.json("ok")];
+                        return [2 /*return*/, response.status(200).json("ok")];
                     case 3:
-                        err_5 = _a.sent();
-                        return [2 /*return*/, response.status(404).send(err_5.message)];
+                        err_6 = _a.sent();
+                        return [2 /*return*/, response.status(404).send(err_6.message)];
                     case 4: return [2 /*return*/];
                 }
             });

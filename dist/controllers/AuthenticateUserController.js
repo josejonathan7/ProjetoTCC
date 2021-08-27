@@ -44,30 +44,30 @@ var AuthenticateUserController = /** @class */ (function () {
     }
     AuthenticateUserController.prototype.handleAuthenticate = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var name, password, searchUserService, authenticateUserService, token, userData, _a;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var name, password, searchUserService, authenticateUserService, token, userData, err_1;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
                     case 0:
-                        name = request.body["user-name"];
-                        password = request.body["user-password"];
+                        name = request.body.user;
+                        password = request.body.password;
                         searchUserService = new SearchUserService_1.SearchUserService();
                         authenticateUserService = new AuthenticateUserService_1.AuthenticateUserService();
-                        _b.label = 1;
+                        _a.label = 1;
                     case 1:
-                        _b.trys.push([1, 4, , 5]);
+                        _a.trys.push([1, 4, , 5]);
                         return [4 /*yield*/, authenticateUserService.execute({
                                 name: name,
                                 password: password
                             })];
                     case 2:
-                        token = _b.sent();
+                        token = _a.sent();
                         return [4 /*yield*/, searchUserService.execute(name)];
                     case 3:
-                        userData = _b.sent();
-                        return [2 /*return*/, response.json({ token: token, userData: userData })];
+                        userData = _a.sent();
+                        return [2 /*return*/, response.status(200).json({ token: token, user: userData })];
                     case 4:
-                        _a = _b.sent();
-                        return [2 /*return*/, response.status(401).send("Email/password Invalid!")];
+                        err_1 = _a.sent();
+                        return [2 /*return*/, response.status(401).send(err_1.message)];
                     case 5: return [2 /*return*/];
                 }
             });

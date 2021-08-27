@@ -44,20 +44,29 @@ var CreateUserService = /** @class */ (function () {
     function CreateUserService() {
     }
     CreateUserService.prototype.execute = function (_a) {
-        var name = _a.name, email_contact_link = _a.email_contact_link, password = _a.password, avatar = _a.avatar, description = _a.description;
+        var name = _a.name, admin = _a.admin, password = _a.password, email_contact_link = _a.email_contact_link, avatar = _a.avatar, description = _a.description;
         return __awaiter(this, void 0, void 0, function () {
             var userRepositorie, userAlreadyExists, passwordHash, user, status;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         userRepositorie = typeorm_1.getCustomRepository(UsersRepositories_1.UsersRepositories);
+                        if (name === "") {
+                            throw new Error("Preencha o campo Nome!");
+                        }
+                        if (password === "") {
+                            throw new Error("Preencha o campo senha!");
+                        }
+                        if (admin !== true && admin !== false) {
+                            throw new Error("O campo administrador esta preenchido de forma inválida!");
+                        }
                         return [4 /*yield*/, userRepositorie.findOne({
                                 name: name
                             })];
                     case 1:
                         userAlreadyExists = _b.sent();
                         if (userAlreadyExists) {
-                            throw new Error("User Already Exists");
+                            throw new Error("Esse usuário já esta cadastrado!");
                         }
                         return [4 /*yield*/, bcrypt_1.hash(password, 8)];
                     case 2:
@@ -65,9 +74,52 @@ var CreateUserService = /** @class */ (function () {
                         user = userRepositorie.create({
                             name: name,
                             password: passwordHash,
-                            avatar: avatar,
+                            admin: admin,
                             email_contact_link: email_contact_link,
+                            avatar: avatar,
                             description: description
+                        });
+                        return [4 /*yield*/, userRepositorie.save(user)];
+                    case 3:
+                        _b.sent();
+                        status = user ? "Sucess" : undefined;
+                        if (typeof status === "undefined") {
+                            throw new Error("Falha na criação do registro");
+                        }
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    CreateUserService.prototype.executeCommonUser = function (_a) {
+        var name = _a.name, password = _a.password, email_contact_link = _a.email_contact_link;
+        return __awaiter(this, void 0, void 0, function () {
+            var userRepositorie, userAlreadyExists, passwordHash, user, status;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        userRepositorie = typeorm_1.getCustomRepository(UsersRepositories_1.UsersRepositories);
+                        if (name === "") {
+                            throw new Error("Preencha o campo Nome!");
+                        }
+                        if (password === "") {
+                            throw new Error("Preencha o campo senha!");
+                        }
+                        return [4 /*yield*/, userRepositorie.findOne({
+                                name: name
+                            })];
+                    case 1:
+                        userAlreadyExists = _b.sent();
+                        if (userAlreadyExists) {
+                            throw new Error("Esse usuário já esta cadastrado!");
+                        }
+                        return [4 /*yield*/, bcrypt_1.hash(password, 8)];
+                    case 2:
+                        passwordHash = _b.sent();
+                        user = userRepositorie.create({
+                            name: name,
+                            password: passwordHash,
+                            email_contact_link: email_contact_link
                         });
                         return [4 /*yield*/, userRepositorie.save(user)];
                     case 3:

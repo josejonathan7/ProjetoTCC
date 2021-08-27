@@ -63,15 +63,23 @@ var UsersTable1626194056911 = /** @class */ (function () {
                                 },
                                 {
                                     name: "avatar",
-                                    type: "varchar"
+                                    type: "varchar",
+                                    isNullable: true
                                 },
                                 {
                                     name: "email_contact_link",
-                                    type: "varchar"
+                                    type: "varchar",
+                                    isNullable: true
                                 },
                                 {
                                     name: "description",
-                                    type: "varchar"
+                                    type: "varchar",
+                                    isNullable: true
+                                },
+                                {
+                                    name: "admin",
+                                    type: "boolean",
+                                    default: false
                                 },
                                 {
                                     name: "created_at",

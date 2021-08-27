@@ -16,12 +16,24 @@ class CreateUserService {
     async execute({ name, admin, password, email_contact_link, avatar, description}: IUserRequest){
         const userRepositorie = getCustomRepository(UsersRepositories);
 
+        if(name === ""){
+            throw new Error ("Preencha o campo Nome!");
+        }
+
+        if(password === ""){
+            throw new Error ("Preencha o campo senha!");
+        }
+
+        if(admin !== true && admin !== false){
+            throw new Error ("O campo administrador esta preenchido de forma inválida!");
+        }
+
         const userAlreadyExists = await userRepositorie.findOne({
             name
         });
 
         if(userAlreadyExists){
-            throw new Error("User Already Exists");
+            throw new Error("Esse usuário já esta cadastrado!");
         }
 
         const passwordHash = await hash(password, 8);
@@ -48,12 +60,20 @@ class CreateUserService {
     async executeCommonUser({ name, password, email_contact_link }: IUserRequest){
         const userRepositorie = getCustomRepository(UsersRepositories);
 
+        if(name === ""){
+            throw new Error ("Preencha o campo Nome!");
+        }
+
+        if(password === ""){
+            throw new Error ("Preencha o campo senha!");
+        }
+
         const userAlreadyExists = await userRepositorie.findOne({
             name
         });
 
         if(userAlreadyExists){
-            throw new Error("User Already Exists");
+            throw new Error("Esse usuário já esta cadastrado!");
         }
 
         const passwordHash = await hash(password, 8);

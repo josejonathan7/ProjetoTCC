@@ -37,6 +37,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserController = void 0;
+var AuthenticateUserService_1 = require("../services/AuthenticateUserService");
 var CreateUserService_1 = require("../services/Create/CreateUserService");
 var DeleteUserService_1 = require("../services/Delete/DeleteUserService");
 var GetUserService_1 = require("../services/Get/GetUserService");
@@ -47,23 +48,50 @@ var UserController = /** @class */ (function () {
     }
     UserController.prototype.handleCreate = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var name, email_contact_link, password, avatar, description, creatUserService, err_1;
+            var name, email_contact_link, password, admin, description, avatar, creatUserService, err_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        name = request.body["user-name"];
-                        email_contact_link = request.body["email-contact-link"];
-                        password = request.body["user-password"];
+                        name = request.body["create-login"];
+                        email_contact_link = request.body.email;
+                        password = request.body["create-password"];
+                        admin = request.body.admin;
+                        description = request.body.description;
                         avatar = request.body.avatar;
-                        description = request.body["user-description"];
                         creatUserService = new CreateUserService_1.CreateUserService();
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 3, , 4]);
-                        return [4 /*yield*/, creatUserService.execute({ name: name, email_contact_link: email_contact_link, password: password, avatar: avatar, description: description })];
+                        name = name.trim();
+                        password = password.trim();
+                        if (email_contact_link === "" || typeof email_contact_link === "undefined") {
+                            email_contact_link = null;
+                        }
+                        else {
+                            email_contact_link = email_contact_link.trim();
+                        }
+                        if (avatar === "" || typeof avatar === "undefined") {
+                            avatar = null;
+                        }
+                        else {
+                            avatar = avatar.trim();
+                        }
+                        if (description === "" || typeof description === "undefined") {
+                            description = null;
+                        }
+                        else {
+                            description = description.trim();
+                        }
+                        if (admin === "true") {
+                            admin = true;
+                        }
+                        else {
+                            admin = false;
+                        }
+                        return [4 /*yield*/, creatUserService.execute({ name: name, email_contact_link: email_contact_link, password: password, avatar: avatar, description: description, admin: admin })];
                     case 2:
                         _a.sent();
-                        return [2 /*return*/, response.json("ok")];
+                        return [2 /*return*/, response.status(201).json("ok")];
                     case 3:
                         err_1 = _a.sent();
                         return [2 /*return*/, response.status(400).send(err_1.message)];
@@ -72,28 +100,98 @@ var UserController = /** @class */ (function () {
             });
         });
     };
+    UserController.prototype.handleCreateCommonUser = function (request, response) {
+        return __awaiter(this, void 0, void 0, function () {
+            var name, email_contact_link, password, creatUserService, authenticateUserService, searchUserService, token, userData, err_2;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        name = request.body["create-login"];
+                        email_contact_link = request.body.email;
+                        password = request.body["create-password"];
+                        creatUserService = new CreateUserService_1.CreateUserService();
+                        authenticateUserService = new AuthenticateUserService_1.AuthenticateUserService();
+                        searchUserService = new SearchUserService_1.SearchUserService();
+                        _a.label = 1;
+                    case 1:
+                        _a.trys.push([1, 5, , 6]);
+                        name = name.trim();
+                        password = password.trim();
+                        if (email_contact_link === "" || typeof email_contact_link === "undefined") {
+                            email_contact_link = null;
+                        }
+                        else {
+                            email_contact_link = email_contact_link.trim();
+                        }
+                        return [4 /*yield*/, creatUserService.executeCommonUser({ name: name, email_contact_link: email_contact_link, password: password })];
+                    case 2:
+                        _a.sent();
+                        return [4 /*yield*/, authenticateUserService.execute({
+                                name: name,
+                                password: password
+                            })];
+                    case 3:
+                        token = _a.sent();
+                        return [4 /*yield*/, searchUserService.execute(name)];
+                    case 4:
+                        userData = _a.sent();
+                        return [2 /*return*/, response.status(201).json({ token: token, user: userData })];
+                    case 5:
+                        err_2 = _a.sent();
+                        return [2 /*return*/, response.status(400).send(err_2.message)];
+                    case 6: return [2 /*return*/];
+                }
+            });
+        });
+    };
     UserController.prototype.handleUpdate = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var id, name, email_contact_link, avatar, description, updateUserService, err_2;
+            var id, name, email_contact_link, avatar, description, admin, updateUserService, err_3;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         id = request.params.id;
                         name = request.body["user-name"];
-                        email_contact_link = request.body["email-contact-link"];
+                        email_contact_link = request.body.email;
                         avatar = request.body.avatar;
                         description = request.body["user-description"];
+                        admin = request.body.admin;
+                        if (admin.trim() === "true") {
+                            admin = true;
+                        }
+                        else {
+                            admin = false;
+                        }
                         updateUserService = new UpdateUserService_1.UpdateUserService();
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 3, , 4]);
-                        return [4 /*yield*/, updateUserService.execute({ id: id, name: name, avatar: avatar, description: description, email_contact_link: email_contact_link })];
+                        name = name.trim();
+                        if (email_contact_link === "" || typeof email_contact_link === "undefined") {
+                            email_contact_link = null;
+                        }
+                        else {
+                            email_contact_link = email_contact_link.trim();
+                        }
+                        if (avatar === "" || typeof avatar === "undefined") {
+                            avatar = null;
+                        }
+                        else {
+                            avatar = avatar.trim();
+                        }
+                        if (description === "" || typeof description === "undefined") {
+                            description = null;
+                        }
+                        else {
+                            description = description.trim();
+                        }
+                        return [4 /*yield*/, updateUserService.execute({ id: id, name: name, avatar: avatar, description: description, email_contact_link: email_contact_link, admin: admin })];
                     case 2:
                         _a.sent();
-                        return [2 /*return*/, response.json("ok")];
+                        return [2 /*return*/, response.status(200).json("ok")];
                     case 3:
-                        err_2 = _a.sent();
-                        return [2 /*return*/, response.status(400).send(err_2.message)];
+                        err_3 = _a.sent();
+                        return [2 /*return*/, response.status(400).send(err_3.message)];
                     case 4: return [2 /*return*/];
                 }
             });
@@ -101,11 +199,12 @@ var UserController = /** @class */ (function () {
     };
     UserController.prototype.handleSearch = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var name, searchUserService, user, err_3;
+            var name, searchUserService, user, err_4;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         name = request.body["user-name"];
+                        name = name.trim();
                         searchUserService = new SearchUserService_1.SearchUserService();
                         _a.label = 1;
                     case 1:
@@ -113,10 +212,33 @@ var UserController = /** @class */ (function () {
                         return [4 /*yield*/, searchUserService.execute(name)];
                     case 2:
                         user = _a.sent();
-                        return [2 /*return*/, response.json({ user: user })];
+                        return [2 /*return*/, response.status(200).json({ user: user })];
                     case 3:
-                        err_3 = _a.sent();
-                        return [2 /*return*/, response.status(404).send(err_3.message)];
+                        err_4 = _a.sent();
+                        return [2 /*return*/, response.status(404).send(err_4.message)];
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    UserController.prototype.handleSearchId = function (request, response) {
+        return __awaiter(this, void 0, void 0, function () {
+            var id, searchUserService, user, err_5;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        id = request.params.id;
+                        searchUserService = new SearchUserService_1.SearchUserService();
+                        _a.label = 1;
+                    case 1:
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, searchUserService.executeId(id)];
+                    case 2:
+                        user = _a.sent();
+                        return [2 /*return*/, response.status(200).json({ user: user })];
+                    case 3:
+                        err_5 = _a.sent();
+                        return [2 /*return*/, response.status(404).send(err_5.message)];
                     case 4: return [2 /*return*/];
                 }
             });
@@ -124,7 +246,7 @@ var UserController = /** @class */ (function () {
     };
     UserController.prototype.handleGet = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var getUserService, user, err_4;
+            var getUserService, user, err_6;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -137,7 +259,29 @@ var UserController = /** @class */ (function () {
                         user = _a.sent();
                         return [2 /*return*/, user];
                     case 3:
-                        err_4 = _a.sent();
+                        err_6 = _a.sent();
+                        throw new Error("falha");
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    UserController.prototype.handleGetAdmin = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var getUserService, user, err_7;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        getUserService = new GetUserService_1.GetUserService();
+                        _a.label = 1;
+                    case 1:
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, getUserService.executeAdmin()];
+                    case 2:
+                        user = _a.sent();
+                        return [2 /*return*/, user];
+                    case 3:
+                        err_7 = _a.sent();
                         throw new Error("falha");
                     case 4: return [2 /*return*/];
                 }
@@ -146,7 +290,7 @@ var UserController = /** @class */ (function () {
     };
     UserController.prototype.handleDelete = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var id, deleteUserService, err_5;
+            var id, deleteUserService, err_8;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -158,10 +302,10 @@ var UserController = /** @class */ (function () {
                         return [4 /*yield*/, deleteUserService.execute(id)];
                     case 2:
                         _a.sent();
-                        return [2 /*return*/, response.json("ok")];
+                        return [2 /*return*/, response.status(200).json("ok")];
                     case 3:
-                        err_5 = _a.sent();
-                        return [2 /*return*/, response.status(404).send(err_5.message)];
+                        err_8 = _a.sent();
+                        return [2 /*return*/, response.status(404).send(err_8.message)];
                     case 4: return [2 /*return*/];
                 }
             });

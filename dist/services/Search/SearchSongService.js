@@ -50,6 +50,9 @@ var SearchSongService = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         songRepositorie = typeorm_1.getCustomRepository(SongsRepositores_1.SongsRepositories);
+                        if (searchName === "") {
+                            throw new Error("Informe o nome da música que desejar pesquisar!");
+                        }
                         return [4 /*yield*/, songRepositorie.find({
                                 name: searchName
                             })];
@@ -58,6 +61,30 @@ var SearchSongService = /** @class */ (function () {
                         status = song.length ? class_transformer_1.classToPlain(song) : undefined;
                         if (typeof status === "undefined") {
                             throw new Error(searchName + " n\u00E3o encontrado!");
+                        }
+                        return [2 /*return*/, status];
+                }
+            });
+        });
+    };
+    SearchSongService.prototype.executeId = function (id) {
+        return __awaiter(this, void 0, void 0, function () {
+            var songRepositorie, song, status;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        songRepositorie = typeorm_1.getCustomRepository(SongsRepositores_1.SongsRepositories);
+                        if (id === "") {
+                            throw new Error("Informe o ID do registro que desejar pesquisar!");
+                        }
+                        return [4 /*yield*/, songRepositorie.find({
+                                id: id
+                            })];
+                    case 1:
+                        song = _a.sent();
+                        status = song.length ? class_transformer_1.classToPlain(song) : undefined;
+                        if (typeof status === "undefined") {
+                            throw new Error(id + " n\u00E3o encontrado!");
                         }
                         return [2 /*return*/, status];
                 }

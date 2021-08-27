@@ -6,6 +6,10 @@ class DeleteAnimeService{
     async execute(id: string){
         const animeRepositorie = getCustomRepository(AnimesRepositories);
 
+        if(id === ""){
+            throw new Error ("Informe o ID do registro que desejar deletar!");
+        }
+
         const anime = await animeRepositorie.delete({
             id
         });

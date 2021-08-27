@@ -7,6 +7,10 @@ class SearchGameService {
     async execute(searchName: string){
         const gameRepositorie = getCustomRepository(GamesRepositories);
 
+        if(searchName === ""){
+            throw new Error ("Informe o nome do jogo que desejar pesquisar!");
+        }
+
         const game = await gameRepositorie.find({
             name: searchName
         });
@@ -22,6 +26,10 @@ class SearchGameService {
 
     async executeId(id: string){
         const gameRepositorie = getCustomRepository(GamesRepositories);
+
+        if(id === ""){
+            throw new Error ("Informe o ID do registro que desejar pesquisar!");
+        }
 
         const game = await gameRepositorie.find({
             id

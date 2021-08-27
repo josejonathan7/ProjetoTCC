@@ -41,7 +41,7 @@ class ObservationController {
 
             await updateObservationService.execute({ id, name, information });
   
-            return response.json("ok");
+            return response.status(200).json("ok");
 
         }catch(err){
             return response.status(400).send(err.message);
@@ -58,7 +58,7 @@ class ObservationController {
         try{
             const observation = await searchObservationService.execute(name);
 
-            return response.json({ observation });
+            return response.status(200).json({ observation });
 
         }catch(err){
             return response.status(404).send(err.message);
@@ -73,7 +73,7 @@ class ObservationController {
         try{
             const observation = await searchObservationService.executeId(id);
 
-            return response.json({ observation });
+            return response.status(200).json({ observation });
 
         }catch(err){
             return response.status(404).send(err.message);
@@ -103,7 +103,7 @@ class ObservationController {
 
             await deleteObservationService.execute(id);
 
-            return response.json("ok");
+            return response.status(200).json("ok");
 
         }catch(err){
             return response.status(404).send(err.message);

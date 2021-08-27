@@ -50,6 +50,9 @@ var SearchUserService = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         userRepositorie = typeorm_1.getCustomRepository(UsersRepositories_1.UsersRepositories);
+                        if (searchName === "") {
+                            throw new Error("Informe o nome do usuário que desejar pesquisar!");
+                        }
                         return [4 /*yield*/, userRepositorie.find({
                                 name: searchName
                             })];
@@ -58,6 +61,30 @@ var SearchUserService = /** @class */ (function () {
                         status = user.length ? class_transformer_1.classToPlain(user) : undefined;
                         if (typeof status === "undefined") {
                             throw new Error(searchName + " n\u00E3o encontrado!");
+                        }
+                        return [2 /*return*/, status];
+                }
+            });
+        });
+    };
+    SearchUserService.prototype.executeId = function (id) {
+        return __awaiter(this, void 0, void 0, function () {
+            var userRepositorie, user, status;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        userRepositorie = typeorm_1.getCustomRepository(UsersRepositories_1.UsersRepositories);
+                        if (id === "") {
+                            throw new Error("Informe o ID do registro que desejar pesquisar!");
+                        }
+                        return [4 /*yield*/, userRepositorie.find({
+                                id: id
+                            })];
+                    case 1:
+                        user = _a.sent();
+                        status = user.length ? class_transformer_1.classToPlain(user) : undefined;
+                        if (typeof status === "undefined") {
+                            throw new Error(id + " n\u00E3o encontrado!");
                         }
                         return [2 /*return*/, status];
                 }

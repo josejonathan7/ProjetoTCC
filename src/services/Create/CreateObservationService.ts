@@ -11,6 +11,11 @@ class CreateObservationService {
     async execute({ name, information }: IObservationRequest){
         const observationRepositorie = getCustomRepository(ObservationRepositories);
 
+        
+        if(name === "" || information === ""){
+            throw new Error ("Preencha todos os campos");
+        }
+
         const observation = observationRepositorie.create({
             name,
             information

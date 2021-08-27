@@ -50,6 +50,12 @@ var UpdateObservationService = /** @class */ (function () {
                 switch (_b.label) {
                     case 0:
                         observationRepositorie = typeorm_1.getCustomRepository(ObservationRepositories_1.ObservationRepositories);
+                        if (id === "") {
+                            throw new Error("Informe o ID do registro que desejar deletar!");
+                        }
+                        if (name === "" || information === "") {
+                            throw new Error("Preencha todos os campos");
+                        }
                         return [4 /*yield*/, observationRepositorie.update(id, {
                                 name: name,
                                 information: information

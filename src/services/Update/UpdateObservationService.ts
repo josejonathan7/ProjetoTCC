@@ -12,6 +12,14 @@ class UpdateObservationService {
     async execute({ id, name, information }: IObservationRequest){
         const observationRepositorie = getCustomRepository(ObservationRepositories);
 
+        if(id === ""){
+            throw new Error ("Informe o ID do registro que desejar deletar!");
+        }
+        
+        if(name === "" || information === ""){
+            throw new Error ("Preencha todos os campos");
+        }
+
         const observation = await observationRepositorie.update(id, {
             name: name,
             information: information

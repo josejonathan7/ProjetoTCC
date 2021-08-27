@@ -62,6 +62,27 @@ var GetUserService = /** @class */ (function () {
             });
         });
     };
+    GetUserService.prototype.executeAdmin = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var userRepositorie, user, status;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        userRepositorie = typeorm_1.getCustomRepository(UsersRepositories_1.UsersRepositories);
+                        return [4 /*yield*/, userRepositorie.find({
+                                admin: true
+                            })];
+                    case 1:
+                        user = _a.sent();
+                        status = user ? class_transformer_1.classToPlain(user) : undefined;
+                        if (typeof status === "undefined") {
+                            throw new Error("Nenhum usuário encontrado");
+                        }
+                        return [2 /*return*/, status];
+                }
+            });
+        });
+    };
     return GetUserService;
 }());
 exports.GetUserService = GetUserService;

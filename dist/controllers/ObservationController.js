@@ -53,6 +53,8 @@ var ObservationController = /** @class */ (function () {
                     case 0:
                         name = request.body["observation-name"];
                         information = request.body.information;
+                        name = name.trim();
+                        information = information.trim();
                         createObservationService = new CreateObservationService_1.CreateObservationService();
                         _a.label = 1;
                     case 1:
@@ -60,7 +62,7 @@ var ObservationController = /** @class */ (function () {
                         return [4 /*yield*/, createObservationService.execute({ name: name, information: information })];
                     case 2:
                         _a.sent();
-                        return [2 /*return*/, response.json("ok")];
+                        return [2 /*return*/, response.status(201).json("ok")];
                     case 3:
                         err_1 = _a.sent();
                         return [2 /*return*/, response.status(400).send(err_1.message)];
@@ -78,6 +80,8 @@ var ObservationController = /** @class */ (function () {
                         id = request.params.id;
                         name = request.body["observation-name"];
                         information = request.body.information;
+                        name = name.trim();
+                        information = information.trim();
                         updateObservationService = new UpdateObservationService_1.UpdateObservationService();
                         _a.label = 1;
                     case 1:
@@ -85,7 +89,7 @@ var ObservationController = /** @class */ (function () {
                         return [4 /*yield*/, updateObservationService.execute({ id: id, name: name, information: information })];
                     case 2:
                         _a.sent();
-                        return [2 /*return*/, response.json("ok")];
+                        return [2 /*return*/, response.status(200).json("ok")];
                     case 3:
                         err_2 = _a.sent();
                         return [2 /*return*/, response.status(400).send(err_2.message)];
@@ -101,6 +105,7 @@ var ObservationController = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         name = request.body["observation-name"];
+                        name = name.trim();
                         searchObservationService = new SearchObservationService_1.SearchObservationService();
                         _a.label = 1;
                     case 1:
@@ -108,7 +113,7 @@ var ObservationController = /** @class */ (function () {
                         return [4 /*yield*/, searchObservationService.execute(name)];
                     case 2:
                         observation = _a.sent();
-                        return [2 /*return*/, response.json({ observation: observation })];
+                        return [2 /*return*/, response.status(200).json({ observation: observation })];
                     case 3:
                         err_3 = _a.sent();
                         return [2 /*return*/, response.status(404).send(err_3.message)];
@@ -117,9 +122,32 @@ var ObservationController = /** @class */ (function () {
             });
         });
     };
+    ObservationController.prototype.handleSearchId = function (request, response) {
+        return __awaiter(this, void 0, void 0, function () {
+            var id, searchObservationService, observation, err_4;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        id = request.params.id;
+                        searchObservationService = new SearchObservationService_1.SearchObservationService();
+                        _a.label = 1;
+                    case 1:
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, searchObservationService.executeId(id)];
+                    case 2:
+                        observation = _a.sent();
+                        return [2 /*return*/, response.status(200).json({ observation: observation })];
+                    case 3:
+                        err_4 = _a.sent();
+                        return [2 /*return*/, response.status(404).send(err_4.message)];
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
+    };
     ObservationController.prototype.handleGet = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var getObservationService, observation, err_4;
+            var getObservationService, observation, err_5;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -132,7 +160,7 @@ var ObservationController = /** @class */ (function () {
                         observation = _a.sent();
                         return [2 /*return*/, observation];
                     case 3:
-                        err_4 = _a.sent();
+                        err_5 = _a.sent();
                         throw new Error("Falha");
                     case 4: return [2 /*return*/];
                 }
@@ -141,7 +169,7 @@ var ObservationController = /** @class */ (function () {
     };
     ObservationController.prototype.handleDelete = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var id, deleteObservationService, err_5;
+            var id, deleteObservationService, err_6;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -153,10 +181,10 @@ var ObservationController = /** @class */ (function () {
                         return [4 /*yield*/, deleteObservationService.execute(id)];
                     case 2:
                         _a.sent();
-                        return [2 /*return*/, response.json("ok")];
+                        return [2 /*return*/, response.status(200).json("ok")];
                     case 3:
-                        err_5 = _a.sent();
-                        return [2 /*return*/, response.status(404).send(err_5.message)];
+                        err_6 = _a.sent();
+                        return [2 /*return*/, response.status(404).send(err_6.message)];
                     case 4: return [2 /*return*/];
                 }
             });

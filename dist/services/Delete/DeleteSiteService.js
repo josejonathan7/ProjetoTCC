@@ -49,6 +49,9 @@ var DeleteSiteService = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         siteRepositorie = typeorm_1.getCustomRepository(SitesRepositories_1.SitesRepositories);
+                        if (id === "") {
+                            throw new Error("Informe o ID do registro que desejar deletar!");
+                        }
                         return [4 /*yield*/, siteRepositorie.delete({
                                 id: id
                             })];

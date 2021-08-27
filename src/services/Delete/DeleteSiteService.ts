@@ -6,6 +6,10 @@ class DeleteSiteService {
     async execute(id: string){
         const siteRepositorie = getCustomRepository(SitesRepositories);
 
+        if(id === ""){
+            throw new Error ("Informe o ID do registro que desejar deletar!");
+        }
+
         const site = await siteRepositorie.delete({
             id
         });

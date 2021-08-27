@@ -21,7 +21,7 @@ class SiteController {
 
             await creatSiteService.execute({ name, link, category});
 
-            return response.status(201);
+            return response.status(201).json("ok");
 
         }catch(err){
             return response.status(400).send(err.message);
@@ -43,7 +43,7 @@ class SiteController {
 
             await updateSiteService.execute({ id, name, link, category });
             
-            return response.json("ok");
+            return response.status(200).json("ok");
 
         }catch(err){
             return response.status(400).send(err.message);
@@ -61,7 +61,7 @@ class SiteController {
 
             const site = await searchSiteService.execute(name);
 
-            return response.json({ site });
+            return response.status(200).json({ site });
 
         }catch(err){
             return response.status(404).send(err.message);
@@ -77,7 +77,7 @@ class SiteController {
 
             const site = await searchSiteService.executeId(id);
 
-            return response.json({ site });
+            return response.status(200).json({ site });
 
         }catch(err){
             return response.status(404).send(err.message);
@@ -108,7 +108,7 @@ class SiteController {
 
             await deleteSiteService.execute(id);
             
-            return response.json("ok");
+            return response.status(200).json("ok");
 
         }catch(err){
             return response.status(404).send(err.message);

@@ -40,7 +40,6 @@ exports.AnimeController = void 0;
 var CreateAnimeService_1 = require("../services/Create/CreateAnimeService");
 var UpdateAnimeService_1 = require("../services/Update/UpdateAnimeService");
 var SearchAnimeService_1 = require("../services/Search/SearchAnimeService");
-var PaginationAnimeService_1 = require("../services/Get/QueryForPagination/PaginationAnimeService");
 var DeleteAnimeService_1 = require("../services/Delete/DeleteAnimeService");
 var UserController_1 = require("./UserController");
 var GetAnimeService_1 = require("../services/Get/GetAnimeService");
@@ -56,6 +55,9 @@ var AnimeController = /** @class */ (function () {
                         name = request.body["anime-name"];
                         link = request.body["anime-link"];
                         image = request.body["anime-image"];
+                        name = name.trim();
+                        link = link.trim();
+                        image = image.trim();
                         creatAnimeService = new CreateAnimeService_1.CreateAnimeService();
                         _a.label = 1;
                     case 1:
@@ -63,7 +65,7 @@ var AnimeController = /** @class */ (function () {
                         return [4 /*yield*/, creatAnimeService.execute({ name: name, link: link, image: image })];
                     case 2:
                         _a.sent();
-                        return [2 /*return*/, response.json("ok")];
+                        return [2 /*return*/, response.status(201).json("ok")];
                     case 3:
                         err_1 = _a.sent();
                         return [2 /*return*/, response.status(400).send(err_1.message)];
@@ -82,6 +84,9 @@ var AnimeController = /** @class */ (function () {
                         name = request.body["anime-name"];
                         link = request.body["anime-link"];
                         image = request.body["anime-image"];
+                        name = name.trim();
+                        link = link.trim();
+                        image = image.trim();
                         updateAnimeService = new UpdateAnimeService_1.UpdateAnimeService();
                         _a.label = 1;
                     case 1:
@@ -89,7 +94,7 @@ var AnimeController = /** @class */ (function () {
                         return [4 /*yield*/, updateAnimeService.execute({ id: id, name: name, link: link, image: image })];
                     case 2:
                         _a.sent();
-                        return [2 /*return*/, response.json("ok")];
+                        return [2 /*return*/, response.status(200).json("ok")];
                     case 3:
                         err_2 = _a.sent();
                         return [2 /*return*/, response.status(400).send(err_2.message)];
@@ -98,13 +103,14 @@ var AnimeController = /** @class */ (function () {
             });
         });
     };
-    AnimeController.prototype.handleSearch = function (request, response) {
+    AnimeController.prototype.handleSearchName = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
             var name, searchAnimeService, anime, err_3;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         name = request.body["anime-name"];
+                        name = name.trim();
                         searchAnimeService = new SearchAnimeService_1.SearchAnimeService();
                         _a.label = 1;
                     case 1:
@@ -112,7 +118,7 @@ var AnimeController = /** @class */ (function () {
                         return [4 /*yield*/, searchAnimeService.execute(name)];
                     case 2:
                         anime = _a.sent();
-                        return [2 /*return*/, response.json({ anime: anime })];
+                        return [2 /*return*/, response.status(200).json({ anime: anime })];
                     case 3:
                         err_3 = _a.sent();
                         return [2 /*return*/, response.status(404).send(err_3.message)];
@@ -121,42 +127,58 @@ var AnimeController = /** @class */ (function () {
             });
         });
     };
-    AnimeController.prototype.handlePagination = function (request, response) {
+    AnimeController.prototype.handleSearchId = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var paginationAnimeService, userController, user, recordsPerPage, urlParams, current, start, animePagination, totalRows, numberOfPages, randomUser, contactUsers, status_1, err_4;
+            var id, searchAnimeService, anime, err_4;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        paginationAnimeService = new PaginationAnimeService_1.PaginationAnimeService();
+                        id = request.params.id;
+                        searchAnimeService = new SearchAnimeService_1.SearchAnimeService();
+                        _a.label = 1;
+                    case 1:
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, searchAnimeService.executeId(id)];
+                    case 2:
+                        anime = _a.sent();
+                        return [2 /*return*/, response.status(200).json({ anime: anime })];
+                    case 3:
+                        err_4 = _a.sent();
+                        return [2 /*return*/, response.status(404).send(err_4.message)];
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    AnimeController.prototype.handlePagination = function (request, response) {
+        return __awaiter(this, void 0, void 0, function () {
+            var getAnimeService, userController, user, animes, randomUser, contactUsers, err_5;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        getAnimeService = new GetAnimeService_1.GetAnimeService();
                         userController = new UserController_1.UserController();
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 4, , 5]);
-                        return [4 /*yield*/, userController.handleGet()];
+                        return [4 /*yield*/, userController.handleGetAdmin()];
                     case 2:
                         user = _a.sent();
-                        recordsPerPage = 2;
-                        urlParams = request.query.page;
-                        current = Number(urlParams ? urlParams : 1);
-                        start = (recordsPerPage * current) - recordsPerPage;
-                        return [4 /*yield*/, paginationAnimeService.execute(start, recordsPerPage)];
+                        return [4 /*yield*/, getAnimeService.execute()];
                     case 3:
-                        animePagination = _a.sent();
-                        totalRows = animePagination[1];
-                        numberOfPages = Math.ceil(Number(totalRows) / recordsPerPage);
+                        animes = _a.sent();
                         randomUser = Math.floor(Math.random() * (user.length - 0));
-                        contactUsers = void 0;
+                        contactUsers = [];
                         if (typeof user === "object") {
                             contactUsers = user[randomUser];
                         }
                         else {
                             contactUsers = user;
                         }
-                        status_1 = animePagination[0];
-                        return [2 /*return*/, response.json({ contactUsers: contactUsers, dataAnimesLimit: status_1, numberOfPages: numberOfPages, current: current })];
+                        return [2 /*return*/, response.status(200).json({ contactUsers: contactUsers, animes: animes })];
                     case 4:
-                        err_4 = _a.sent();
-                        return [2 /*return*/, response.status(404).send(err_4.message)];
+                        err_5 = _a.sent();
+                        return [2 /*return*/, response.status(404).send(err_5.message)];
                     case 5: return [2 /*return*/];
                 }
             });
@@ -164,7 +186,7 @@ var AnimeController = /** @class */ (function () {
     };
     AnimeController.prototype.handleDelete = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var id, deleteAnimeService, err_5;
+            var id, deleteAnimeService, err_6;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -176,10 +198,10 @@ var AnimeController = /** @class */ (function () {
                         return [4 /*yield*/, deleteAnimeService.execute(id)];
                     case 2:
                         _a.sent();
-                        return [2 /*return*/, response.json("ok")];
+                        return [2 /*return*/, response.status(200).json("ok")];
                     case 3:
-                        err_5 = _a.sent();
-                        return [2 /*return*/, response.status(404).send(err_5.message)];
+                        err_6 = _a.sent();
+                        return [2 /*return*/, response.status(404).send(err_6.message)];
                     case 4: return [2 /*return*/];
                 }
             });
@@ -188,7 +210,7 @@ var AnimeController = /** @class */ (function () {
     //essa e a função handle paginatio fazem a mesma coisa no sentido geral que é buscar dados, a diferença é que a págination é para organizar a quantidade de conteudo a ser exibido por página, e essa ela traz todos os dados para que eles sejam selecionados aleatoriamente para saber qual vai ser exibido na página inicial
     AnimeController.prototype.handleGetAll = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var getAnimeService, animes, animesCarousel, i, animesfilter, err_6;
+            var getAnimeService, animes, animesCarousel, i, animesfilter, err_7;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -208,7 +230,7 @@ var AnimeController = /** @class */ (function () {
                         }
                         return [2 /*return*/, animesCarousel];
                     case 3:
-                        err_6 = _a.sent();
+                        err_7 = _a.sent();
                         throw new Error("Falha");
                     case 4: return [2 /*return*/];
                 }

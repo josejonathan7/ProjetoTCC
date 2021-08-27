@@ -6,6 +6,10 @@ class DeleteSongService {
     async execute(id: string){
         const songRepositorie = getCustomRepository(SongsRepositories);
 
+        if(id === ""){
+            throw new Error ("Informe o ID do registro que desejar deletar!");
+        }
+
         const song = await songRepositorie.delete({
             id
         });

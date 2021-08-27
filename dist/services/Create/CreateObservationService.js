@@ -50,6 +50,9 @@ var CreateObservationService = /** @class */ (function () {
                 switch (_b.label) {
                     case 0:
                         observationRepositorie = typeorm_1.getCustomRepository(ObservationRepositories_1.ObservationRepositories);
+                        if (name === "" || information === "") {
+                            throw new Error("Preencha todos os campos");
+                        }
                         observation = observationRepositorie.create({
                             name: name,
                             information: information

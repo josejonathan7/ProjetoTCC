@@ -12,16 +12,25 @@ class AuthenticateUserService{
 
     async execute({ name, password }: IAuthenticateRequest){
         const userRepositorie = getCustomRepository(UsersRepositories);
+       
+        if(name === ""){
+            throw new Error ("Preencha o campo Nome!");
+        }
+
+        if(password === ""){
+            throw new Error ("Preencha o campo senha!");
+        }
+
         const user = await userRepositorie.findOne({name});
 
         if(!user){
-            throw new Error("Email/Password incorrect");
+            throw new Error("Email/Senha incorreto");
         }
 
         const passwordMatch = await compare(password, user.password);
 
         if(!passwordMatch){
-            throw new Error("Email/Password incorrect");
+            throw new Error("Email/Password incorreto");
         }
 
         const token = sign({

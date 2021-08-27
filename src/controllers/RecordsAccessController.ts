@@ -19,7 +19,7 @@ class RecordsAccessController{
             if(typeof users === "object"){
                 contactUsers = users[randomUser];
             }else {
-             contactUsers = users;
+                contactUsers = users;
             }
 
             return response.status(200).json({contactUsers});
@@ -28,11 +28,6 @@ class RecordsAccessController{
             return response.status(400).send(err.message)
         }
     }
-
-    accesFormUpdate(request: Request, response: Response){
-        return response.send("ok");
-    }
-    
 }
 
 export { RecordsAccessController }

@@ -42,34 +42,29 @@ var UpdateGameService_1 = require("../services/Update/UpdateGameService");
 var SearchGameService_1 = require("../services/Search/SearchGameService");
 var DeleteGameService_1 = require("../services/Delete/DeleteGameService");
 var UserController_1 = require("./UserController");
-var PaginationGameService_1 = require("../services/Get/QueryForPagination/PaginationGameService");
 var GetGameService_1 = require("../services/Get/GetGameService");
 var GameController = /** @class */ (function () {
     function GameController() {
     }
     GameController.prototype.handlePagination = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var paginationGameService, userController, user, recordsPerPage, urlParams, current, start, gamePagination, totalRows, numberOfPages, randomUser, contactUsers, status_1, err_1;
+            var getGameService, userController, user, games, randomUser, contactUsers, err_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        paginationGameService = new PaginationGameService_1.PaginationGameService();
+                        getGameService = new GetGameService_1.GetGameService();
                         userController = new UserController_1.UserController();
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 4, , 5]);
-                        return [4 /*yield*/, userController.handleGet()];
+                        return [4 /*yield*/, userController.handleGetAdmin()];
                     case 2:
                         user = _a.sent();
-                        recordsPerPage = 2;
-                        urlParams = request.query.page;
-                        current = Number(urlParams ? urlParams : 1);
-                        start = (recordsPerPage * current) - recordsPerPage;
-                        return [4 /*yield*/, paginationGameService.execute(start, recordsPerPage)];
+                        return [4 /*yield*/, getGameService.execute()
+                            //dados de contato no rodapé
+                        ];
                     case 3:
-                        gamePagination = _a.sent();
-                        totalRows = gamePagination[1];
-                        numberOfPages = Math.ceil(Number(totalRows) / recordsPerPage);
+                        games = _a.sent();
                         randomUser = Math.floor(Math.random() * (user.length - 0));
                         contactUsers = void 0;
                         if (typeof user === "object") {
@@ -78,8 +73,7 @@ var GameController = /** @class */ (function () {
                         else {
                             contactUsers = user;
                         }
-                        status_1 = gamePagination[0];
-                        return [2 /*return*/, response.json({ contactUsers: contactUsers, dataGamesLimit: status_1, numberOfPages: numberOfPages, current: current })];
+                        return [2 /*return*/, response.status(200).json({ contactUsers: contactUsers, games: games })];
                     case 4:
                         err_1 = _a.sent();
                         return [2 /*return*/, response.status(404).send(err_1.message)];
@@ -97,6 +91,9 @@ var GameController = /** @class */ (function () {
                         name = request.body["game-name"];
                         link = request.body["game-link"];
                         image = request.body["game-image"];
+                        name = name.trim();
+                        link = link.trim();
+                        image = image.trim();
                         creatGameService = new CreateGameService_1.CreateGameService();
                         _a.label = 1;
                     case 1:
@@ -104,7 +101,7 @@ var GameController = /** @class */ (function () {
                         return [4 /*yield*/, creatGameService.execute({ name: name, link: link, image: image })];
                     case 2:
                         _a.sent();
-                        return [2 /*return*/, response.json("ok")];
+                        return [2 /*return*/, response.status(200).json("ok")];
                     case 3:
                         err_2 = _a.sent();
                         return [2 /*return*/, response.status(400).send(err_2.message)];
@@ -123,6 +120,9 @@ var GameController = /** @class */ (function () {
                         name = request.body["game-name"];
                         link = request.body["game-link"];
                         image = request.body["game-image"];
+                        name = name.trim();
+                        link = link.trim();
+                        image = image.trim();
                         updateGameService = new UpdateGameService_1.UpdateGameService();
                         _a.label = 1;
                     case 1:
@@ -130,7 +130,7 @@ var GameController = /** @class */ (function () {
                         return [4 /*yield*/, updateGameService.execute({ id: id, name: name, link: link, image: image })];
                     case 2:
                         _a.sent();
-                        return [2 /*return*/, response.json("ok")];
+                        return [2 /*return*/, response.status(200).json("ok")];
                     case 3:
                         err_3 = _a.sent();
                         return [2 /*return*/, response.status(400).send(err_3.message)];
@@ -146,6 +146,7 @@ var GameController = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         name = request.body["game-name"];
+                        name = name.trim();
                         searchGameService = new SearchGameService_1.SearchGameService();
                         _a.label = 1;
                     case 1:
@@ -153,10 +154,33 @@ var GameController = /** @class */ (function () {
                         return [4 /*yield*/, searchGameService.execute(name)];
                     case 2:
                         game = _a.sent();
-                        return [2 /*return*/, response.json({ game: game })];
+                        return [2 /*return*/, response.status(200).json({ game: game })];
                     case 3:
                         err_4 = _a.sent();
-                        return [2 /*return*/, response.status(404).json({ error: err_4.message })];
+                        return [2 /*return*/, response.status(404).send(err_4.message)];
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    GameController.prototype.handleSearchId = function (request, response) {
+        return __awaiter(this, void 0, void 0, function () {
+            var id, searchGameService, game, err_5;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        id = request.params.id;
+                        searchGameService = new SearchGameService_1.SearchGameService();
+                        _a.label = 1;
+                    case 1:
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, searchGameService.executeId(id)];
+                    case 2:
+                        game = _a.sent();
+                        return [2 /*return*/, response.status(200).json({ game: game })];
+                    case 3:
+                        err_5 = _a.sent();
+                        return [2 /*return*/, response.status(404).send(err_5.message)];
                     case 4: return [2 /*return*/];
                 }
             });
@@ -164,7 +188,7 @@ var GameController = /** @class */ (function () {
     };
     GameController.prototype.handleDelete = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var id, deleteGameService, err_5;
+            var id, deleteGameService, err_6;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -176,10 +200,10 @@ var GameController = /** @class */ (function () {
                         return [4 /*yield*/, deleteGameService.execute(id)];
                     case 2:
                         _a.sent();
-                        return [2 /*return*/, response.json("ok")];
+                        return [2 /*return*/, response.status(200).json("ok")];
                     case 3:
-                        err_5 = _a.sent();
-                        return [2 /*return*/, response.status(404).json({ error: err_5.message })];
+                        err_6 = _a.sent();
+                        return [2 /*return*/, response.status(404).send(err_6.message)];
                     case 4: return [2 /*return*/];
                 }
             });
@@ -188,7 +212,7 @@ var GameController = /** @class */ (function () {
     //essa e a função handle paginatio fazem a mesma coisa no sentido geral que é buscar dados, a diferença é que a págination é para organizar a quantidade de conteudo a ser exibido por página, e essa ela traz todos os dados para que eles sejam selecionados aleatoriamente para saber qual vai ser exibido na página inicial
     GameController.prototype.handleGetAll = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var getGameService, games, gamesCarousel, i, gamesfilter, err_6;
+            var getGameService, games, gamesCarousel, i, gamesfilter, err_7;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -208,7 +232,7 @@ var GameController = /** @class */ (function () {
                         }
                         return [2 /*return*/, gamesCarousel];
                     case 3:
-                        err_6 = _a.sent();
+                        err_7 = _a.sent();
                         throw new Error("Falha");
                     case 4: return [2 /*return*/];
                 }

@@ -21,11 +21,11 @@ class AuthenticateUserController {
             const userData = await searchUserService.execute(name);
 
 
-            return response.json({ token, user: userData });
+            return response.status(200).json({ token, user: userData });
 
-        }catch{
+        }catch(err){
 
-            return response.status(401).send("Email/password Invalid!");
+            return response.status(401).send(err.message);
         }
     }
 }

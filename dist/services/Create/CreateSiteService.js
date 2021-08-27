@@ -50,6 +50,12 @@ var CreateSiteService = /** @class */ (function () {
                 switch (_b.label) {
                     case 0:
                         siteRepositorie = typeorm_1.getCustomRepository(SitesRepositories_1.SitesRepositories);
+                        if (name === "" || link === "") {
+                            throw new Error("Preencha todos os campos");
+                        }
+                        if (category === "" || category !== "anime" && category !== "game") {
+                            throw new Error("Preencha a categoria corretamente!!");
+                        }
                         site = siteRepositorie.create({
                             name: name,
                             link: link,
