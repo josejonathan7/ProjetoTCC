@@ -55,7 +55,7 @@ class SongController {
 
         try {
 
-            const user = await userController.handleGet();
+            const user = await userController.handleGetAdmin();
             const song = await getSongService.execute();
         
             //dados de contato no rodapé

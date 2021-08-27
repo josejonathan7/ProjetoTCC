@@ -7,13 +7,14 @@ export function ensureAuthenticate(request: Request, response: Response){
 
    try{
 
-      verify(token, "AniJogos");
+      const user = verify(token, "AniJogos");
 
-      return response.json({token});
+
+      return response.json({user});
 
    }catch(err){
 
-      return response.status(401).send("token not exists"); 
+      return response.status(401).send("token inválido"); 
    }
 }
 

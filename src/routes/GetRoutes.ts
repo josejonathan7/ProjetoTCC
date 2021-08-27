@@ -5,7 +5,6 @@ import { GameController } from '../controllers/GamesController';
 import { IndexController } from '../controllers/IndexController';
 import { RecordsAccessController } from '../controllers/RecordsAccessController';
 import { SongController } from '../controllers/SongsController';
-import { ensureAuthenticate } from '../middleware/ensureAuthenticate';
 
 const getRouter = Router()
 const animeController = new AnimeController()
@@ -25,9 +24,9 @@ getRouter.get("/games", gameController.handlePagination);
 
 getRouter.get("/songs", songController.handleGet);
 
-getRouter.get("/registers", ensureAuthenticate, recordsAccessController.accesFormNew)
+getRouter.get("/registers", recordsAccessController.accesFormNew)
 
-getRouter.get("/registers/update", ensureAuthenticate, recordsAccessController.accesFormUpdate)
+getRouter.get("/registers/update", recordsAccessController.accesFormUpdate)
 
 getRouter.post("/registers", authenticateUserController.handleAuthenticate)
 

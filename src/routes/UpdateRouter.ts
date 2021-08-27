@@ -5,7 +5,6 @@ import { ObservationController } from '../controllers/ObservationController';
 import { SiteController } from '../controllers/SiteController';
 import { SongController } from '../controllers/SongsController';
 import { UserController } from '../controllers/UserController';
-import { ensureAuthenticate } from '../middleware/ensureAuthenticate';
 
 const updateRouter = Router()
 const animeController = new AnimeController()
@@ -16,16 +15,16 @@ const observationController = new ObservationController()
 const siteController = new SiteController()
 
 //atualização de registros
-updateRouter.put("/registers/update/observations/:id", ensureAuthenticate, observationController.handleUpdate)
+updateRouter.put("/registers/update/observations/:id", observationController.handleUpdate)
 
-updateRouter.put("/registers/update/sites/:id", ensureAuthenticate, siteController.handleUpdate)
+updateRouter.put("/registers/update/sites/:id", siteController.handleUpdate)
 
-updateRouter.put("/registers/update/users/:id", ensureAuthenticate, userController.handleUpdate)
+updateRouter.put("/registers/update/users/:id", userController.handleUpdate)
 
-updateRouter.put("/registers/update/animes/:id", ensureAuthenticate, animeController.handleUpdate)
+updateRouter.put("/registers/update/animes/:id", animeController.handleUpdate)
 
-updateRouter.put("/registers/update/games/:id", ensureAuthenticate, gameController.handleUpdate)
+updateRouter.put("/registers/update/games/:id", gameController.handleUpdate)
 
-updateRouter.put("/registers/update/songs/:id", ensureAuthenticate, songController.handleUpdate)
+updateRouter.put("/registers/update/songs/:id", songController.handleUpdate)
 
 export { updateRouter }

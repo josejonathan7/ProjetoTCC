@@ -15,16 +15,11 @@ class IndexController {
         const observationController = new ObservationController();
         const userController = new UserController();
 
-
-        const b = request.headers.authorization
-
-        console.log(b);
-
         try{
             const randomAnime = await animeController.handleGetAll();
             const randomGame = await gameController.handleGetAll();
             const sites = await siteController.handleGet();
-            const users = await userController.handleGet();
+            const users = await userController.handleGetAdmin();
             const observation = await observationController.handleGet();
 
 

@@ -16,7 +16,7 @@ class GameController {
 
         try{
         
-            const user = await userController.handleGet();
+            const user = await userController.handleGetAdmin();
             const games = await getGameService.execute()
 
             //dados de contato no rodapé

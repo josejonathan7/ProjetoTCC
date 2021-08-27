@@ -10,7 +10,7 @@ class RecordsAccessController{
 
         try {
 
-            const users = await userController.handleGet()
+            const users = await userController.handleGetAdmin()
 
             //dados de contato no rodapé
             let randomUser =  Math.floor(Math.random() * (users.length - 0));

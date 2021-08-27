@@ -15,16 +15,18 @@ const observationController = new ObservationController()
 const siteController = new SiteController()
 
 //criação de novos registros
-createRouter.post("/registers/observations", observationController.handleCreate)
+createRouter.post("/registers/observations", observationController.handleCreate);
 
-createRouter.post("/registers/sites", siteController.handleCreate)
+createRouter.post("/registers/sites", siteController.handleCreate);
 
-createRouter.post("/registers/users", userController.handleCreate)
+createRouter.post("/registers/users", userController.handleCreate);
 
-createRouter.post("/registers/animes", animeController.handleCreate)
+createRouter.post("/registers/user/new", userController.handleCreateCommonUser);
 
-createRouter.post("/registers/games", gameController.handleCreate)
+createRouter.post("/registers/animes", animeController.handleCreate);
 
-createRouter.post("/registers/songs", songController.handleCreate)
+createRouter.post("/registers/games", gameController.handleCreate);
+
+createRouter.post("/registers/songs", songController.handleCreate);
 
 export { createRouter }

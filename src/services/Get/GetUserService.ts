@@ -17,6 +17,23 @@ class GetUserService{
 
         return status;
     }
+
+    
+    async executeAdmin(){
+        const userRepositorie = getCustomRepository(UsersRepositories);
+
+        const user = await userRepositorie.find({
+            admin: true
+        });
+
+        const status = user ? classToPlain(user) : undefined;
+
+        if(typeof status === "undefined"){
+            throw new Error("Nenhum usuário encontrado");
+        }
+
+        return status;
+    }
 }
 
 export { GetUserService }

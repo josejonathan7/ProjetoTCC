@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { AuthenticateUserService } from "../services/AuthenticateUserService";
 import { CreateUserService } from "../services/Create/CreateUserService";
 import { DeleteUserService } from "../services/Delete/DeleteUserService";
 import { GetUserService } from "../services/Get/GetUserService";
@@ -46,6 +47,41 @@ class UserController {
             await creatUserService.execute({ name, email_contact_link, password, avatar, description, admin });
 
             return response.status(201).json("ok");
+
+        }catch(err){
+            return response.status(400).send(err.message);
+        }
+    }
+
+    async handleCreateCommonUser (request: Request, response: Response){
+        let name = request.body["create-login"];
+        let email_contact_link = request.body.email;
+        let password = request.body["create-password"];
+     
+        name = name.trim();
+        email_contact_link = email_contact_link.trim();
+        password = password.trim();
+
+        if(email_contact_link === ""){
+            email_contact_link = null;
+        }
+
+        const creatUserService = new CreateUserService();
+        const authenticateUserService = new AuthenticateUserService();
+        const searchUserService = new SearchUserService();
+
+        try {
+
+            await creatUserService.executeCommonUser({ name, email_contact_link, password });
+
+            const token = await authenticateUserService.execute({
+                name,
+                password
+            });
+
+            const userData = await searchUserService.execute(name);
+
+            return response.status(201).json({ token, user: userData });
 
         }catch(err){
             return response.status(400).send(err.message);
@@ -125,6 +161,21 @@ class UserController {
         try {
 
             const user = await getUserService.execute();
+
+            return user;
+
+        } catch(err){
+            throw new Error("falha");
+        }
+    }
+
+    
+    async handleGetAdmin(){
+        const getUserService = new GetUserService();
+
+        try {
+
+            const user = await getUserService.executeAdmin();
 
             return user;
 

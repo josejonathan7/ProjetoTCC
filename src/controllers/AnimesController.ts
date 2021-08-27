@@ -93,7 +93,7 @@ class AnimeController {
 
         try{
     
-            const user = await userController.handleGet();
+            const user = await userController.handleGetAdmin();
             const animes = await getAnimeService.execute();
 
 
@@ -101,7 +101,7 @@ class AnimeController {
             let randomUser =  Math.floor(Math.random() * (user.length - 0));
             let contactUsers= [];
 
-            if(typeof user === "object"){
+            if(typeof user === "object"){          
                 contactUsers = user[randomUser];
             }else {
                 contactUsers = user;
