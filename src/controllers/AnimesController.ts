@@ -11,15 +11,20 @@ class AnimeController {
     async handleCreate(request: Request, response: Response){
         let name: string = request.body["anime-name"];
         let link: string = request.body["anime-link"];
-        let image: string = request.body["anime-image"];
+        let image = request.body["anime-image"];
 
         name = name.trim();
         link = link.trim();
-        image = image.trim();
 
         const creatAnimeService = new CreateAnimeService();
 
         try {
+
+            if(image === "" || typeof image === "undefined"){
+                image = null;
+            }else{
+                image = image.trim();
+            }
 
             await creatAnimeService.execute({ name , link, image });
 
@@ -34,15 +39,21 @@ class AnimeController {
         const id: string = request.params.id;
         let name: string = request.body["anime-name"];
         let link: string = request.body["anime-link"];
-        let image: string = request.body["anime-image"];
+        let image = request.body["anime-image"];
 
         name = name.trim();
         link = link.trim();
-        image = image.trim();
 
         const updateAnimeService = new UpdateAnimeService();
 
         try{
+
+            
+            if(image === "" || typeof image === "undefined"){
+                image = null;
+            }else{
+                image = image.trim();
+            }
 
             await updateAnimeService.execute({ id, name, link, image });
 

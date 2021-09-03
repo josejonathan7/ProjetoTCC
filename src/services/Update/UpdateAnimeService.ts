@@ -5,7 +5,7 @@ interface IAnimeRequest{
     id: string;
     name: string;
     link: string;
-    image: string;
+    image?: string;
 }
 
 class UpdateAnimeService {
@@ -17,8 +17,8 @@ class UpdateAnimeService {
             throw new Error ("Informe o ID do registro que desejar deletar!");
         }
         
-        if(name === "" || link === "" || image === ""){
-            throw new Error ("Preencha todos os campos");
+        if(name === "" || link === ""){
+            throw new Error ("Preencha pelo menos os campos nome e link!");
         }
 
         const anime = await animeRepositorie.update(id, {

@@ -38,15 +38,20 @@ class GameController {
     async handleCreate(request: Request, response: Response){
         let name: string = request.body["game-name"];
         let link: string = request.body["game-link"];
-        let image: string = request.body["game-image"];
+        let image = request.body["game-image"];
 
         name = name.trim();
         link = link.trim();
-        image = image.trim();
 
         const creatGameService = new CreateGameService();
 
         try {
+
+            if(image === "" || typeof image === "undefined"){
+                image = null;
+            }else{
+                image = image.trim();
+            }
 
             await creatGameService.execute({ name, link, image });
 
@@ -61,15 +66,20 @@ class GameController {
         const id: string = request.params.id;
         let name: string =   request.body["game-name"];
         let link: string = request.body["game-link"];
-        let image: string = request.body["game-image"];
+        let image = request.body["game-image"];
 
         name = name.trim();
         link = link.trim();
-        image = image.trim();
 
         const updateGameService = new UpdateGameService();
 
         try{
+
+            if(image === "" || typeof image === "undefined"){
+                image = null;
+            }else{
+                image = image.trim();
+            }
 
             await updateGameService.execute({ id, name, link, image });
             

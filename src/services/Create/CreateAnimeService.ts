@@ -4,7 +4,7 @@ import { AnimesRepositories } from "../../repositories/AnimesRepositories";
 interface IAnimesRequest{
     name: string;
     link: string;
-    image: string;
+    image?: string;
 }
 
 class CreateAnimeService {
@@ -12,8 +12,8 @@ class CreateAnimeService {
     async execute({ name, link, image }: IAnimesRequest ){
         const animesRepositorie = getCustomRepository(AnimesRepositories);
 
-        if(name === "" || link === "" || image === ""){
-            throw new Error ("Preencha todos os campos");
+        if(name === "" || link === ""){
+            throw new Error ("Preencha pelo menos os campos nome e link!");
         }
 
         const animes = animesRepositorie.create({

@@ -4,7 +4,7 @@ import { GamesRepositories } from "../../repositories/GamesRepositories";
 interface IGamesRequest {
     name: string;
     link: string;
-    image: string;
+    image?: string;
 }
 
 class CreateGameService {
@@ -12,8 +12,8 @@ class CreateGameService {
     async execute({ name, link, image }: IGamesRequest){
         const gamesRepositorie = getCustomRepository(GamesRepositories);
  
-        if(name === "" || link === "" || image === ""){
-            throw new Error ("Preencha todos os campos");
+        if(name === "" || link === ""){
+            throw new Error ("Preencha pelo menos os campos nome e link!");
         }
 
 
