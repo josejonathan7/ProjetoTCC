@@ -5,7 +5,7 @@
     "node": "14.x",
     "npm": "7.x"
   },
-  "main": "src/server.js",
+  "main": "dist/server.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/josejonathan7/ProjetoTCC.git"

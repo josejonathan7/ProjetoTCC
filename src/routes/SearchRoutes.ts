@@ -5,7 +5,7 @@ import { ObservationController } from '../controllers/ObservationController';
 import { SiteController } from '../controllers/SiteController';
 import { SongController } from '../controllers/SongsController';
 import { UserController } from '../controllers/UserController';
-import { ensureAuthenticate } from '../middleware/ensureAuthenticate';
+import { ensureAuthenticate } from '../hook/ensureAuthenticate';
 
 const searchRouter = Router();
 const animeController = new AnimeController();

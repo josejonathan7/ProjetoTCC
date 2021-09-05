@@ -50,8 +50,8 @@ var CreateAnimeService = /** @class */ (function () {
                 switch (_b.label) {
                     case 0:
                         animesRepositorie = typeorm_1.getCustomRepository(AnimesRepositories_1.AnimesRepositories);
-                        if (name === "" || link === "" || image === "") {
-                            throw new Error("Preencha todos os campos");
+                        if (name === "" || link === "") {
+                            throw new Error("Preencha pelo menos os campos nome e link!");
                         }
                         animes = animesRepositorie.create({
                             name: name,

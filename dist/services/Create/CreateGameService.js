@@ -50,8 +50,8 @@ var CreateGameService = /** @class */ (function () {
                 switch (_b.label) {
                     case 0:
                         gamesRepositorie = typeorm_1.getCustomRepository(GamesRepositories_1.GamesRepositories);
-                        if (name === "" || link === "" || image === "") {
-                            throw new Error("Preencha todos os campos");
+                        if (name === "" || link === "") {
+                            throw new Error("Preencha pelo menos os campos nome e link!");
                         }
                         game = gamesRepositorie.create({
                             name: name,

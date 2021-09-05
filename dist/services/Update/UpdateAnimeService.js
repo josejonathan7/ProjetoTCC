@@ -53,8 +53,8 @@ var UpdateAnimeService = /** @class */ (function () {
                         if (id === "") {
                             throw new Error("Informe o ID do registro que desejar deletar!");
                         }
-                        if (name === "" || link === "" || image === "") {
-                            throw new Error("Preencha todos os campos");
+                        if (name === "" || link === "") {
+                            throw new Error("Preencha pelo menos os campos nome e link!");
                         }
                         return [4 /*yield*/, animeRepositorie.update(id, {
                                 name: name,

@@ -57,11 +57,16 @@ var AnimeController = /** @class */ (function () {
                         image = request.body["anime-image"];
                         name = name.trim();
                         link = link.trim();
-                        image = image.trim();
                         creatAnimeService = new CreateAnimeService_1.CreateAnimeService();
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 3, , 4]);
+                        if (image === "" || typeof image === "undefined") {
+                            image = null;
+                        }
+                        else {
+                            image = image.trim();
+                        }
                         return [4 /*yield*/, creatAnimeService.execute({ name: name, link: link, image: image })];
                     case 2:
                         _a.sent();
@@ -86,11 +91,16 @@ var AnimeController = /** @class */ (function () {
                         image = request.body["anime-image"];
                         name = name.trim();
                         link = link.trim();
-                        image = image.trim();
                         updateAnimeService = new UpdateAnimeService_1.UpdateAnimeService();
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 3, , 4]);
+                        if (image === "" || typeof image === "undefined") {
+                            image = null;
+                        }
+                        else {
+                            image = image.trim();
+                        }
                         return [4 /*yield*/, updateAnimeService.execute({ id: id, name: name, link: link, image: image })];
                     case 2:
                         _a.sent();

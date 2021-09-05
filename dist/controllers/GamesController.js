@@ -93,11 +93,16 @@ var GameController = /** @class */ (function () {
                         image = request.body["game-image"];
                         name = name.trim();
                         link = link.trim();
-                        image = image.trim();
                         creatGameService = new CreateGameService_1.CreateGameService();
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 3, , 4]);
+                        if (image === "" || typeof image === "undefined") {
+                            image = null;
+                        }
+                        else {
+                            image = image.trim();
+                        }
                         return [4 /*yield*/, creatGameService.execute({ name: name, link: link, image: image })];
                     case 2:
                         _a.sent();
@@ -122,11 +127,16 @@ var GameController = /** @class */ (function () {
                         image = request.body["game-image"];
                         name = name.trim();
                         link = link.trim();
-                        image = image.trim();
                         updateGameService = new UpdateGameService_1.UpdateGameService();
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 3, , 4]);
+                        if (image === "" || typeof image === "undefined") {
+                            image = null;
+                        }
+                        else {
+                            image = image.trim();
+                        }
                         return [4 /*yield*/, updateGameService.execute({ id: id, name: name, link: link, image: image })];
                     case 2:
                         _a.sent();
