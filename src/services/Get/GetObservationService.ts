@@ -4,6 +4,8 @@ import { ObservationRepositories } from "../../repositories/ObservationRepositor
 
 class GetObservationService{
 
+    constructor() {}
+
     async execute(){
         const observationRepositorie = getCustomRepository(ObservationRepositories);
 

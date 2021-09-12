@@ -8,6 +8,8 @@ interface IObservationRequest {
 
 class CreateObservationService {
 
+    constructor() {}
+
     async execute({ name, information }: IObservationRequest){
         const observationRepositorie = getCustomRepository(ObservationRepositories);
 

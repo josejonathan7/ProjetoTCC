@@ -4,6 +4,8 @@ import { SearchUserService } from '../services/Search/SearchUserService';
 
 class AuthenticateUserController {
 
+    constructor() {}
+
     async handleAuthenticate(request: Request, response: Response){
         const name: string = request.body.user;
         const password: string = request.body.password;
@@ -23,7 +25,7 @@ class AuthenticateUserController {
 
             return response.status(200).json({ token, user: userData });
 
-        }catch(err){
+        }catch(err:  any){
 
             return response.status(401).send(err.message);
         }

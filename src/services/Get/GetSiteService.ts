@@ -4,6 +4,8 @@ import { SitesRepositories } from "../../repositories/SitesRepositories";
 
 class GetSiteService {
 
+    constructor() {}
+
     async execute(){
         const siteRepositorie = getCustomRepository(SitesRepositories);
 

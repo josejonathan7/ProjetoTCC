@@ -48,7 +48,7 @@ var GameController = /** @class */ (function () {
     }
     GameController.prototype.handlePagination = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var getGameService, userController, user, games, randomUser, contactUsers, err_1;
+            var getGameService, userController, user, unfilteredGames, randomUser, contactUsers, filteringGame, games, err_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -64,15 +64,21 @@ var GameController = /** @class */ (function () {
                             //dados de contato no rodapé
                         ];
                     case 3:
-                        games = _a.sent();
+                        unfilteredGames = _a.sent();
                         randomUser = Math.floor(Math.random() * (user.length - 0));
-                        contactUsers = void 0;
-                        if (typeof user === "object") {
-                            contactUsers = user[randomUser];
-                        }
-                        else {
-                            contactUsers = user;
-                        }
+                        contactUsers = typeof user === 'object' ? user[randomUser] : user;
+                        filteringGame = unfilteredGames.flat();
+                        games = filteringGame.sort(function (a, b) {
+                            var x = a.name.toLowerCase();
+                            var y = b.name.toLowerCase();
+                            if (x < y) {
+                                return -1;
+                            }
+                            if (x > y) {
+                                return 1;
+                            }
+                            return 0;
+                        });
                         return [2 /*return*/, response.status(200).json({ contactUsers: contactUsers, games: games })];
                     case 4:
                         err_1 = _a.sent();
@@ -97,12 +103,7 @@ var GameController = /** @class */ (function () {
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 3, , 4]);
-                        if (image === "" || typeof image === "undefined") {
-                            image = null;
-                        }
-                        else {
-                            image = image.trim();
-                        }
+                        image = image === "" || typeof image === "undefined" ? null : image.trim();
                         return [4 /*yield*/, creatGameService.execute({ name: name, link: link, image: image })];
                     case 2:
                         _a.sent();
@@ -131,12 +132,7 @@ var GameController = /** @class */ (function () {
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 3, , 4]);
-                        if (image === "" || typeof image === "undefined") {
-                            image = null;
-                        }
-                        else {
-                            image = image.trim();
-                        }
+                        image = image === "" || typeof image === "undefined" ? null : image.trim();
                         return [4 /*yield*/, updateGameService.execute({ id: id, name: name, link: link, image: image })];
                     case 2:
                         _a.sent();
@@ -237,7 +233,7 @@ var GameController = /** @class */ (function () {
                         if (games) {
                             for (i = 0; i < 5; i++) {
                                 gamesfilter = Math.floor(Math.random() * (games.length - 0));
-                                gamesCarousel[i] = games[gamesfilter];
+                                gamesCarousel.push(games[gamesfilter]);
                             }
                         }
                         return [2 /*return*/, gamesCarousel];

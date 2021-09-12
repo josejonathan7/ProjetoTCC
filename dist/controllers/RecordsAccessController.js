@@ -58,13 +58,7 @@ var RecordsAccessController = /** @class */ (function () {
                     case 2:
                         users = _a.sent();
                         randomUser = Math.floor(Math.random() * (users.length - 0));
-                        contactUsers = [];
-                        if (typeof users === "object") {
-                            contactUsers = users[randomUser];
-                        }
-                        else {
-                            contactUsers = users;
-                        }
+                        contactUsers = typeof users === 'object' ? users[randomUser] : users;
                         return [2 /*return*/, response.status(200).json({ contactUsers: contactUsers })];
                     case 3:
                         err_1 = _a.sent();

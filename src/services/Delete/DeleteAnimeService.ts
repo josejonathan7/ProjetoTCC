@@ -3,6 +3,8 @@ import { AnimesRepositories } from "../../repositories/AnimesRepositories";
 
 class DeleteAnimeService{
 
+    constructor() {}
+
     async execute(id: string){
         const animeRepositorie = getCustomRepository(AnimesRepositories);
 

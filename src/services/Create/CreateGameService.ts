@@ -9,6 +9,8 @@ interface IGamesRequest {
 
 class CreateGameService {
 
+    constructor() {}
+
     async execute({ name, link, image }: IGamesRequest){
         const gamesRepositorie = getCustomRepository(GamesRepositories);
  

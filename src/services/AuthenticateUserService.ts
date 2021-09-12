@@ -10,6 +10,8 @@ interface IAuthenticateRequest {
 
 class AuthenticateUserService{
 
+    constructor() {}
+
     async execute({ name, password }: IAuthenticateRequest){
         const userRepositorie = getCustomRepository(UsersRepositories);
        

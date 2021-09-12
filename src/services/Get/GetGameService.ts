@@ -4,6 +4,8 @@ import { classToPlain } from "class-transformer";
 
 class GetGameService {
 
+    constructor() {}
+
     async execute(){
         const gameRepositorie = getCustomRepository(GamesRepositories);
 

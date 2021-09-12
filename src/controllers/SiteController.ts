@@ -7,6 +7,8 @@ import { UpdateSiteService } from "../services/Update/UpdateSiteService";
 
 class SiteController {
 
+    constructor() {}
+
     async handleCreate(request: Request, response: Response){
         let name: string = request.body["site-name"];
         let link: string = request.body["site-link"];
@@ -23,7 +25,7 @@ class SiteController {
 
             return response.status(201).json("ok");
 
-        }catch(err){
+        }catch(err: any){
             return response.status(400).send(err.message);
         }
     }
@@ -45,7 +47,7 @@ class SiteController {
             
             return response.status(200).json("ok");
 
-        }catch(err){
+        }catch(err: any){
             return response.status(400).send(err.message);
         }
     }
@@ -63,7 +65,7 @@ class SiteController {
 
             return response.status(200).json({ site });
 
-        }catch(err){
+        }catch(err: any){
             return response.status(404).send(err.message);
         }
     }
@@ -79,7 +81,7 @@ class SiteController {
 
             return response.status(200).json({ site });
 
-        }catch(err){
+        }catch(err: any){
             return response.status(404).send(err.message);
         }
     }
@@ -110,7 +112,7 @@ class SiteController {
             
             return response.status(200).json("ok");
 
-        }catch(err){
+        }catch(err: any){
             return response.status(404).send(err.message);
         }
     }

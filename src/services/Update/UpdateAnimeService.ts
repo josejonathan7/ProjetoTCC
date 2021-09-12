@@ -10,6 +10,8 @@ interface IAnimeRequest{
 
 class UpdateAnimeService {
 
+    constructor() {}
+
     async execute({ id, name, link, image}: IAnimeRequest){
         const animeRepositorie = getCustomRepository(AnimesRepositories);
 

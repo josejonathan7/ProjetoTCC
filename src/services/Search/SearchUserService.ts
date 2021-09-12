@@ -4,6 +4,8 @@ import { UsersRepositories } from "../../repositories/UsersRepositories";
 
 class SearchUserService {
 
+    constructor() {}
+
     async execute(searchName: string){
         const userRepositorie = getCustomRepository(UsersRepositories);
 

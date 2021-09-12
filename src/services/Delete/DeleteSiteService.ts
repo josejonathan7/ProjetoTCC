@@ -3,6 +3,8 @@ import { SitesRepositories } from "../../repositories/SitesRepositories";
 
 class DeleteSiteService {
 
+    constructor() {}
+
     async execute(id: string){
         const siteRepositorie = getCustomRepository(SitesRepositories);
 

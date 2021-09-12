@@ -8,6 +8,8 @@ import { UpdateUserService } from "../services/Update/UpdateUserService";
 
 class UserController {
 
+    constructor() {}
+
     async handleCreate(request: Request, response: Response){
         let name = request.body["create-login"];
         let email_contact_link = request.body.email;
@@ -24,35 +26,19 @@ class UserController {
             name = name.trim();
             password = password.trim();
     
-            if(email_contact_link === "" || typeof email_contact_link === "undefined"){
-                email_contact_link = null;
-            }else{
-                email_contact_link = email_contact_link.trim();
-            }
-    
-            if(avatar === "" || typeof avatar === "undefined"){
-                avatar = null;
-            }else{
-                avatar = avatar.trim();
-            }
-    
-            if(description === "" || typeof description === "undefined"){
-                description= null;
-            }else{
-                description = description.trim();
-            }
-    
-            if(admin === "true"){
-                admin = true;
-            }else {
-                admin = false;
-            }
+            email_contact_link = email_contact_link === "" || typeof email_contact_link === "undefined" ? null : email_contact_link.trim();
+        
+            avatar = avatar === "" || typeof avatar === "undefined" ? null : avatar.trim();
+            
+            description = description === "" || typeof description === "undefined" ? null : description.trim();
+            
+            admin = admin === "true" ? true : false;
 
             await creatUserService.execute({ name, email_contact_link, password, avatar, description, admin });
 
             return response.status(201).json("ok");
 
-        }catch(err){
+        }catch(err: any){
             return response.status(400).send(err.message);
         }
     }
@@ -71,12 +57,7 @@ class UserController {
             name = name.trim();
             password = password.trim();
 
-           
-            if(email_contact_link === "" || typeof email_contact_link === "undefined"){
-                email_contact_link = null;
-            }else{
-                email_contact_link = email_contact_link.trim();
-            }
+            email_contact_link = email_contact_link === "" || typeof email_contact_link === "undefined" ? null : email_contact_link.trim();
 
             await creatUserService.executeCommonUser({ name, email_contact_link, password });
 
@@ -89,7 +70,7 @@ class UserController {
 
             return response.status(201).json({ token, user: userData });
 
-        }catch(err){
+        }catch(err: any){
             return response.status(400).send(err.message);
         }
     }
@@ -103,43 +84,25 @@ class UserController {
         let admin = request.body.admin;
 
     
-        if(admin.trim() === "true"){
-            admin = true;
-        }else {
-            admin = false;
-        }
+        admin = admin === "true" ? true : false;
 
         const updateUserService = new UpdateUserService();
 
         try{ 
 
             name = name.trim();
-            
-            if(email_contact_link === "" || typeof email_contact_link === "undefined"){
-                email_contact_link = null;
-            }else{
-                email_contact_link = email_contact_link.trim();
-            }
 
+            email_contact_link = email_contact_link === "" || typeof email_contact_link === "undefined" ? null : email_contact_link.trim();
             
-            if(avatar === "" || typeof avatar === "undefined"){
-                avatar = null;
-            }else{
-                avatar = avatar.trim();
-            }
+            avatar = avatar === "" || typeof avatar === "undefined" ? null : avatar.trim();
     
-            if(description === "" || typeof description === "undefined"){
-                description= null;
-            }else{
-                description = description.trim();
-            }
-    
+            description = description === "" || typeof description === "undefined" ? null : description.trim();
             
             await updateUserService.execute({ id, name, avatar, description, email_contact_link, admin });
             
             return response.status(200).json("ok");
 
-        }catch(err){
+        }catch(err: any){
             return response.status(400).send(err.message);
         }
     }
@@ -157,7 +120,7 @@ class UserController {
             
             return response.status(200).json({ user });
             
-        }catch(err){
+        }catch(err: any){
             return response.status(404).send(err.message);
         }
     }
@@ -173,7 +136,7 @@ class UserController {
             
             return response.status(200).json({ user });
             
-        }catch(err){
+        }catch(err: any){
             return response.status(404).send(err.message);
         }
     }
@@ -187,12 +150,11 @@ class UserController {
 
             return user;
 
-        } catch(err){
+        } catch(err: any){
             throw new Error("falha");
         }
     }
 
-    
     async handleGetAdmin(){
         const getUserService = new GetUserService();
 
@@ -202,7 +164,7 @@ class UserController {
 
             return user;
 
-        } catch(err){
+        } catch(err: any){
             throw new Error("falha");
         }
     }
@@ -217,7 +179,7 @@ class UserController {
             
             return response.status(200).json("ok");
 
-        }catch(err){
+        }catch(err: any){
             return response.status(404).send(err.message);
         }
     }

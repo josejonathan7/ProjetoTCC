@@ -3,6 +3,8 @@ import { UsersRepositories } from "../../repositories/UsersRepositories";
 
 class DeleteUserService{
 
+    constructor() {}
+
     async execute(id: string){
         const userRepositorie = getCustomRepository(UsersRepositories);
 

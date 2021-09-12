@@ -9,6 +9,8 @@ interface ISiteRequest {
 
 class CreateSiteService {
 
+    constructor() {}
+
     async execute({ name,  link, category }: ISiteRequest){
         const siteRepositorie = getCustomRepository(SitesRepositories);
 

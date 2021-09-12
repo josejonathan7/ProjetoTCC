@@ -4,6 +4,8 @@ import { AnimesRepositories } from "../../repositories/AnimesRepositories";
 
 class GetAnimeService {
 
+    constructor() {}
+
     async execute(){
         const animeRepositorie = getCustomRepository(AnimesRepositories);
 

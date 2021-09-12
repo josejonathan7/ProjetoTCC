@@ -4,6 +4,8 @@ import { GamesRepositories } from "../../repositories/GamesRepositories";
 
 class SearchGameService {
 
+    constructor() {}
+
     async execute(searchName: string){
         const gameRepositorie = getCustomRepository(GamesRepositories);
 

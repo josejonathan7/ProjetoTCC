@@ -13,6 +13,8 @@ interface IUserRequest {
 
 class CreateUserService {
 
+    constructor() {}
+
     async execute({ name, admin, password, email_contact_link, avatar, description}: IUserRequest){
         const userRepositorie = getCustomRepository(UsersRepositories);
 

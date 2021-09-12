@@ -101,7 +101,7 @@ var SongController = /** @class */ (function () {
     };
     SongController.prototype.handleGet = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var getSongService, userController, user, song, randomUser, contactUsers, err_3;
+            var getSongService, userController, user, unfilteredSong, randomUser, contactUsers, filteringSong, song, err_3;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -115,15 +115,21 @@ var SongController = /** @class */ (function () {
                         user = _a.sent();
                         return [4 /*yield*/, getSongService.execute()];
                     case 3:
-                        song = _a.sent();
+                        unfilteredSong = _a.sent();
                         randomUser = Math.floor(Math.random() * (user.length - 0));
-                        contactUsers = void 0;
-                        if (typeof user === "object") {
-                            contactUsers = user[randomUser];
-                        }
-                        else {
-                            contactUsers = user;
-                        }
+                        contactUsers = typeof user === 'object' ? user[randomUser] : user;
+                        filteringSong = unfilteredSong.flat();
+                        song = filteringSong.sort(function (a, b) {
+                            var x = a.name.toLowerCase();
+                            var y = b.name.toLowerCase();
+                            if (x < y) {
+                                return -1;
+                            }
+                            if (x > y) {
+                                return 1;
+                            }
+                            return 0;
+                        });
                         return [2 /*return*/, response.status(200).json({ song: song, contactUsers: contactUsers })];
                     case 4:
                         err_3 = _a.sent();

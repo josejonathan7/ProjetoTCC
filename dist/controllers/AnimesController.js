@@ -61,12 +61,7 @@ var AnimeController = /** @class */ (function () {
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 3, , 4]);
-                        if (image === "" || typeof image === "undefined") {
-                            image = null;
-                        }
-                        else {
-                            image = image.trim();
-                        }
+                        image = image === "" || typeof image === "undefined" ? null : image.trim();
                         return [4 /*yield*/, creatAnimeService.execute({ name: name, link: link, image: image })];
                     case 2:
                         _a.sent();
@@ -95,12 +90,7 @@ var AnimeController = /** @class */ (function () {
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 3, , 4]);
-                        if (image === "" || typeof image === "undefined") {
-                            image = null;
-                        }
-                        else {
-                            image = image.trim();
-                        }
+                        image = image === "" || typeof image === "undefined" ? null : image.trim();
                         return [4 /*yield*/, updateAnimeService.execute({ id: id, name: name, link: link, image: image })];
                     case 2:
                         _a.sent();
@@ -162,7 +152,7 @@ var AnimeController = /** @class */ (function () {
     };
     AnimeController.prototype.handlePagination = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var getAnimeService, userController, user, animes, randomUser, contactUsers, err_5;
+            var getAnimeService, userController, user, unfilteredAnimes, randomUser, contactUsers, filteringAnime, animes, err_5;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -176,15 +166,21 @@ var AnimeController = /** @class */ (function () {
                         user = _a.sent();
                         return [4 /*yield*/, getAnimeService.execute()];
                     case 3:
-                        animes = _a.sent();
+                        unfilteredAnimes = _a.sent();
                         randomUser = Math.floor(Math.random() * (user.length - 0));
-                        contactUsers = [];
-                        if (typeof user === "object") {
-                            contactUsers = user[randomUser];
-                        }
-                        else {
-                            contactUsers = user;
-                        }
+                        contactUsers = typeof user === 'object' ? user[randomUser] : user;
+                        filteringAnime = unfilteredAnimes.flat();
+                        animes = filteringAnime.sort(function (a, b) {
+                            var x = a.name.toLowerCase();
+                            var y = b.name.toLowerCase();
+                            if (x < y) {
+                                return -1;
+                            }
+                            if (x > y) {
+                                return 1;
+                            }
+                            return 0;
+                        });
                         return [2 /*return*/, response.status(200).json({ contactUsers: contactUsers, animes: animes })];
                     case 4:
                         err_5 = _a.sent();
@@ -235,7 +231,7 @@ var AnimeController = /** @class */ (function () {
                         if (animes) {
                             for (i = 0; i < 5; i++) {
                                 animesfilter = Math.floor(Math.random() * (animes.length - 0));
-                                animesCarousel[i] = animes[animesfilter];
+                                animesCarousel.push(animes[animesfilter]);
                             }
                         }
                         return [2 /*return*/, animesCarousel];

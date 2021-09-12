@@ -2,6 +2,8 @@ import { getCustomRepository } from "typeorm";
 import { GamesRepositories } from "../../repositories/GamesRepositories";
 
 class DeleteGameService{
+
+    constructor() {}
     
     async execute(id: string){
         const gameRepositorie = getCustomRepository(GamesRepositories);

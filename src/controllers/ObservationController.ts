@@ -7,6 +7,8 @@ import { UpdateObservationService } from '../services/Update/UpdateObservationSe
 
 class ObservationController {
 
+    constructor() {}
+
     async handleCreate(request: Request, response: Response){
         let name: string = request.body["observation-name"];
         let information: string = request.body.information;
@@ -22,7 +24,7 @@ class ObservationController {
 
             return response.status(201).json("ok");
          
-        }catch(err){
+        }catch(err: any){
             return response.status(400).send(err.message);
         }
     }
@@ -43,7 +45,7 @@ class ObservationController {
   
             return response.status(200).json("ok");
 
-        }catch(err){
+        }catch(err: any){
             return response.status(400).send(err.message);
         }
     }
@@ -60,7 +62,7 @@ class ObservationController {
 
             return response.status(200).json({ observation });
 
-        }catch(err){
+        }catch(err: any){
             return response.status(404).send(err.message);
         }
     }
@@ -75,7 +77,7 @@ class ObservationController {
 
             return response.status(200).json({ observation });
 
-        }catch(err){
+        }catch(err: any){
             return response.status(404).send(err.message);
         }
     }
@@ -89,7 +91,7 @@ class ObservationController {
         
             return observation;
 
-        }catch(err){
+        }catch(err: any){
             throw new Error("Falha");
         }
     }
@@ -105,7 +107,7 @@ class ObservationController {
 
             return response.status(200).json("ok");
 
-        }catch(err){
+        }catch(err: any){
             return response.status(404).send(err.message);
         }
     }

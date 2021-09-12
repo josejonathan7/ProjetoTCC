@@ -47,7 +47,7 @@ var IndexController = /** @class */ (function () {
     }
     IndexController.prototype.handleGet = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var animeController, gameController, siteController, observationController, userController, randomAnime, randomGame, sites, users, observation, pageObjective, randomUser, contactUsers, animesSite, gamesSite, countAnime, countGame, i, status, err_1;
+            var animeController, gameController, siteController, observationController, userController, randomAnime, randomGame, sites, users, observation, pageObjective, randomUser, contactUsers, animesSite, gamesSite, i, status, err_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -89,26 +89,16 @@ var IndexController = /** @class */ (function () {
                             pageObjective = observation;
                         }
                         randomUser = Math.floor(Math.random() * (users.length - 0));
-                        contactUsers = [];
-                        if (typeof users === "object") {
-                            contactUsers = users[randomUser];
-                        }
-                        else {
-                            contactUsers = users;
-                        }
+                        contactUsers = typeof users === "object" ? users[randomUser] : users;
                         animesSite = [];
                         gamesSite = [];
-                        countAnime = 0;
-                        countGame = 0;
                         if (typeof sites === "object") {
                             for (i = 0; i < sites.length; i++) {
                                 if (sites[i].category === "anime") {
-                                    animesSite[countAnime] = sites[i];
-                                    countAnime++;
+                                    animesSite.push(sites[i]);
                                 }
                                 else if (sites[i].category === "game") {
-                                    gamesSite[countGame] = sites[i];
-                                    countGame++;
+                                    gamesSite.push(sites[i]);
                                 }
                             }
                             ;

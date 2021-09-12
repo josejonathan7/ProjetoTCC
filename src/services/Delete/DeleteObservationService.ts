@@ -3,6 +3,8 @@ import { ObservationRepositories } from "../../repositories/ObservationRepositor
 
 class DeleteObservationService {
 
+    constructor() {}
+
     async execute(id: string){
         const observationRepositorie = getCustomRepository(ObservationRepositories);
 

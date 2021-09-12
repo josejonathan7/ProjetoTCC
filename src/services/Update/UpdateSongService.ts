@@ -9,6 +9,8 @@ interface ISongRequest {
 
 class UpdateSongService {
 
+    constructor() {}
+
     async execute({ id, link, name}: ISongRequest){
         const songRepositorie = getCustomRepository(SongsRepositories);
 

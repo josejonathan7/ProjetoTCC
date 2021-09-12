@@ -8,6 +8,8 @@ import { UserController } from "./UserController";
 
 class IndexController {
 
+    constructor() {}
+
     async handleGet(request: Request, response: Response) {
         const animeController = new AnimeController();
         const gameController = new GameController();
@@ -45,43 +47,27 @@ class IndexController {
 
             //dados de contato no rodapé
             let randomUser =  Math.floor(Math.random() * (users.length - 0));
-            let contactUsers= [];
-
-            if(typeof users === "object"){
-                contactUsers = users[randomUser];
-            }else {
-                contactUsers = users;
-            }
-
+            let contactUsers = typeof users === "object" ? users[randomUser] : users;
         
             //filtragem dos sites entre animes e jogos
 
             let animesSite = [];
             let gamesSite = [];
-            let countAnime = 0;
-            let countGame = 0;
 
             if(typeof sites === "object"){
                 for (let i = 0; i < sites.length; i++) {
 
                     if (sites[i].category === "anime") {
-
-                        animesSite[countAnime] = sites[i];
-                        countAnime++;
+                        animesSite.push(sites[i]);
 
                     } else if (sites[i].category === "game") {
-
-                        gamesSite[countGame] = sites[i];
-                        countGame++;
-
+                        gamesSite.push(sites[i]);
                     }
                 };
             }else {
                 animesSite = ["falha na tipagem"];
                 gamesSite = ["falha na tipagem"];
             }
-
-
             
             const status = randomAnime && randomGame && sites && users ? response.status(200).json({ randomAnime,
                 randomGame,
@@ -92,7 +78,7 @@ class IndexController {
     
             return status;
 
-        }catch(err){
+        }catch(err: any){
             return response.status(404).send(err.message);
         }
     }

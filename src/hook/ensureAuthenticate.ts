@@ -12,7 +12,7 @@ export function ensureAuthenticate(request: Request, response: Response){
 
       return response.json({user});
 
-   }catch(err){
+   }catch(err: any){
 
       return response.status(401).send("token inválido"); 
    }

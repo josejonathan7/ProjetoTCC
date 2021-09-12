@@ -4,6 +4,8 @@ import { ObservationRepositories } from "../../repositories/ObservationRepositor
 
 class SearchObservationService {
 
+    constructor() {}
+
     async execute(searchName: string){
         const observationRepositorie = getCustomRepository(ObservationRepositories);
 

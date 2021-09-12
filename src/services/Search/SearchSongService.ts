@@ -4,6 +4,8 @@ import { SongsRepositories } from "../../repositories/SongsRepositores";
 
 class SearchSongService {
 
+    constructor() {}
+
     async execute(searchName: string){
         const songRepositorie = getCustomRepository(SongsRepositories);
 

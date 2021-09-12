@@ -64,30 +64,10 @@ var UserController = /** @class */ (function () {
                         _a.trys.push([1, 3, , 4]);
                         name = name.trim();
                         password = password.trim();
-                        if (email_contact_link === "" || typeof email_contact_link === "undefined") {
-                            email_contact_link = null;
-                        }
-                        else {
-                            email_contact_link = email_contact_link.trim();
-                        }
-                        if (avatar === "" || typeof avatar === "undefined") {
-                            avatar = null;
-                        }
-                        else {
-                            avatar = avatar.trim();
-                        }
-                        if (description === "" || typeof description === "undefined") {
-                            description = null;
-                        }
-                        else {
-                            description = description.trim();
-                        }
-                        if (admin === "true") {
-                            admin = true;
-                        }
-                        else {
-                            admin = false;
-                        }
+                        email_contact_link = email_contact_link === "" || typeof email_contact_link === "undefined" ? null : email_contact_link.trim();
+                        avatar = avatar === "" || typeof avatar === "undefined" ? null : avatar.trim();
+                        description = description === "" || typeof description === "undefined" ? null : description.trim();
+                        admin = admin === "true" ? true : false;
                         return [4 /*yield*/, creatUserService.execute({ name: name, email_contact_link: email_contact_link, password: password, avatar: avatar, description: description, admin: admin })];
                     case 2:
                         _a.sent();
@@ -117,12 +97,7 @@ var UserController = /** @class */ (function () {
                         _a.trys.push([1, 5, , 6]);
                         name = name.trim();
                         password = password.trim();
-                        if (email_contact_link === "" || typeof email_contact_link === "undefined") {
-                            email_contact_link = null;
-                        }
-                        else {
-                            email_contact_link = email_contact_link.trim();
-                        }
+                        email_contact_link = email_contact_link === "" || typeof email_contact_link === "undefined" ? null : email_contact_link.trim();
                         return [4 /*yield*/, creatUserService.executeCommonUser({ name: name, email_contact_link: email_contact_link, password: password })];
                     case 2:
                         _a.sent();
@@ -156,35 +131,15 @@ var UserController = /** @class */ (function () {
                         avatar = request.body.avatar;
                         description = request.body["user-description"];
                         admin = request.body.admin;
-                        if (admin.trim() === "true") {
-                            admin = true;
-                        }
-                        else {
-                            admin = false;
-                        }
+                        admin = admin === "true" ? true : false;
                         updateUserService = new UpdateUserService_1.UpdateUserService();
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 3, , 4]);
                         name = name.trim();
-                        if (email_contact_link === "" || typeof email_contact_link === "undefined") {
-                            email_contact_link = null;
-                        }
-                        else {
-                            email_contact_link = email_contact_link.trim();
-                        }
-                        if (avatar === "" || typeof avatar === "undefined") {
-                            avatar = null;
-                        }
-                        else {
-                            avatar = avatar.trim();
-                        }
-                        if (description === "" || typeof description === "undefined") {
-                            description = null;
-                        }
-                        else {
-                            description = description.trim();
-                        }
+                        email_contact_link = email_contact_link === "" || typeof email_contact_link === "undefined" ? null : email_contact_link.trim();
+                        avatar = avatar === "" || typeof avatar === "undefined" ? null : avatar.trim();
+                        description = description === "" || typeof description === "undefined" ? null : description.trim();
                         return [4 /*yield*/, updateUserService.execute({ id: id, name: name, avatar: avatar, description: description, email_contact_link: email_contact_link, admin: admin })];
                     case 2:
                         _a.sent();

@@ -14,6 +14,8 @@ interface IUserRequest {
 
 class UpdateUserService {
 
+    constructor() {}
+
     async execute({ id, name, avatar, description, email_contact_link, admin }: IUserRequest){
         const userRepositorie = getCustomRepository(UsersRepositories);
 

@@ -3,6 +3,8 @@ import { SongsRepositories } from "../../repositories/SongsRepositores";
 
 class DeleteSongService {
 
+    constructor() {}
+
     async execute(id: string){
         const songRepositorie = getCustomRepository(SongsRepositories);
 

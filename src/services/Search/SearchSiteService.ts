@@ -4,6 +4,8 @@ import { SitesRepositories } from "../../repositories/SitesRepositories";
 
 class SearchSiteService {
 
+    constructor() {}
+
     async execute(searchName: string){
         const siteRepositorie = getCustomRepository(SitesRepositories);
 
