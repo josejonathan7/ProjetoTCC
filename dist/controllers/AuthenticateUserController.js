@@ -44,7 +44,7 @@ var AuthenticateUserController = /** @class */ (function () {
     }
     AuthenticateUserController.prototype.handleAuthenticate = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var name, password, searchUserService, authenticateUserService, token, userData, err_1;
+            var name, password, searchUserService, authenticateUserService, token, userDataArray, userData, err_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -63,7 +63,8 @@ var AuthenticateUserController = /** @class */ (function () {
                         token = _a.sent();
                         return [4 /*yield*/, searchUserService.execute(name)];
                     case 3:
-                        userData = _a.sent();
+                        userDataArray = _a.sent();
+                        userData = userDataArray[0];
                         return [2 /*return*/, response.status(200).json({ token: token, user: userData })];
                     case 4:
                         err_1 = _a.sent();

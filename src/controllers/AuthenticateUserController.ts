@@ -20,8 +20,8 @@ class AuthenticateUserController {
                 password
             });
 
-            const userData = await searchUserService.execute(name);
-
+            const userDataArray = await searchUserService.execute(name);
+            const userData = userDataArray[0];
 
             return response.status(200).json({ token, user: userData });
 
